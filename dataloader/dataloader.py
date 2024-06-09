@@ -155,16 +155,22 @@ class DataLoader():
         )
 
         valid_representations = [
-            "molecular_graphs",
+            "graphein_molecular_graphs",
+            "pyg_molecular_graphs",
         ]
 
         if isinstance(representation, Callable):
             self.features = representation(self.features, **kwargs)
 
-        elif representation == "molecular_graphs":
-            from .representations.graphs import molecular_graphs # type:ignore
+        elif representation == "graphein_molecular_graphs":
+            from .representations.graphs import graphein_molecular_graphs # type:ignore
 
-            self.features = molecular_graphs(smiles=self.features, **kwargs)
+            self.features = graphein_molecular_graphs(smiles=self.features, **kwargs)
+
+        elif representation == "pyg_molecular_graphs":
+            from .representations.graphs import pyg_molecular_graphs # type:ignore
+
+            self.features = pyg_molecular_graphs(smiles=self.features, **kwargs)
 
         else:
             raise Exception(
