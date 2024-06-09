@@ -4,6 +4,8 @@ from rdkit.Chem import MolFromSmiles, MolToSmiles
 import os
 from typing import Callable, List, Optional, Union
 
+from dataloader.representations.graphs import pyg_molecular_graphs
+
 # Inspired by gauche DataLoader
 # https://github.com/leojklarner/gauche
 
@@ -48,9 +50,14 @@ class DataLoader():
         benchmarks = {
             "leffingwell": {
                 "features": "IsomericSMILES",
-                # 113 labels
+                # 113 labels, multiclass prediction
                 "labels": ['alcoholic', 'aldehydic', 'alliaceous', 'almond', 'animal', 'anisic', 'apple', 'apricot', 'aromatic', 'balsamic', 'banana', 'beefy', 'berry', 'black currant', 'brandy', 'bread', 'brothy', 'burnt', 'buttery', 'cabbage', 'camphoreous', 'caramellic', 'catty', 'chamomile', 'cheesy', 'cherry', 'chicken', 'chocolate', 'cinnamon', 'citrus', 'cocoa', 'coconut', 'coffee', 'cognac', 'coumarinic', 'creamy', 'cucumber', 'dairy', 'dry', 'earthy', 'ethereal', 'fatty', 'fermented', 'fishy', 'floral', 'fresh', 'fruity', 'garlic', 'gasoline', 'grape', 'grapefruit', 'grassy', 'green', 'hay', 'hazelnut', 'herbal', 'honey', 'horseradish', 'jasmine', 'ketonic', 'leafy', 'leathery', 'lemon', 'malty', 'meaty', 'medicinal', 'melon', 'metallic', 'milky', 'mint', 'mushroom', 'musk', 'musty', 'nutty', 'odorless', 'oily', 'onion', 'orange', 'orris', 'peach', 'pear', 'phenolic', 'pine', 'pineapple', 'plum', 'popcorn', 'potato', 'pungent', 'radish', 'ripe', 'roasted', 'rose', 'rum', 'savory', 'sharp', 'smoky', 'solvent', 'sour', 'spicy', 'strawberry', 'sulfurous', 'sweet', 'tea', 'tobacco', 'tomato', 'tropical', 'vanilla', 'vegetable', 'violet', 'warm', 'waxy', 'winey', 'woody']
             },
+            "mayhew_2022": {
+                "features": "IsomericSMILES",
+                # 1 label, odor probability prediction
+                "labels": ["is_odor"],
+            }
         }
 
         assert benchmark in benchmarks.keys(), (
@@ -121,7 +128,10 @@ class DataLoader():
             print(
                 "To turn validation off, use dataloader.read_csv(..., validate=False)."
             )
-        invalid_idx = np.any(np.hstack((invalid_mols.reshape(-1, 1), invalid_labels)), axis=1)
+        if invalid_labels.ndim > 1:
+            invalid_idx = np.any(np.hstack((invalid_mols.reshape(-1, 1), invalid_labels)), axis=1)
+        else:
+            invalid_idx = np.logical_or(invalid_mols, invalid_labels)
 
         if drop:
             self.features = [
@@ -163,12 +173,12 @@ class DataLoader():
             self.features = representation(self.features, **kwargs)
 
         elif representation == "graphein_molecular_graphs":
-            from .representations.graphs import graphein_molecular_graphs # type:ignore
+            from .representations.graphs import graphein_molecular_graphs
 
             self.features = graphein_molecular_graphs(smiles=self.features, **kwargs)
 
         elif representation == "pyg_molecular_graphs":
-            from .representations.graphs import pyg_molecular_graphs # type:ignore
+            from .representations.graphs import graphein_molecular_graphs
 
             self.features = pyg_molecular_graphs(smiles=self.features, **kwargs)
 
