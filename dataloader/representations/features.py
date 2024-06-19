@@ -29,7 +29,7 @@ def morgan_fingerprints(
 
     """
     generator = MakeGenerator((f"Morgan3",))
-    fps = [parse_status(generator, x) for x in smiles]
+    fps = np.array([parse_status(generator, x) for x in smiles])
     return fps
 
 def rdkit2d_normalized_features(
@@ -44,7 +44,7 @@ def rdkit2d_normalized_features(
 
     """
     generator = MakeGenerator((f"rdkit2dhistogramnormalized",))
-    fps = [parse_status(generator, x) for x in smiles]
+    fps = np.array([parse_status(generator, x) for x in smiles])
     return fps
 
 def mordred_descriptors(    
@@ -60,6 +60,6 @@ def mordred_descriptors(
     """
     calc = Calculator(descriptors, ignore_3D=True)
     # TODO: invalid smiles handling
-    mols = [MolFromSmiles(smi) for smi in smiles]
-    features = [calc(mol) for mol in mols]
+    mols = np.array([MolFromSmiles(smi) for smi in smiles])
+    features = np.array([calc(mol) for mol in mols])
     return features
