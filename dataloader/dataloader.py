@@ -151,7 +151,7 @@ class DataLoader():
     ) -> None:
         """Transforms SMILES into the specified molecular representation.
 
-        :param representation: the desired molecular representation, one of [ecfp_fingerprints, fragments, ecfp_fragprints, molecular_graphs, bag_of_smiles, bag_of_selfies, mqn] or a callable that takes a list of SMILES strings as input and returns the desired featurization.
+        :param representation: the desired molecular representation.
         :type representation: str or Callable
         :param kwargs: additional keyword arguments for the representation function
         :type kwargs: dict
@@ -168,6 +168,9 @@ class DataLoader():
             "graphein_molecular_graphs",
             "pyg_molecular_graphs",
             "molecular_graphs",
+            "morgan_fingerprints",
+            "rdkit2d_normalized_features",
+            "mordred_descriptors"
         ]
 
         if isinstance(representation, Callable):
@@ -188,6 +191,20 @@ class DataLoader():
 
             self.features = molecular_graphs(smiles=self.features, **kwargs)
 
+        elif representation == "morgan_fingerprints":
+            from .representations.features import morgan_fingerprints
+
+            self.features = morgan_fingerprints(self.features, **kwargs)
+
+        elif representation == "rdkit2d_normalized_features":
+            from .representations.features import rdkit2d_normalized_features
+
+            self.features = rdkit2d_normalized_features(self.features, **kwargs)
+
+        elif representation == "mordred_descriptors":
+            from .representations.features import mordred_descriptors
+
+            self.features = mordred_descriptors(self.features, **kwargs)
         else:
             raise Exception(
                 f"The specified representation choice {representation} is not a valid option."
