@@ -69,3 +69,17 @@ def pyg_molecular_graphs(
     return [
         from_smiles(smiles=i) for i in smiles
     ]
+
+
+def molecular_graphs(
+    smiles: List[str],
+) -> List[Data]:
+    """
+    Converts a list of SMILES strings into a custom graph tuple
+    """
+
+    from .graph_utils import from_smiles
+
+    return [
+        from_smiles(smiles=i) for i in smiles
+    ]
