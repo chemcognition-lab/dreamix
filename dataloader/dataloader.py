@@ -4,7 +4,6 @@ from rdkit.Chem import MolFromSmiles, MolToSmiles
 import os
 from typing import Callable, List, Optional, Union
 
-from dataloader.representations.graphs import pyg_molecular_graphs
 
 # Inspired by gauche DataLoader
 # https://github.com/leojklarner/gauche
@@ -182,7 +181,7 @@ class DataLoader():
             self.features = graphein_molecular_graphs(smiles=self.features, **kwargs)
 
         elif representation == "pyg_molecular_graphs":
-            from .representations.graphs import graphein_molecular_graphs
+            from .representations.graphs import pyg_molecular_graphs
 
             self.features = pyg_molecular_graphs(smiles=self.features, **kwargs)
 

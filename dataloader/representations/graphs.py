@@ -73,6 +73,7 @@ def pyg_molecular_graphs(
 
 def molecular_graphs(
     smiles: List[str],
+    init_globals: Optional[bool] = False,
 ) -> List[Data]:
     """
     Converts a list of SMILES strings into a custom graph tuple
@@ -81,5 +82,5 @@ def molecular_graphs(
     from .graph_utils import from_smiles
 
     return [
-        from_smiles(smiles=i) for i in smiles
+        from_smiles(smiles=i, init_globals=init_globals) for i in smiles
     ]
