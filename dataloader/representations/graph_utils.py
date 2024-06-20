@@ -78,7 +78,7 @@ def global_features(mol: Chem.rdchem.Mol) -> List:
 
 
 
-def from_smiles(smiles: str, use_globals: bool = True) -> Data:
+def from_smiles(smiles: str, init_globals: bool = True) -> Data:
     mol = Chem.MolFromSmiles(smiles)
     smi = Chem.MolToSmiles(mol)         # canonicalized
 
@@ -105,8 +105,11 @@ def from_smiles(smiles: str, use_globals: bool = True) -> Data:
         perm = (b_index[0] * a_feats.size(0) + b_index[1]).argsort()
         b_index, b_feats = b_index[:, perm], b_feats[perm]
     
-    g_feats = torch.tensor(global_features(mol), dtype=torch.float)
+    if init_globals:
+        g_feats = torch.tensor([global_features(mol)], dtype=torch.float)
+    else:
+        g_feats = torch.tensor([[0.]], dtype=torch.float)
 
-    return Data(x=a_feats, edge_index=b_index, edge_attr=b_feats, global_attr=g_feats, smiles=smi)
+    return Data(x=a_feats, edge_index=b_index, edge_attr=b_feats, u=g_feats, smiles=smi)
 
 
