@@ -64,6 +64,16 @@ class DataLoader():
                 "labels": ["Experimental Values"],
                 "validate": False # nan values in columns, broken
             },
+            "competition_leaderboard":{
+                "features": ["Dataset", "Mixture 1", "Mixture 2"],
+                "labels": ["Experimental Values"],
+                "validate": False # nan values in columns, broken
+            },
+            "competition_test":{
+                "features": ["Dataset", "Mixture 1", "Mixture 2"],
+                "labels": ["Experimental Values"],
+                "validate": False # nan values in columns, broken
+            },
         }
 
         assert benchmark in benchmarks.keys(), (
