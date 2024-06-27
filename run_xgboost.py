@@ -4,8 +4,9 @@ from skmultilearn.model_selection import iterative_train_test_split
 from sklearn.metrics import roc_auc_score, mean_squared_error, r2_score
 from scipy.stats import pearsonr, kendalltau
 import numpy as np
-from torchmetrics.functional.classification import multilabel_auroc
+#from torchmetrics.functional.classification import multilabel_auroc
 import torch
+import pandas as pd
 
 data = DataLoader()
 #data.load_benchmark("leffingwell")
@@ -47,3 +48,15 @@ else:
 
     ket = kendalltau(y_test, y_pred)
     print(f'Kendall Tau: {ket}')
+
+
+lb_data = DataLoader()
+lb_data.load_benchmark("competition_leaderboard")
+lb_data.featurize("competition_rdkit2d")
+
+
+X_lb = lb_data.features.reshape(46, 1600)
+
+y_lb = bst.predict(X_lb)
+
+pd.DataFrame(y_lb, columns=['prediction']).to_csv("leaderboard.csv", index=False)
