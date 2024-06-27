@@ -254,6 +254,29 @@ class DataLoader():
                 feature_list.append([mix_1, mix_2])
 
             self.features = np.array(feature_list, dtype=object)
+
+        elif representation == "competition_rdkit2d_augment":
+            # Features is ["Dataset", "Mixture 1", "Mixture 2"]
+            rdkit_df = pd.read_csv("datasets/competition_train/mixture_rdkit_definitions_clean.csv")
+            feature_list = []
+            feature_list_augment = []
+            for feature in self.features:
+                mix_1 = rdkit_df.loc[(rdkit_df['Dataset'] == feature[0]) & (rdkit_df['Mixture Label'] == feature[1])][rdkit_df.columns[2:]]
+                mix_1 = mix_1.dropna(axis=1).to_numpy()[0]
+                mix_2 = rdkit_df.loc[(rdkit_df['Dataset'] == feature[0]) & (rdkit_df['Mixture Label'] == feature[2])][rdkit_df.columns[2:]]
+                mix_2 = mix_2.dropna(axis=1).to_numpy()[0]
+                feature_list.append([mix_1, mix_2])
+                feature_list_augment.append([mix_2, mix_1])
+            feature_list += feature_list_augment
+
+            self.features = np.array(feature_list, dtype=object)
+
+        elif representation == "only_augment":
+
+            feature_list_augment = np.array([[x[1], x[0]] for x in self.features])
+
+            self.features = np.vstack((self.features, feature_list_augment))
+
         else:
             raise Exception(
                 f"The specified representation choice {representation} is not a valid option."
