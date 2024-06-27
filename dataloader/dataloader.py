@@ -28,11 +28,11 @@ class DataLoader():
         Loads a csv and stores it as features and labels.
         """
         assert isinstance(
-            smiles_column, str
-        ), f"smiles_column ({smiles_column}) must be a single string"
+            smiles_column, List
+        ), f"smiles_column ({smiles_column}) must be a list of strings"
         assert isinstance(label_columns, list) and all(isinstance(item, str) for item in label_columns), "label_columns ({label_columns}) must be a list of strings."
 
-        df = pd.read_csv(path, usecols=[smiles_column, *label_columns])
+        df = pd.read_csv(path, usecols=[*smiles_column, *label_columns])
         self.features = df[smiles_column].to_numpy()
         self.labels = df[label_columns].values
         if validate:
@@ -48,15 +48,32 @@ class DataLoader():
         """
         benchmarks = {
             "leffingwell": {
-                "features": "IsomericSMILES",
+                "features": ["IsomericSMILES"],
                 # 113 labels, multiclass prediction
-                "labels": ['alcoholic', 'aldehydic', 'alliaceous', 'almond', 'animal', 'anisic', 'apple', 'apricot', 'aromatic', 'balsamic', 'banana', 'beefy', 'berry', 'black currant', 'brandy', 'bread', 'brothy', 'burnt', 'buttery', 'cabbage', 'camphoreous', 'caramellic', 'catty', 'chamomile', 'cheesy', 'cherry', 'chicken', 'chocolate', 'cinnamon', 'citrus', 'cocoa', 'coconut', 'coffee', 'cognac', 'coumarinic', 'creamy', 'cucumber', 'dairy', 'dry', 'earthy', 'ethereal', 'fatty', 'fermented', 'fishy', 'floral', 'fresh', 'fruity', 'garlic', 'gasoline', 'grape', 'grapefruit', 'grassy', 'green', 'hay', 'hazelnut', 'herbal', 'honey', 'horseradish', 'jasmine', 'ketonic', 'leafy', 'leathery', 'lemon', 'malty', 'meaty', 'medicinal', 'melon', 'metallic', 'milky', 'mint', 'mushroom', 'musk', 'musty', 'nutty', 'odorless', 'oily', 'onion', 'orange', 'orris', 'peach', 'pear', 'phenolic', 'pine', 'pineapple', 'plum', 'popcorn', 'potato', 'pungent', 'radish', 'ripe', 'roasted', 'rose', 'rum', 'savory', 'sharp', 'smoky', 'solvent', 'sour', 'spicy', 'strawberry', 'sulfurous', 'sweet', 'tea', 'tobacco', 'tomato', 'tropical', 'vanilla', 'vegetable', 'violet', 'warm', 'waxy', 'winey', 'woody']
+                "labels": ['alcoholic', 'aldehydic', 'alliaceous', 'almond', 'animal', 'anisic', 'apple', 'apricot', 'aromatic', 'balsamic', 'banana', 'beefy', 'berry', 'black currant', 'brandy', 'bread', 'brothy', 'burnt', 'buttery', 'cabbage', 'camphoreous', 'caramellic', 'catty', 'chamomile', 'cheesy', 'cherry', 'chicken', 'chocolate', 'cinnamon', 'citrus', 'cocoa', 'coconut', 'coffee', 'cognac', 'coumarinic', 'creamy', 'cucumber', 'dairy', 'dry', 'earthy', 'ethereal', 'fatty', 'fermented', 'fishy', 'floral', 'fresh', 'fruity', 'garlic', 'gasoline', 'grape', 'grapefruit', 'grassy', 'green', 'hay', 'hazelnut', 'herbal', 'honey', 'horseradish', 'jasmine', 'ketonic', 'leafy', 'leathery', 'lemon', 'malty', 'meaty', 'medicinal', 'melon', 'metallic', 'milky', 'mint', 'mushroom', 'musk', 'musty', 'nutty', 'odorless', 'oily', 'onion', 'orange', 'orris', 'peach', 'pear', 'phenolic', 'pine', 'pineapple', 'plum', 'popcorn', 'potato', 'pungent', 'radish', 'ripe', 'roasted', 'rose', 'rum', 'savory', 'sharp', 'smoky', 'solvent', 'sour', 'spicy', 'strawberry', 'sulfurous', 'sweet', 'tea', 'tobacco', 'tomato', 'tropical', 'vanilla', 'vegetable', 'violet', 'warm', 'waxy', 'winey', 'woody'],
+                "validate": True
             },
             "mayhew_2022": {
-                "features": "IsomericSMILES",
+                "features": ["IsomericSMILES"],
                 # 1 label, odor probability prediction
                 "labels": ["is_odor"],
-            }
+                "validate": True,
+            },
+            "competition_train":{
+                "features": ["Dataset", "Mixture 1", "Mixture 2"],
+                "labels": ["Experimental Values"],
+                "validate": False # nan values in columns, broken
+            },
+            "competition_leaderboard":{
+                "features": ["Dataset", "Mixture 1", "Mixture 2"],
+                "labels": ["Experimental Values"],
+                "validate": False # nan values in columns, broken
+            },
+            "competition_test":{
+                "features": ["Dataset", "Mixture 1", "Mixture 2"],
+                "labels": ["Experimental Values"],
+                "validate": False # nan values in columns, broken
+            },
         }
 
         assert benchmark in benchmarks.keys(), (
@@ -81,8 +98,11 @@ class DataLoader():
             path=path,
             smiles_column=benchmarks[benchmark]["features"],
             label_columns=benchmarks[benchmark]["labels"],
-            validate=validate,
+            validate=benchmarks[benchmark]["validate"],
         )        
+
+        if not benchmarks[benchmark]["validate"]:
+            print(f"{benchmark} dataset is known to have invalid entries. Validation is turned off.")
 
     def validate(self, 
                  drop: Optional[bool] = True, 
@@ -100,18 +120,24 @@ class DataLoader():
         :param canonicalize: whether to make the SMILES strings canonical
         :type canonicalize: bool
         """
-
+        def mol_check(x):
+            try: 
+                return True if MolFromSmiles(x) is None else False
+            except TypeError: # nan not supported by MolFromSmiles
+                return True
+            
         invalid_mols = np.array(
-            [
-                True if MolFromSmiles(x) is None else False
-                for x in self.features
-            ]
-        )
+            [[
+                mol_check(x) for x in feature
+            ] for feature in self.features]
+            )
         if np.any(invalid_mols):
+            invalid_indices = np.argwhere(invalid_mols).tolist()
+            invalid_smiles = [x for i, x in enumerate(self.features) if np.any(invalid_mols[i])]
             print(
                 f"Found {invalid_mols.sum()} SMILES strings "
-                f"{[x for i, x in enumerate(self.features) if invalid_mols[i]]} "
-                f"at indices {np.where(invalid_mols)[0].tolist()}"
+                f"{invalid_smiles}"
+                f"at indices {invalid_indices}"
             )
             print(
                 "To turn validation off, use dataloader.read_csv(..., validate=False)."
@@ -127,23 +153,26 @@ class DataLoader():
             print(
                 "To turn validation off, use dataloader.read_csv(..., validate=False)."
             )
+
+        invalid_mols_1d = np.any(invalid_mols, axis=1)
+
         if invalid_labels.ndim > 1:
-            invalid_idx = np.any(np.hstack((invalid_mols.reshape(-1, 1), invalid_labels)), axis=1)
+            invalid_idx = np.any(np.hstack((invalid_mols_1d.reshape(-1, 1), invalid_labels)), axis=1)
         else:
-            invalid_idx = np.logical_or(invalid_mols, invalid_labels)
+            invalid_idx = np.logical_or(invalid_mols_1d, invalid_labels)
 
         if drop:
-            self.features = [
-                x for i, x in enumerate(self.features) if not invalid_idx[i]
-            ]
+            self.features = np.array([[
+                x for i, x in enumerate(feature) if not invalid_idx[i]
+            ] for feature in self.features])
             self.labels = self.labels[~invalid_idx]
             assert len(self.features) == len(self.labels)
 
         if canonicalize:
-            self.features = [
+            self.features = np.array([[
                 MolToSmiles(MolFromSmiles(smiles), isomericSmiles=False)
-                for smiles in self.features
-            ]
+                for smiles in feature
+            ] for feature in self.features])
 
     def featurize(
         self, representation: Union[str, Callable], **kwargs
@@ -169,7 +198,9 @@ class DataLoader():
             "molecular_graphs",
             "morgan_fingerprints",
             "rdkit2d_normalized_features",
-            "mordred_descriptors"
+            "mordred_descriptors",
+            "competition_smiles",
+            "competition_rdkit2d"
         ]
 
         if isinstance(representation, Callable):
@@ -204,6 +235,32 @@ class DataLoader():
             from .representations.features import mordred_descriptors
 
             self.features = mordred_descriptors(self.features, **kwargs)
+
+        elif representation == "competition_smiles":
+            # Features is ["Dataset", "Mixture 1", "Mixture 2"]
+            smi_df = pd.read_csv("datasets/competition_train/mixture_smi_definitions_clean.csv")
+            feature_list = []
+            for feature in self.features:
+                mix_1 = smi_df.loc[(smi_df['Dataset'] == feature[0]) & (smi_df['Mixture Label'] == feature[1])][smi_df.columns[2:]]
+                mix_1 = mix_1.dropna(axis=1).to_numpy()[0]
+                mix_2 = smi_df.loc[(smi_df['Dataset'] == feature[0]) & (smi_df['Mixture Label'] == feature[2])][smi_df.columns[2:]]
+                mix_2 = mix_2.dropna(axis=1).to_numpy()[0]
+                feature_list.append([mix_1, mix_2])
+
+            self.features = np.array(feature_list, dtype=object)
+
+        elif representation == "competition_rdkit2d":
+            # Features is ["Dataset", "Mixture 1", "Mixture 2"]
+            rdkit_df = pd.read_csv("datasets/competition_train/mixture_rdkit_definitions_clean.csv")
+            feature_list = []
+            for feature in self.features:
+                mix_1 = rdkit_df.loc[(rdkit_df['Dataset'] == feature[0]) & (rdkit_df['Mixture Label'] == feature[1])][rdkit_df.columns[2:]]
+                mix_1 = mix_1.dropna(axis=1).to_numpy()[0]
+                mix_2 = rdkit_df.loc[(rdkit_df['Dataset'] == feature[0]) & (rdkit_df['Mixture Label'] == feature[2])][rdkit_df.columns[2:]]
+                mix_2 = mix_2.dropna(axis=1).to_numpy()[0]
+                feature_list.append([mix_1, mix_2])
+
+            self.features = np.array(feature_list, dtype=object)
         else:
             raise Exception(
                 f"The specified representation choice {representation} is not a valid option."

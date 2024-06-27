@@ -4,6 +4,7 @@ from mordred import Calculator, descriptors
 from typing import List, Optional
 import numpy as np
 import logging
+import pandas as pd
 
 def parse_status(generator, smiles):
     results = generator.process(smiles)
@@ -40,7 +41,7 @@ def rdkit2d_normalized_features(
 
     :param smiles: list of molecular smiles
     :type smiles: list
-    :return: array of shape [len(smiles), 2048] with featurised molecules
+    :return: array of shape [len(smiles), 200] with featurised molecules
 
     """
     generator = MakeGenerator((f"rdkit2dhistogramnormalized",))
