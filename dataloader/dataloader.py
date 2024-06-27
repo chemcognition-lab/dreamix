@@ -34,6 +34,9 @@ class DataLoader():
 
         df = pd.read_csv(path, usecols=[*smiles_column, *label_columns])
         self.features = df[smiles_column].to_numpy()
+        if len(smiles_column) == 1: 
+            self.features = self.features.flatten()
+
         self.labels = df[label_columns].values
         if validate:
             self.validate()
@@ -120,24 +123,17 @@ class DataLoader():
         :param canonicalize: whether to make the SMILES strings canonical
         :type canonicalize: bool
         """
-        def mol_check(x):
-            try: 
-                return True if MolFromSmiles(x) is None else False
-            except TypeError: # nan not supported by MolFromSmiles
-                return True
-            
         invalid_mols = np.array(
-            [[
-                mol_check(x) for x in feature
-            ] for feature in self.features]
-            )
+            [
+                True if MolFromSmiles(x) is None else False
+                for x in self.features
+            ]
+        )
         if np.any(invalid_mols):
-            invalid_indices = np.argwhere(invalid_mols).tolist()
-            invalid_smiles = [x for i, x in enumerate(self.features) if np.any(invalid_mols[i])]
             print(
                 f"Found {invalid_mols.sum()} SMILES strings "
-                f"{invalid_smiles}"
-                f"at indices {invalid_indices}"
+                f"{[x for i, x in enumerate(self.features) if invalid_mols[i]]} "
+                f"at indices {np.where(invalid_mols)[0].tolist()}"
             )
             print(
                 "To turn validation off, use dataloader.read_csv(..., validate=False)."
@@ -153,26 +149,23 @@ class DataLoader():
             print(
                 "To turn validation off, use dataloader.read_csv(..., validate=False)."
             )
-
-        invalid_mols_1d = np.any(invalid_mols, axis=1)
-
         if invalid_labels.ndim > 1:
-            invalid_idx = np.any(np.hstack((invalid_mols_1d.reshape(-1, 1), invalid_labels)), axis=1)
+            invalid_idx = np.any(np.hstack((invalid_mols.reshape(-1, 1), invalid_labels)), axis=1)
         else:
-            invalid_idx = np.logical_or(invalid_mols_1d, invalid_labels)
+            invalid_idx = np.logical_or(invalid_mols, invalid_labels)
 
         if drop:
-            self.features = np.array([[
-                x for i, x in enumerate(feature) if not invalid_idx[i]
-            ] for feature in self.features])
+            self.features = [
+                x for i, x in enumerate(self.features) if not invalid_idx[i]
+            ]
             self.labels = self.labels[~invalid_idx]
             assert len(self.features) == len(self.labels)
 
         if canonicalize:
-            self.features = np.array([[
+            self.features = [
                 MolToSmiles(MolFromSmiles(smiles), isomericSmiles=False)
-                for smiles in feature
-            ] for feature in self.features])
+                for smiles in self.features
+            ]
 
     def featurize(
         self, representation: Union[str, Callable], **kwargs
