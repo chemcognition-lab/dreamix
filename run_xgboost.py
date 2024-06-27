@@ -11,7 +11,7 @@ data = DataLoader()
 #data.load_benchmark("leffingwell")
 #data.featurize("rdkit2d_normalized_features")
 data.load_benchmark("competition_train")
-data.featurize("competition_rdkit")
+data.featurize("competition_rdkit2d")
 
 X = data.features.reshape(500, 1600)
 y = data.labels
