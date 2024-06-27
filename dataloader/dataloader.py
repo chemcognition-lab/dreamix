@@ -60,7 +60,7 @@ class DataLoader():
                 "validate": True,
             },
             "competition_train":{
-                "features": [f"smi_{i}.1" for i in range(0,57+1)]+[f"smi_{i}.2" for i in range(0,57+1)],
+                "features": ["Dataset", "Mixture 1", "Mixture 2"],
                 "labels": ["Experimental Values"],
                 "validate": False # nan values in columns, broken
             },
@@ -188,7 +188,9 @@ class DataLoader():
             "molecular_graphs",
             "morgan_fingerprints",
             "rdkit2d_normalized_features",
-            "mordred_descriptors"
+            "mordred_descriptors",
+            "competition_smiles",
+            "competition_rdkit2d"
         ]
 
         if isinstance(representation, Callable):
@@ -224,13 +226,31 @@ class DataLoader():
 
             self.features = mordred_descriptors(self.features, **kwargs)
 
-        elif representation == "aggregate_mixture_rdkit2d_normalized_features":
-            from .representations.features import rowwise_aggregate_mixture_rdkit2d_normalized_features
-
-            features = np.empty((0, 1600))
+        elif representation == "competition_smiles":
+            # Features is ["Dataset", "Mixture 1", "Mixture 2"]
+            smi_df = pd.read_csv("datasets/competition_train/mixture_smi_definitions_clean.csv")
+            feature_list = []
             for feature in self.features:
-                features = np.vstack((features, rowwise_aggregate_mixture_rdkit2d_normalized_features(feature)))
-            self.features = features
+                mix_1 = smi_df.loc[(smi_df['Dataset'] == feature[0]) & (smi_df['Mixture Label'] == feature[1])][smi_df.columns[2:]]
+                mix_1 = mix_1.dropna(axis=1).to_numpy()[0]
+                mix_2 = smi_df.loc[(smi_df['Dataset'] == feature[0]) & (smi_df['Mixture Label'] == feature[2])][smi_df.columns[2:]]
+                mix_2 = mix_2.dropna(axis=1).to_numpy()[0]
+                feature_list.append([mix_1, mix_2])
+
+            self.features = np.array(feature_list, dtype=object)
+
+        elif representation == "competition_rdkit2d":
+            # Features is ["Dataset", "Mixture 1", "Mixture 2"]
+            rdkit_df = pd.read_csv("datasets/competition_train/mixture_rdkit_definitions_clean.csv")
+            feature_list = []
+            for feature in self.features:
+                mix_1 = rdkit_df.loc[(rdkit_df['Dataset'] == feature[0]) & (rdkit_df['Mixture Label'] == feature[1])][rdkit_df.columns[2:]]
+                mix_1 = mix_1.dropna(axis=1).to_numpy()[0]
+                mix_2 = rdkit_df.loc[(rdkit_df['Dataset'] == feature[0]) & (rdkit_df['Mixture Label'] == feature[2])][rdkit_df.columns[2:]]
+                mix_2 = mix_2.dropna(axis=1).to_numpy()[0]
+                feature_list.append([mix_1, mix_2])
+
+            self.features = np.array(feature_list, dtype=object)
         else:
             raise Exception(
                 f"The specified representation choice {representation} is not a valid option."
