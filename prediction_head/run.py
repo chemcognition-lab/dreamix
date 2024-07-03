@@ -26,29 +26,12 @@ from prediction_head.plot import (
 
 # load data
 dataloaders: dict = {
-    TaskType.regression: get_regression_dataset(),
-    TaskType.binary: get_binary_dataset(),
-    TaskType.multiclass: get_multiclass_dataset(),
-    TaskType.multilabel: get_multilabel_dataset(),
-    TaskType.zero_inflated_binary: get_zeroinflated_dataset(
-        tasktype=TaskType.zero_inflated_binary
-    ),
-    TaskType.zero_inflated_regression: get_zeroinflated_dataset(
-        tasktype=TaskType.zero_inflated_regression
-    ),
+    TaskType.multiclass: get_multiclass_dataset(n_features=25, n_classes=5)
 }
-
-task_specs = [
-    TaskSpec("regression", 1, TaskType.regression),
-    TaskSpec("binary", 1, TaskType.binary),
-    TaskSpec("multiclass", 5, TaskType.multiclass),
-    TaskSpec("multilabel", 5, TaskType.multilabel),
-    # TaskSpec("zero_inflated_binary", 1, TaskType.zero_inflated_binary),
-    # TaskSpec("zero_inflated_regression", 1, TaskType.zero_inflated_regression),
-]
+task_specs = [TaskSpec(TaskType.multiclass, 5, TaskType.multiclass)]
+train_dataloader = dataloaders[TaskType.multiclass][0]
+test_dataloader = dataloaders[TaskType.multiclass][1]
+scaler = dataloaders[TaskType.multiclass][2]
 # run ML model
-results = train_loop(25, task_specs, dataloaders=dataloaders, epochs=10)
-
-# print results but only the first item in the dictionary
-for key, value in results.items():
-    print(f"{key=}, {value[0]=}")
+results = train_loop(25, task_specs, dataloaders, epochs=10)
+print(results["multiclass"][0])
