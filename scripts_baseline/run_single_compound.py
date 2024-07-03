@@ -1,3 +1,6 @@
+import sys
+sys.path.append('..')
+
 from dataloader import DataLoader
 from xgboost import XGBClassifier, XGBRegressor
 from skmultilearn.model_selection import iterative_train_test_split
