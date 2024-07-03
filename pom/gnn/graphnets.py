@@ -2,7 +2,7 @@ from typing import Union, List, Optional
 
 import torch
 import torch.nn as nn
-from torch_geometric.utils import scatter
+from torch_geometric.utils import scatter, to_dense_batch
 from torch_geometric.nn import MetaLayer, Linear
 
 # inspired by DIONYSUS (https://github.com/aspuru-guzik-group/dionysus/blob/main/dionysus/models/modules.py)
@@ -62,10 +62,10 @@ class GlobalMLPModel(nn.Module):
 class GlobalAttnModel(nn.Module):
     def __init__(self, global_dim: int, num_layers: Optional[int] = 1):
         super().__init__()
-        self.k_head = get_mlp_module(50, 1)
-        self.q_head = get_mlp_module(50, 1)
-        self.v_head = get_mlp_module(50, 1)
-        self.attention_layer = nn.MultiheadAttention(50*3, num_heads=3, batch_first=True)
+        self.global_dim = global_dim
+        self.num_layers = num_layers
+        self.attention_layer = nn.MultiheadAttention(global_dim, num_heads=5, batch_first=True)
+        self.global_mlp = get_mlp_module(global_dim, num_layers)
 
     def forward(self, x, edge_index, edge_attr, u, batch):
         # x: [N, F_x], where N is the number of nodes.
@@ -73,24 +73,33 @@ class GlobalAttnModel(nn.Module):
         # edge_attr: [E, F_e]
         # u: [B, F_u]
         # batch: [N] with max entry B - 1.
-        node_mean = scatter(x, batch, dim=0, reduce='mean')
-        # node_min = scatter(x, batch, dim=0, reduce='min')
-        # node_max = scatter(x, batch, dim=0, reduce='max')
+        
+        # node_attr = scatter(x, batch, dim=0, reduce='mean')
+        node_attr, node_mask = to_dense_batch(x, batch)
 
-        K = self.k_head(node_mean)
-        Q = self.q_head(node_mean)
-        V = self.v_head(node_mean)
+        attn, _ = self.attention_layer(node_attr, node_attr, node_attr, key_padding_mask=~node_mask)
+        attn = scatter(attn[node_mask], batch, dim=0, reduce='mean')
+
+        # add a cross attention layer here....
+        # Q = node? or global?
+        # K = node
+        # V = node
+        out = torch.cat([u, attn], dim=1)
         
-        import pdb; pdb.set_trace()
-        
-        out = torch.cat([
-            u,
-            scatter(x, batch, dim=0, reduce='mean'),
-        ], dim=1)
         return self.global_mlp(out)
 
+    @staticmethod
+    def get_mlp_module(global_dim, num_layers):
+        layers = nn.ModuleList()
+        for _ in range(num_layers):
+            layers.append(Linear(-1, global_dim))
+            # layers.append(nn.BatchNorm1d(global_dim))
+            layers.append(nn.SELU())
+        layers.append(Linear(-1, global_dim))
+        return nn.Sequential(*layers)
 
 
+##### Helper functions #####
 
 
 def get_mlp_module(hidden_dim: int, num_layers: int):
