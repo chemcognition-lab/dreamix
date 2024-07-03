@@ -114,8 +114,8 @@ if __name__ == '__main__':
 
     # using graphnets
     hp.gnn.hidden_dim = 100
-    hp.gnn.global_dim = 100
-    hp.gnn.depth = 1
+    hp.gnn.global_dim = 100     # this is also the embedding space
+    hp.gnn.depth = 2
 
     hp.head.hidden_dim = 100
     hp.head.dropout_rate = 0.1
@@ -128,7 +128,7 @@ if __name__ == '__main__':
 
     
     # create folders for logging
-    fname = f'trained_models/graphnets_d{hp.gnn.depth}_attention/'      # create a file name to log all outputs
+    fname = f'leffingwell_models/graphnets_d{hp.gnn.depth}_transfer/'      # create a file name to log all outputs
     os.makedirs(fname, exist_ok=True)
     
     # set seed for reproducibility
@@ -165,6 +165,14 @@ if __name__ == '__main__':
     # gnn = ChemProp(hp.gnn.hidden_dim, node_dim=features[0].x.shape[-1], edge_dim=features[0].edge_attr.shape[-1], 
     #                pooling_fn=pooling_fn, depth=hp.gnn.depth).to(device)
     gnn = GraphNets(gr.x.shape[-1], gr.edge_attr.shape[-1], hp.gnn.global_dim, depth=hp.gnn.depth).to(device)
+
+    # load some weights from mayhew training
+    state_dict = torch.load(f'mayhew_models/graphnets_d{hp.gnn.depth}/gnn_embedder.pt')
+    gnn.load_state_dict(state_dict)
+    # for param in gnn.parameters():
+    #     param.requires_grad = False
+    # end of model loading for transfer learning
+
     mlp = MLP(hidden_dim=hp.head.hidden_dim, output_dim=targets[0].shape[-1], dropout_rate=hp.head.dropout_rate).to(device)
     model = EndToEndModule(gnn, mlp).to(device)
 
@@ -226,12 +234,15 @@ if __name__ == '__main__':
 
     log = pd.DataFrame(log)
 
-    # save all outputs
+    # save model weights
     model.save_hyperparameters(f'{fname}/')
     best_model_dict = es.restore_best()
-    torch.save(best_model_dict, f'{fname}/model_state.pt')
-    log.to_csv(f'{fname}/training.csv', index=False)
+    model.load_state_dict(best_model_dict)      # load the best one trained
+    torch.save(model.gnn_embedder.state_dict(), f'{fname}/gnn_embedder.pt')
+    torch.save(model.nn_predictor.state_dict(), f'{fname}/nn_predictor.pt')
+
     # also plot sand save the training loss (for diagnostics)
+    log.to_csv(f'{fname}/training.csv', index=False)
     plt_log = log[['epoch', 'train_loss', 'val_loss']].melt(id_vars='epoch', var_name='set', value_name='loss')
     sns.lineplot(data=plt_log, x='epoch', y='loss', hue='set') 
     plt.savefig(f'{fname}/loss.png', bbox_inches='tight')
@@ -287,7 +298,11 @@ if __name__ == '__main__':
             results.append(pd.DataFrame(res))
     results = pd.concat(results)
 
-    pca_gnn = PCA(2).fit_transform(np.array(results['embedding'].tolist()))
+    pca = PCA(2)
+    pca_gnn = pca.fit_transform(np.array(results['embedding'].tolist()))
+    pca_ex = pca.explained_variance_ratio_[:2]
     plot_odor_islands(pca_gnn, results, z_limit=0.4)
+    plt.xlabel(f'PCA1 ({pca_ex[0]*100:.2f}%)')
+    plt.ylabel(f'PCA2 ({pca_ex[1]*100:.2f}%)')
     plt.title('GNN Embeddings')
     plt.savefig(f'{fname}/pom.png')

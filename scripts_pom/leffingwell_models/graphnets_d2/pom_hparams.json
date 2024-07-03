@@ -1,0 +1,15 @@
+{
+    "gnn": {
+        "training": false,
+        "node_dim": 85,
+        "edge_dim": 14,
+        "global_dim": 100
+    },
+    "head": {
+        "training": false,
+        "hidden_dim": 100,
+        "num_layers": 2,
+        "output_dim": 113,
+        "dropout_rate": 0.1
+    }
+}
