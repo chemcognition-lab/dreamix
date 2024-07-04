@@ -71,10 +71,10 @@ class DataLoader():
             },
             "arctander_1960":{
                 "features": ["IsomericSMILES"],
-                "task_dim": 77,
+                "task_dim": 76,
                 "task": "binary",
-                "n_datapoints": 3102,
-                # 77 labels, multiclass prediction
+                "n_datapoints": 2580,
+                # 76 labels, multiclass prediction
                 "labels": ['acid', 'aldehydic', 'almond', 'ambre', 'animal', 'anisic', 'apple', 'apricot', 'aromatic', 'balsamic', 'banana', 'berry', 'brandy', 'buttery', 'camphoraceous', 'caramelic', 'citrus', 'coco', 'coconut', 'creamy', 'earthy', 'ethereal', 'fatty', 'floral', 'fruity', 'gassy', 'geranium', 'grape', 'green', 'hay', 'herbal', 'honey', 'hyacinth', 'jasmin', 'leafy', 'leather', 'lilac', 'lily', 'medicinal', 'metallic', 'mimosa', 'minty', 'mossy', 'mushroom', 'musky', 'musty', 'narcissus', 'nutty', 'oily', 'orange', 'orange-blossom', 'orris', 'peach', 'pear', 'pepper', 'phenolic', 'pine', 'pineapple', 'plum', 'powdery', 'rooty', 'rose', 'sandalwood', 'smoky', 'sour', 'spicy', 'sulfuraceous', 'tarry', 'tea', 'tobacco', 'vanilla', 'vanillin', 'violet', 'waxy', 'winey', 'woody'],
                 "validate": True
             },      
