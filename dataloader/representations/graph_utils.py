@@ -86,7 +86,7 @@ def from_smiles(smiles: str, init_globals: bool = True) -> Data:
     for a in mol.GetAtoms():
         a_feats.append(atom_features(a))
     
-    a_feats = torch.tensor(a_feats, dtype=torch.long)
+    a_feats = torch.tensor(a_feats, dtype=torch.float)
 
     b_indices, b_feats = [], []
     for b in mol.GetBonds():
@@ -99,7 +99,7 @@ def from_smiles(smiles: str, init_globals: bool = True) -> Data:
     
     b_index = torch.tensor(b_indices)
     b_index = b_index.t().to(torch.long).view(2, -1)
-    b_feats = torch.tensor(b_feats, dtype=torch.long)
+    b_feats = torch.tensor(b_feats, dtype=torch.float)
 
     if b_index.numel() > 0:  # Sort indices.
         perm = (b_index[0] * a_feats.size(0) + b_index[1]).argsort()
