@@ -1,5 +1,4 @@
 Stimulus,odor.class,odor.class.source,dataset.assigned,transport.ML.odor.probability,many.feature.ML.odor.probability,boiling.point.experimental,boiling.point.estimate.EPISuite,boiling.point.estimate.Banks,boiling.point.estimate.Burnop,boiling.point.best.available,vapor.pressure.experimental,vapor.pressure.best.available,CID,MolecularWeight,IsomericSMILES,IUPACName,name,is_odor,is_carbon,is_bad
-C,Odorless,PubChem,train,0.0723391175270081,0.0301545858383179,-161.5,-62.4,-177.307342458951,-126.894750087422,-161.5,466000.0,466000.0,297,16.043,C,methane,02329_fluka,0,1,0
 C#C,Odor,van Gemert 2011,train,0.985887010581791,0.998753685504198,-84.7,-36.63,-116.063740563932,-64.8903559863475,-84.7,36500.0,36500.0,6326,26.04,C#C,acetylene,acetylene,1,1,0
 C#CC=O,Odor,van Gemert 2011,train,0.994587027002126,0.999344065552577,60.0,68.67,-0.301999005283164,11.8581497666542,60.0,,197.0,12222,54.05,C#CC=O,prop-2-ynal,2-propynal,1,1,0
 C#CCBr,Odor,PubChem,train,0.998470392893068,0.999821509802132,89.0,86.24,137.29877029627,79.5883553791674,89.0,,67.4,7842,118.96,C#CCBr,3-bromoprop-1-yne,propargyl bromide,1,1,0
