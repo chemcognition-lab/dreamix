@@ -10,14 +10,13 @@ from sklearn.decomposition import PCA
 import numpy as np
 import seaborn as sns
 import pandas as pd
-from skmultilearn.model_selection import iterative_train_test_split
+from skmultilearn.model_selection import iterative_train_test_split, IterativeStratification
 
 from dataloader import DataLoader
 import pom.utils as utils
 from pom import EndToEndModule, MLP
 from pom.data import GraphDataset
 from pom.early_stop import EarlyStopping
-from pom.gnn.chemprop import RevIndexedData, ChemProp
 from pom.gnn.graphnets import GraphNets
 from pom.gnn.graph_utils import get_graph_degree_histogram, get_pooling_function, get_model_parameters_count
 
@@ -97,6 +96,21 @@ def plot_odor_islands(pca_space, pc_data, z_limit=15):
     fg_specs = []
     plt.legend(loc='center left', bbox_to_anchor=(1, 0.5))
 
+def get_split_file(dataset_name, test_size):
+    fname = f'{dataset_name}_models/{dataset_name}_{test_size}.npz'
+    if os.path.isfile(fname):
+        split = np.load(fname)
+        train_ind, test_ind = split['train_ind'], split['test_ind']
+    else:
+        dl = DataLoader()
+        dl.load_benchmark(dataset_name)
+        num_dat = dl.get_dataset_specifications(dataset_name)['n_datapoints']
+        labels = dl.labels
+        train_ind, _, test_ind, _ = iterative_train_test_split(np.array(range(num_dat)).reshape(-1,1), 
+                                                               labels, 
+                                                               test_size=test_size)
+        np.savez(fname, train_ind=train_ind, test_ind=test_ind)
+    return train_ind, test_ind
 
 
 if __name__ == '__main__':
@@ -107,28 +121,23 @@ if __name__ == '__main__':
         'training': ConfigDict()
     })
 
-    # using chemprop
-    # hp.gnn.hidden_dim = 100
-    # hp.gnn.depth = 3
-    hp.gnn.pooling = 'pna'
-
     # using graphnets
-    hp.gnn.hidden_dim = 100
     hp.gnn.global_dim = 100     # this is also the embedding space
     hp.gnn.depth = 2
-
+    # hp.gnn.pooling = 'pna'
     hp.head.hidden_dim = 100
     hp.head.dropout_rate = 0.1
-
-    hp.training.num_epochs = 100
+    hp.training.num_epochs = 200
     hp.training.lr = 1e-3
-    hp.training.batch_size = 64
+    hp.training.batch_size = 50
     hp.training.task = 'multilabel'
     hp.training.val_size = 0.2
 
-    
+    model_name = f'graphnets_final_d{hp.gnn.depth}'
+    data_name = 'gs-lf'
+
     # create folders for logging
-    fname = f'leffingwell_models/graphnets_d{hp.gnn.depth}_transfer/'      # create a file name to log all outputs
+    fname = f'{data_name}_models/{model_name}/'      # create a file name to log all outputs
     os.makedirs(fname, exist_ok=True)
     
     # set seed for reproducibility
@@ -137,7 +146,7 @@ if __name__ == '__main__':
 
     # load the data
     dl = DataLoader()
-    dl.load_benchmark('leffingwell')
+    dl.load_benchmark(data_name)
     dl.featurize('molecular_graphs', init_globals=True)
     gr = dl.features[0]
     print(f'Example of graph: {gr}')
@@ -146,7 +155,7 @@ if __name__ == '__main__':
     # features = [RevIndexedData(g) for g in dl.features] # include additional mp based on chemprop architecture
     features = dl.features
     targets = dl.labels
-    train_ind, _, test_ind, _ = iterative_train_test_split(np.array(range(len(features))).reshape(-1,1), targets, test_size=hp.training.val_size)
+    train_ind, test_ind = get_split_file(data_name, test_size=0.2)
 
     dataset = GraphDataset(features, targets)
     train_set = torch.utils.data.Subset(dataset, train_ind.flatten())
@@ -157,7 +166,7 @@ if __name__ == '__main__':
     # get functions based on task
     loss_fn = utils.get_loss_function(hp.training.task)
     metric_fn = utils.get_metric_function(hp.training.task)
-    pooling_fn = get_pooling_function(hp.gnn.pooling, {'deg': get_graph_degree_histogram(train_set)})
+    # pooling_fn = get_pooling_function(hp.gnn.pooling, {'deg': get_graph_degree_histogram(train_set)})
 
     # make model
     # transfer to device
@@ -167,8 +176,8 @@ if __name__ == '__main__':
     gnn = GraphNets(gr.x.shape[-1], gr.edge_attr.shape[-1], hp.gnn.global_dim, depth=hp.gnn.depth).to(device)
 
     # load some weights from mayhew training
-    state_dict = torch.load(f'mayhew_models/graphnets_d{hp.gnn.depth}/gnn_embedder.pt')
-    gnn.load_state_dict(state_dict)
+    # state_dict = torch.load(f'mayhew_models/graphnets_d{hp.gnn.depth}/gnn_embedder.pt')
+    # gnn.load_state_dict(state_dict)
     # for param in gnn.parameters():
     #     param.requires_grad = False
     # end of model loading for transfer learning
