@@ -2,16 +2,22 @@ from typing import Union, List, Optional
 
 import torch
 import torch.nn as nn
+import torch_geometric as pyg
 from torch_geometric.utils import scatter, to_dense_batch
-from torch_geometric.nn import MetaLayer, Linear
+from torch_geometric.nn import MetaLayer, Linear, GATConv, GAT
+from torch_geometric.nn.aggr import MultiAggregation
 
 # inspired by DIONYSUS (https://github.com/aspuru-guzik-group/dionysus/blob/main/dionysus/models/modules.py)
 # and (https://pytorch-geometric.readthedocs.io/en/latest/generated/torch_geometric.nn.models.MetaLayer.html#torch_geometric.nn.models.MetaLayer)
 
 class EdgeMLPModel(nn.Module):
-    def __init__(self, edge_dim: int, num_layers: Optional[int] = 1):
+    def __init__(self, edge_dim: int, hidden_dim: Optional[int] = 50, num_layers: Optional[int] = 1):
         super().__init__()
-        self.edge_mlp = get_mlp_module(edge_dim, num_layers)
+        self.edge_dim = edge_dim
+        self.hidden_dim = hidden_dim
+        self.num_layers = num_layers
+        
+        self.edge_mlp = get_mlp(hidden_dim, edge_dim, num_layers)
 
     def forward(self, src, dst, edge_attr, u, batch):
         # src, dst: [E, F_x], where E is the number of edges.
@@ -20,14 +26,41 @@ class EdgeMLPModel(nn.Module):
         # batch: [E] with max entry B - 1.
         out = torch.cat([src, dst, edge_attr, u[batch]], 1)
         return self.edge_mlp(out)
+    
+class EdgeFiLMModel(nn.Module):
+    def __init__(self, edge_dim: int, hidden_dim: Optional[int] = 50, num_layers: Optional[int] = 1):
+        super().__init__()
+        self.edge_dim = edge_dim
+        self.hidden_dim = hidden_dim
+        self.num_layers = num_layers
+        
+        # FiLM
+        self.gamma = get_mlp(hidden_dim, edge_dim, num_layers)
+        self.beta = get_mlp(hidden_dim, edge_dim, num_layers)
+
+    def forward(self, src, dst, edge_attr, u, batch):
+        # src, dst: [E, F_x], where E is the number of edges.
+        # edge_attr: [E, F_e]
+        # u: [B, F_u], where B is the number of graphs.
+        # batch: [E] with max entry B - 1.
+        cond = torch.cat([src, dst, u[batch]], 1)
+        gamma = self.gamma(cond)
+        beta = self.beta(cond)
+
+        return gamma * edge_attr + beta
+    
 
 class NodeMLPModel(nn.Module):
-    def __init__(self, node_dim: int, num_layers: Optional[int] = 1):
+    def __init__(self, node_dim: int, hidden_dim: Optional[int] = 50, num_layers: Optional[int] = 1):
         super().__init__()
-        self.node_mlp_1 = get_mlp_module(node_dim, num_layers)
-        self.node_mlp_2 = get_mlp_module(node_dim, num_layers)
+        self.node_dim = node_dim
+        self.hidden_dim = hidden_dim
+        self.num_layers = num_layers
+        
+        self.node_mlp_1 = get_mlp(hidden_dim, node_dim, num_layers)
+        self.node_mlp_2 = get_mlp(hidden_dim, node_dim, num_layers)
 
-    def forward(self, x, edge_index, edge_attr, u, batch):
+    def forward(self, x: torch.Tensor, edge_index: torch.Tensor, edge_attr: torch.Tensor, u: torch.Tensor, batch: torch.Tensor):
         # x: [N, F_x], where N is the number of nodes.
         # edge_index: [2, E] with max entry N - 1.
         # edge_attr: [E, F_e]
@@ -40,13 +73,42 @@ class NodeMLPModel(nn.Module):
                       reduce='mean')
         out = torch.cat([x, out, u[batch]], dim=1)
         return self.node_mlp_2(out)
+    
+
+class NodeAttnModel(nn.Module):
+    def __init__(self, node_dim: int, hidden_dim: Optional[int] = 50, num_heads: Optional[int] = 5, num_layers: Optional[int] = 1):
+        super().__init__()
+        self.node_dim = node_dim
+        self.hidden_dim = hidden_dim
+        self.num_heads = num_heads
+        self.num_layers = num_layers
+
+        # self attention layer
+        # self.self_attn = GATConv(node_dim, node_dim, heads=num_heads)
+        self.self_attn = GAT(node_dim, hidden_dim, num_layers=num_layers, v2=True, heads=num_heads)
+        self.output_mlp = get_mlp(hidden_dim, node_dim, num_layers)
+
+    def forward(self, x: torch.Tensor, edge_index: torch.Tensor, edge_attr: torch.Tensor, u: torch.Tensor, batch: torch.Tensor):
+        # x: [N, F_x], where N is the number of nodes.
+        # edge_index: [2, E] with max entry N - 1.
+        # edge_attr: [E, F_e]
+        # u: [B, F_u]
+        # batch: [N] with max entry B - 1.
+        attn = self.self_attn(x, edge_index, edge_attr)
+        out = torch.cat([attn, x, u[batch]], dim=1) 
+        return self.output_mlp(out)
+
 
 class GlobalMLPModel(nn.Module):
-    def __init__(self, global_dim: int, num_layers: Optional[int] = 1):
+    def __init__(self, global_dim: int, hidden_dim: Optional[int] = 50, num_layers: Optional[int] = 1):
         super().__init__()
-        self.global_mlp = get_mlp_module(global_dim, num_layers)
+        self.global_dim = global_dim
+        self.hidden_dim = hidden_dim
+        self.num_layers = num_layers
+        
+        self.global_mlp = get_mlp(hidden_dim, global_dim, num_layers)
 
-    def forward(self, x, edge_index, edge_attr, u, batch):
+    def forward(self, x: torch.Tensor, edge_index: torch.Tensor, edge_attr: torch.Tensor, u: torch.Tensor, batch: torch.Tensor):
         # x: [N, F_x], where N is the number of nodes.
         # edge_index: [2, E] with max entry N - 1.
         # edge_attr: [E, F_e]
@@ -57,52 +119,77 @@ class GlobalMLPModel(nn.Module):
             scatter(x, batch, dim=0, reduce='mean'),
         ], dim=1)
         return self.global_mlp(out)
+    
 
-
-class GlobalAttnModel(nn.Module):
-    def __init__(self, global_dim: int, num_layers: Optional[int] = 1):
+class GlobalPNAModel(nn.Module):
+    def __init__(self, global_dim: int, hidden_dim: Optional[int] = 50, num_layers: Optional[int] = 1):
         super().__init__()
         self.global_dim = global_dim
+        self.hidden_dim = hidden_dim
         self.num_layers = num_layers
-        self.attention_layer = nn.MultiheadAttention(global_dim, num_heads=5, batch_first=True)
-        self.global_mlp = get_mlp_module(global_dim, num_layers)
+        
+        self.pool = MultiAggregation(["mean", "std", "max", "min"])
+        self.global_mlp = get_mlp(hidden_dim, global_dim, num_layers)
 
-    def forward(self, x, edge_index, edge_attr, u, batch):
+    def forward(self, x: torch.Tensor, edge_index: torch.Tensor, edge_attr: torch.Tensor, u: torch.Tensor, batch: torch.Tensor):
         # x: [N, F_x], where N is the number of nodes.
         # edge_index: [2, E] with max entry N - 1.
         # edge_attr: [E, F_e]
         # u: [B, F_u]
         # batch: [N] with max entry B - 1.
-        
-        # node_attr = scatter(x, batch, dim=0, reduce='mean')
-        node_attr, node_mask = to_dense_batch(x, batch)
+        aggr = self.pool(x, batch)
+        out = torch.cat([u, aggr], dim=1)
+        return self.global_mlp(out)
 
-        attn, _ = self.attention_layer(node_attr, node_attr, node_attr, key_padding_mask=~node_mask)
-        attn = scatter(attn[node_mask], batch, dim=0, reduce='mean')
 
-        # add a cross attention layer here....
-        # Q = node? or global?
-        # K = node
-        # V = node
-        out = torch.cat([u, attn], dim=1)
+class GlobalAttnModel(nn.Module):
+    def __init__(self, global_dim: int, hidden_dim: Optional[int] = 50, num_layers: Optional[int] = 1, num_heads: Optional[int] = 5):
+        super().__init__()
+        self.global_dim = global_dim
+        self.hidden_dim = hidden_dim
+        self.num_layers = num_layers
+        self.num_heads = num_heads
+
+        self.q_head = Linear(-1, global_dim)
+        self.k_head = Linear(-1, global_dim)
+        self.v_head = Linear(-1, global_dim)
+        self.u_head = Linear(-1, global_dim)
+
+        self.self_attn = nn.MultiheadAttention(global_dim, num_heads=num_heads, batch_first=True)
+        self.cross_attn = nn.MultiheadAttention(global_dim, num_heads=num_heads, batch_first=True)
+        self.global_mlp = get_mlp(global_dim, num_layers)
+
+    def forward(self, x: torch.Tensor, edge_index: torch.Tensor, edge_attr: torch.Tensor, u: torch.Tensor, batch: torch.Tensor):
+        # x: [N, F_x], where N is the number of nodes.
+        # edge_index: [2, E] with max entry N - 1.
+        # edge_attr: [E, F_e]
+        # u: [B, F_u]
+        # batch: [N] with max entry B - 1.
+        node_attr, node_mask = to_dense_batch(x, batch) # N, max_n_nodes, node_dim
+        Q = self.q_head(node_attr)  # N, max_n_nodes, global_dim
+        K = self.k_head(node_attr)
+        V = self.v_head(node_attr)
+
+        # self-attention layer
+        n_attn, _ = self.self_attn(Q, K, V, key_padding_mask=~node_mask)    # N, max_n_nodes, global_dim
+        n_attn = scatter(n_attn[node_mask], batch, dim=0, reduce='mean')
+
+        u = self.u_head(u)  # N, global_dim
+
+        # cross attention layer 
+        u_attn, _ = self.cross_attn(n_attn, u, u)
+
+        # final output layers
+        out = torch.cat([n_attn, u_attn], dim=1)    # residual => sum
         
         return self.global_mlp(out)
 
-    @staticmethod
-    def get_mlp_module(global_dim, num_layers):
-        layers = nn.ModuleList()
-        for _ in range(num_layers):
-            layers.append(Linear(-1, global_dim))
-            # layers.append(nn.BatchNorm1d(global_dim))
-            layers.append(nn.SELU())
-        layers.append(Linear(-1, global_dim))
-        return nn.Sequential(*layers)
+
 
 
 ##### Helper functions #####
 
-
-def get_mlp_module(hidden_dim: int, num_layers: int):
+def get_mlp(hidden_dim: int, output_dim: int, num_layers: int):
     """
     Helper function to produce MLP with specified hidden dimension and layers
     """
@@ -111,44 +198,54 @@ def get_mlp_module(hidden_dim: int, num_layers: int):
     layers = nn.ModuleList()
     for _ in range(num_layers):
         layers.append(Linear(-1, hidden_dim))
-        layers.append(nn.BatchNorm1d(hidden_dim))
         layers.append(nn.SELU())
-    layers.append(Linear(-1, hidden_dim))
+        layers.append(nn.BatchNorm1d(hidden_dim))
+    layers.append(Linear(-1, output_dim))
     return nn.Sequential(*layers)
 
-
-def get_graphnet_mlp_layer(node_dim, edge_dim, global_dim, num_layers = 2):
+def get_graphnet_mlp_layer(node_dim: int, edge_dim: int, global_dim: int, num_layers: Optional[int] = 2):
     """
     Helper function to produced GraphNets layer. 
     """
-    node_net = NodeMLPModel(node_dim, num_layers)
-    edge_net = EdgeMLPModel(edge_dim, num_layers)
-    global_net = GlobalMLPModel(global_dim, num_layers)
+    node_net = NodeMLPModel(node_dim, num_layers=num_layers)
+    edge_net = EdgeMLPModel(edge_dim, num_layers=num_layers)
+    global_net = GlobalMLPModel(global_dim, num_layers=num_layers)
     return MetaLayer(edge_net, node_net, global_net)
 
-def get_graphnet_attn_layer(node_dim, edge_dim, global_dim, num_layers = 2):
+def get_graphnet_attn_layer(node_dim: int, edge_dim: int, global_dim: int, num_layers: Optional[int] = 2):
     """
     Helper function to produced GraphNets layer. 
     """
-    node_net = NodeMLPModel(node_dim, num_layers)
-    edge_net = EdgeMLPModel(edge_dim, num_layers)
-    global_net = GlobalAttnModel(global_dim, num_layers)
+    node_net = NodeMLPModel(node_dim, num_layers=num_layers)
+    edge_net = EdgeMLPModel(edge_dim, num_layers=num_layers)
+    global_net = GlobalAttnModel(global_dim, num_layers=num_layers)
+    return MetaLayer(edge_net, node_net, global_net)
+
+
+def get_graphnet_layer(node_dim: int, edge_dim: int, global_dim: int, num_layers: Optional[int] = 2):
+    """
+    Helper function to produced GraphNets layer. 
+    """
+    node_net = NodeAttnModel(node_dim, num_layers=num_layers)
+    edge_net = EdgeFiLMModel(edge_dim, num_layers=num_layers)
+    global_net = GlobalPNAModel(global_dim, num_layers=num_layers)
     return MetaLayer(edge_net, node_net, global_net)
 
 
 class GraphNets(nn.Module):
-    def __init__(self, node_dim, edge_dim, global_dim, depth=3):
+    def __init__(self, node_dim: int, edge_dim: int, global_dim: int, depth: Optional[int] = 3):
         super(GraphNets, self).__init__()
         self.node_dim = node_dim
         self.edge_dim = edge_dim
         self.global_dim = global_dim
+        self.depth = depth
         self.layers = nn.ModuleList(
             [
-                get_graphnet_mlp_layer(node_dim, edge_dim, global_dim) for _ in range(depth)
+                get_graphnet_layer(node_dim, edge_dim, global_dim) for _ in range(depth)
             ]
         )
 
-    def forward(self, data):
+    def forward(self, data: pyg.data.Data):
         x, edge_index, edge_attr, num_nodes, u, batch = (
             data.x,
             data.edge_index,

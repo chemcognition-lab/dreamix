@@ -33,9 +33,6 @@ class MLP(nn.Module):
         return output
 
 
-### TODO
-# GLM
-
 
 class EndToEndModule(nn.Module):
     def __init__(self, gnn_embedder: nn.Module, nn_predictor: nn.Module):
