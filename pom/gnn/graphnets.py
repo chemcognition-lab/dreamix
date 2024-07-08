@@ -222,18 +222,31 @@ def get_graphnet_attn_layer(node_dim: int, edge_dim: int, global_dim: int, num_l
     return MetaLayer(edge_net, node_net, global_net)
 
 
-def get_graphnet_layer(node_dim: int, edge_dim: int, global_dim: int, num_layers: Optional[int] = 2):
+def get_graphnet_layer(
+        node_dim: int, 
+        edge_dim: int, 
+        global_dim: int, 
+        num_layers: Optional[int] = 2,
+        hidden_dim: Optional[int] = 50,
+    ):
     """
     Helper function to produced GraphNets layer. 
     """
-    node_net = NodeAttnModel(node_dim, num_layers=num_layers)
-    edge_net = EdgeFiLMModel(edge_dim, num_layers=num_layers)
-    global_net = GlobalPNAModel(global_dim, num_layers=num_layers)
+    node_net = NodeAttnModel(node_dim, hidden_dim=hidden_dim, num_layers=num_layers)
+    edge_net = EdgeFiLMModel(edge_dim, hidden_dim=hidden_dim, num_layers=num_layers)
+    global_net = GlobalPNAModel(global_dim, hidden_dim=hidden_dim, num_layers=num_layers)
     return MetaLayer(edge_net, node_net, global_net)
 
 
 class GraphNets(nn.Module):
-    def __init__(self, node_dim: int, edge_dim: int, global_dim: int, depth: Optional[int] = 3):
+    def __init__(self, 
+                 node_dim: int, 
+                 edge_dim: int, 
+                 global_dim: int, 
+                 hidden_dim: Optional[int] = 50, 
+                 num_layers: Optional[int] = 2,
+                 depth: Optional[int] = 3
+                ):
         super(GraphNets, self).__init__()
         self.node_dim = node_dim
         self.edge_dim = edge_dim
@@ -241,16 +254,21 @@ class GraphNets(nn.Module):
         self.depth = depth
         self.layers = nn.ModuleList(
             [
-                get_graphnet_layer(node_dim, edge_dim, global_dim) for _ in range(depth)
+                get_graphnet_layer(
+                    node_dim, 
+                    edge_dim, 
+                    global_dim, 
+                    num_layers=num_layers, 
+                    hidden_dim=hidden_dim
+                ) for _ in range(depth)
             ]
         )
 
     def forward(self, data: pyg.data.Data):
-        x, edge_index, edge_attr, num_nodes, u, batch = (
+        x, edge_index, edge_attr, u, batch = (
             data.x,
             data.edge_index,
             data.edge_attr,
-            data.num_nodes,
             data.u,
             data.batch,
         )

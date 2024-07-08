@@ -45,9 +45,9 @@ class TaskType(enum.StrEnum):
 def get_activation(tasktype: TaskType) -> nn.Module:
     activations = {
         TaskType.regression: nn.Identity,
-        TaskType.binary: nn.Sigmoid,
-        TaskType.multiclass: functools.partial(nn.Softmax, dim=1),
-        TaskType.multilabel: nn.Sigmoid,
+        TaskType.binary: nn.Identity,
+        TaskType.multiclass: nn.Identity, # functools.partial(nn.Softmax, dim=1),
+        TaskType.multilabel: nn.Identity,
         TaskType.zero_inflated_binary: nn.Sigmoid,
         TaskType.zero_inflated_regression: nn.Identity,
     }
@@ -57,10 +57,10 @@ def get_activation(tasktype: TaskType) -> nn.Module:
 def get_loss_fn(tasktype: TaskType):
     loss_fns: dict = {
         TaskType.regression: nn.MSELoss,
-        TaskType.binary: nn.CrossEntropyLoss,
-        TaskType.multiclass: nn.CrossEntropyLoss,
-        TaskType.multilabel: nn.BCELoss,
-        TaskType.zero_inflated_binary: nn.BCELoss,
+        TaskType.binary: nn.BCEWithLogitsLoss,      # requires logits
+        TaskType.multiclass: nn.CrossEntropyLoss,   # requires logits
+        TaskType.multilabel: nn.BCEWithLogitsLoss,  # requires logits
+        TaskType.zero_inflated_binary: nn.BCELoss,  # requires probabilities
         TaskType.zero_inflated_regression: nn.MSELoss,
     }
     return loss_fns[tasktype]
