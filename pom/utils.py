@@ -16,6 +16,7 @@ def set_seed(seed: int = 42):
 
 
 def get_loss_function(task: str):
+    # DEPRECATED, use the one in prediction_head.data
     loss_dict = {
         'multilabel': nn.BCEWithLogitsLoss(),
         'binary': nn.BCEWithLogitsLoss(),
@@ -39,8 +40,9 @@ def binary_accuracy(pred, targ):
 def get_metric_function(task: str):
     loss_dict = {
         'multilabel': lambda pred, targ: F.classification.multilabel_auroc(pred, targ.long(), targ.shape[-1]),
-        'binary': lambda pred, targ: F.classification.binary_auroc(pred, targ.long()),
         'multiclass': lambda pred, targ: F.classification.multiclass_auroc(pred, targ.long(), targ.shape[-1]),
+        'binary': lambda pred, targ: F.classification.binary_auroc(pred, targ.long()),
+        'regression': lambda pred, targ: F.r2_score(pred, targ)
     }
     return loss_dict[task]
 

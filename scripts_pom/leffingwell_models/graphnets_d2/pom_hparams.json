@@ -3,7 +3,8 @@
         "training": false,
         "node_dim": 85,
         "edge_dim": 14,
-        "global_dim": 100
+        "global_dim": 100,
+        "depth": 2
     },
     "head": {
         "training": false,

@@ -2,7 +2,6 @@ from torch import nn, Tensor
 import torch
 from torch.nn import _reduction as _Reduction
 from typing import Callable, Optional
-from torchvision.utils import _log_api_usage_once
 import torch.nn.functional as F
 
 
