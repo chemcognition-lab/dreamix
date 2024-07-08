@@ -1,1 +1,1 @@
-from .chemprop import ChemProp
+# from .chemprop import ChemProp
