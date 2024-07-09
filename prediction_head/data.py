@@ -61,10 +61,10 @@ def get_activation(tasktype: TaskType) -> nn.Module:
 
 def get_loss_fn_dict(models: dict[str, nn.Module]):
     loss_fns: dict = {
-        TaskType.regression: nn.MSELoss,
-        TaskType.binary: nn.BCELoss,
-        TaskType.multiclass: nn.CrossEntropyLoss,
-        TaskType.multilabel: nn.BCELoss,
+        TaskType.regression: nn.MSELoss
+        TaskType.binary: nn.BCEWithLogitsLoss,      # requires logits
+        TaskType.multiclass: nn.CrossEntropyLoss,   # requires logits
+        TaskType.multilabel: nn.BCEWithLogitsLoss,  # requires logits
     }
     loss_fn_dict = {}
     for name, model in models.items():

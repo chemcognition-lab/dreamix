@@ -6,6 +6,11 @@ import numpy as np
 import logging
 import pandas as pd
 
+from rdkit import RDLogger
+RDLogger.DisableLog("rdApp.*")
+import warnings
+warnings.simplefilter(action="ignore", category=FutureWarning)
+
 def parse_status(generator, smiles):
     results = generator.process(smiles)
     try: 
