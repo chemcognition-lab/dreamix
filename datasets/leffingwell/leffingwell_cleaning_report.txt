@@ -20,11 +20,11 @@ Dataset cleaning report for leffingwell
 --- COLUMN PROCESSING ---
 	leffingwell is a classification dataset. Cleaning columns
 --- REMOVING LOW COUNT COLUMNS ---
-	Length of original descriptor list before low count removal: 113
+	Length of original descriptor list before low count removal: 114
 	No columns are below count threshold 20
-	Length of original descriptor list after low count removal: 113
+	Length of original descriptor list after low count removal: 114
 --- LOWERCASING AND MERGING LABELS ---
-	Length of original descriptor list before lowercase and merge: 113
-	Length of descriptor list after lowercase and merge: 113
+	Length of original descriptor list before lowercase and merge: 114
+	Length of descriptor list after lowercase and merge: 114
 --- DATASET CLEANING COMPLETE ---
 	Final size of dataframe: 3521
