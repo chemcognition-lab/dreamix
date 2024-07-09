@@ -1,1 +1,1 @@
-from .graphnets import GraphNets
+# from .chemprop import ChemProp

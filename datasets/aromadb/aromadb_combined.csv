@@ -1,0 +1,867 @@
+Modifiers,Raw Descriptors,Stimulus,balsamic,camphoraceous,citrus,floral,fruity,grass,herbaceous,mint,no aroma,rose,spicy,sweet,CID,MolecularWeight,IsomericSMILES,IUPACName,name
+,fruity aroma??,49,0,0,0,0,1,0,0,0,0,0,0,0,49,116.11,CC(C)C(=O)C(=O)O,3-methyl-2-oxobutanoic acid,3-methyl-2-oxobutanoic acid
+,balsamic,107,1,0,0,0,0,0,0,0,0,0,0,0,107,150.17,C1=CC=C(C=C1)CCC(=O)O,3-phenylpropanoic acid,hydrocinnamic acid
+,nutty aroma,126,0,0,0,0,0,0,0,0,0,0,0,0,126,122.12,C1=CC(=CC=C1C=O)O,4-hydroxybenzaldehyde,4-hydroxybenzaldehyde
+,sour,176,0,0,0,0,0,0,0,0,0,0,0,0,176,60.05,CC(=O)O,acetic acid,acetic acid
+,ethereal,177,0,0,0,0,0,0,0,0,0,0,0,0,177,44.05,CC=O,acetaldehyde,acetaldehyde
+,fruity,179,0,0,0,0,1,0,0,0,0,0,0,0,179,88.11,CC(C(=O)C)O,3-hydroxybutan-2-one,acetoin
+,minty??????,196,0,0,0,0,0,0,0,1,0,0,0,0,196,146.14,C(CCC(=O)O)CC(=O)O,hexanedioic acid,adipic acid
+,,239,0,0,0,0,0,0,0,0,1,0,0,0,239,89.09,C(CN)C(=O)O,3-aminopropanoic acid,beta-alanine
+,almond,240,0,0,0,0,0,0,0,0,0,0,0,0,240,106.12,C1=CC=C(C=C1)C=O,benzaldehyde,benzaldehyde
+,garlic,241,0,0,0,0,0,0,0,0,0,0,0,0,241,78.11,C1=CC=CC=C1,benzene,benzene
+,almond,243,0,0,0,0,0,0,0,0,0,0,0,0,243,122.12,C1=CC=C(C=C1)C(=O)O,benzoic acid,benzoic acid
+,fruity,244,0,0,0,0,1,0,0,0,0,0,0,0,244,108.14,C1=CC=C(C=C1)CO,phenylmethanol,benzyl alcohol
+,nutty,261,0,0,0,0,0,0,0,0,0,0,0,0,261,72.11,CCCC=O,butanal,butyraldehyde
+,fruity,263,0,0,0,0,1,0,0,0,0,0,0,0,263,74.12,CCCCO,butan-1-ol,1-butanol
+,salt,264,0,0,0,0,0,0,0,0,0,0,0,0,264,88.11,CCCC(=O)O,butanoic acid,butyric acid
+,caraway,325,0,0,0,0,0,0,0,0,0,0,0,0,325,150.22,CC(C)C1=CC=C(C=C1)CO,(4-propan-2-ylphenyl)methanol,4-isopropylbenzyl alcohol
+,wood,326,0,0,0,0,0,0,0,0,0,0,0,0,326,148.2,CC(C)C1=CC=C(C=C1)C=O,4-propan-2-ylbenzaldehyde,4-isopropylbenzaldehyde
+,curry,332,0,0,0,0,0,0,0,0,0,0,0,0,332,150.17,COC1=C(C=CC(=C1)C=C)O,4-ethenyl-2-methoxyphenol,2-methoxy-4-vinylphenol
+,nutty aroma,338,0,0,0,0,0,0,0,0,0,0,0,0,338,138.12,C1=CC=C(C(=C1)C(=O)O)O,2-hydroxybenzoic acid,salicylic acid
+,,379,0,0,0,0,0,0,0,0,1,0,0,0,379,144.21,CCCCCCCC(=O)O,octanoic acid,octanoic acid
+,lemon,454,0,0,0,0,0,0,0,0,0,0,0,0,454,128.21,CCCCCCCC=O,octanal,octanal
+,smoke-like,460,0,0,0,0,0,0,0,0,0,0,0,0,460,124.14,COC1=CC=CC=C1O,2-methoxyphenol,guaiacol
+,buttery odour,650,0,0,0,0,0,0,0,0,0,0,0,0,650,86.09,CC(=O)C(=O)C,"butane-2,3-dione","2,3-butanedione"
+,coconut,660,0,0,0,0,0,0,0,0,0,0,0,0,660,148.16,C1CC(=O)OC2=CC=CC=C21,"3,4-dihydrochromen-2-one",dihydrocoumarin
+,,798,0,0,0,0,0,0,0,0,1,0,0,0,798,117.15,C1=CC=C2C(=C1)C=CN2,1H-indole,indole
+,,880,0,0,0,0,0,0,0,0,1,0,0,0,880,72.06,CC(=O)C=O,2-oxopropanal,methylglyoxal
+,citrus,957,0,0,1,0,0,0,0,0,0,0,0,0,957,130.23,CCCCCCCCO,octan-1-ol,1-octanol
+,grass,985,0,0,0,0,0,1,0,0,0,0,0,0,985,256.42,CCCCCCCCCCCCCCCC(=O)O,hexadecanoic acid,palmitic acid
+,,994,0,0,0,0,0,0,0,0,1,0,0,0,994,165.19,C1=CC=C(C=C1)CC(C(=O)O)N,2-amino-3-phenylpropanoic acid,dl-phenylalanine
+,sweet,996,0,0,0,0,0,0,0,0,0,0,0,1,996,94.11,C1=CC=C(C=C1)O,phenol,phenol
+,rose,998,0,0,0,0,0,0,0,0,0,1,0,0,998,120.15,C1=CC=C(C=C1)CC=O,2-phenylacetaldehyde,phenylacetaldehyde
+,rose,999,0,0,0,0,0,0,0,0,0,1,0,0,999,136.15,C1=CC=C(C=C1)CC(=O)O,2-phenylacetic acid,phenylacetic acid
+,fishy,1001,0,0,0,0,0,0,0,0,0,0,0,0,1001,121.18,C1=CC=C(C=C1)CCN,2-phenylethanamine,phenethylamine
+,rancid ,1032,0,0,0,0,0,0,0,0,0,0,0,0,1032,74.08,CCC(=O)O,propanoic acid,propionic acid
+,sour vinegar,1060,0,0,0,0,0,0,0,0,0,0,0,0,1060,88.06,CC(=O)C(=O)O,2-oxopropanoic acid,pyruvic acid
+,Fishy aroma??????,1182,0,0,0,0,0,0,0,0,0,0,0,0,1182,117.15,CC(C)C(C(=O)O)N,2-amino-3-methylbutanoic acid,dl-valine
+,vanilla,1183,0,0,0,0,0,0,0,0,0,0,0,0,1183,152.15,COC1=C(C=CC(=C1)C=O)O,4-hydroxy-3-methoxybenzaldehyde,vanillin
+,vanilla,2214,0,0,0,0,0,0,0,0,0,0,0,0,2214,166.17,CC(=O)C1=CC(=C(C=C1)O)OC,1-(4-hydroxy-3-methoxyphenyl)ethanone,acetovanillone
+,balsamic,2345,1,0,0,0,0,0,0,0,0,0,0,0,2345,212.24,C1=CC=C(C=C1)COC(=O)C2=CC=CC=C2,benzyl benzoate,benzyl benzoate
+,minty,2537,0,0,0,0,0,0,0,1,0,0,0,0,2537,152.23,CC1(C2CCC1(C(=O)C2)C)C,"1,7,7-trimethylbicyclo[2.2.1]heptan-2-one",camphor
+,fruity,2682,0,0,0,0,1,0,0,0,0,0,0,0,2682,242.44,CCCCCCCCCCCCCCCCO,hexadecan-1-ol,1-hexadecanol
+,tarry-smoky,2879,0,0,0,0,0,0,0,0,0,0,0,0,2879,108.14,CC1=CC=C(C=C1)O,4-methylphenol,p-cresol
+,rancid,2969,0,0,0,0,0,0,0,0,0,0,0,0,2969,172.26,CCCCCCCCCC(=O)O,decanoic acid,decanoic acid
+,floral,3102,0,0,0,1,0,0,0,0,0,0,0,0,3102,182.22,C1=CC=C(C=C1)C(=O)C2=CC=CC=C2,diphenylmethanone,benzophenone
+,Aroma of cloves ,3314,0,0,0,0,0,0,0,0,0,0,0,0,3314,164.2,COC1=C(C=CC(=C1)CC=C)O,2-methoxy-4-prop-2-enylphenol,eugenol
+,,3322,0,0,0,0,0,0,0,0,1,0,0,0,3322,244.37,CCCCCCCC=CCC#CC#CC(C=C)O,"heptadeca-1,9-dien-4,6-diyn-3-ol",falcarinol
+,lily,3893,0,0,0,0,0,0,0,0,0,0,0,0,3893,200.32,CCCCCCCCCCCC(=O)O,dodecanoic acid,lauric acid
+,mint,4133,0,0,0,0,0,0,0,1,0,0,0,0,4133,152.15,COC(=O)C1=CC=CC=C1O,methyl 2-hydroxybenzoate,methyl salicylate
+,balsamic,4276,1,0,0,0,0,0,0,0,0,0,0,0,4276,192.21,COC1=CC(=CC2=C1OCO2)CC=C,"4-methoxy-6-prop-2-enyl-1,3-benzodioxole",myristicin
+,rose-like aroma??,4458,0,0,0,0,0,0,0,0,0,1,0,0,4458,154.25,CC(=CCCC(=CCO)C)C,"3,7-dimethylocta-2,6-dien-1-ol","3,7-dimethyl-2,6-octadien-1-ol"
+,floral aroma??,4775,0,0,0,1,0,0,0,0,0,0,0,0,4775,164.2,C1=CC=C(C=C1)CCCC(=O)O,4-phenylbutanoic acid,4-phenylbutyric acid
+,Sweet aroma,4788,0,0,0,0,0,0,0,0,0,0,0,1,4788,274.27,C1=CC(=CC=C1CCC(=O)C2=C(C=C(C=C2O)O)O)O,"3-(4-hydroxyphenyl)-1-(2,4,6-trihydroxyphenyl)propan-1-one",phloretin
+,Salty,4837,0,0,0,0,0,0,0,0,0,0,0,0,4837,86.14,C1CNCCN1,piperazine,piperazine
+,Sasafras aroma ,5144,0,0,0,0,0,0,0,0,0,0,0,0,5144,162.18,C=CCC1=CC2=C(C=C1)OCO2,"5-prop-2-enyl-1,3-benzodioxole",safrole
+,coconut,5146,0,0,0,0,0,0,0,0,0,0,0,0,5146,124.14,C1=CC=C(C(=C1)CO)O,2-(hydroxymethyl)phenol,salicyl alcohol
+,tallow,5281,0,0,0,0,0,0,0,0,0,0,0,0,5281,284.5,CCCCCCCCCCCCCCCCCC(=O)O,octadecanoic acid,stearic acid
+,Sulferous aroma,5862,0,0,0,0,0,0,0,0,0,0,0,0,5862,121.16,C([C@@H](C(=O)O)N)S,(2R)-2-amino-3-sulfanylpropanoic acid,l-cysteine
+,,5960,0,0,0,0,0,0,0,0,1,0,0,0,5960,133.1,C([C@@H](C(=O)O)N)C(=O)O,(2S)-2-aminobutanedioic acid,l-aspartic acid
+,pungent,5971,0,0,0,0,0,0,0,0,0,0,0,0,5971,99.16,C=CCN=C=S,3-isothiocyanatoprop-1-ene,allyl isothiocyanate
+,Flower,6054,0,0,0,1,0,0,0,0,0,0,0,0,6054,122.16,C1=CC=C(C=C1)CCO,2-phenylethanol,2-phenylethanol
+,no aroma,6106,0,0,0,0,0,0,0,0,1,0,0,0,6106,131.17,CC(C)C[C@@H](C(=O)O)N,(2S)-2-amino-4-methylpentanoic acid,l-leucine
+,grass,6184,0,0,0,0,0,1,0,0,0,0,0,0,6184,100.16,CCCCCC=O,hexanal,hexanal
+,no aroma,6274,0,0,0,0,0,0,0,0,1,0,0,0,6274,155.15,C1=C(NC=N1)C[C@@H](C(=O)O)N,(2S)-2-amino-3-(1H-imidazol-5-yl)propanoic acid,l-histidine
+,savoury aroma??,6288,0,0,0,0,0,0,0,0,0,0,0,0,6288,119.12,C[C@H]([C@@H](C(=O)O)N)O,"(2S,3R)-2-amino-3-hydroxybutanoic acid",l-threonine
+,,6322,0,0,0,0,0,0,0,0,1,0,0,0,6322,174.2,C(C[C@@H](C(=O)O)N)CN=C(N)N,(2S)-2-amino-5-(diaminomethylideneamino)pentanoic acid,l-arginine
+,Fishy ammonia aroma,6341,0,0,0,0,0,0,0,0,0,0,0,0,6341,45.08,CCN,ethanamine,ethanamine
+,piney aroma ,6448,0,0,0,0,0,0,0,0,0,0,0,0,6448,196.29,CC(=O)OC1CC2CCC1(C2(C)C)C,"(1,7,7-trimethyl-2-bicyclo[2.2.1]heptanyl) acetate",bornyl acetate
+,herbaceous,6505,0,0,0,0,0,0,1,0,0,0,0,0,6505,402.5,CCCCOC(=O)CC(CC(=O)OCCCC)(C(=O)OCCCC)OC(=O)C,"tributyl 2-acetyloxypropane-1,2,3-tricarboxylate",77-90-7
+,lavender,6549,0,0,0,0,0,0,0,0,0,0,0,0,6549,154.25,CC(=CCCC(C)(C=C)O)C,"3,7-dimethylocta-1,6-dien-3-ol",linalool
+,Fruity aroma??,6569,0,0,0,0,1,0,0,0,0,0,0,0,6569,72.11,CCC(=O)C,butan-2-one,2-butanone
+,citrus,6584,0,0,1,0,0,0,0,0,0,0,0,0,6584,74.08,CC(=O)OC,methyl acetate,methyl acetate
+,chees,6590,0,0,0,0,0,0,0,0,0,0,0,0,6590,88.11,CC(C)C(=O)O,2-methylpropanoic acid,isobutyric acid
+,camphor,6616,0,1,0,0,0,0,0,0,0,0,0,0,6616,136.23,CC1(C2CCC(C2)C1=C)C,"2,2-dimethyl-3-methylidenebicyclo[2.2.1]heptane",camphene
+,pine,6654,0,0,0,0,0,0,0,0,0,0,0,0,6654,136.23,CC1=CCC2CC1C2(C)C,"2,6,6-trimethylbicyclo[3.1.1]hept-2-ene",alpha-pinene
+,maple-liquorice aroma,6660,0,0,0,0,0,0,0,0,0,0,0,0,6660,112.13,CC1=C(C(=O)CC1)O,2-hydroxy-3-methylcyclopent-2-en-1-one,80-71-7
+,citrusy,6818,0,0,1,0,0,0,0,0,0,0,0,0,6818,334.4,CCCCC(CC)COC(=O)C1=CC=CC=C1C(=O)OCCCC,"1-O-butyl 2-O-(2-ethylhexyl) benzene-1,2-dicarboxylate",butyl 2-ethylhexyl phthalate
+,sweet,6826,0,0,0,0,0,0,0,0,0,0,0,1,6826,165.19,CNC1=CC=CC=C1C(=O)OC,methyl 2-(methylamino)benzoate,methyl 2-(methylamino)benzoate
+,minty??,6985,0,0,0,0,0,0,0,1,0,0,0,0,6985,148.2,CC1=CC(=C(C=C1)C(=O)C)C,"1-(2,4-dimethylphenyl)ethanone","2',4'-dimethylacetophenone"
+,mint,6986,0,0,0,0,0,0,0,1,0,0,0,0,6986,154.25,CC1CCC(C(=O)C1)C(C)C,5-methyl-2-propan-2-ylcyclohexan-1-one,10458-14-7
+,mint,6987,0,0,0,0,0,0,0,1,0,0,0,0,6987,152.23,CC1=CC(=O)C(CC1)C(C)C,3-methyl-6-propan-2-ylcyclohex-2-en-1-one,piperitone
+,grass,6988,0,0,0,0,0,1,0,0,0,0,0,0,6988,152.23,CC1CCC(=C(C)C)C(=O)C1,5-methyl-2-propan-2-ylidenecyclohexan-1-one,pulegone
+,spicy,6989,0,0,0,0,0,0,0,0,0,0,1,0,6989,150.22,CC1=CC(=C(C=C1)C(C)C)O,5-methyl-2-propan-2-ylphenol,thymol
+,Bitter aroma,7017,0,0,0,0,0,0,0,0,0,0,0,0,7017,170.21,C1=CC=C(C=C1)C2=CC=CC=C2O,2-phenylphenol,2-phenylphenol
+,woody,7041,0,0,0,0,0,0,0,0,0,0,0,0,7041,154.16,COC1=C(C(=CC=C1)OC)O,"2,6-dimethoxyphenol","2,6-dimethoxyphenol"
+,balsamic,7047,1,0,0,0,0,0,0,0,0,0,0,0,7047,129.16,C1=CC=C2C(=C1)C=CC=N2,quinoline,quinoline
+,rose aroma,7095,0,0,0,0,0,0,0,0,0,1,0,0,7095,154.21,C1=CC=C(C=C1)C2=CC=CC=C2,"1,1'-biphenyl",biphenyl
+,orange blossom,7122,0,0,0,0,0,0,0,0,0,0,0,0,7122,170.21,CC(=O)C1=CC2=CC=CC=C2C=C1,1-naphthalen-2-ylethanone,2-acetylnaphthalene
+,Flowery rose,7127,0,0,0,1,0,0,0,0,0,1,0,0,7127,178.23,COC1=C(C=C(C=C1)CC=C)OC,"1,2-dimethoxy-4-prop-2-enylbenzene",methyl eugenol
+mild,Mild clove aroma??????,7136,0,0,0,0,0,0,0,0,0,0,0,0,7136,206.24,CC(=O)OC1=C(C=C(C=C1)CC=C)OC,(2-methoxy-4-prop-2-enylphenyl) acetate,eugenol acetate
+,clove-like aroma,7137,0,0,0,0,0,0,0,0,0,0,0,0,7137,206.24,CC=CC1=CC(=C(C=C1)OC(=O)C)OC,(2-methoxy-4-prop-1-enylphenyl) acetate,isoeugenol acetate
+,vanilla sweet,7144,0,0,0,0,0,0,0,0,0,0,0,1,7144,138.16,CC1=CC(=C(C=C1)O)OC,2-methoxy-4-methylphenol,2-methoxy-4-methylphenol
+,vegetable,7146,0,0,0,0,0,0,0,0,0,0,0,0,7146,134.17,CC(C=O)C1=CC=CC=C1,2-phenylpropanal,2-phenylpropanal
+,Tobacco,7151,0,0,0,0,0,0,0,0,0,0,0,0,7151,137.14,COC(=O)C1=CN=CC=C1,methyl pyridine-3-carboxylate,methyl nicotinate
+,fermented fruit??????,7184,0,0,0,0,1,0,0,0,0,0,0,0,7184,194.23,CCCCOC(=O)C1=CC=C(C=C1)O,butyl 4-hydroxybenzoate,butyl 4-hydroxybenzoate
+,camomile,7194,0,0,0,0,0,0,0,0,0,0,0,0,7194,226.27,C1=CC=C(C=C1)CCOC(=O)C2=CC=CC=C2,2-phenylethyl benzoate,phenethyl benzoate
+,gasoline,7222,0,0,0,0,0,0,0,0,0,0,0,0,7222,135.19,C1=CC=C2C(=C1)N=CS2,"1,3-benzothiazole",benzothiazole
+,fishy,7283,0,0,0,0,0,0,0,0,0,0,0,0,7283,87.16,CCC(C)CN,2-methylbutan-1-amine,2-methylbutylamine
+,almond,7284,0,0,0,0,0,0,0,0,0,0,0,0,7284,86.13,CCC(C)C=O,2-methylbutanal,2-methylbutyraldehyde
+,caramel,7302,0,0,0,0,0,0,0,0,0,0,0,0,7302,86.09,C1CC(=O)OC1,oxolan-2-one,gamma-butyrolactone
+,minty aroma??????,7335,0,0,0,0,0,0,0,1,0,0,0,0,7335,194.27,CC1=CCC(CC1OC(=O)C)C(=C)C,(2-methyl-5-prop-1-en-2-ylcyclohex-2-en-1-yl) acetate,carvyl acetate
+,minty aroma??????,7336,0,0,0,0,0,0,0,1,0,0,0,0,7336,208.3,CCC(=O)OC1CC(CC=C1C)C(=C)C,(2-methyl-5-prop-1-en-2-ylcyclohex-2-en-1-yl) propanoate,carvyl propionate
+,fruity,7353,0,0,0,0,1,0,0,0,0,0,0,0,7353,144.21,CCCCOC(=O)C(C)C,butyl 2-methylpropanoate,butyl isobutyrate
+,burnt,7361,0,0,0,0,0,0,0,0,0,0,0,0,7361,98.1,C1=COC(=C1)CO,furan-2-ylmethanol,furfuryl alcohol
+,almond,7362,0,0,0,0,0,0,0,0,0,0,0,0,7362,96.08,C1=COC(=C1)C=O,furan-2-carbaldehyde,furfural
+,,7410,0,0,0,0,0,0,0,0,1,0,0,0,7410,120.15,CC(=O)C1=CC=CC=C1,1-phenylethanone,acetophenone
+,fruity aroma??,7413,0,0,0,0,1,0,0,0,0,0,0,0,7413,128.17,C1CCC(CC1)C(=O)O,cyclohexanecarboxylic acid,cyclohexanecarboxylic acid
+,mint,7438,0,0,0,0,0,0,0,1,0,0,0,0,7438,152.23,CC1=CCC(CC1O)C(=C)C,2-methyl-5-prop-1-en-2-ylcyclohex-2-en-1-ol,carveol
+,herbaceous aroma,7460,0,0,0,0,0,0,1,0,0,0,0,0,7460,136.23,CC1=CCC(C=C1)C(C)C,"2-methyl-5-propan-2-ylcyclohexa-1,3-diene",alpha-phellandrene
+,pine,7461,0,0,0,0,0,0,0,0,0,0,0,0,7461,136.23,CC1=CCC(=CC1)C(C)C,"1-methyl-4-propan-2-ylcyclohexa-1,4-diene",gamma-terpinene
+,pine,7462,0,0,0,0,0,0,0,0,0,0,0,0,7462,136.23,CC1=CC=C(CC1)C(C)C,"1-methyl-4-propan-2-ylcyclohexa-1,3-diene",alpha-terpinene
+,citrus,7463,0,0,1,0,0,0,0,0,0,0,0,0,7463,134.22,CC1=CC=C(C=C1)C(C)C,1-methyl-4-propan-2-ylbenzene,p-cymene
+,"vanillic, balsamic",7476,1,0,0,0,0,0,0,0,0,0,0,0,7476,150.17,CC(=O)C1=CC=C(C=C1)OC,1-(4-methoxyphenyl)ethanone,4'-methoxyacetophenone
+,,7478,0,0,0,0,0,0,0,0,1,0,0,0,7478,152.15,COC1=CC=C(C=C1)C(=O)O,4-methoxybenzoic acid,4-methoxybenzoic acid
+,fruity aroma,7509,0,0,0,0,1,0,0,0,0,0,0,0,7509,124.21,C1=CC=C(C=C1)CS,phenylmethanethiol,benzyl mercaptan
+,herbaceous,7531,0,0,0,0,0,0,1,0,0,0,0,0,7531,150.22,CC(C)(CC1=CC=CC=C1)O,2-methyl-1-phenylpropan-2-ol,2-methyl-1-phenyl-2-propanol
+,fruity-almond,7593,0,0,0,0,1,0,0,0,0,0,0,0,7593,210.27,C1=CC=C(C=C1)CC(=O)CC2=CC=CC=C2,"1,3-diphenylpropan-2-one","1,3-diphenylacetone"
+,balsamic-rosy,7599,1,0,0,0,0,0,0,0,0,1,0,0,7599,256.3,COC1=CC=C(C=C1)COC(=O)CC2=CC=CC=C2,(4-methoxyphenyl)methyl 2-phenylacetate,4-methoxybenzyl phenylacetate
+,rose,7601,0,0,0,0,0,0,0,0,0,1,0,0,7601,240.3,C1=CC=C(C=C1)CCOC(=O)CC2=CC=CC=C2,2-phenylethyl 2-phenylacetate,phenethyl phenylacetate
+,rose sweetness aroma??,7632,0,0,0,0,0,0,0,0,0,1,0,1,7632,164.24,CC(C)(CCC1=CC=CC=C1)O,2-methyl-4-phenylbutan-2-ol,2-methyl-4-phenyl-2-butanol
+,rosy-fruity,7643,0,0,0,0,1,0,0,0,0,1,0,0,7643,164.2,COC(=O)CCC1=CC=CC=C1,methyl 3-phenylpropanoate,methyl 3-phenylpropionate
+,fruity-floral,7646,0,0,0,1,1,0,0,0,0,0,0,0,7646,178.23,CC(C)C(=O)OCC1=CC=CC=C1,benzyl 2-methylpropanoate,benzyl isobutyrate
+,fruity-floral,7650,0,0,0,0,1,0,0,0,0,0,0,0,7650,178.23,CCCC(=O)OCC1=CC=CC=C1,benzyl butanoate,benzyl butyrate
+,Apple,7651,0,0,0,0,0,0,0,0,0,0,0,0,7651,192.25,CC(C)CC(=O)OCC1=CC=CC=C1,benzyl 3-methylbutanoate,benzyl isovalerate
+,fruity-rosy,7655,0,0,0,0,1,0,0,0,0,1,0,0,7655,192.25,CC(C)C(=O)OCCC1=CC=CC=C1,2-phenylethyl 2-methylpropanoate,phenethyl isobutyrate
+,,7657,0,0,0,0,0,0,0,0,1,0,0,0,7657,198.26,C1=CC=C(C=C1)COCC2=CC=CC=C2,phenylmethoxymethylbenzene,dibenzyl ether
+,fruity,7658,0,0,0,0,1,0,0,0,0,0,0,0,7658,192.25,CCCC(=O)OCCC1=CC=CC=C1,2-phenylethyl butanoate,phenethyl butyrate
+,fruity-floral,7661,0,0,0,1,1,0,0,0,0,0,0,0,7661,190.24,CCC(=O)OCC=CC1=CC=CC=C1,3-phenylprop-2-enyl propanoate,3-phenylprop-2-en-1-yl propanoate
+,fruity,7685,0,0,0,0,1,0,0,0,0,0,0,0,7685,178.23,CC1=CC=C(C=C1)OC(=O)C(C)C,(4-methylphenyl) 2-methylpropanoate,p-tolyl isobutyrate
+,balsamic,7695,1,0,0,0,0,0,0,0,0,0,0,0,7695,180.2,CC(=O)OCC1=CC=C(C=C1)OC,(4-methoxyphenyl)methyl acetate,4-methoxybenzyl acetate
+,herbaceous,7702,0,0,0,0,0,0,1,0,0,0,0,0,7702,150.22,CCCC1=CC=C(C=C1)OC,1-methoxy-4-propylbenzene,4-propylanisole
+,floral,7707,0,0,0,1,0,0,0,0,0,0,0,0,7707,134.17,C1=CC=C(C=C1)CCC=O,3-phenylpropanal,3-phenylpropanal
+,floral-fruity,7708,0,0,0,1,1,0,0,0,0,0,0,0,7708,136.15,C1=CC=C(C=C1)COC=O,benzyl formate,benzyl formate
+,coconut,7710,0,0,0,0,0,0,0,0,0,0,0,0,7710,156.22,CCCCCC1CCC(=O)O1,5-pentyloxolan-2-one,104-61-0
+,"herbaceous,rose",7711,0,0,0,0,0,0,1,0,0,1,0,0,7711,150.17,C1=CC=C(C=C1)CCOC=O,2-phenylethyl formate,2-phenylethyl formate
+,fruity,7714,0,0,0,0,1,0,0,0,0,0,0,0,7714,184.27,CCCCCCCC1CCC(=O)O1,5-heptyloxolan-2-one,gamma-undecalactone
+,sweet aroma,7731,0,0,0,0,0,0,0,0,0,0,0,1,7731,122.16,CC1=CC=C(C=C1)OC,1-methoxy-4-methylbenzene,4-methylanisole
+,sweet floral,7738,0,0,0,1,0,0,0,0,0,0,0,1,7738,138.16,COC1=CC=C(C=C1)CO,(4-methoxyphenyl)methanol,4-methoxybenzyl alcohol
+,fruity,7761,0,0,0,0,1,0,0,0,0,0,0,0,7761,160.17,CCOC(=O)CC(=O)OCC,diethyl propanedioate,diethyl malonate
+,fruity,7765,0,0,0,0,1,0,0,0,0,0,0,0,7765,118.17,CCOC(C)OCC,"1,1-diethoxyethane",acetal
+,spicy aroma,7768,0,0,0,0,0,0,0,0,0,0,1,0,7768,113.16,C1CCC(=O)NCC1,azepan-2-one,azepan-2-one
+,floral,7778,0,0,0,1,0,0,0,0,0,0,0,0,7778,184.27,CC(CCC=C(C)C)CCOC=O,"3,7-dimethyloct-6-enyl formate",citronellyl formate
+,Floral,7780,0,0,0,1,0,0,0,0,0,0,0,0,7780,196.29,CC(=CCCC(=CCOC(=O)C)C)C,"3,7-dimethylocta-2,6-dienyl acetate","3,7-dimethylocta-2,6-dienyl acetate"
+,rose-like,7792,0,0,0,0,0,0,0,0,0,1,0,0,7792,158.28,CC(C)CCCC(C)CCO,"3,7-dimethyloctan-1-ol","3,7-dimethyloctan-1-ol"
+,lemon,7794,0,0,0,0,0,0,0,0,0,0,0,0,7794,154.25,CC(CCC=C(C)C)CC=O,"3,7-dimethyloct-6-enal",citronellal
+,,7852,0,0,0,0,0,0,0,0,1,0,0,0,7852,59.11,CCCN,propan-1-amine,propylamine
+, sweet floral lily,7888,0,0,0,1,0,0,0,0,0,0,0,1,7888,172.26,CC(CCCC(C)(C)O)CC=O,"7-hydroxy-3,7-dimethyloctanal",hydroxycitronellal
+,baked potato,7937,0,0,0,0,0,0,0,0,0,0,0,0,7937,107.15,CC1=NC(=CC=C1)C,"2,6-dimethylpyridine","2,6-dimethylpyridine"
+,coffee,7938,0,0,0,0,0,0,0,0,0,0,0,0,7938,108.14,CC1=CN=CC(=N1)C,"2,6-dimethylpyrazine","2,6-dimethylpyrazine"
+,menthol-like,7958,0,0,0,0,0,0,0,0,0,0,0,0,7958,142.24,CC(C)CC(=O)CC(C)C,"2,6-dimethylheptan-4-one","2,6-dimethyl-4-heptanone"
+,coffee,7963,0,0,0,0,0,0,0,0,0,0,0,0,7963,93.13,CC1=CC=NC=C1,4-methylpyridine,4-methylpyridine
+,mint,7967,0,0,0,0,0,0,0,1,0,0,0,0,7967,98.14,C1CCC(=O)CC1,cyclohexanone,cyclohexanone
+,fruity,7981,0,0,0,0,1,0,0,0,0,0,0,0,7981,158.24,CCCCOC(=O)CC(C)C,butyl 3-methylbutanoate,butyl isovalerate
+,floral aroma??????,7983,0,0,0,1,0,0,0,0,0,0,0,0,7983,144.21,CCCCOC(=O)CCC,butyl butanoate,butyl butyrate
+,fruity,7986,0,0,0,0,1,0,0,0,0,0,0,0,7986,314.5,CCCCOC(=O)CCCCCCCCC(=O)OCCCC,dibutyl decanedioate,dibutyl sebacate
+,acid,7991,0,0,0,0,0,0,0,0,0,0,0,0,7991,102.13,CCCCC(=O)O,pentanoic acid,valeric acid
+,Fishy ammonia aroma,8007,0,0,0,0,0,0,0,0,0,0,0,0,8007,73.14,CCCCN,butan-1-amine,butylamine
+,fruity,8012,0,0,0,0,1,0,0,0,0,0,0,0,8012,90.19,CCCCS,butane-1-thiol,1-butanethiol
+,garlic,8030,0,0,0,0,0,0,0,0,0,0,0,0,8030,84.14,C1=CSC=C1,thiophene,thiophene
+,grape,8048,0,0,0,0,0,0,0,0,0,0,0,0,8048,200.32,CCCCCCCCCC(=O)OCC,ethyl decanoate,ethyl decanoate
+,winey-fruity,8049,0,0,0,0,1,0,0,0,0,0,0,0,8049,258.35,CCOC(=O)CCCCCCCCC(=O)OCC,diethyl decanedioate,diethyl decanedioate
+,grape,8050,0,0,0,0,0,0,0,0,0,0,0,0,8050,186.29,CCCCCCCCCC(=O)OC,methyl decanoate,methyl decanoate
+,spice,8051,0,0,0,0,0,0,0,0,0,0,1,0,8051,114.19,CCCCCC(=O)C,heptan-2-one,2-heptanone
+,,8060,0,0,0,0,0,0,0,0,1,0,0,0,8060,87.16,CCCCCN,pentan-1-amine,amylamine
+,Meaty aroma??????,8067,0,0,0,0,0,0,0,0,0,0,0,0,8067,104.22,CCCCCS,pentane-1-thiol,1-pentanethiol
+,cabbage,8077,0,0,0,0,0,0,0,0,0,0,0,0,8077,122.3,CCSSCC,(ethyldisulfanyl)ethane,diethyl disulfide
+,apple,8093,0,0,0,0,0,0,0,0,0,0,0,0,8093,128.21,CCCCCCC(=O)C,octan-2-one,2-octanone
+,sour,8094,0,0,0,0,0,0,0,0,0,0,0,0,8094,130.18,CCCCCCC(=O)O,heptanoic acid,heptanoic acid
+,Fishy aroma,8102,0,0,0,0,0,0,0,0,0,0,0,0,8102,101.19,CCCCCCN,hexan-1-amine,hexylamine
+,petroleum-like aroma??,8125,0,0,0,0,0,0,0,0,0,0,0,0,8125,112.21,CCCCCCC=C,oct-1-ene,1-octene
+,grass,8129,0,0,0,0,0,1,0,0,0,0,0,0,8129,116.2,CCCCCCCO,heptan-1-ol,1-heptanol
+,citrus,8130,0,0,1,0,0,0,0,0,0,0,0,0,8130,114.19,CCCCCCC=O,heptanal,heptanal
+,Flower,8139,0,0,0,1,0,0,0,0,0,0,0,0,8139,214.34,CCCCCCCCCCCC(=O)OC,methyl dodecanoate,methyl laurate
+,orange-rose odour,8167,0,0,0,0,0,0,0,0,0,1,0,0,8167,200.32,CCCCCCCCCCOC(=O)C,decyl acetate,decyl acetate
+,fruity,8174,0,0,0,0,1,0,0,0,0,0,0,0,8174,158.28,CCCCCCCCCCO,decan-1-ol,1-decanol
+,orange,8175,0,0,0,0,0,0,0,0,0,0,0,0,8175,156.26,CCCCCCCCCC=O,decanal,decanal
+,Fatty aroma,8180,0,0,0,0,0,0,0,0,0,0,0,0,8180,186.29,CCCCCCCCCCC(=O)O,undecanoic acid,undecanoic acid
+,waxy,8181,0,0,0,0,0,0,0,0,0,0,0,0,8181,270.5,CCCCCCCCCCCCCCCC(=O)OC,methyl hexadecanoate,methyl palmitate
+,oil,8186,0,0,0,0,0,0,0,0,0,0,0,0,8186,170.29,CCCCCCCCCCC=O,undecanal,undecanal
+,citrus-rose aroma,8205,0,0,1,0,0,0,0,0,0,1,0,0,8205,228.37,CCCCCCCCCCCCOC(=O)C,dodecyl acetate,dodecyl acetate
+,sweet,8283,0,0,0,0,0,0,0,0,0,0,0,1,8283,220.35,CC(=CCCC1(C2CC3C1(C3C2)C)C)CO,"5-(2,3-dimethyl-3-tricyclo[2.2.1.02,6]heptanyl)-2-methylpent-2-en-1-ol",115-71-9
+,fruity,8294,0,0,0,0,1,0,0,0,0,0,0,0,8294,196.29,CC(=CCCC(C)(C=C)OC(=O)C)C,"3,7-dimethylocta-1,6-dien-3-yl acetate",linalyl acetate
+,sweet-caramellic,8299,0,0,0,0,0,0,0,0,0,0,0,1,8299,74.08,CC(=O)CO,1-hydroxypropan-2-one,hydroxyacetone
+,grass,8314,0,0,0,0,0,1,0,0,0,0,0,0,8314,102.13,CCC(C)C(=O)O,2-methylbutanoic acid,2-methylbutanoic acid
+,Flower,8363,0,0,0,1,0,0,0,0,0,0,0,0,8363,228.24,C1=CC=C(C=C1)COC(=O)C2=CC=CC=C2O,benzyl 2-hydroxybenzoate,benzyl salicylate
+,balsamic,8400,1,0,0,0,0,0,0,0,0,0,0,0,8400,212.24,C1=CC=C(C=C1)C(C(=O)C2=CC=CC=C2)O,"2-hydroxy-1,2-diphenylethanone",benzoin
+,herbaceous,8405,0,0,0,0,0,0,1,0,0,0,0,0,8405,129.16,C1=CC=C2C=NC=CC2=C1,isoquinoline,isoquinoline
+,minty aroma??,8452,0,0,0,0,0,0,0,1,0,0,0,0,8452,84.12,C1CCC(=O)C1,cyclopentanone,cyclopentanone
+,vanilla,8467,0,0,0,0,0,0,0,0,0,0,0,0,8467,166.17,CCOC1=C(C=CC(=C1)C=O)O,3-ethoxy-4-hydroxybenzaldehyde,3-ethoxy-4-hydroxybenzaldehyde
+,vanilla,8468,0,0,0,0,0,0,0,0,0,0,0,0,8468,168.15,COC1=C(C=CC(=C1)C(=O)O)O,4-hydroxy-3-methoxybenzoic acid,vanillic acid
+,fruity,8500,0,0,0,0,1,0,0,0,0,0,0,0,8500,134.17,CC1=CC=C(C=C1)C(=O)C,1-(4-methylphenyl)ethanone,4'-methylacetophenone
+,orange,8635,0,0,0,0,0,0,0,0,0,0,0,0,8635,151.16,COC(=O)C1=CC=CC=C1N,methyl 2-aminobenzoate,methyl anthranilate
+,fruity,8697,0,0,0,0,1,0,0,0,0,0,0,0,8697,144.21,CCCCC(CC)C(=O)O,2-ethylhexanoic acid,2-ethylhexanoic acid
+,buttery,8738,0,0,0,0,0,0,0,0,0,0,0,0,8738,146.18,CCCCOC(=O)C(C)O,butyl 2-hydroxypropanoate,butyl lactate
+,sweet,8748,0,0,0,0,0,0,0,0,0,0,0,1,8748,154.25,CC(=C)C1CCC(CC1)(C)O,1-methyl-4-prop-1-en-2-ylcyclohexan-1-ol,beta-terpineol
+,rose-like aroma??????,8767,0,0,0,0,0,0,0,0,0,1,0,0,8767,274.4,CC(CCC=C(C)C)CCOC(=O)CC1=CC=CC=C1,"3,7-dimethyloct-6-enyl 2-phenylacetate",citronellyl phenylacetate
+,floral (Jasmine),8785,0,0,0,1,0,0,0,0,0,0,0,0,8785,150.17,CC(=O)OCC1=CC=CC=C1,benzyl acetate,benzyl acetate
+,fruity-rosy,8792,0,0,0,0,1,0,0,0,0,1,0,0,8792,206.28,CC(C)CC(=O)OCCC1=CC=CC=C1,2-phenylethyl 3-methylbutanoate,140-26-1
+,floral,8797,0,0,0,1,0,0,0,0,0,0,0,0,8797,150.17,CC1=CC=C(C=C1)OC(=O)C,(4-methylphenyl) acetate,p-tolyl acetate
+,fruity aroma,8821,0,0,0,0,1,0,0,0,0,0,0,0,8821,100.12,CCOC(=O)C=C,ethyl prop-2-enoate,ethyl acrylate
+,Bland aroma??,8831,0,0,0,0,0,0,0,0,0,0,0,0,8831,258.35,CC(C)COC(=O)CCCCC(=O)OCC(C)C,bis(2-methylpropyl) hexanedioate,diisobutyl adipate
+,fruity-rosy,8834,0,0,0,0,1,0,0,0,0,1,0,0,8834,212.33,CCC(=O)OCCC(C)CCC=C(C)C,"3,7-dimethyloct-6-enyl propanoate",citronellyl propionate
+,rose,8835,0,0,0,0,0,0,0,0,0,1,0,0,8835,226.35,CCCC(=O)OCCC(C)CCC=C(C)C,"3,7-dimethyloct-6-enyl butanoate",citronellyl butyrate
+,rose,8842,0,0,0,0,0,0,0,0,0,1,0,0,8842,156.26,CC(CCC=C(C)C)CCO,"3,7-dimethyloct-6-en-1-ol",citronellol
+,floral odour reminiscent of jasmine??????,8863,0,0,0,1,0,0,0,0,0,0,0,0,8863,218.33,CC(CCCC(C)(C)O)CC(OC)OC,"8,8-dimethoxy-2,6-dimethyloctan-2-ol","8,8-dimethoxy-2,6-dimethyloctan-2-ol"
+,sweet,8892,0,0,0,0,0,0,0,0,0,0,0,1,8892,116.16,CCCCCC(=O)O,hexanoic acid,hexanoic acid
+,fruity,8908,0,0,0,0,1,0,0,0,0,0,0,0,8908,144.21,CCCCCCOC(=O)C,hexyl acetate,hexyl acetate
+,rose-citrus,8914,0,0,1,0,0,0,0,0,0,1,0,0,8914,144.25,CCCCCCCCCO,nonan-1-ol,1-nonanol
+,caramellic,9012,0,0,0,0,0,0,0,0,0,0,0,0,9012,246.4,C1=CC=C(C=C1)CSSCC2=CC=CC=C2,(benzyldisulfanyl)methylbenzene,dibenzyl disulfide
+,fruity,9017,0,0,0,0,1,0,0,0,0,0,0,0,9017,198.3,CC(CCC=C(C)C)CCOC(=O)C,"3,7-dimethyloct-6-enyl acetate",citronellyl acetate
+,fruity aroma,9024,0,0,0,0,1,0,0,0,0,0,0,0,9024,192.25,CC(=O)OC(C)(C)CC1=CC=CC=C1,(2-methyl-1-phenylpropan-2-yl) acetate,dimethylbenzylcarbinyl acetate
+,nut-like aroma??,9025,0,0,0,0,0,0,0,0,0,0,0,0,9025,138.16,COC1=CC(=CC=C1)OC,"1,3-dimethoxybenzene","1,3-dimethoxybenzene"
+,corn-like,9261,0,0,0,0,0,0,0,0,0,0,0,0,9261,80.09,C1=CN=CC=N1,pyrazine,pyrazine
+,popcorn,9589,0,0,0,0,0,0,0,0,0,0,0,0,9589,121.14,CC(=O)C1=CN=CC=C1,1-pyridin-3-ylethanone,3-acetylpyridine
+,grass,9862,0,0,0,0,0,1,0,0,0,0,0,0,9862,126.2,CC(=CCCC(=O)C)C,6-methylhept-5-en-2-one,6-methyl-5-hepten-2-one
+,camphoraceous,9895,0,1,0,0,0,0,0,0,0,0,0,0,9895,152.23,CC1=C(C(CCC1)(C)C)C=O,"2,6,6-trimethylcyclohexene-1-carbaldehyde",beta-cyclocitral
+,camphor,10106,0,1,0,0,0,0,0,0,0,0,0,0,10106,154.25,CC(C)C12CCC(O1)(CC2)C,1-methyl-4-propan-2-yl-7-oxabicyclo[2.2.1]heptane,"1,4-cineole"
+,Spice with floral,10248,0,0,0,1,0,0,0,0,0,0,1,0,10248,208.25,COC1=CC(=CC(=C1OC)OC)CC=C,"1,2,3-trimethoxy-5-prop-2-enylbenzene",elemicin
+,ethereal aroma??,10336,0,0,0,0,0,0,0,0,0,0,0,0,10336,84.12,CC=C(C)C=O,2-methylbut-2-enal,2-methyl-but-2-enal
+,spicy,10364,0,0,0,0,0,0,0,0,0,0,1,0,10364,150.22,CC1=C(C=C(C=C1)C(C)C)O,2-methyl-5-propan-2-ylphenol,carvacrol
+,whisky aroma??????,10402,0,0,0,0,0,0,0,0,0,0,0,0,10402,170.25,CC(CCC=C(C)C)CC(=O)O,"3,7-dimethyloct-6-enoic acid",citronellic acid
+,rancid,10430,0,0,0,0,0,0,0,0,0,0,0,0,10430,102.13,CC(C)CC(=O)O,3-methylbutanoic acid,isovaleric acid
+,,10452,0,0,0,0,0,0,0,0,1,0,0,0,10452,120.2,C1CSCCS1,"1,4-dithiane","1,4-dithiane"
+,fruity,10460,0,0,0,0,1,0,0,0,0,0,0,0,10460,98.14,CCCC=CC=O,hex-2-enal,hexenal
+,camphoraceous aroma??,10492,0,1,0,0,0,0,0,0,0,0,0,0,10492,154.25,C[C@@]12CC[C@H](C1(C)C)C[C@@H]2O,"(1R,2S,4S)-1,7,7-trimethylbicyclo[2.2.1]heptan-2-ol",borneol
+,sweet,10586,0,0,0,0,0,0,0,0,0,0,0,1,10586,222.37,CC1=CCC(CC1)C(C)(CCC=C(C)C)O,6-methyl-2-(4-methylcyclohex-3-en-1-yl)hept-5-en-2-ol,alpha-bisabolol
+,oil aroma,10657,0,0,0,0,0,0,0,0,0,0,0,0,10657,204.35,CC1=CC[C@@H]2[C@@H](C1)[C@@H](CC=C2C)C(C)C,"(1S,4aR,8aS)-4,7-dimethyl-1-propan-2-yl-1,2,4a,5,8,8a-hexahydronaphthalene",beta-cadinene
+,,10659,0,0,0,0,0,0,0,0,1,0,0,0,10659,222.24,COC1=C2C(=C(C(=C1)CC=C)OC)OCO2,"4,7-dimethoxy-5-prop-2-enyl-1,3-benzodioxole",apiole
+,,10795,0,0,0,0,0,0,0,0,1,0,0,0,10795,90.12,CC(OC)OC,"1,1-dimethoxyethane","1,1-dimethoxyethane"
+,camphoraceous,10817,0,1,0,0,0,0,0,0,0,0,0,0,10817,136.19,CC1=CC=C(C=C1)C(C)O,1-(4-methylphenyl)ethanol,1-(4-methylphenyl)ethanol
+,minty aroma??,10819,0,0,0,0,0,0,0,1,0,0,0,0,10819,152.23,CC(=C)C1CCC(=CC1)CO,(4-prop-1-en-2-ylcyclohexen-1-yl)methanol,perillyl alcohol
+,fruity,10873,0,0,0,0,1,0,0,0,0,0,0,0,10873,136.19,CCOCC1=CC=CC=C1,ethoxymethylbenzene,(ethoxymethyl)benzene
+,fruity,10886,0,0,0,0,1,0,0,0,0,0,0,0,10886,186.29,CCCCCC(=O)OCCCCC,pentyl hexanoate,pentyl hexanoate
+,nutty,10927,0,0,0,0,0,0,0,0,0,0,0,0,10927,87.12,CCCC(=O)N,butanamide,butyramide
+,dairy aroma,10931,0,0,0,0,0,0,0,0,0,0,0,0,10931,100.12,CC(=CC(=O)O)C,3-methylbut-2-enoic acid,"3,3-dimethylacrylic acid"
+,Musky aroma,10954,0,0,0,0,0,0,0,0,0,0,0,0,10954,250.4,C1CCCC=CCCCCCCCC(=O)CCC1,cycloheptadec-9-en-1-one,cycloheptadec-9-en-1-one
+,grass,10976,0,0,0,0,0,1,0,0,0,0,0,0,10976,116.2,CCCCCC(C)O,heptan-2-ol,2-heptanol
+,camphor aroma ,11038,0,1,0,0,0,0,0,0,0,0,0,0,11038,152.23,CC1C2CC(C2(C)C)CC1=O,"2,6,6-trimethylbicyclo[3.1.1]heptan-3-one",3-pinanone
+,"spicy, fruity",11086,0,0,0,0,1,0,0,0,0,0,1,0,11086,135.16,CC(=O)C1=CC=CC=C1N,1-(2-aminophenyl)ethanone,2'-aminoacetophenone
+,terpentine,11142,0,0,0,0,0,0,0,0,0,0,0,0,11142,136.23,CC(C)C1CCC(=C)C=C1,3-methylidene-6-propan-2-ylcyclohexene,beta-phellandrene
+,lavender aroma??????,11173,0,0,0,0,0,0,0,0,0,0,0,0,11173,86.13,CC(=CCO)C,3-methylbut-2-en-1-ol,3-methyl-2-buten-1-ol
+,must,11230,0,0,0,0,0,0,0,0,0,0,0,0,11230,154.25,CC1=CCC(CC1)(C(C)C)O,4-methyl-1-propan-2-ylcyclohex-3-en-1-ol,4-carvomenthenol
+,coconut aroma,11340,0,0,0,0,0,0,0,0,0,0,0,0,11340,134.17,CC1=CC=CC=C1C(=O)C,1-(2-methylphenyl)ethanone,2'-methylacetophenone
+,pungent,11363,0,0,0,0,0,0,0,0,0,0,0,0,11363,148.16,CC(=O)C(=O)C1=CC=CC=C1,"1-phenylpropane-1,2-dione","1-phenyl-1,2-propanedione"
+,sweet,11463,0,0,0,0,0,0,0,0,0,0,0,1,11463,136.23,CC1=CCC(=C(C)C)CC1,1-methyl-4-propan-2-ylidenecyclohexene,terpinolene
+,grass,11513,0,0,0,0,0,1,0,0,0,0,0,0,11513,116.2,CCCC(CCC)O,heptan-4-ol,4-heptanol
+,herbaceous,11520,0,0,0,0,0,0,1,0,0,0,0,0,11520,116.2,CCCCC(CC)O,heptan-3-ol,heptan-3-ol
+,sweet,11529,0,0,0,0,0,0,0,0,0,0,0,1,11529,130.18,CCCCOC(=O)CC,butyl propanoate,butyl propionate
+,almond,11552,0,0,0,0,0,0,0,0,0,0,0,0,11552,86.13,CC(C)CC=O,3-methylbutanal,3-methylbutanal
+,tobacco,11559,0,0,0,0,0,0,0,0,0,0,0,0,11559,98.1,CC1=CCC(=O)O1,5-methyl-3H-furan-2-one,alpha-angelica lactone
+,fermented fruit??????,11576,0,0,0,0,1,0,0,0,0,0,0,0,11576,158.19,CCCCOC(=O)CC(=O)C,butyl 3-oxobutanoate,butyl acetoacetate
+,lemon,11605,0,0,0,0,0,0,0,0,0,0,0,0,11605,80.13,C1CC=CC=C1,"cyclohexa-1,3-diene","1,3-cyclohexadiene"
+,fruity,11613,0,0,0,0,1,0,0,0,0,0,0,0,11613,115.2,CCCCN=C=S,1-isothiocyanatobutane,butyl isothiocyanate
+,balsamic,11716,1,0,0,0,0,0,0,0,0,0,0,0,11716,72.11,CC(C=C)O,but-3-en-2-ol,3-buten-2-ol
+,almond,11952,0,0,0,0,0,0,0,0,0,0,0,0,11952,135.16,C1=CC=C(C=C1)C(=O)CN,2-amino-1-phenylethanone,2-aminoacetophenone
+,spearmint-like,12072,0,0,0,0,0,0,0,0,0,0,0,0,12072,154.25,CC1CCC(CC1O)C(=C)C,2-methyl-5-prop-1-en-2-ylcyclohexan-1-ol,dihydrocarveol
+,caramellic,12097,0,0,0,0,0,0,0,0,0,0,0,0,12097,110.11,CC1=CC=C(O1)C=O,5-methylfuran-2-carbaldehyde,5-methylfurfural
+,,12146,0,0,0,0,0,0,0,0,1,0,0,0,12146,142.2,CC(=O)OC1CCCCC1,cyclohexyl acetate,cyclohexyl acetate
+,fruity aroma,12177,0,0,0,0,1,0,0,0,0,0,0,0,12177,98.14,CCC=C(C)C=O,2-methylpent-2-enal,2-methylpent-2-enal
+,fruity acetic aroma??????,12198,0,0,0,0,1,0,0,0,0,0,0,0,12198,160.17,CC(COC(=O)C)OC(=O)C,2-acetyloxypropyl acetate,propylene glycol diacetate
+,onion-like aroma,12232,0,0,0,0,0,0,0,0,0,0,0,0,12232,94.2,CSSC,(methyldisulfanyl)methane,dimethyl disulfide
+,floral aroma??????,12294,0,0,0,1,0,0,0,0,0,0,0,0,12294,172.26,CCCCCC(=O)OCCCC,butyl hexanoate,butyl hexanoate
+,grass,12297,0,0,0,0,0,1,0,0,0,0,0,0,12297,102.17,CCCCC(C)O,hexan-2-ol,2-hexanol
+,sweet,12323,0,0,0,0,0,0,0,0,0,0,0,1,12323,116.2,CC(C)CCC(C)O,5-methylhexan-2-ol,5-methyl-2-hexanol
+faint,Faint alcoholic aroma??????,12329,0,0,0,0,0,0,0,0,0,0,0,0,12329,174.19,COC(=O)CCCCC(=O)OC,dimethyl hexanedioate,dimethyl adipate
+,Bread,12506,0,0,0,0,0,0,0,0,0,0,0,0,12506,144.17,CC(=O)OCC1CCCO1,oxolan-2-ylmethyl acetate,tetrahydrofurfuryl acetate
+,herbaceous,12578,0,0,0,0,0,0,1,0,0,0,0,0,12578,162.23,CC(C)C1=CC=C(C=C1)C(=O)C,1-(4-propan-2-ylphenyl)ethanone,4'-isopropylacetophenone
+,apple,12613,0,0,0,0,0,0,0,0,0,0,0,0,12613,172.26,CC(C)CCOC(=O)CC(C)C,3-methylbutyl 3-methylbutanoate,isoamyl isovalerate
+,,12779,0,0,0,0,0,0,0,0,1,0,0,0,12779,170.3,CSSCC1=CC=CC=C1,(methyldisulfanyl)methylbenzene,benzyl methyl disulfide
+,butter,12810,0,0,0,0,0,0,0,0,0,0,0,0,12810,170.25,CCCCCC1CCCC(=O)O1,6-pentyloxan-2-one,delta-decalactone
+,peach,12813,0,0,0,0,0,0,0,0,0,0,0,0,12813,170.25,CCCCCCC1CCC(=O)O1,5-hexyloxolan-2-one,gamma-decalactone
+,,13006,0,0,0,0,0,0,0,0,1,0,0,0,13006,112.13,C1CCC(=O)C(=O)C1,"cyclohexane-1,2-dione","1,2-cyclohexanedione"
+,,13016,0,0,0,0,0,0,0,0,1,0,0,0,13016,138.23,CSCC1=CC=CC=C1,methylsulfanylmethylbenzene,benzyl methyl sulfide
+,pungent,13367,0,0,0,0,0,0,0,0,0,0,0,0,13367,74.15,C=CCS,prop-2-ene-1-thiol,allyl mercaptan
+,,13594,0,0,0,0,0,0,0,0,1,0,0,0,13594,96.13,C1CC=CC(=O)C1,cyclohex-2-en-1-one,2-cyclohexen-1-one
+,garlic aroma??,13852,0,0,0,0,0,0,0,0,0,0,0,0,13852,102.16,C1CC(=O)SC1,thiolan-2-one,4-butyrothiolactone
+,licorice-like aroma,14079,0,0,0,0,0,0,0,0,0,0,0,0,14079,109.13,CC(=O)C1=CC=CN1,1-(1H-pyrrol-2-yl)ethanone,2-acetylpyrrole
+,grassy,14243,0,0,0,0,0,1,0,0,0,0,0,0,14243,112.17,CCCC=CC(=O)C,hept-3-en-2-one,heptenone
+,popcorn,14286,0,0,0,0,0,0,0,0,0,0,0,0,14286,121.14,CC(=O)C1=CC=CC=N1,1-pyridin-2-ylethanone,2-acetylpyridine
+,sweet,14350,0,0,0,0,0,0,0,0,0,0,0,1,14350,220.35,CC1(CC2C1CCC3(C(O3)CCC2=C)C)C,"4,12,12-trimethyl-9-methylidene-5-oxatricyclo[8.2.0.04,6]dodecane",caryophyllene epoxide
+,Coffee-like aroma??,14505,0,0,0,0,0,0,0,0,0,0,0,0,14505,110.11,CC(=O)C1=CC=CO1,1-(furan-2-yl)ethanone,2-acetylfuran
+,nutty aroma??,14514,0,0,0,0,0,0,0,0,0,0,0,0,14514,124.14,CC1=CC=C(O1)C(=O)C,1-(5-methylfuran-2-yl)ethanone,2-acetyl-5-methylfuran
+,caraway,14529,0,0,0,0,0,0,0,0,0,0,0,0,14529,150.22,CC1=CC=C(C=C1)C(C)(C)O,2-(4-methylphenyl)propan-2-ol,2-(4-methylphenyl)propan-2-ol
+,resinous piney aroma,14896,0,0,0,0,0,0,0,0,0,0,0,0,14896,136.23,CC1(C2CCC(=C)C1C2)C,"6,6-dimethyl-2-methylidenebicyclo[3.1.1]heptane",beta-pinene
+,herbaceous aroma??,15068,0,0,0,0,0,0,1,0,0,0,0,0,15068,150.17,CC1=CC(=C(C=C1)O)C(=O)C,1-(2-hydroxy-5-methylphenyl)ethanone,1450-72-2
+,nutty aroma??????,15146,0,0,0,0,0,0,0,0,0,0,0,0,15146,118.13,CC(CC(=O)OC)O,methyl 3-hydroxybutanoate,methyl 3-hydroxybutyrate
+,camphor,15406,0,1,0,0,0,0,0,0,0,0,0,0,15406,154.25,CC1(C2CCC(C2)(C1O)C)C,"1,3,3-trimethylbicyclo[2.2.1]heptan-2-ol",fenchol
+,blueberry,15475,0,0,0,0,0,0,0,0,0,0,0,0,15475,126.2,CCCCC=CC(=O)C,oct-3-en-2-one,oct-3-en-2-one
+,banana,15574,0,0,0,0,0,0,0,0,0,0,0,0,15574,142.2,CCC=CCCOC(=O)C,hex-3-enyl acetate,hex-3-enyl acetate
+,sweet,15600,0,0,0,0,0,0,0,0,0,0,0,1,15600,142.28,CCCCCCCCCC,decane,decane
+,honey,15717,0,0,0,0,0,0,0,0,0,0,0,0,15717,176.21,C=CCOC(=O)CC1=CC=CC=C1,prop-2-enyl 2-phenylacetate,allyl phenylacetate
+,peach/apricot,15834,0,0,0,0,0,0,0,0,0,0,0,0,15834,188.22,C=CCOC(=O)C=CC1=CC=CC=C1,prop-2-enyl 3-phenylprop-2-enoate,prop-2-enyl 3-phenylprop-2-enoate
+,pungent,16315,0,0,0,0,0,0,0,0,0,0,0,0,16315,178.3,C=CCSSSCC=C,3-(prop-2-enyltrisulfanyl)prop-1-ene,diallyl trisulfide
+,peach/apricot,16324,0,0,0,0,0,0,0,0,0,0,0,0,16324,128.17,CCCC(=O)OCC=C,prop-2-enyl butanoate,allyl butyrate
+,fruity,16330,0,0,0,0,1,0,0,0,0,0,0,0,16330,194.23,CCCCOC(=O)C1=CC=CC=C1O,butyl 2-hydroxybenzoate,butyl salicylate
+,fruity,16331,0,0,0,0,1,0,0,0,0,0,0,0,16331,172.22,CCCCOC(=O)CCC(=O)C,butyl 4-oxopentanoate,butyl levulinate
+,minty,16441,0,0,0,0,0,0,0,1,0,0,0,0,16441,150.22,CC(=C)C1CCC(=CC1)C=O,4-prop-1-en-2-ylcyclohexene-1-carbaldehyde,perillaldehyde
+,garlic,16591,0,0,0,0,0,0,0,0,0,0,0,0,16591,148.3,CCCSSCC=C,1-(prop-2-enyldisulfanyl)propane,allyl propyl disulfide
+,Mint,16666,0,0,0,0,0,0,0,1,0,0,0,0,16666,156.26,C[C@@H]1CC[C@H]([C@@H](C1)O)C(C)C,"(1R,2S,5R)-5-methyl-2-propan-2-ylcyclohexan-1-ol",l-menthol
+,minty aroma??,16724,0,0,0,0,0,0,0,1,0,0,0,0,16724,150.22,CC1=CC[C@@H](CC1=O)C(=C)C,(5S)-2-methyl-5-prop-1-en-2-ylcyclohex-2-en-1-one,d-carvone
+,,16800,0,0,0,0,0,0,0,0,1,0,0,0,16800,149.23,CCCCCC1=CC=CC=N1,2-pentylpyridine,2-pentylpyridine
+,rose,16864,0,0,0,0,0,0,0,0,0,1,0,0,16864,224.34,CC(C)C(=O)OCC=C(C)CCC=C(C)C,"3,7-dimethylocta-2,6-dienyl 2-methylpropanoate","propanoic acid, 2-methyl-, (2e)-3,7-dimethyl-2,6-octadienyl ester"
+,seaweed,16899,0,0,0,0,0,0,0,0,0,0,0,0,16899,152.23,CCCCCC=CC=CC=O,"deca-2,4-dienal",decadienal
+,tobacco,17000,0,0,0,0,0,0,0,0,0,0,0,0,17000,140.22,CC1CCCC(C1=O)(C)C,"2,2,6-trimethylcyclohexan-1-one","2,2,6-trimethylcyclohexanone"
+,mint,17100,0,0,0,0,0,0,0,1,0,0,0,0,17100,154.25,CC1=CCC(CC1)C(C)(C)O,2-(4-methylcyclohex-3-en-1-yl)propan-2-ol,alpha-terpineol
+,almond,17167,0,0,0,0,0,0,0,0,0,0,0,0,17167,112.17,CCCCC=CC=O,hept-2-enal,2-hepten-1-al
+,fruity aroma,17243,0,0,0,0,1,0,0,0,0,0,0,0,17243,142.2,CCCC=CCOC(=O)C,hex-2-enyl acetate,hex-2-enyl acetate
+,fruity,17525,0,0,0,0,1,0,0,0,0,0,0,0,17525,172.26,CCCCCCOC(=O)CCC,hexyl butanoate,hexyl butyrate
+,Fruity grape aroma??,17623,0,0,0,0,1,0,0,0,0,0,0,0,17623,193.2,CC(=O)NC1=CC=CC=C1C(=O)OC,methyl 2-acetamidobenzoate,methyl 2-acetamidobenzoate
+,floral balsamic,17739,1,0,0,1,0,0,0,0,0,0,0,0,17739,166.22,CCCC1=CC(=C(C=C1)O)OC,2-methoxy-4-propylphenol,2-methoxy-4-propylphenol
+,Wintergreen-like aroma??,18522,0,0,0,0,0,0,0,0,0,0,0,0,18522,100.12,CC1C(=O)CCO1,2-methyloxolan-3-one,2-methyltetrahydrofuran-3-one
+,honey-floral,18744,0,0,0,1,0,0,0,0,0,0,0,0,18744,226.27,C1=CC=C(C=C1)CC(C2=CC=CC=C2)C(=O)O,"2,3-diphenylpropanoic acid","2,3-diphenylpropanoic acid"
+,pepper,18818,0,0,0,0,0,0,0,0,0,0,0,0,18818,136.23,CC(C)C12CCC(=C)C1C2,4-methylidene-1-propan-2-ylbicyclo[3.1.0]hexane,sabinene
+,mushroom,18827,0,0,0,0,0,0,0,0,0,0,0,0,18827,128.21,CCCCCC(C=C)O,oct-1-en-3-ol,1-octen-3-ol
+,minty aroma,19244,0,0,0,0,0,0,0,1,0,0,0,0,19244,156.26,C[C@@H]1CC[C@@H]([C@@H](C1)O)C(C)C,"(1R,2R,5R)-5-methyl-2-propan-2-ylcyclohexan-1-ol",neoisomenthol
+,pineapple aroma,19309,0,0,0,0,0,0,0,0,0,0,0,0,19309,128.13,CC1C(=O)C(=C(O1)C)O,"4-hydroxy-2,5-dimethylfuran-3-one",furaneol
+,butter,19602,0,0,0,0,0,0,0,0,0,0,0,0,19602,138.21,CCCCCC1=CC=CO1,2-pentylfuran,2-pentylfuran
+,sweet-rosey aroma??????,19633,0,0,0,0,0,0,0,0,0,1,0,1,19633,194.31,CC(=CCCC(=CCCC(=O)C)C)C,"6,10-dimethylundeca-5,9-dien-2-one","6,10-dimethylundeca-5,9-dien-2-one"
+,orange,19801,0,0,0,0,0,0,0,0,0,0,0,0,19801,154.25,CCCCCCCC=CC=O,dec-2-enal,2-decenal
+,oily,20083,0,0,0,0,0,0,0,0,0,0,0,0,20083,130.23,CCCCCCC(C)O,octan-2-ol,octan-2-ol
+,pineapple,20219,0,0,0,0,0,0,0,0,0,0,0,0,20219,184.27,CCCCCCCC(=O)OCC=C,prop-2-enyl octanoate,allyl octanoate
+,floral aroma,20354,0,0,0,1,0,0,0,0,0,0,0,0,20354,164.2,CCCC(=O)OC1=CC=CC=C1,phenyl butanoate,phenyl butyrate
+,cherry,20358,0,0,0,0,0,0,0,0,0,0,0,0,20358,128.17,C1CCC(CC1)OC=O,cyclohexyl formate,cyclohexyl formate
+,spicy,20487,0,0,0,0,0,0,0,0,0,0,1,0,20487,154.21,C1CCC2C(C1)CCC(=O)O2,"3,4,4a,5,6,7,8,8a-octahydrochromen-2-one",octahydro-2h-chromen-2-one
+,Spicy aroma??,20534,0,0,0,0,0,0,0,0,0,0,1,0,20534,124.18,CCCCC1=CC=CO1,2-butylfuran,2-butylfuran
+,grass,20745,0,0,0,0,0,1,0,0,0,0,0,0,20745,128.21,CC(CCC=C(C)C)O,6-methylhept-5-en-2-ol,6-methylhept-5-en-2-ol
+,minty aroma??,21003,0,0,0,0,0,0,0,1,0,0,0,0,21003,152.23,C1CCC(C1)C2CCCC2=O,2-cyclopentylcyclopentan-1-one,2-cyclopentylcyclopentanone
+,butter,21057,0,0,0,0,0,0,0,0,0,0,0,0,21057,114.19,CCCCC(C=C)O,hept-1-en-3-ol,1-hepten-3-ol
+,Fruity aroma??????,21265,0,0,0,0,1,0,0,0,0,0,0,0,21265,190.24,CC(=CCOC(=O)C1=CC=CC=C1)C,3-methylbut-2-enyl benzoate,prenyl benzoate
+,fruity,21596,0,0,0,0,1,0,0,0,0,0,0,0,21596,186.29,CCCCCCC(=O)OCCCC,butyl heptanoate,butyl heptanoate
+,potato-like,22201,0,0,0,0,0,0,0,0,0,0,0,0,22201,108.14,CC1=NC=CN=C1C,"2,3-dimethylpyrazine","2,3-dimethylpyrazine"
+,Floral,22310,0,0,0,1,0,0,0,0,0,0,0,0,22310,170.25,CC1(CCC(O1)C(C)(C)O)C=C,2-(5-ethenyl-5-methyloxolan-2-yl)propan-2-ol,60047-17-8
+,lemon,22386,0,0,0,0,0,0,0,0,0,0,0,0,22386,88.15,CCCC(C)O,pentan-2-ol,2-pentanol
+,peach,22873,0,0,0,0,0,0,0,0,0,0,0,0,22873,200.32,CCCCCCOC(=O)CCCCC,hexyl hexanoate,hexyl hexanoate
+,jasmine aroma??????,23367,0,0,0,0,0,0,0,0,0,0,0,0,23367,206.28,CCCCCC(=O)OCC1=CC=CC=C1,benzyl hexanoate,benzyl hexanoate
+,Sweet oniony aroma,23368,0,0,0,0,0,0,0,0,0,0,0,1,23368,230.3,CC(C)OC(=O)CCCCC(=O)OC(C)C,dipropan-2-yl hexanedioate,diisopropyl adipate
+,Gardenia,23535,0,0,0,0,0,0,0,0,0,0,0,0,23535,273.37,CC(=CCCC(C)(C=C)OC(=O)C1=CC=CC=C1N)C,"3,7-dimethylocta-1,6-dien-3-yl 2-aminobenzoate",linalyl anthranilate
+,floral aroma??????,24114,0,0,0,1,0,0,0,0,0,0,0,0,24114,216.27,CCCCOC(=O)C(C)OC(=O)CCC,(1-butoxy-1-oxopropan-2-yl) butanoate,butyl butyryllactate
+,pineapple,24117,0,0,0,0,0,0,0,0,0,0,0,0,24117,192.21,C=CCOC(=O)COC1=CC=CC=C1,prop-2-enyl 2-phenoxyacetate,allyl phenoxyacetate
+,winey-fruity,24197,0,0,0,0,1,0,0,0,0,0,0,0,24197,190.19,CCOC(=O)CC(C(=O)OCC)O,diethyl 2-hydroxybutanedioate,diethyl malate
+,floral aroma??????,24433,0,0,0,1,0,0,0,0,0,0,0,0,24433,193.24,CCCCOC(=O)C1=CC=CC=C1N,butyl 2-aminobenzoate,butyl anthranilate
+,mint,24473,0,0,0,0,0,0,0,1,0,0,0,0,24473,152.23,CC1CCC(CC1=O)C(=C)C,2-methyl-5-prop-1-en-2-ylcyclohexan-1-one,dihydrocarvone
+,orangeblossom,24510,0,0,0,0,0,0,0,0,0,0,0,0,24510,219.28,C1CCC(CC1)OC(=O)C2=CC=CC=C2N,cyclohexyl 2-aminobenzoate,cyclohexyl anthranilate
+,citrus-floral,24513,0,0,1,1,0,0,0,0,0,0,0,0,24513,202.33,CCCCCCCCCC(OC)OC,"1,1-dimethoxydecane","1,1-dimethoxydecane"
+,camphor,24585,0,1,0,0,0,0,0,0,0,0,0,0,24585,154.25,CC1CCC(C(C1)O)C(=C)C,5-methyl-2-prop-1-en-2-ylcyclohexan-1-ol,isopulegol
+,fruity aroma,24915,0,0,0,0,1,0,0,0,0,0,0,0,24915,220.31,CCCC(=O)OC(C)(C)CC1=CC=CC=C1,(2-methyl-1-phenylpropan-2-yl) butanoate,10094-34-5
+,Sweet,25125,0,0,0,0,0,0,0,0,0,0,0,1,25125,149.23,CN(C)CCC1=CC=CC=C1,"N,N-dimethyl-2-phenylethanamine","n,n-dimethylphenethylamine"
+,fruity,25612,0,0,0,0,1,0,0,0,0,0,0,0,25612,156.26,C=CCCCCCCCCO,dec-9-en-1-ol,9-decen-1-ol
+,grass,25915,0,0,0,0,0,1,0,0,0,0,0,0,25915,122.17,CCC1=NC=C(N=C1)C,2-ethyl-5-methylpyrazine,2-ethyl-5-methylpyrazine
+,balsamic,25916,1,0,0,0,0,0,0,0,0,0,0,0,25916,136.19,CCC1=NC(=CN=C1C)C,"3-ethyl-2,5-dimethylpyrazine","3-ethyl-2,5-dimethylpyrazine"
+,fruity aroma??,26049,0,0,0,0,1,0,0,0,0,0,0,0,26049,136.23,CC1=CCC2C(C1)C2(C)C,"3,7,7-trimethylbicyclo[4.1.0]hept-3-ene",3-carene
+, buttery,26204,0,0,0,0,0,0,0,0,0,0,0,0,26204,128.17,CC(C)CC(=O)C(=O)C,"5-methylhexane-2,3-dione","5-methylhexane-2,3-dione"
+,potato-like,26332,0,0,0,0,0,0,0,0,0,0,0,0,26332,122.17,CCC1=NC(=CN=C1)C,2-ethyl-6-methylpyrazine,2-ethyl-6-methylpyrazine
+,mint,26447,0,0,0,0,0,0,0,1,0,0,0,0,26447,154.25,C[C@@H]1CC[C@H](C(=O)C1)C(C)C,"(2S,5R)-5-methyl-2-propan-2-ylcyclohexan-1-one",(-)-menthone
+,fruity,26630,0,0,0,0,1,0,0,0,0,0,0,0,26630,140.22,CCCCCC=CC(=O)C,non-3-en-2-one,nonenone
+,baked potato,26808,0,0,0,0,0,0,0,0,0,0,0,0,26808,122.17,CC1=CN=C(C(=N1)C)C,"2,3,5-trimethylpyrazine","2,3,5-trimethylpyrazine"
+,sweet,27208,0,0,0,0,0,0,0,0,0,0,0,1,27208,222.37,CC1=CCC(CC1)(C(C)CCC=C(C)C)O,4-methyl-1-(6-methylhept-5-en-2-yl)cyclohex-3-en-1-ol,beta-bisabolol
+,coumarin-like aroma??,27209,0,0,0,0,0,0,0,0,0,0,0,0,27209,180.24,CC1(CCCC2(C1=CC(=O)O2)C)C,"4,4,7a-trimethyl-6,7-dihydro-5H-1-benzofuran-2-one",15356-74-8
+,potato-like,27457,0,0,0,0,0,0,0,0,0,0,0,0,27457,122.17,CCC1=NC=CN=C1C,2-ethyl-3-methylpyrazine,2-ethyl-3-methylpyrazine
+,baked potato,27458,0,0,0,0,0,0,0,0,0,0,0,0,27458,136.19,CCC1=NC=CN=C1CC,"2,3-diethylpyrazine","2,3-diethylpyrazine"
+,rose,27866,0,0,0,0,0,0,0,0,0,1,0,0,27866,154.25,CC1CCOC(C1)C=C(C)C,4-methyl-2-(2-methylprop-1-enyl)oxane,16409-43-1
+,mint,27867,0,0,0,0,0,0,0,1,0,0,0,0,27867,198.3,CC1CCC(C(C1)OC(=O)C)C(C)C,(5-methyl-2-propan-2-ylcyclohexyl) acetate,menthyl acetate
+,nutty,28905,0,0,0,0,0,0,0,0,0,0,0,0,28905,150.22,CCC1=NC=C(N=C1CC)C,"2,3-diethyl-5-methylpyrazine","2,3-diethyl-5-methylpyrazine"
+,vegetable,28906,0,0,0,0,0,0,0,0,0,0,0,0,28906,150.22,CCC1=CN=C(C(=N1)CC)C,"3,5-diethyl-2-methylpyrazine","3,5-diethyl-2-methylpyrazine"
+,mint,29025,0,0,0,0,0,0,0,1,0,0,0,0,29025,150.22,CC1=CC(=O)C2CC1C2(C)C,"4,6,6-trimethylbicyclo[3.1.1]hept-3-en-2-one",verbenone
+,lavender,30247,0,0,0,0,0,0,0,0,0,0,0,0,30247,196.29,CC(=CCC(COC(=O)C)C(=C)C)C,(5-methyl-2-prop-1-en-2-ylhex-4-enyl) acetate,25905-14-0
+,sweet-fruity,30771,0,0,0,0,1,0,0,0,0,0,0,1,30771,170.25,CC(=O)OCCC1CCCCC1,2-cyclohexylethyl acetate,2-cyclohexylethyl acetate
+,popcorn,30914,0,0,0,0,0,0,0,0,0,0,0,0,30914,122.12,CC(=O)C1=NC=CN=C1,1-pyrazin-2-ylethanone,acetylpyrazine
+,grassy,31209,0,0,0,0,0,1,0,0,0,0,0,0,31209,202.29,CCCCCC(=CC1=CC=CC=C1)C=O,2-benzylideneheptanal,122-40-7
+,"honey, rose",31210,0,0,0,0,0,0,0,0,0,1,0,0,31210,192.25,CCCCOC(=O)CC1=CC=CC=C1,butyl 2-phenylacetate,butyl phenylacetate
+,floral aroma,31219,0,0,0,1,0,0,0,0,0,0,0,0,31219,164.2,CCC(=O)OCC1=CC=CC=C1,benzyl propanoate,benzyl propionate
+,"balsamic, floral",31224,1,0,0,1,0,0,0,0,0,0,0,0,31224,264.3,C1=CC=C(C=C1)C=CCOC(=O)C=CC2=CC=CC=C2,3-phenylprop-2-enyl 3-phenylprop-2-enoate,122-69-0
+,,31231,0,0,0,0,0,0,0,0,1,0,0,0,31231,164.2,CC(=O)CC1=CC=C(C=C1)OC,1-(4-methoxyphenyl)propan-2-one,4-methoxyphenylacetone
+,mint,31244,0,0,0,0,0,0,0,1,0,0,0,0,31244,136.15,COC1=CC=C(C=C1)C=O,4-methoxybenzaldehyde,4-methoxybenzaldehyde
+,fruity,31249,0,0,0,0,1,0,0,0,0,0,0,0,31249,174.19,CCOC(=O)CCC(=O)OCC,diethyl butanedioate,diethyl succinate
+,potato-like,31252,0,0,0,0,0,0,0,0,0,0,0,0,31252,108.14,CC1=CN=C(C=N1)C,"2,5-dimethylpyrazine","2,5-dimethylpyrazine"
+,balsamic,31253,1,0,0,0,0,0,0,0,0,0,0,0,31253,136.23,CC(=CCCC(=C)C=C)C,"7-methyl-3-methylideneocta-1,6-diene",myrcene
+,apple,31265,0,0,0,0,0,0,0,0,0,0,0,0,31265,144.21,CCCCCC(=O)OCC,ethyl hexanoate,ethyl caproate
+,,31268,0,0,0,0,0,0,0,0,1,0,0,0,31268,71.12,C1CCNC1,pyrrolidine,pyrrolidine
+slightly,Slight fatty aroma??,31271,0,0,0,0,0,0,0,0,0,0,0,0,31271,370.6,CCCCCCCCOC(=O)CCCCC(=O)OCCCCCCCC,dioctyl hexanedioate,dioctyl adipate
+,fruity,31272,0,0,0,0,1,0,0,0,0,0,0,0,31272,116.16,CCCCOC(=O)C,butyl acetate,butyl acetate
+,fruity,31278,0,0,0,0,1,0,0,0,0,0,0,0,31278,340.6,CCCCCCCCCCCCCCCCCC(=O)OCCCC,butyl octadecanoate,butyl stearate
+,fruity,31289,0,0,0,0,1,0,0,0,0,0,0,0,31289,142.24,CCCCCCCCC=O,nonanal,nonanal
+,Gardenia,31353,0,0,0,0,0,0,0,0,0,0,0,0,31353,258.35,CC(=CCCC(C)(C=C)OC(=O)C1=CC=CC=C1)C,"3,7-dimethylocta-1,6-dien-3-yl benzoate",linalyl benzoate
+,baked potato,32093,0,0,0,0,0,0,0,0,0,0,0,0,32093,136.15,CC1=NC=CN=C1C(=O)C,1-(3-methylpyrazin-2-yl)ethanone,2-acetyl-3-methylpyrazine
+,bread-like aroma??,33032,0,0,0,0,0,0,0,0,0,0,0,0,33032,147.13,C(CC(=O)O)[C@@H](C(=O)O)N,(2S)-2-aminopentanedioic acid,l-glutamic acid
+,grass,33166,0,0,0,0,0,1,0,0,0,0,0,0,33166,152.19,CC(C)C1=NC=CN=C1OC,2-methoxy-3-propan-2-ylpyrazine,2-isopropyl-3-methoxypyrazine
+,grassy,33637,0,0,0,0,0,1,0,0,0,0,0,0,33637,122.16,CC1=CC=CC=C1OC,1-methoxy-2-methylbenzene,2-methylanisole
+,mint,34645,0,0,0,0,0,0,0,1,0,0,0,0,34645,152.23,CC1CCC(C(=O)C1)C(=C)C,5-methyl-2-prop-1-en-2-ylcyclohexan-1-one,isopulegone
+,Disagreeable rancid,34752,0,0,0,0,0,0,0,0,0,0,0,0,34752,128.17,CCCC=CCC(=O)O,hept-3-enoic acid,pentenyl acetic acid
+,Cheese,36822,0,0,0,0,0,0,0,0,0,0,0,0,36822,134.18,C1CCC2=NC=CN=C2C1,"5,6,7,8-tetrahydroquinoxaline","5,6,7,8-tetrahydroquinoxaline"
+,Flower,39801,0,0,0,1,0,0,0,0,0,0,0,0,39801,198.3,CC(=O)OCCCCCCCCC=C,dec-9-enyl acetate,9-decenyl acetate
+,fruity,40923,0,0,0,0,1,0,0,0,0,0,0,0,40923,128.21,CCCC(CCC=C)O,oct-7-en-4-ol,7-octen-4-ol
+,rosy-fruity,60985,0,0,0,0,1,0,0,0,0,1,0,0,60985,226.35,CC(C)C(=O)OCCC(C)CCC=C(C)C,"3,7-dimethyloct-6-enyl 2-methylpropanoate",citronellyl isobutyrate
+faint,faint lily,60997,0,0,0,0,0,0,0,0,0,0,0,0,60997,226.27,CC1=CC=C(C=C1)OC(=O)CC2=CC=CC=C2,(4-methylphenyl) 2-phenylacetate,p-tolyl phenylacetate
+,floral aroma,60999,0,0,0,1,0,0,0,0,0,0,0,0,60999,226.27,C1=CC=C(C=C1)CC(=O)OCC2=CC=CC=C2,benzyl 2-phenylacetate,benzyl phenylacetate
+,vanilla,61007,0,0,0,0,0,0,0,0,0,0,0,0,61007,178.23,CC(=O)CCC1=CC=C(C=C1)OC,4-(4-methoxyphenyl)butan-2-one,4-(4-methoxyphenyl)-2-butanone
+,musk-like,61014,0,0,0,0,0,0,0,0,0,0,0,0,61014,270.36,C1CCCCCC(=O)OCCOC(=O)CCCCC1,"1,4-dioxacycloheptadecane-5,17-dione",ethylene brassylate
+,fruity,61015,0,0,0,0,1,0,0,0,0,0,0,0,61015,256.42,CCCCCCCCCCCC(=O)OCCCC,butyl dodecanoate,butyl laurate
+,melon-like,61016,0,0,0,0,0,0,0,0,0,0,0,0,61016,140.22,CC(CCC=C(C)C)C=O,"2,6-dimethylhept-5-enal","2,6-dimethyl-5-heptenal"
+,bergamot-like aroma,61040,0,0,0,0,0,0,0,0,0,0,0,0,61040,182.26,CC(=CCCC(C)(C=C)OC=O)C,"3,7-dimethylocta-1,6-dien-3-yl formate",linalyl formate
+,tobacco-herbaceous,61041,0,0,0,0,0,0,1,0,0,0,0,0,61041,150.22,CC1=C(C(CC=C1)(C)C)C=O,"2,6,6-trimethylcyclohexa-1,3-diene-1-carbaldehyde",safranal
+,herbaceous,61054,0,0,0,0,0,0,1,0,0,0,0,0,61054,166.17,COC1=CC=C(C=C1)COC=O,(4-methoxyphenyl)methyl formate,4-methoxybenzyl formate
+,camphoraceous,61060,0,1,0,0,0,0,0,0,0,0,0,0,61060,154.25,C[C@@]12CC[C@H](C1(C)C)C[C@H]2O,"(1R,2R,4S)-1,7,7-trimethylbicyclo[2.2.1]heptan-2-ol",isoborneol
+,,61072,0,0,0,0,0,0,0,0,1,0,0,0,61072,206.32,CCC(=O)C=CC1=C(CCCC1(C)C)C,"1-(2,6,6-trimethylcyclohexen-1-yl)pent-1-en-3-one",dtxsid6051643
+,rosy-fruity aroma,61085,0,0,0,0,1,0,0,0,0,1,0,0,61085,226.35,CC(C)C(=O)OCCC(C)CCCC(=C)C,"3,7-dimethyloct-7-enyl 2-methylpropanoate",rhodinyl isobutyrate
+,"fruity, floral",61091,0,0,0,1,1,0,0,0,0,0,0,0,61091,218.29,CC(C)CC(=O)OCC=CC1=CC=CC=C1,3-phenylprop-2-enyl 3-methylbutanoate,isovaleric acid cinnamyl ester
+,,61097,0,0,0,0,0,0,0,0,1,0,0,0,61097,168.28,CC=CCCCCCCCC=O,undec-9-enal,undec-9-enal
+,fruity,61098,0,0,0,0,1,0,0,0,0,0,0,0,61098,210.31,CCC(=O)OC(C)(CCC=C(C)C)C=C,"3,7-dimethylocta-1,6-dien-3-yl propanoate",linalyl propionate
+,camphoraceous,61123,0,1,0,0,0,0,0,0,0,0,0,0,61123,154.25,C[C@]12CC[C@H](C1)C([C@@H]2O)(C)C,"(1S,2R,4R)-1,3,3-trimethylbicyclo[2.2.1]heptan-2-ol",(-)-beta-fenchyl alcohol
+,balsamic,61126,1,0,0,0,0,0,0,0,0,0,0,0,61126,152.23,CC1=CC(C2CC1C2(C)C)O,"4,6,6-trimethylbicyclo[3.1.1]hept-3-en-2-ol",verbenol
+,spicy-herbaceous,61130,0,0,0,0,0,0,1,0,0,0,1,0,61130,150.22,CC1(C2CC=C(C1C2)C=O)C,"6,6-dimethylbicyclo[3.1.1]hept-2-ene-2-carbaldehyde",myrtenal
+,,61134,0,0,0,0,0,0,0,0,1,0,0,0,61134,164.24,CCCCOCC1=CC=CC=C1,butoxymethylbenzene,benzyl butyl ether
+,apple-raspberry,61137,0,0,0,0,0,0,0,0,0,0,0,0,61137,158.24,CCCCC(=O)OCCCC,butyl pentanoate,butyl valerate
+,floral,61151,0,0,0,1,0,0,0,0,0,0,0,0,61151,166.17,COC1=CC=CC=C1C(=O)OC,methyl 2-methoxybenzoate,methyl 2-methoxybenzoate
+,woody,61155,0,0,0,0,0,0,0,0,0,0,0,0,61155,166.17,CC(=O)OC1=CC=CC=C1OC,(2-methoxyphenyl) acetate,2-methoxyphenyl acetate
+,fruity,61185,0,0,0,0,1,0,0,0,0,0,0,0,61185,214.34,CCCCCCCC(=O)OCCCCC,pentyl octanoate,pentyl octanoate
+,bitter-almond,61200,0,0,0,0,0,0,0,0,0,0,0,0,61200,136.15,CC1=CC(=C(C=C1)C=O)O,2-hydroxy-4-methylbenzaldehyde,2-hydroxy-4-methylbenzaldehyde
+,floral aroma,61202,0,0,0,1,0,0,0,0,0,0,0,0,61202,164.24,CCCC(CC1=CC=CC=C1)O,1-phenylpentan-2-ol,1-phenyl-2-pentanol
+,vanilla,61229,0,0,0,0,0,0,0,0,0,0,0,0,61229,194.18,CC(=O)OC1=C(C=C(C=C1)C=O)OC,(4-formyl-2-methoxyphenyl) acetate,vanillin acetate
+,fruity,61235,0,0,0,0,1,0,0,0,0,0,0,0,61235,142.24,CCCCCCC(=O)CC,nonan-3-one,3-nonanone
+,camphor,61283,0,1,0,0,0,0,0,0,0,0,0,0,61283,160.21,CC(=CC1=CC=CC=C1)C(=O)C,3-methyl-4-phenylbut-3-en-2-one,"3-buten-2-one, 3-methyl-4-phenyl-"
+,camphoraceous aroma??,61284,0,1,0,0,0,0,0,0,0,0,0,0,61284,154.25,CC1=CCC(C1(C)C)CCO,"2-(2,2,3-trimethylcyclopent-3-en-1-yl)ethanol",alpha-campholenol
+,apple/apricot,61319,0,0,0,0,0,0,0,0,0,0,0,0,61319,114.14,CCC(=O)OCC=C,prop-2-enyl propanoate,allyl propionate
+,fruity,61337,0,0,0,0,1,0,0,0,0,0,0,0,61337,152.15,C=CCOC(=O)C1=CC=CO1,prop-2-enyl furan-2-carboxylate,allyl 2-furoate
+,mushroom,61346,0,0,0,0,0,0,0,0,0,0,0,0,61346,126.2,CCCCCC(=O)C=C,oct-1-en-3-one,1-octen-3-one
+,woody,61359,0,0,0,0,0,0,0,0,0,0,0,0,61359,162.23,CC(C)C1=CC=C(C=C1)CC=O,2-(4-propan-2-ylphenyl)acetaldehyde,4395-92-0
+,herbaceous,61361,0,0,0,0,0,0,1,0,0,0,0,0,61361,190.24,CCCCC1C2=CC=CC=C2C(=O)O1,3-butyl-3H-2-benzofuran-1-one,butylphthalide
+,Banana,61375,0,0,0,0,0,0,0,0,0,0,0,0,61375,156.22,CCC(=O)OC1CCCCC1,cyclohexyl propanoate,cyclohexyl propionate
+,banana,61384,0,0,0,0,0,0,0,0,0,0,0,0,61384,220.31,CCCCCC(=O)OCCC1=CC=CC=C1,2-phenylethyl hexanoate,2-phenylethyl hexanoate
+,Fatty aroma,61386,0,0,0,0,0,0,0,0,0,0,0,0,61386,270.5,CCCCCCCCCCCC(=O)OCCC(C)C,3-methylbutyl dodecanoate,isoamyl laurate
+penetrating,floral penetrating aroma,61400,0,0,0,1,0,0,0,0,0,0,0,0,61400,164.2,COC1=C(C=C(C=C1)C=C)OC,"4-ethenyl-1,2-dimethoxybenzene","3,4-dimethoxystyrene"
+,floral,61401,0,0,0,1,0,0,0,0,0,0,0,0,61401,198.3,CC(CCC=C(C)C)CCOCC=O,"2-(3,7-dimethyloct-6-enoxy)acetaldehyde",citronellyloxyacetaldehyde
+,"herbaceous, fruity-spicy",61402,0,0,0,0,1,0,1,0,0,0,1,0,61402,204.26,CC(=C(C)C(=O)OCC1=CC=CC=C1)C,"benzyl 2,3-dimethylbut-2-enoate","benzyl 2,3-dimethylbut-2-enoate"
+,leafy aroma,61403,0,0,0,0,0,0,0,0,0,0,0,0,61403,208.3,CCCOC(C)OCCC1=CC=CC=C1,2-(1-propoxyethoxy)ethylbenzene,(2-(1-propoxyethoxy)ethyl)benzene
+,fruity,61408,0,0,0,0,1,0,0,0,0,0,0,0,61408,156.22,CCC(CC)C(=O)OCC=C,prop-2-enyl 2-ethylbutanoate,allyl 2-ethylbutyrate
+,pineapple,61410,0,0,0,0,0,0,0,0,0,0,0,0,61410,198.3,CCCCCCCCC(=O)OCC=C,prop-2-enyl nonanoate,allyl nonanoate
+,honey,61416,0,0,0,0,0,0,0,0,0,0,0,0,61416,240.38,CCCCC(=O)OCCC(C)CCC=C(C)C,"3,7-dimethyloct-6-enyl pentanoate",citronellyl valerate
+,camphoraceous aroma??????,61418,0,1,0,0,0,0,0,0,0,0,0,0,61418,238.37,CCCCC(=O)O[C@@H]1CC2CCC1(C2(C)C)C,"[(2R)-1,7,7-trimethyl-2-bicyclo[2.2.1]heptanyl] pentanoate","endo-1,7,7-trimethylbicyclo[2.2.1]hept-2-yl valerate"
+,floral aroma,61464,0,0,0,1,0,0,0,0,0,0,0,0,61464,178.23,CC(C)(CC1=CC=CC=C1)OC=O,(2-methyl-1-phenylpropan-2-yl) formate,dmbc formate
+,nutty aroma,61527,0,0,0,0,0,0,0,0,0,0,0,0,61527,138.16,CC1=CC(=C(O1)C)C(=O)C,"1-(2,5-dimethylfuran-3-yl)ethanone","3-acetyl-2,5-dimethylfuran"
+,fruity,61743,0,0,0,0,1,0,0,0,0,0,0,0,61743,170.25,C=CCCCCCCCC(=O)O,dec-9-enoic acid,9-decenoic acid
+,camphoraceous,61771,0,1,0,0,0,0,0,0,0,0,0,0,61771,154.25,CCC(C)C1CCCCC1=O,2-butan-2-ylcyclohexan-1-one,2-sec-butylcyclohexanone
+,minty,61780,0,0,0,0,0,0,0,1,0,0,0,0,61780,194.27,CC(=C)C1CCC(=CC1)COC(=O)C,(4-prop-1-en-2-ylcyclohexen-1-yl)methyl acetate,perillyl acetate
+,Almond,61814,0,0,0,0,0,0,0,0,0,0,0,0,61814,134.17,CC1=CC(=C(C=C1)C=O)C,"2,4-dimethylbenzaldehyde","2,4-dimethylbenzaldehyde"
+,orange,61875,0,0,0,0,0,0,0,0,0,0,0,0,61875,154.25,CCCCCC=CCCC=O,dec-4-enal,"4-decenal, (4z)-"
+,potato,61918,0,0,0,0,0,0,0,0,0,0,0,0,61918,150.18,CCC1=NC=CN=C1C(=O)C,1-(3-ethylpyrazin-2-yl)ethanone,2-acetyl-3-ethylpyrazine
+,fruity,61954,0,0,0,0,1,0,0,0,0,0,0,0,61954,178.23,CC1=CC=CC=C1OC(=O)C(C)C,(2-methylphenyl) 2-methylpropanoate,o-tolyl isobutyrate
+,orange,61983,0,0,0,0,0,0,0,0,0,0,0,0,61983,170.32,CC(=CCCC(=CCS)C)C,"3,7-dimethylocta-2,6-diene-1-thiol","3,7-dimethylocta-2,6-dienylmercaptan"
+,"honey, floral, fruity",62017,0,0,0,1,1,0,0,0,0,0,0,0,62017,184.23,CC(=O)C1(CCCCC1)OC(=O)C,(1-acetylcyclohexyl) acetate,1-acetylcyclohexyl acetate
+,herbaceous,62092,0,0,0,0,0,0,1,0,0,0,0,0,62092,192.25,CC1=CC=C(C=C1)OC(=O)CC(C)C,(4-methylphenyl) 3-methylbutanoate,55066-56-3
+,herbal like,62105,0,0,0,0,0,0,1,0,0,0,0,0,62105,180.3,CC1(CSC(CS1)(C)O)O,"2,5-dimethyl-1,4-dithiane-2,5-diol","2,5-dimethyl-1,4-dithiane-2,5-diol"
+,Sweet oniony aroma,62183,0,0,0,0,0,0,0,0,0,0,0,1,62183,254.39,CC1=C(C=CO1)SC(C(C)C)C(=O)CC(C)C,"2,6-dimethyl-3-(2-methylfuran-3-yl)sulfanylheptan-4-one",61295-51-0
+,winey,62333,0,0,0,0,0,0,0,0,0,0,0,0,62333,206.19,CCOC(=O)C(C(C(=O)OCC)O)O,"diethyl 2,3-dihydroxybutanedioate",diethyl tartrate
+,vanilla,62348,0,0,0,0,0,0,0,0,0,0,0,0,62348,154.16,COC1=C(C=CC(=C1)CO)O,4-(hydroxymethyl)-2-methoxyphenol,vanillyl alcohol
+,Balsamic,62362,1,0,0,0,0,0,0,0,0,0,0,0,62362,268.31,COC1=C(C=CC(=C1)CC=C)OC(=O)C2=CC=CC=C2,(2-methoxy-4-prop-2-enylphenyl) benzoate,eugenyl benzoate
+,balsamic,62367,1,0,0,0,0,0,0,0,0,0,0,0,62367,154.25,CC(C)C12CCC(C1C2)(C)O,2-methyl-5-propan-2-ylbicyclo[3.1.0]hexan-2-ol,sabinene hydrate
+,floral-almond odour,62375,0,0,0,1,0,0,0,0,0,0,0,0,62375,152.19,COC(C1=CC=CC=C1)OC,dimethoxymethylbenzene,benzaldehyde dimethyl acetal
+,jasmine,62378,0,0,0,0,0,0,0,0,0,0,0,0,62378,166.26,CCCCCC1=C(CCC1=O)C,3-methyl-2-pentylcyclopent-2-en-1-one,dihydrojasmone
+,sweet,62384,0,0,0,0,0,0,0,0,0,0,0,1,62384,116.16,CC1COC(O1)(C)C,"2,2,4-trimethyl-1,3-dioxolane","2,2,4-trimethyl-1,3-dioxolane"
+,citrus,62385,0,0,1,0,0,0,0,0,0,0,0,0,62385,132.2,CC1=CC=C(C=C1)C(=C)C,1-methyl-4-prop-1-en-2-ylbenzene,1195-32-0
+,vanilla,62453,0,0,0,0,0,0,0,0,0,0,0,0,62453,120.15,C=CC1=CC=C(C=C1)O,4-ethenylphenol,4-vinylphenol
+,,62484,0,0,0,0,0,0,0,0,1,0,0,0,62484,102.13,CCC(C(=O)C)O,3-hydroxypentan-2-one,3-hydroxy-2-pentanone
+,,62510,0,0,0,0,0,0,0,0,1,0,0,0,62510,113.18,CC1=C(SC=N1)C,"4,5-dimethyl-1,3-thiazole","4,5-dimethylthiazole"
+,,62539,0,0,0,0,0,0,0,0,1,0,0,0,62539,114.14,CCC(=O)C(=O)CC,"hexane-3,4-dione","3,4-hexanedione"
+,Woody aroma,62566,0,0,0,0,0,0,0,0,0,0,0,0,62566,204.35,CC(C)[C@@H]1CC[C@@]2([C@H]1[C@@H]3[C@H]2CCC3=C)C,"(1S,2R,6S,7R,8S)-1-methyl-5-methylidene-8-propan-2-yltricyclo[5.3.0.02,6]decane",beta-bourbonene
+,sweet,62661,0,0,0,0,0,0,0,0,0,0,0,1,62661,178.27,CC(C)CC(CC1=CC=CC=C1)O,4-methyl-1-phenylpentan-2-ol,4-methyl-1-phenyl-2-pentanol
+,mouldy aroma??,62842,0,0,0,0,0,0,0,0,0,0,0,0,62842,152.23,CC(=CCCC(C)(C#C)O)C,"3,7-dimethyloct-6-en-1-yn-3-ol","3,7-dimethyloct-6-en-1-yn-3-ol"
+,leafy aroma,62876,0,0,0,0,0,0,0,0,0,0,0,0,62876,222.32,CCCCOC(C)OCCC1=CC=CC=C1,2-(1-butoxyethoxy)ethylbenzene,(2-(1-butoxyethoxy)ethyl)benzene
+,nutty,62897,0,0,0,0,0,0,0,0,0,0,0,0,62897,120.15,CC(=C)C1=NC=CN=C1,2-prop-1-en-2-ylpyrazine,isopropenylpyrazine
+,carmellic,62913,0,0,0,0,0,0,0,0,0,0,0,0,62913,128.21,CCC1CCC(O1)CC,"2,5-diethyloxolane","2,5-diethyltetrahydrofuran"
+,must,64685,0,0,0,0,0,0,0,0,0,0,0,0,64685,154.25,CC1(C2CCC1(C(C2)O)C)C,"1,7,7-trimethylbicyclo[2.2.1]heptan-2-ol",borneol
+,carmellic buttery aroma??????,66600,0,0,0,0,0,0,0,0,0,0,0,0,66600,168.19,CCC(=O)OC1=C(CCC1=O)C,(2-methyl-5-oxocyclopenten-1-yl) propanoate,87-55-8
+,floral,67179,0,0,0,1,0,0,0,0,0,0,0,0,67179,154.25,CC(=CCC[C@@](C)(C=C)O)C,"(3S)-3,7-dimethylocta-1,6-dien-3-ol",126-90-9
+,mint,68140,0,0,0,0,0,0,0,1,0,0,0,0,68140,136.23,CC(=C)C1CCC(=C)CC1,1-methylidene-4-prop-1-en-2-ylcyclohexane,499-97-8
+,,68148,0,0,0,0,0,0,0,0,1,0,0,0,68148,134.17,C=CCC1=CC=C(C=C1)O,4-prop-2-enylphenol,4-allylphenol
+,,68284,0,0,0,0,0,0,0,0,1,0,0,0,68284,163.2,C1=CC=C(C=C1)C(=O)N=C=S,benzoyl isothiocyanate,benzoyl isothiocyanate
+,grass,68346,0,0,0,0,0,1,0,0,0,0,0,0,68346,152.23,CC(=CC(=O)C(C)(C)C=C)C,"3,3,6-trimethylhepta-1,5-dien-4-one",artemisia ketone
+,Spicy mint-like aroma??,68481,0,0,0,0,0,0,0,1,0,0,1,0,68481,150.17,CC(=O)C1=CC=CC=C1OC,1-(2-methoxyphenyl)ethanone,2'-methoxyacetophenone
+,fruity aroma??????,68482,0,0,0,0,1,0,0,0,0,0,0,0,68482,241.24,C1=CC=C(C=C1)C(=O)NC2=CC=CC=C2C(=O)O,2-benzamidobenzoic acid,2-(benzoylamino)benzoic acid
+,nutty aroma??,69320,0,0,0,0,0,0,0,0,0,0,0,0,69320,121.18,CCCC1=CC=CC=N1,2-propylpyridine,2-propylpyridine
+,creamy peach,69346,0,0,0,0,0,0,0,0,0,0,0,0,69346,186.25,CCCCCC(=O)CCCC(=O)O,5-oxodecanoic acid,5-oxodecanoic acid
+,almond,70133,0,0,0,0,0,0,0,0,0,0,0,0,70133,150.17,CC1=C(C=CC(=C1)O)C(=O)C,1-(4-hydroxy-2-methylphenyl)ethanone,875-59-2
+,cheese,70744,0,0,0,0,0,0,0,0,0,0,0,0,70744,142.2,CC1(CCCCC1)C(=O)O,1-methylcyclohexane-1-carboxylic acid,1-methylcyclohexanecarboxylic acid
+,sweet floral,71544,0,0,0,1,0,0,0,0,0,0,0,1,71544,250.38,CC(C)COC(CC1=CC=CC=C1)OCC(C)C,"2,2-bis(2-methylpropoxy)ethylbenzene",68345-22-2
+,Bitter aroma,72300,0,0,0,0,0,0,0,0,0,0,0,0,72300,266.3,C=CCC1=CC(=C(C=C1)O)C2=C(C=CC(=C2)CC=C)O,2-(2-hydroxy-5-prop-2-enylphenyl)-4-prop-2-enylphenol,magnolol
+,balsamic,72607,1,0,0,0,0,0,0,0,0,0,0,0,72607,222.37,C[C@@H]1CC[C@@H](CC2=C1CC[C@H]2C)C(C)(C)O,"2-[(3R,5S,8R)-3,8-dimethyl-1,2,3,4,5,6,7,8-octahydroazulen-5-yl]propan-2-ol","2-[(3r,5s,8r)-3,8-dimethyl-1,2,3,4,5,6,7,8-octahydroazulen-5-yl]propan-2-ol"
+,peanut butter,72662,0,0,0,0,0,0,0,0,0,0,0,0,72662,138.12,COC(=O)C1=NC=CN=C1,methyl pyrazine-2-carboxylate,methyl pyrazine-2-carboxylate
+,herbaceous,73114,0,0,0,0,0,0,1,0,0,0,0,0,73114,308.5,C[C@]12CCCC(C1CC[C@@]([C@@H]2CC[C@](C)(C=C)O)(C)O)(C)C,"(1R,2R,8aS)-1-[(3R)-3-hydroxy-3-methylpent-4-enyl]-2,5,5,8a-tetramethyl-3,4,4a,6,7,8-hexahydro-1H-naphthalen-2-ol",c20h36o2
+,,73174,0,0,0,0,0,0,0,0,1,0,0,0,73174,230.3,C=C1CC[C@@H]2[C@@H]([C@@H]3[C@H]1CCC3=C)OC(=O)C2=C,"(3aS,6aR,9aR,9bS)-3,6,9-trimethylidene-3a,4,5,6a,7,8,9a,9b-octahydroazuleno[4,5-b]furan-2-one",dehydrocostus lactone
+,herbaceous,74008,0,0,0,0,0,0,1,0,0,0,0,0,74008,182.22,CCCCCOC(=O)C1=CC=CO1,pentyl furan-2-carboxylate,amyl 2-furoate
+,fruity aroma,74096,0,0,0,0,1,0,0,0,0,0,0,0,74096,128.17,CC(=O)OCCCC=C,pent-4-enyl acetate,4-pentenyl acetate
+,tobacco,74279,0,0,0,0,0,0,0,0,0,0,0,0,74279,172.26,CCOC1(CCCCC1)OCC,"1,1-diethoxycyclohexane","1,1-diethoxycyclohexane"
+,Sweet oniony aroma??,74915,0,0,0,0,0,0,0,0,0,0,0,1,74915,206.4,CC(C)CCSSCCC(C)C,3-methyl-1-(3-methylbutyldisulfanyl)butane,diisoamyl disulfide
+,mint,75699,0,0,0,0,0,0,0,1,0,0,0,0,75699,198.3,C[C@@H]1CC[C@H]([C@H](C1)OC(=O)C)C(C)C,"[(1S,2S,5R)-5-methyl-2-propan-2-ylcyclohexyl] acetate",neomenthyl acetate
+,burnt sugar,77652,0,0,0,0,0,0,0,0,0,0,0,0,77652,246.4,CC1=CC=CC=C1SSC2=CC=CC=C2C,1-methyl-2-[(2-methylphenyl)disulfanyl]benzene,o-tolyl disulfide
+,pungent,77743,0,0,0,0,0,0,0,0,0,0,0,0,77743,105.2,CSCCCN,3-methylsulfanylpropan-1-amine,3-(methylthio)propylamine
+,Fruity,77756,0,0,0,0,1,0,0,0,0,0,0,0,77756,194.23,CCCC(=O)OC1=CC=CC=C1OC,(2-methoxyphenyl) butanoate,guaiacol butyrate
+,nutty aroma??,77837,0,0,0,0,0,0,0,0,0,0,0,0,77837,113.18,CC1=CN=C(S1)C,"2,5-dimethyl-1,3-thiazole","2,5-dimethylthiazole"
+,Sweet oniony aroma,77932,0,0,0,0,0,0,0,0,0,0,0,1,77932,150.3,CC(C)SSC(C)C,2-(propan-2-yldisulfanyl)propane,diisopropyl disulfide
+,grass,78120,0,0,0,0,0,1,0,0,0,0,0,0,78120,143.25,CCCCCCN=C=S,1-isothiocyanatohexane,hexyl isothiocyanate
+,minty,79023,0,0,0,0,0,0,0,1,0,0,0,0,79023,168.23,CC1=C(C(=O)C(CC1)C(C)C)O,2-hydroxy-3-methyl-6-propan-2-ylcyclohex-2-en-1-one,diosphenol
+,mint,79036,0,0,0,0,0,0,0,1,0,0,0,0,79036,150.22,CC1=CC(=O)C(CC1)C(=C)C,3-methyl-6-prop-1-en-2-ylcyclohex-2-en-1-one,isopiperitenone
+,onion aroma??????,79089,0,0,0,0,0,0,0,0,0,0,0,0,79089,112.19,CC1=CSC=C1C,"3,4-dimethylthiophene","3,4-dimethylthiophene"
+,Sweet oniony aroma,80046,0,0,0,0,0,0,0,0,0,0,0,1,80046,182.4,CC(C)SSSC(C)C,2-(propan-2-yltrisulfanyl)propane,diisopropyl trisulfide
+,carrot,80790,0,0,0,0,0,0,0,0,0,0,0,0,80790,164.24,CC1=C(C=C(C=C1)C(C)C)OC,2-methoxy-1-methyl-4-propan-2-ylbenzene,carvacrol methyl ether
+,floral aroma,80960,0,0,0,1,0,0,0,0,0,0,0,0,80960,248.36,CCCCCCCCC(=O)OCC1=CC=CC=C1,benzyl nonanoate,benzyl nonanoate
+,herbaceous aroma??,81221,0,0,0,0,0,0,1,0,0,0,0,0,81221,136.19,CC1=CC(=C(C=C1)OC)C,"1-methoxy-2,4-dimethylbenzene","2,4-dimethylanisole"
+,rose-like aroma??,81263,0,0,0,0,0,0,0,0,0,1,0,0,81263,156.26,C[C@@H](CCCC(=C)C)CCO,"(3S)-3,7-dimethyloct-7-en-1-ol",rhodinol
+,fruity aroma,81359,0,0,0,0,1,0,0,0,0,0,0,0,81359,206.24,CC(=O)CCC(=O)OCC1=CC=CC=C1,benzyl 4-oxopentanoate,benzyl levulinate
+,sweet,83655,0,0,0,0,0,0,0,0,0,0,0,1,83655,140.2,CC1=CC=C(S1)C(=O)C,1-(5-methylthiophen-2-yl)ethanone,2-acetyl-5-methylthiophene
+,grassy aroma??,83763,0,0,0,0,0,1,0,0,0,0,0,0,83763,156.26,CC(C)C1CCC(CC1)CO,(4-propan-2-ylcyclohexyl)methanol,4-(1-methylethyl)cyclohexanemethanol
+,citrus-like aroma??????,84559,0,0,1,0,0,0,0,0,0,0,0,0,84559,230.39,CCCCCCCCCCCC(OC)OC,"1,1-dimethoxydodecane","1,1-dimethoxydodecane"
+,Fruity,86753,0,0,0,0,1,0,0,0,0,0,0,0,86753,154.25,CC1=CCC(CC1)C(C)CO,2-(4-methylcyclohex-3-en-1-yl)propan-1-ol,p-menth-1-en-9-ol
+,Fatty rosy aroma??,87630,0,0,0,0,0,0,0,0,0,1,0,0,87630,156.26,CCCCCCCC=CCO,dec-2-en-1-ol,2-decenol
+,fat,87632,0,0,0,0,0,0,0,0,0,0,0,0,87632,154.25,CCCCCC=CC=CCO,"deca-2,4-dien-1-ol","deca-2,4-dien-1-ol"
+,herbaceous,89307,0,0,0,0,0,0,1,0,0,0,0,0,89307,200.32,CCCCCC(CC)OC(=O)CCC,octan-3-yl butanoate,3-octyl butyrate
+,spice,90785,0,0,0,0,0,0,0,0,0,0,1,0,90785,222.37,CC1CCC2=C(CCC(CC12)C(C)(C)O)C,"2-(3,8-dimethyl-1,2,3,3a,4,5,6,7-octahydroazulen-5-yl)propan-2-ol",bulnesol
+,fruity,91354,0,0,0,0,1,0,0,0,0,0,0,0,91354,204.35,CC1CCC2C1C3C(C3(C)C)CCC2=C,"1,1,7-trimethyl-4-methylidene-2,3,4a,5,6,7,7a,7b-octahydro-1aH-cyclopropa[e]azulene",aromadendrene
+,sweet,91457,0,0,0,0,0,0,0,0,0,0,0,1,91457,222.37,C[C@]12CCCC(=C)[C@@H]1C[C@@H](CC2)C(C)(C)O,"2-[(2R,4aR,8aS)-4a-methyl-8-methylidene-1,2,3,4,5,6,7,8a-octahydronaphthalen-2-yl]propan-2-ol",beta-eudesmol
+,herbaceous,92139,0,0,0,0,0,0,1,0,0,0,0,0,92139,202.33,CC1=CC=C(C=C1)C(C)CCC=C(C)C,1-methyl-4-(6-methylhept-5-en-2-yl)benzene,alpha-curcumene
+,apple,92573,0,0,0,0,0,0,0,0,0,0,0,0,92573,184.27,CCCCC(=O)OCCC=CCC,hex-3-enyl pentanoate,cis-3-hexenylvalerate
+,minty??,92649,0,0,0,0,0,0,0,1,0,0,0,0,92649,228.35,CC1CCC(C(=O)C1)C(C)(C)SC(=O)C,S-[2-(4-methyl-2-oxocyclohexyl)propan-2-yl] ethanethioate,8-acetylthiomenthan-3-one
+,sweet,92762,0,0,0,0,0,0,0,0,0,0,0,1,92762,222.37,CC1=CCC[C@]2([C@H]1C[C@@H](CC2)C(C)(C)O)C,"2-[(2R,4aR,8aR)-4a,8-dimethyl-2,3,4,5,6,8a-hexahydro-1H-naphthalen-2-yl]propan-2-ol",alpha-eudesmol
+,minty aroma,92770,0,0,0,0,0,0,0,1,0,0,0,0,92770,166.22,CC1CCC2C1C(=O)OC=C2C,"4,7-dimethyl-5,6,7,7a-tetrahydro-4aH-cyclopenta[c]pyran-1-one",nepetalactone
+,"Fruit, spice",92776,0,0,0,0,1,0,0,0,0,0,1,0,92776,204.35,CC1=CC[C@@H](C=C1)[C@@H](C)CCC=C(C)C,"(5R)-2-methyl-5-[(2S)-6-methylhept-5-en-2-yl]cyclohexa-1,3-diene",zingiberene
+,minty herbaceous??,92780,0,0,0,0,0,0,1,1,0,0,0,0,92780,138.21,CC(C)C1CCC(=O)C=C1,4-propan-2-ylcyclohex-2-en-1-one,4-isopropyl-2-cyclohexenone
+,camphoraceous,92793,0,1,0,0,0,0,0,0,0,0,0,0,92793,154.25,CC1CCC(=C(C)C)C(C1)O,5-methyl-2-propan-2-ylidenecyclohexan-1-ol,pulegol
+,fruity aroma??????,93732,0,0,0,0,1,0,0,0,0,0,0,0,93732,170.25,CCCCCC=CCCC(=O)O,dec-4-enoic acid,26303-90-2
+,lavander,94060,0,0,0,0,0,0,0,0,0,0,0,0,94060,154.25,CC(=CCC(CO)C(=C)C)C,5-methyl-2-prop-1-en-2-ylhex-4-en-1-ol,58461-27-1
+,sulphureous aroma??????,94314,0,0,0,0,0,0,0,0,0,0,0,0,94314,178.4,CCC(C)SSC(C)CC,2-(butan-2-yldisulfanyl)butane,sec-butyl disulfide
+,sweet fruity,94579,0,0,0,0,1,0,0,0,0,0,0,1,94579,196.29,C[C@@H]1CC[C@H]([C@@H](C1)OC(=O)C)C(=C)C,"[(1R,2S,5R)-5-methyl-2-prop-1-en-2-ylcyclohexyl] acetate",isopulegyl acetate
+,Vanilla,95086,0,0,0,0,0,0,0,0,0,0,0,0,95086,302.28,COC1=CC(=CC(=C1O)C2=C(C(=CC(=C2)C=O)OC)O)C=O,3-(5-formyl-2-hydroxy-3-methoxyphenyl)-4-hydroxy-5-methoxybenzaldehyde,dehydrodivanillin
+,fruity,95337,0,0,0,0,1,0,0,0,0,0,0,0,95337,242.44,CCCCCCCCC(CCCCCC)CO,2-hexyldecan-1-ol,2-hexyl-1-decanol
+,Fruity wine-like aroma,95466,0,0,0,0,1,0,0,0,0,0,0,0,95466,186.25,CCCCC(C(=O)C)C(=O)OCC,ethyl 2-acetylhexanoate,ethyl 2-acetylhexanoate
+,camphoraceous aroma??????,97897,0,1,0,0,0,0,0,0,0,0,0,0,97897,224.34,CCCC(=O)OC1CC2CCC1(C2(C)C)C,"(1,7,7-trimethyl-2-bicyclo[2.2.1]heptanyl) butanoate",bornyl butyrate
+,camphoraceous aroma??????,98497,0,1,0,0,0,0,0,0,0,0,0,0,98497,152.23,CC1=CCC(C1(C)C)CC=O,"2-(2,2,3-trimethylcyclopent-3-en-1-yl)acetaldehyde",91819-58-8
+,herbaceous,101115,0,0,0,0,0,0,1,0,0,0,0,0,101115,156.22,CC1(CCCC(C1=O)(C)O)C,"2-hydroxy-2,6,6-trimethylcyclohexan-1-one","2,6,6-trimethyl-2-hydroxycyclohexanone"
+,balsamic,102667,1,0,0,0,0,0,0,0,0,0,0,0,102667,152.23,CC1(C2CC1C(=C)C(C2)O)C,"6,6-dimethyl-2-methylidenebicyclo[3.1.1]heptan-3-ol",pinocarveol
+,,102861,0,0,0,0,0,0,0,0,1,0,0,0,102861,226.31,CCCCCC1C(CCC1=O)CC(=O)OC,methyl 2-(3-oxo-2-pentylcyclopentyl)acetate,methyl dihydrojasmonate
+,fruity,102993,0,0,0,0,1,0,0,0,0,0,0,0,102993,102.13,CC1COC(O1)C,"2,4-dimethyl-1,3-dioxolane","2,4-dimethyl-1,3-dioxolane"
+,vegetative aroma??,104513,0,0,0,0,0,0,0,0,0,0,0,0,104513,169.29,CC1=C(SC(=N1)CC(C)C)C,"4,5-dimethyl-2-(2-methylpropyl)-1,3-thiazole","2-isobutyl-4,5-dimethylthiazole"
+,Roasted burnt aroma??,104620,0,0,0,0,0,0,0,0,0,0,0,0,104620,139.19,CCCC1=NC(=C(O1)C)C,"4,5-dimethyl-2-propyl-1,3-oxazole","4,5-dimethyl-2-propyloxazole"
+,fruity aroma??????,109467,0,0,0,0,1,0,0,0,0,0,0,0,109467,275.4,CC(CCC=C(C)C)CCOC(=O)C1=CC=CC=C1N,"3,7-dimethyloct-6-enyl 2-aminobenzoate",citronellyl anthranilate
+,Fruity nutty aroma,109828,0,0,0,0,1,0,0,0,0,0,0,0,109828,182.22,CCCC(=O)OC1=C(CCC1=O)C,(2-methyl-5-oxocyclopenten-1-yl) butanoate,68227-51-0
+,Onion aroma,110747,0,0,0,0,0,0,0,0,0,0,0,0,110747,156.26,CC(C)CCCC(C)CC=O,"3,7-dimethyloctanal","3,7-dimethyloctanal"
+,camphoraceous aroma??????,110801,0,1,0,0,0,0,0,0,0,0,0,0,110801,238.37,CCCCC(=O)OC1CC2CCC1(C2(C)C)C,"(1,7,7-trimethyl-2-bicyclo[2.2.1]heptanyl) pentanoate",bornyl valerate
+,sweet,111037,0,0,0,0,0,0,0,0,0,0,0,1,111037,196.29,CC1=CCC(CC1)C(C)(C)OC(=O)C,2-(4-methylcyclohex-3-en-1-yl)propan-2-yl acetate,terpinyl acetate
+,fruity aroma??,118225,0,0,0,0,1,0,0,0,0,0,0,0,118225,230.3,CCCC(CCCC(=O)OCC)OC(=O)C,ethyl 5-acetyloxyoctanoate,ethyl 5-acetoxyoctanoate
+,fruity aroma,121731,0,0,0,0,1,0,0,0,0,0,0,0,121731,94.15,CC1=CC=CCC1,"1-methylcyclohexa-1,3-diene","1-methyl-1,3-cyclohexadiene"
+,clove-carnation aroma??????,123233,0,0,0,0,0,0,0,0,0,0,0,0,123233,180.24,CCCC1=CC(=C(C=C1)OC)OC,"1,2-dimethoxy-4-propylbenzene","1,2-dimethoxy-4-propylbenzene"
+weak,Weak savoury aroma,123935,0,0,0,0,0,0,0,0,0,0,0,0,123935,217.22,C[C@@H](C(=O)N[C@@H](CCC(=O)N)C(=O)O)N,(2S)-5-amino-2-[[(2S)-2-aminopropanoyl]amino]-5-oxopentanoic acid,l-alanyl-l-glutamine
+,spicy aroma??????,125468,0,0,0,0,0,0,0,0,0,0,1,0,125468,100.12,C/C=C(\C)/C(=O)O,(E)-2-methylbut-2-enoic acid,tiglic acid
+,,135215,0,0,0,0,0,0,0,0,1,0,0,0,135215,236.35,CC1CCC=C(C12CCC(C2)C(C)(C)O)C=O,3-(2-hydroxypropan-2-yl)-6-methylspiro[4.5]dec-9-ene-10-carbaldehyde,86408-21-1
+,buttery aroma,138508,0,0,0,0,0,0,0,0,0,0,0,0,138508,142.2,CCCC(=O)C(=O)CCC,"octane-4,5-dione","4,5-octanedione"
+,fruity,142266,0,0,0,0,1,0,0,0,0,0,0,0,142266,192.21,CC(=O)CC(=O)OCC1=CC=CC=C1,benzyl 3-oxobutanoate,benzyl acetoacetate
+,camphoraceous aroma??,159055,0,1,0,0,0,0,0,0,0,0,0,0,159055,152.23,C[C@@]12CC[C@@H](C1(C)C)CC2=O,"(1R,4R)-1,7,7-trimethylbicyclo[2.2.1]heptan-2-one",d-camphor
+,Minty tea aroma??,161475,0,0,0,0,0,0,0,0,0,0,0,0,161475,73.11,[CH2]CCCO,,4-hydroxybutylradical
+,balsamic,164888,1,0,0,0,0,0,0,0,0,0,0,0,164888,152.23,CC1=C[C@H]([C@@H]2C[C@H]1C2(C)C)O,"(1R,2R,5R)-4,6,6-trimethylbicyclo[3.1.1]hept-3-en-2-ol",cis-verbenol
+,grassy aroma,169110,0,0,0,0,0,1,0,0,0,0,0,0,169110,129.18,CC(=O)C1=NCCS1,"1-(4,5-dihydro-1,3-thiazol-2-yl)ethanone",2-acetyl-2-thiazoline
+,mouldy aroma??????,170977,0,0,0,0,0,0,0,0,0,0,0,0,170977,156.26,CCCCCCCC(C=C)O,dec-1-en-3-ol,1-decen-3-ol
+,pungent herbaceous odour,181575,0,0,0,0,0,0,1,0,0,0,0,0,181575,124.18,CCC=CC=CC(=O)C,"octa-3,5-dien-2-one","octa-3,5-dien-2-one"
+,citrusy aroma,181747,0,0,1,0,0,0,0,0,0,0,0,0,181747,150.22,CCC=CCC=CC=CC=O,"deca-2,4,7-trienal","deca-2,4,7-trienal"
+,spicy,219672,0,0,0,0,0,0,0,0,0,0,1,0,219672,176.25,CC(C)CC(=O)CC1=CC=CC=C1,4-methyl-1-phenylpentan-2-one,4-methyl-1-phenylpentan-2-one
+,onion,220010,0,0,0,0,0,0,0,0,0,0,0,0,220010,90.12,C[C@H]([C@H](C)O)O,"(2R,3S)-butane-2,3-diol","meso-2,3-butanediol"
+,meaty,226486,0,0,0,0,0,0,0,0,0,0,0,0,226486,194.23,COC1=CC(=CC(=C1O)OC)CC=C,"2,6-dimethoxy-4-prop-2-enylphenol","4-allyl-2,6-dimethoxyphenol"
+,balsamic,227829,1,0,0,0,0,0,0,0,0,0,0,0,227829,222.37,C[C@H]1CC[C@H](CC2=C1CC[C@@H]2C)C(C)(C)O,"2-[(3S,5R,8S)-3,8-dimethyl-1,2,3,4,5,6,7,8-octahydroazulen-5-yl]propan-2-ol",guaiol
+,Balsamic,228588,1,0,0,0,0,0,0,0,0,0,0,0,228588,138.16,CCCC(=O)C1=CC=CO1,1-(furan-2-yl)butan-1-one,1-(furan-2-yl)butan-1-one
+,fatty,229385,0,0,0,0,0,0,0,0,0,0,0,0,229385,214.34,CCCCCCCCCCOC(=O)CC,decyl propanoate,decyl propionate
+,rose,229888,0,0,0,0,0,0,0,0,0,1,0,0,229888,248.36,CCCCCCCC(=O)OCCC1=CC=CC=C1,2-phenylethyl octanoate,phenethyl octanoate
+,camphoraceous aroma??,230920,0,1,0,0,0,0,0,0,0,0,0,0,230920,154.25,C[C@]12CC[C@@H](C1(C)C)C[C@@H]2O,"(1S,2S,4R)-1,7,7-trimethylbicyclo[2.2.1]heptan-2-ol",isoborneol
+,Sweet caramel aroma??????,231325,0,0,0,0,0,0,0,0,0,0,0,1,231325,152.19,CCCCC(=O)C1=CC=CO1,1-(furan-2-yl)pentan-1-one,2-pentanoylfuran
+,caraway,232459,0,0,0,0,0,0,0,0,0,0,0,0,232459,162.23,CC(C)(CC=O)C1=CC=CC=C1,3-methyl-3-phenylbutanal,3-methyl-3-phenylbutanal
+,plum-like,243675,0,0,0,0,0,0,0,0,0,0,0,0,243675,208.25,CCCC(=O)OCC1=CC=C(C=C1)OC,(4-methoxyphenyl)methyl butanoate,anisyl butyrate
+,sweet,243783,0,0,0,0,0,0,0,0,0,0,0,1,243783,170.25,CCCC(=O)OC1CCCCC1,cyclohexyl butanoate,cyclohexyl butyrate
+,fruity,246728,0,0,0,0,1,0,0,0,0,0,0,0,246728,128.21,CCCCCC(=O)CC,octan-3-one,3-octanone
+,floral,248474,0,0,0,1,0,0,0,0,0,0,0,0,248474,150.17,CC1=CC=C(C=C1)CC(=O)O,2-(4-methylphenyl)acetic acid,p-tolylacetic acid
+,camphoraceous aroma??????,249573,0,1,0,0,0,0,0,0,0,0,0,0,249573,238.37,CC(C)CC(=O)O[C@@H]1C[C@H]2CC[C@]1(C2(C)C)C,"[(1S,2R,4R)-1,7,7-trimethyl-2-bicyclo[2.2.1]heptanyl] 3-methylbutanoate",bornyval
+,rose,250096,0,0,0,0,0,0,0,0,0,1,0,0,250096,190.24,C/C=C(\C)/C(=O)OCC1=CC=CC=C1,benzyl (E)-2-methylbut-2-enoate,benzyl tiglate
+,nutty aroma??,263034,0,0,0,0,0,0,0,0,0,0,0,0,263034,178.18,C1=COC(=C1)COCC2=CC=CO2,2-(furan-2-ylmethoxymethyl)furan,difurfuryl ether
+,Banana,287439,0,0,0,0,0,0,0,0,0,0,0,0,287439,184.27,CC(C)CC(=O)OC1CCCCC1,cyclohexyl 3-methylbutanoate,cyclohexyl isovalerate
+,mint,329983,0,0,0,0,0,0,0,1,0,0,0,0,329983,150.22,CC1CCC2=C(C1)OC=C2C,"3,6-dimethyl-4,5,6,7-tetrahydro-1-benzofuran",menthofuran
+,mint,380816,0,0,0,0,0,0,0,1,0,0,0,0,380816,166.22,CC1=C(CC(CC1=O)C(=C)C)O,3-hydroxy-2-methyl-5-prop-1-en-2-ylcyclohex-2-en-1-one,6-hydroxycarvone
+,mint,439263,0,0,0,0,0,0,0,1,0,0,0,0,439263,156.26,C[C@@H]1CC[C@H]([C@H](C1)O)C(C)C,"(1S,2S,5R)-5-methyl-2-propan-2-ylcyclohexan-1-ol",(+)-neomenthol
+,minty aroma??,439570,0,0,0,0,0,0,0,1,0,0,0,0,439570,150.22,CC1=CC[C@H](CC1=O)C(=C)C,(5R)-2-methyl-5-prop-1-en-2-ylcyclohex-2-en-1-one,(-)-carvone
+,camphoraceous,439711,0,1,0,0,0,0,0,0,0,0,0,0,439711,154.25,C[C@]12CC[C@H](C1)C([C@H]2O)(C)C,"(1S,2S,4R)-1,3,3-trimethylbicyclo[2.2.1]heptan-2-ol",alpha-fenchol
+,citrus,440917,0,0,1,0,0,0,0,0,0,0,0,0,440917,136.23,CC1=CC[C@@H](CC1)C(=C)C,(4R)-1-methyl-4-prop-1-en-2-ylcyclohexene,d-limonene
+,rancid,441005,0,0,0,0,0,0,0,0,0,0,0,0,441005,204.35,CC1=C[C@H]2[C@@H](CCC(=C2CC1)C)C(C)C,"(1S,8aR)-4,7-dimethyl-1-propan-2-yl-1,2,3,5,6,8a-hexahydronaphthalene",(+)-delta-cadinene
+,citrus,441245,0,0,1,0,0,0,0,0,0,0,0,0,441245,152.23,CC(=C)[C@@H]1CCC2(C(C1)O2)C,(4R)-1-methyl-4-prop-1-en-2-yl-7-oxabicyclo[4.1.0]heptane,"limonene-1,2-epoxide"
+,balsamic,443131,1,0,0,0,0,0,0,0,0,0,0,0,443131,196.29,CC(=O)O[C@H]1CC2CCC1(C2(C)C)C,"[(2S)-1,7,7-trimethyl-2-bicyclo[2.2.1]heptanyl] acetate","(1r,2s,4r)-(+)-bornyl acetate"
+,fruity,443156,0,0,0,0,1,0,0,0,0,0,0,0,443156,136.23,CC1=CC[C@@H]2[C@H](C1)C2(C)C,"(1S,6R)-3,7,7-trimethylbicyclo[4.1.0]hept-3-ene",(+)-3-carene
+,mint,443167,0,0,0,0,0,0,0,1,0,0,0,0,443167,152.23,C[C@H]1CC[C@H](CC1=O)C(=C)C,"(2S,5R)-2-methyl-5-prop-1-en-2-ylcyclohexan-1-one",(+)-isodihydrocarvone
+,mint,443178,0,0,0,0,0,0,0,1,0,0,0,0,443178,152.23,CC1=CC[C@@H](C[C@H]1O)C(=C)C,"(1R,5S)-2-methyl-5-prop-1-en-2-ylcyclohex-2-en-1-ol",(+)-trans-carveol
+,mint,443181,0,0,0,0,0,0,0,1,0,0,0,0,443181,152.23,C[C@@H]1CC[C@@H](CC1=O)C(=C)C,"(2R,5S)-2-methyl-5-prop-1-en-2-ylcyclohexan-1-one",cis-dihydrocarvone
+,honey floral,444539,0,0,0,1,0,0,0,0,0,0,0,0,444539,148.16,C1=CC=C(C=C1)/C=C/C(=O)O,(E)-3-phenylprop-2-enoic acid,cinnamic acid
+,Flower,445070,0,0,0,1,0,0,0,0,0,0,0,0,445070,222.37,CC(=CCC/C(=C/CC/C(=C/CO)/C)/C)C,"(2E,6E)-3,7,11-trimethyldodeca-2,6,10-trien-1-ol",farnesol
+,floral aroma??,517827,0,0,0,1,0,0,0,0,0,0,0,0,517827,190.28,CC(C)C1=CC=C(C=C1)CC(C)C=O,2-methyl-3-(4-propan-2-ylphenyl)propanal,103-95-7
+,camphoraceous aroma??????,518472,0,1,0,0,0,0,0,0,0,0,0,0,518472,182.26,CC1(C2CCC1(C(C2)OC=O)C)C,"(1,7,7-trimethyl-2-bicyclo[2.2.1]heptanyl) formate",bornyl formate
+,herbaceous,519539,0,0,0,0,0,0,1,0,0,0,0,0,519539,141.24,CCC(C)C1=NC=CS1,"2-butan-2-yl-1,3-thiazole",18277-27-5
+,sweet,519764,0,0,0,0,0,0,0,0,0,0,0,1,519764,204.35,CC(CCC=C(C)C)C1CCC(=C)C=C1,3-(6-methylhept-5-en-2-yl)-6-methylidenecyclohexene,sesquiphellandrene
+,green tea,519857,0,0,0,0,0,0,0,0,0,0,0,0,519857,222.37,CC1CCC(C2C1(CCC(=C2)C)O)C(C)C,"4,7-dimethyl-1-propan-2-yl-2,3,4,5,6,8a-hexahydro-1H-naphthalen-4a-ol",cubenol
+,popcorn-like aroma??,520108,0,0,0,0,0,0,0,0,0,0,0,0,520108,127.17,CC(=O)C1=NC=CS1,"1-(1,3-thiazol-2-yl)ethanone",2-acetylthiazole
+,nutty aroma,520191,0,0,0,0,0,0,0,0,0,0,0,0,520191,154.23,CC1=CC(=C(S1)C)C(=O)C,"1-(2,5-dimethylthiophen-3-yl)ethanone","3-acetyl-2,5-dimethylthiophene"
+,herbaceous,520440,0,0,0,0,0,0,1,0,0,0,0,0,520440,152.23,CC1=CCC(CC1)C(C)C=O,2-(4-methylcyclohex-3-en-1-yl)propanal,p-menth-1-en-9-al
+,,520484,0,0,0,0,0,0,0,0,1,0,0,0,520484,130.23,CC(C)C(C)(C(C)C)O,"2,3,4-trimethylpentan-3-ol","2,3,4-trimethyl-3-pentanol"
+,fruity,520583,0,0,0,0,1,0,0,0,0,0,0,0,520583,170.25,CCCCCCC=COC(=O)C,oct-1-enyl acetate,octen-1-ol acetate
+,nutty,520888,0,0,0,0,0,0,0,0,0,0,0,0,520888,155.22,CC1=C(SC(=N1)C)C(=O)C,"1-(2,4-dimethyl-1,3-thiazol-5-yl)ethanone","5-acetyl-2,4-dimethylthiazole"
+,roasted aroma??????,520895,0,0,0,0,0,0,0,0,0,0,0,0,520895,180.4,CCC1SC(SS1)CC,"3,5-diethyl-1,2,4-trithiolane","3,5-diethyl-1,2,4-trithiolane"
+,,521246,0,0,0,0,0,0,0,0,1,0,0,0,521246,130.14,CC(C(=O)C)OC(=O)C,3-oxobutan-2-yl acetate,3-oxobutan-2-yl acetate
+,Sulphureous aroma??????,522458,0,0,0,0,0,0,0,0,0,0,0,0,522458,164.3,CCCCSSCCC,1-(propyldisulfanyl)butane,butyl propyl disulfide
+,terpineolic,522514,0,0,0,0,0,0,0,0,0,0,0,0,522514,154.25,CC1(CCCC(O1)(C)C=C)C,"2-ethenyl-2,6,6-trimethyloxane",7392-19-0
+,mint,525915,0,0,0,0,0,0,0,1,0,0,0,0,525915,166.22,CC(=C)C1CCC2(C(C1=O)O2)C,6-methyl-3-prop-1-en-2-yl-7-oxabicyclo[4.1.0]heptan-2-one,90582-88-0
+,floral,526177,0,0,0,1,0,0,0,0,0,0,0,0,526177,116.18,CC1=C(CCO1)S,"5-methyl-2,3-dihydrofuran-4-thiol",26486-13-5
+,spicy aroma??????,526762,0,0,0,0,0,0,0,0,0,0,1,0,526762,150.22,CC(C)C1=CC=C(CC1)C=O,"4-propan-2-ylcyclohexa-1,3-diene-1-carbaldehyde","1,3-p-menthadien-7-al"
+,roasted aroma,526853,0,0,0,0,0,0,0,0,0,0,0,0,526853,143.21,CC(=O)C1=CSCCN1,"1-(3,4-dihydro-2H-1,4-thiazin-5-yl)ethanone","1-(3,4-dihydro-2h-1,4-thiazin-5-yl)ethanone"
+,spicy,527144,0,0,0,0,0,0,0,0,0,0,1,0,527144,196.29,CC1=CCC(CC1)C(C)COC(=O)C,2-(4-methylcyclohex-3-en-1-yl)propyl acetate,p-menth-1-en-9-yl acetate
+,carrot like,527268,0,0,0,0,0,0,0,0,0,0,0,0,527268,178.27,CCOC1=C(C=CC(=C1)C(C)C)C,2-ethoxy-1-methyl-4-propan-2-ylbenzene,carvacryl ethyl ether
+,Fishy aroma??????,529251,0,0,0,0,0,0,0,0,0,0,0,0,529251,125.17,CCC(=O)C1=NCCC1,"1-(3,4-dihydro-2H-pyrrol-5-yl)propan-1-one",133447-37-7
+,red berry,529253,0,0,0,0,0,0,0,0,0,0,0,0,529253,158.19,CCCC(=O)OC(C)C(=O)C,3-oxobutan-2-yl butanoate,1-methyl-2-oxopropyl butyrate
+,Floral,529304,0,0,0,1,0,0,0,0,0,0,0,0,529304,170.25,CC1(C(O1)CCC(C)(C=C)O)C,"5-(3,3-dimethyloxiran-2-yl)-3-methylpent-1-en-3-ol",cis-linaloloxide
+,grassy green aroma,529344,0,0,0,0,0,1,0,0,0,0,0,0,529344,161.2,CC(=C)C1=CC(=NC=C1)C(=O)C,1-(4-prop-1-en-2-ylpyridin-2-yl)ethanone,142896-11-5
+,leafy aroma,529345,0,0,0,0,0,0,0,0,0,0,0,0,529345,163.22,CC(C)C1=CC(=NC=C1)C(=O)C,1-(4-propan-2-ylpyridin-2-yl)ethanone,142896-09-1
+,herbal green aroma,529352,0,0,0,0,0,0,1,0,0,0,0,0,529352,161.2,CC(=C)C1=NC=CC(=C1)C(=O)C,1-(2-prop-1-en-2-ylpyridin-4-yl)ethanone,142896-12-6
+,citrus,538497,0,0,1,0,0,0,0,0,0,0,0,0,538497,168.23,CC(=C)C1CCC(C=C1)(C)OO,3-hydroperoxy-3-methyl-6-prop-1-en-2-ylcyclohexene,"(1s,4r)-p-mentha-2,8-diene, 1-hydroperoxide"
+,rose-like aroma,543323,0,0,0,0,0,0,0,0,0,1,0,0,543323,156.26,CC(CCCC(=C)C)CCO,"3,7-dimethyloct-7-en-1-ol","3,7-dimethyloct-7-en-1-ol"
+,,543664,0,0,0,0,0,0,0,0,1,0,0,0,543664,114.14,COC(=O)CCC=C,methyl pent-4-enoate,methyl pent-4-enoate
+,,544628,0,0,0,0,0,0,0,0,1,0,0,0,544628,128.17,CC1CCC(=O)OC1C,"5,6-dimethyloxan-2-one","5,6-dimethyloxan-2-one"
+,camphoraceous aroma??,565594,0,1,0,0,0,0,0,0,0,0,0,0,565594,182.26,CC1(C2CCC1(C(C2)C(=O)O)C)C,"1,7,7-trimethylbicyclo[2.2.1]heptane-2-carboxylic acid",camphanic acid
+,Sweet balsamic aroma,579675,1,0,0,0,0,0,0,0,0,0,0,1,579675,138.16,CC1=CC(=C(O1)C(=O)C)C,"1-(3,5-dimethylfuran-2-yl)ethanone","1-(3,5-dimethylfuran-2-yl)ethanone"
+,herbal like,586292,0,0,0,0,0,0,1,0,0,0,0,0,586292,152.23,CC1COC2C1CCC(=C2)C,"3,6-dimethyl-2,3,3a,4,5,7a-hexahydro-1-benzofuran",anethofuran
+,cinnamon,637511,0,0,0,0,0,0,0,0,0,0,0,0,637511,132.16,C1=CC=C(C=C1)/C=C/C=O,(E)-3-phenylprop-2-enal,cinnamaldehyde
+,strawberry,637520,0,0,0,0,0,0,0,0,0,0,0,0,637520,162.18,COC(=O)/C=C/C1=CC=CC=C1,methyl (E)-3-phenylprop-2-enoate,methyl cinnamate
+,aniseed,637563,0,0,0,0,0,0,0,0,0,0,0,0,637563,148.2,C/C=C/C1=CC=C(C=C1)OC,1-methoxy-4-[(E)-prop-1-enyl]benzene,anethole
+,citrus,637564,0,0,1,0,0,0,0,0,0,0,0,0,637564,96.13,C/C=C/C=C/C=O,"(2E,4E)-hexa-2,4-dienal","2,4-hexadienal"
+,rose,637566,0,0,0,0,0,0,0,0,0,1,0,0,637566,154.25,CC(=CCC/C(=C/CO)/C)C,"(2E)-3,7-dimethylocta-2,6-dien-1-ol",geraniol
+,floral,637759,0,0,0,1,0,0,0,0,0,0,0,0,637759,146.19,CC(=O)/C=C/C1=CC=CC=C1,(E)-4-phenylbut-3-en-2-one,benzylideneacetone
+,fruity,638014,0,0,0,0,1,0,0,0,0,0,0,0,638014,192.3,CC1=C(C(CCC1)(C)C)/C=C/C(=O)C,"(E)-4-(2,6,6-trimethylcyclohexen-1-yl)but-3-en-2-one",beta-ionone
+,spicy aroma,642376,0,0,0,0,0,0,0,0,0,0,1,0,642376,188.22,CCC/C=C\1/C2=CC=CC=C2C(=O)O1,(3Z)-3-butylidene-2-benzofuran-1-one,3-butylidenephthalide
+,lemon,643779,0,0,0,0,0,0,0,0,0,0,0,0,643779,152.23,CC(=CCC/C(=C\C=O)/C)C,"(2Z)-3,7-dimethylocta-2,6-dienal",neral
+,sweet,643820,0,0,0,0,0,0,0,0,0,0,0,1,643820,154.25,CC(=CCC/C(=C\CO)/C)C,"(2Z)-3,7-dimethylocta-2,6-dien-1-ol",nerol
+,rose,764139,0,0,0,0,0,0,0,0,0,1,0,0,764139,254.32,C/C=C/C1=CC(=C(C=C1)OCC2=CC=CC=C2)OC,2-methoxy-1-phenylmethoxy-4-[(E)-prop-1-enyl]benzene,120-11-6
+,Flower,853433,0,0,0,1,0,0,0,0,0,0,0,0,853433,164.2,C/C=C/C1=CC(=C(C=C1)O)OC,2-methoxy-4-[(E)-prop-1-enyl]phenol,isoeugenol
+,clove-like aroma??,876160,0,0,0,0,0,0,0,0,0,0,0,0,876160,206.24,C/C=C/C1=CC(=C(C=C1)OC(=O)C)OC,[2-methoxy-4-[(E)-prop-1-enyl]phenyl] acetate,acetylisoeugenol
+,Woody aroma??,929262,0,0,0,0,0,0,0,0,0,0,0,0,929262,250.38,C[C@]12CCCC([C@@H]1CC[C@@]3([C@@H]2CC(=O)O3)C)(C)C,"(3aR,5aS,9aS,9bR)-3a,6,6,9a-tetramethyl-1,4,5,5a,7,8,9,9b-octahydrobenzo[e][1]benzofuran-2-one",sclareolide
+,Floral,1549025,0,0,0,1,0,0,0,0,0,0,0,0,1549025,196.29,CC(=CCC/C(=C\COC(=O)C)/C)C,"[(2Z)-3,7-dimethylocta-2,6-dienyl] acetate",neryl acetate
+,Flower,1549026,0,0,0,1,0,0,0,0,0,0,0,0,1549026,196.29,CC(=CCC/C(=C/COC(=O)C)/C)C,"[(2E)-3,7-dimethylocta-2,6-dienyl] acetate",geranyl acetate
+,clove-carnation,1549045,0,0,0,0,0,0,0,0,0,0,0,0,1549045,178.23,C/C=C\C1=CC(=C(C=C1)OC)OC,"1,2-dimethoxy-4-[(Z)-prop-1-enyl]benzene",cis-methylisoeugenol
+,Flower,1549107,0,0,0,1,0,0,0,0,0,0,0,0,1549107,222.37,CC(=CCC/C(=C\CC/C(=C\CO)/C)/C)C,"(2Z,6Z)-3,7,11-trimethyldodeca-2,6,10-trien-1-ol","cis,cis-farnesol"
+,rose,1549108,0,0,0,0,0,0,0,0,0,1,0,0,1549108,222.37,CC(=CCC/C(=C/CC/C(=C\CO)/C)/C)C,"(2Z,6E)-3,7,11-trimethyldodeca-2,6,10-trien-1-ol","(2z,6e)-farnesol"
+,Flower,1549109,0,0,0,1,0,0,0,0,0,0,0,0,1549109,222.37,CC(=CCC/C(=C\CC/C(=C/CO)/C)/C)C,"(2E,6Z)-3,7,11-trimethyldodeca-2,6,10-trien-1-ol","(e,z)-farnesol"
+,rose,1549778,0,0,0,0,0,0,0,0,0,1,0,0,1549778,194.31,CC(=CCC/C(=C/CCC(=O)C)/C)C,"(5E)-6,10-dimethylundeca-5,9-dien-2-one",geranylacetone
+,sweet,1549992,0,0,0,0,0,0,0,0,0,0,0,1,1549992,222.37,CC1=CC[C@@H](CC1)[C@@](C)(CCC=C(C)C)O,(2R)-6-methyl-2-[(1R)-4-methylcyclohex-3-en-1-yl]hept-5-en-2-ol,alpha-bisabolol
+,floral,1550884,0,0,0,1,0,0,0,0,0,0,0,0,1550884,216.32,CCCCCC/C(=C\C1=CC=CC=C1)/C=O,(2E)-2-benzylideneoctanal,alpha-hexylcinnamaldehyde
+,floral,1550890,0,0,0,1,0,0,0,0,0,0,0,0,1550890,264.3,C1=CC=C(C=C1)/C=C/COC(=O)/C=C/C2=CC=CC=C2,[(E)-3-phenylprop-2-enyl] (E)-3-phenylprop-2-enoate,cinnamyl cinnamate
+,jasmine??,1623625,0,0,0,0,0,0,0,0,0,0,0,0,1623625,202.29,CCCCC/C(=C\C1=CC=CC=C1)/C=O,(2E)-2-benzylideneheptanal,amylcinnamaldehyde
+,jasmine??????,1712058,0,0,0,0,0,0,0,0,0,0,0,0,1712058,202.29,CCCCC/C(=C/C1=CC=CC=C1)/C=O,(2Z)-2-benzylideneheptanal,2-benzylideneheptanal
+,spicy aroma??????,1742210,0,0,0,0,0,0,0,0,0,0,1,0,1742210,220.35,C[C@@]12CC[C@@H]3[C@H](CC3(C)C)C(=C)CC[C@H]1O2,"(1R,4R,6R,10S)-4,12,12-trimethyl-9-methylidene-5-oxatricyclo[8.2.0.04,6]dodecane",caryophyllene oxide
+,floral aroma??,1757003,0,0,0,1,0,0,0,0,0,0,0,0,1757003,192.3,CC(=CCC/C(=C/C=C/C(=O)C)/C)C,"(3E,5E)-6,10-dimethylundeca-3,5,9-trien-2-one",pseudoionone
+,spicy aroma??,2734646,0,0,0,0,0,0,0,0,0,0,1,0,2734646,146.19,CC1=C(OC2=CC=CC=C12)C,"2,3-dimethyl-1-benzofuran","2,3-dimethylbenzofuran"
+,honey floral,2736960,0,0,0,1,0,0,0,0,0,0,0,0,2736960,228.27,CS(=O)(=O)C1=CC=C(C=C1)CCC(=O)O,3-(4-methylsulfonylphenyl)propanoic acid,387350-46-1
+,balsamic,3033866,1,0,0,0,0,0,0,0,0,0,0,0,3033866,204.35,CC1=CC/C(=C(/C)\CCC=C(C)C)/CC1,(4Z)-1-methyl-4-(6-methylhept-5-en-2-ylidene)cyclohexene,(z)-gamma-bisabolene
+,,3782139,0,0,0,0,0,0,0,0,1,0,0,0,3782139,152.23,CCCC1CC(=CC(=O)C1)C,3-methyl-5-propylcyclohex-2-en-1-one,3720-16-9
+,herbaceous,4120025,0,0,0,0,0,0,1,0,0,0,0,0,4120025,171.31,CC1C(=NC(S1)CC(C)C)C,"4,5-dimethyl-2-(2-methylpropyl)-2,5-dihydro-1,3-thiazole",65894-83-9
+,Sweet,4447651,0,0,0,0,0,0,0,0,0,0,0,1,4447651,134.2,CC(=O)OCCSC,2-methylsulfanylethyl acetate,2-(methylthio)ethyl acetate
+,floral aroma??????,5273465,0,0,0,1,0,0,0,0,0,0,0,0,5273465,204.26,CCCCOC(=O)/C=C/C1=CC=CC=C1,butyl (E)-3-phenylprop-2-enoate,butyl cinnamate
+,,5273469,0,0,0,0,0,0,0,0,1,0,0,0,5273469,238.28,C1=CC=C(C=C1)COC(=O)/C=C/C2=CC=CC=C2,benzyl (E)-3-phenylprop-2-enoate,benzyl cinnamate
+,fruity aroma??????,5280341,0,0,0,0,1,0,0,0,0,0,0,0,5280341,224.38,CC(CC/C=C(\C)/CCC=C(C)C)CCO,"(6E)-3,7,11-trimethyldodeca-6,10-dien-1-ol",dihydrofarnesol
+,Floral,5280435,0,0,0,1,0,0,0,0,0,0,0,0,5280435,296.5,C[C@@H](CCC[C@@H](C)CCC/C(=C/CO)/C)CCCC(C)C,"(E,7R,11R)-3,7,11,15-tetramethylhexadec-2-en-1-ol",phytol
+,grass,5280450,0,0,0,0,0,1,0,0,0,0,0,0,5280450,280.4,CCCCC/C=C\C/C=C\CCCCCCCC(=O)O,"(9Z,12Z)-octadeca-9,12-dienoic acid",linoleic acid
+,citrus,5280678,0,0,1,0,0,0,0,0,0,0,0,0,5280678,170.25,C/C(=C\CCC(C)(C=C)O)/CO,"(2E)-2,6-dimethylocta-2,7-diene-1,6-diol",8-hydroxylinalool
+,fruity,5280934,0,0,0,0,1,0,0,0,0,0,0,0,5280934,278.4,CC/C=C\C/C=C\C/C=C\CCCCCCCC(=O)O,"(9Z,12Z,15Z)-octadeca-9,12,15-trienoic acid",linolenic acid
+,grass,5281167,0,0,0,0,0,1,0,0,0,0,0,0,5281167,100.16,CC/C=C\CCO,(Z)-hex-3-en-1-ol,cis-3-hexen-1-ol
+,clove-like aroma,5281515,0,0,0,0,0,0,0,0,0,0,0,0,5281515,204.35,C/C/1=C\CCC(=C)[C@H]2CC([C@@H]2CC1)(C)C,"(1R,4E,9S)-4,11,11-trimethyl-8-methylidenebicyclo[7.2.0]undec-4-ene",beta-caryophyllene
+,Floral,5281516,0,0,0,1,0,0,0,0,0,0,0,0,5281516,204.35,CC(=CCC/C(=C/C/C=C(\C)/C=C)/C)C,"(3E,6E)-3,7,11-trimethyldodeca-1,3,6,10-tetraene",alpha-farnesene
+,fruity,5281517,0,0,0,0,1,0,0,0,0,0,0,0,5281517,204.35,CC(=CCC/C(=C/CCC(=C)C=C)/C)C,"(6E)-7,11-dimethyl-3-methylidenedodeca-1,6,10-triene",trans-beta-farnesene
+,rose,5281519,0,0,0,0,0,0,0,0,0,1,0,0,5281519,204.35,C/C/1=C\CC/C(=C/CC(=C(C)C)CC1)/C,"(1E,5E)-1,5-dimethyl-8-propan-2-ylidenecyclodeca-1,5-diene",germacrene b
+,spice,5281520,0,0,0,0,0,0,0,0,0,0,1,0,5281520,204.35,C/C/1=C\CC(/C=C/C/C(=C/CC1)/C)(C)C,"(1E,4E,8E)-2,6,6,9-tetramethylcycloundeca-1,4,8-triene",humulene
+,sweet,5281532,0,0,0,0,0,0,0,0,0,0,0,1,5281532,220.35,C/C(=C/CCC1(C2CCC(C2)C1=C)C)/CO,(Z)-2-methyl-5-(2-methyl-3-methylidene-2-bicyclo[2.2.1]heptanyl)pent-2-en-1-ol,(z)-.beta.-santalol
+,citrus,5281535,0,0,1,0,0,0,0,0,0,0,0,0,5281535,218.33,C/C(=C\CCC(=C)C=C)/CC/C=C(\C)/C=O,"(2E,6E)-2,6-dimethyl-10-methylidenedodeca-2,6,11-trienal",beta-sinensal
+,grass,5281553,0,0,0,0,0,1,0,0,0,0,0,0,5281553,136.23,CC(=CC/C=C(\C)/C=C)C,"(3E)-3,7-dimethylocta-1,3,6-triene",(e)-beta-ocimene
+,raspberry,5282108,0,0,0,0,0,0,0,0,0,0,0,0,5282108,192.3,CC1=CCCC(C1/C=C/C(=O)C)(C)C,"(E)-4-(2,6,6-trimethylcyclohex-2-en-1-yl)but-3-en-2-one",alpha-ionone
+,rose,5282109,0,0,0,0,0,0,0,0,0,1,0,0,5282109,182.26,CC(=CCC/C(=C/COC=O)/C)C,"[(2E)-3,7-dimethylocta-2,6-dienyl] formate",geranyl formate
+,sweet,5282110,0,0,0,0,0,0,0,0,0,0,0,1,5282110,176.21,CC(=O)OC/C=C/C1=CC=CC=C1,[(E)-3-phenylprop-2-enyl] acetate,cinnamyl acetate
+,sweet,5282707,0,0,0,0,0,0,0,0,0,0,0,1,5282707,114.14,CCC/C=C/C(=O)O,(E)-hex-2-enoic acid,trans-2-hexenoic acid
+,sweet,5282708,0,0,0,0,0,0,0,0,0,0,0,1,5282708,114.14,CC/C=C/CC(=O)O,(E)-hex-3-enoic acid,trans-3-hexenoic acid
+,butterscotch,5282714,0,0,0,0,0,0,0,0,0,0,0,0,5282714,142.2,CCCCC/C=C/C(=O)O,(E)-oct-2-enoic acid,trans-2-octenoic acid
+,greasy,5282718,0,0,0,0,0,0,0,0,0,0,0,0,5282718,142.2,CC/C=C\CCCC(=O)O,(Z)-oct-5-enoic acid,cis-5-octenoic acid
+,fatty aroma,5283316,0,0,0,0,0,0,0,0,0,0,0,0,5283316,112.17,CCCC/C=C/C=O,(E)-hept-2-enal,trans-2-heptenal
+,citrus,5283345,0,0,1,0,0,0,0,0,0,0,0,0,5283345,154.25,CCCCCCC/C=C/C=O,(E)-dec-2-enal,trans-2-decenal
+,citus aroma??,5283363,0,0,1,0,0,0,0,0,0,0,0,0,5283363,196.33,CCCCCCCCCC/C=C/C=O,(E)-tridec-2-enal,2-tridecenal
+,rose apple aroma,5284507,0,0,0,0,0,0,0,0,0,1,0,0,5284507,222.37,CC(=CCC/C(=C/CCC(C)(C=C)O)/C)C,"(6E)-3,7,11-trimethyldodeca-1,6,10-trien-3-ol",nerolidol
+,fatty aroma,5312586,0,0,0,0,0,0,0,0,0,0,0,0,5312586,156.22,CCCCCC/C=C/C(=O)O,(E)-non-2-enoic acid,2-nonenoic acid
+,floral,5315892,0,0,0,1,0,0,0,0,0,0,0,0,5315892,134.17,C1=CC=C(C=C1)/C=C/CO,(E)-3-phenylprop-2-en-1-ol,cinnamyl alcohol
+,Musky aroma??,5315941,0,0,0,0,0,0,0,0,0,0,0,0,5315941,250.4,C1CCC/C=C\CCCCCCCC(=O)CCC1,(9Z)-cycloheptadec-9-en-1-one,civetone
+,"Fruit, spice",5316217,0,0,0,0,1,0,0,0,0,0,1,0,5316217,216.32,CC1=COC2=C1CC([C@](C2)(C)C=C)C(=C)C,"(6S)-6-ethenyl-3,6-dimethyl-5-prop-1-en-2-yl-5,7-dihydro-4H-1-benzofuran",curzerene
+,spice,5317062,0,0,0,0,0,0,0,0,0,0,1,0,5317062,230.3,CC1=COC2=C1C(=O)[C@@H]([C@](C2)(C)C=C)C(=C)C,"(5R,6S)-6-ethenyl-3,6-dimethyl-5-prop-1-en-2-yl-5,7-dihydro-1-benzofuran-4-one",epicurzerenone
+,balsamic,5317844,1,0,0,0,0,0,0,0,0,0,0,0,5317844,204.35,C[C@H]1CC[C@H](CC2=C1CC[C@@H]2C)C(=C)C,"(1S,4S,7R)-1,4-dimethyl-7-prop-1-en-2-yl-1,2,3,4,5,6,7,8-octahydroazulene",alpha-guaiene
+,waalnut,5318042,0,0,0,0,0,0,0,0,0,0,0,0,5318042,100.16,CCC/C=C/CO,(E)-hex-2-en-1-ol,trans-2-hexen-1-ol
+,,5319022,0,0,0,0,0,0,0,0,1,0,0,0,5319022,190.24,CCC/C=C\1/C2=C(C=CCC2)C(=O)O1,"(3Z)-3-butylidene-4,5-dihydro-2-benzofuran-1-one",ligustilide
+,rose,5320128,0,0,0,0,0,0,0,0,0,1,0,0,5320128,222.37,CC(=CCC/C(=C\CCC(C)(C=C)O)/C)C,"(6Z)-3,7,11-trimethyldodeca-1,6,10-trien-3-ol",cis-nerolidol
+,vegetable,5320191,0,0,0,0,0,0,0,0,0,0,0,0,5320191,140.22,CC/C=C/CC/C=C/CO,"(2E,6E)-nona-2,6-dien-1-ol","2,6-nonadien-1-ol"
+,herbaceous,5320250,0,0,0,0,0,0,1,0,0,0,0,0,5320250,136.23,CC(=CC/C=C(/C)\C=C)C,"(3Z)-3,7-dimethylocta-1,3,6-triene",(z)-beta-ocimene
+,lavender,5352147,0,0,0,0,0,0,0,0,0,0,0,0,5352147,222.37,CC(=CCC/C(=C\CC(CO)C(=C)C)/C)C,"(4Z)-5,9-dimethyl-2-prop-1-en-2-yldeca-4,8-dien-1-ol",(z)-sesquilavandulol
+,sweet,5352437,0,0,0,0,0,0,0,0,0,0,0,1,5352437,204.35,CC1=CC/C(=C(\C)/CCC=C(C)C)/CC1,(4E)-1-methyl-4-(6-methylhept-5-en-2-ylidene)cyclohexene,(e)-gamma-bisabolene
+,herbaceous,5352456,0,0,0,0,0,0,1,0,0,0,0,0,5352456,204.26,CCC/C=C/COC(=O)C1=CC=CC=C1,[(E)-hex-2-enyl] benzoate,e-2-hexenyl benzoate
+,,5352557,0,0,0,0,0,0,0,0,1,0,0,0,5352557,142.2,CC/C=C/CCOC(=O)C,[(E)-hex-3-enyl] acetate,trans-3-hexenyl acetate
+,coconut,5352653,0,0,0,0,0,0,0,0,0,0,0,0,5352653,204.35,CC1=CCC(CC1)/C(=C\CC=C(C)C)/C,"1-methyl-4-[(2Z)-6-methylhepta-2,5-dien-2-yl]cyclohexene",(z)-alpha-bisabolene
+,grass,5352696,0,0,0,0,0,1,0,0,0,0,0,0,5352696,182.3,CCCCC/C=C(\CCCC)/C=O,(E)-2-butyloct-2-enal,(e)-2-butyl-2-octenal
+,spicy aroma,5352899,0,0,0,0,0,0,0,0,0,0,1,0,5352899,188.22,CCC/C=C/1\C2=CC=CC=C2C(=O)O1,(3E)-3-butylidene-2-benzofuran-1-one,butylidenephthalide
+,spicy aroma??,5352905,0,0,0,0,0,0,0,0,0,0,1,0,5352905,194.23,C/C=C/C1=CC(=C(C(=C1)OC)O)OC,"2,6-dimethoxy-4-[(E)-prop-1-enyl]phenol","4-propenyl-2,6-dimethoxyphenol"
+,sweet aroma,5353001,0,0,0,0,0,0,0,0,0,0,0,1,5353001,221.34,C/C=C/C=C\CC/C=C/C(=O)NCC(C)C,"(2E,6Z,8E)-N-(2-methylpropyl)deca-2,6,8-trienamide",spilanthol
+,Fatty aroma,5354605,0,0,0,0,0,0,0,0,0,0,0,0,5354605,170.25,CCCCC(CC)/C=C\C(=O)O,(Z)-4-ethyloct-2-enoic acid,"2-octenoic acid, 4-ethyl-, (2z)-"
+,rose,5354882,0,0,0,0,0,0,0,0,0,1,0,0,5354882,182.26,CC(=CCC/C(=C\COC=O)/C)C,"[(2Z)-3,7-dimethylocta-2,6-dienyl] formate",neryl formate
+,balsamic,5354883,1,0,0,0,0,0,0,0,0,0,0,0,5354883,162.18,C1=CC=C(C=C1)/C=C/COC=O,[(E)-3-phenylprop-2-enyl] formate,cinnamyl formate
+,fruity,5355152,0,0,0,0,1,0,0,0,0,0,0,0,5355152,114.14,CC/C=C\CC(=O)O,(Z)-hex-3-enoic acid,cis-3-hexenoic acid
+,floral balsamic,5355254,1,0,0,1,0,0,0,0,0,0,0,0,5355254,204.26,CCCC(=O)OC/C=C/C1=CC=CC=C1,[(E)-3-phenylprop-2-enyl] butanoate,cinnamyl butyrate
+,balsamic fruity,5355851,1,0,0,0,1,0,0,0,0,0,0,0,5355851,204.26,CC(C)C(=O)OC/C=C/C1=CC=CC=C1,[(E)-3-phenylprop-2-enyl] 2-methylpropanoate,cinnamyl isobutyrate
+,rose,5355856,0,0,0,0,0,0,0,0,0,1,0,0,5355856,224.34,CCCC(=O)OC/C=C(\C)/CCC=C(C)C,"[(2E)-3,7-dimethylocta-2,6-dienyl] butanoate",geranyl butyrate
+,Gardenia,5355858,0,0,0,0,0,0,0,0,0,0,0,0,5355858,284.4,CC(=CCCC(C)(C=C)OC(=O)/C=C/C1=CC=CC=C1)C,"3,7-dimethylocta-1,6-dien-3-yl (E)-3-phenylprop-2-enoate",linalyl cinnamate
+,rose,5357002,0,0,0,0,0,0,0,0,0,1,0,0,5357002,204.26,C/C=C(\C)/C(=O)OCCC1=CC=CC=C1,2-phenylethyl (E)-2-methylbut-2-enoate,phenethyl tiglate
+,Almond,5357153,0,0,0,0,0,0,0,0,0,0,0,0,5357153,230.3,C1CCC(CC1)OC(=O)/C=C/C2=CC=CC=C2,cyclohexyl (E)-3-phenylprop-2-enoate,cyclohexyl cinnamate
+,,5362563,0,0,0,0,0,0,0,0,1,0,0,0,5362563,139.22,CC1=C(SC(=N1)C)C=C,"5-ethenyl-2,4-dimethyl-1,3-thiazole","2,4-dimethyl-5-vinylthiazole"
+,Burnt meaty aroma,5362572,0,0,0,0,0,0,0,0,0,0,0,0,5362572,136.15,CC1=NC=CC(=N1)C(=O)C,1-(2-methylpyrimidin-4-yl)ethanone,67860-38-2
+,sweet-rosey aroma,5362584,0,0,0,0,0,0,0,0,0,1,0,1,5362584,143.25,CCC1N=C(C(S1)C)C,"2-ethyl-4,5-dimethyl-2,5-dihydro-1,3-thiazole",76788-46-0
+,,5362620,0,0,0,0,0,0,0,0,1,0,0,0,5362620,154.25,CCCCC/C=C\CCC=O,(Z)-dec-4-enal,cis-4-decenal
+,grass,5362889,0,0,0,0,0,1,0,0,0,0,0,0,5362889,204.35,CC(=CCC/C(=C/C/C=C(/C)\C=C)/C)C,"(3Z,6E)-3,7,11-trimethyldodeca-1,3,6,10-tetraene","(z,e)-alpha-farnesene"
+,jasmine-like aroma??,5363233,0,0,0,0,0,0,0,0,0,0,0,0,5363233,154.25,CCCCCC/C=C/C(=O)C,(E)-dec-3-en-2-one,3-decen-2-one
+,,5364533,0,0,0,0,0,0,0,0,1,0,0,0,5364533,208.38,CCCCCCC/C=C/C1CCCCC1,[(E)-non-1-enyl]cyclohexane,1-cyclohexylnonene
+,grass,5364578,0,0,0,0,0,1,0,0,0,0,0,0,5364578,112.17,CCC/C=C/C(=O)C,(E)-hept-3-en-2-one,3-hepten-2-one
+,fruity/green berry,5364729,0,0,0,0,1,0,0,0,0,0,0,0,5364729,140.18,C/C=C(\C)/C(=O)OCC=C,prop-2-enyl (E)-2-methylbut-2-enoate,allyl tiglate
+,fruity aroma,5365622,0,0,0,0,1,0,0,0,0,0,0,0,5365622,156.26,CCCC/C=C\CCCCO,(Z)-dec-5-en-1-ol,z-5-decen-1-ol
+,musk,5365703,0,0,0,0,0,0,0,0,0,0,0,0,5365703,252.39,C1CCCCOC(=O)CCCCC/C=C\CCC1,(8Z)-1-oxacycloheptadec-8-en-2-one,ambrettolid
+,herbaceous,5365794,0,0,0,0,0,0,1,0,0,0,0,0,5365794,226.35,CCOC(/C=C(\C)/CCC=C(C)C)OCC,"(2E)-1,1-diethoxy-3,7-dimethylocta-2,6-diene",citral diethyl acetal
+,pine apple,5365872,0,0,0,0,0,0,0,0,0,0,0,0,5365872,290.5,CC(=CCC/C(=C/CC/C(=C/CCC(C)(C=C)O)/C)/C)C,"(6E,10E)-3,7,11,15-tetramethylhexadeca-1,6,10,14-tetraen-3-ol",geranyllinalool
+,minty,5365890,0,0,0,0,0,0,0,1,0,0,0,0,5365890,220.35,CC(=CCC/C(=C/CC/C(=C\C=O)/C)/C)C,"(2Z,6E)-3,7,11-trimethyldodeca-2,6,10-trienal","(2z,6e)-farnesal"
+,floral,5365891,0,0,0,1,0,0,0,0,0,0,0,0,5365891,126.2,CCCCC(=O)/C=C/C,(E)-oct-2-en-4-one,2-octen-4-one
+,balsamic,5365916,1,0,0,0,0,0,0,0,0,0,0,0,5365916,192.3,C/C=C/C(=O)C1C(C=CCC1(C)C)C,"(E)-1-(2,6,6-trimethylcyclohex-3-en-1-yl)but-2-en-1-one",delta-damascone
+,woody,5365976,0,0,0,0,0,0,0,0,0,0,0,0,5365976,232.36,CC1=CCCC(C1/C=C/C(=O)CCC=C)(C)C,"(1E)-1-(2,6,6-trimethylcyclohex-2-en-1-yl)hepta-1,6-dien-3-one",allyl alpha-ionone
+,pine apple,5365992,0,0,0,0,0,0,0,0,0,0,0,0,5365992,252.39,CCCCCC(=O)OC/C=C(\C)/CCC=C(C)C,"[(2E)-3,7-dimethylocta-2,6-dienyl] hexanoate",geranyl hexanoate
+,apple,5366074,0,0,0,0,0,0,0,0,0,0,0,0,5366074,190.28,C/C=C/C(=O)C1=C(C=CCC1(C)C)C,"(E)-1-(2,6,6-trimethylcyclohexa-1,3-dien-1-yl)but-2-en-1-one",damascenone
+,balsamic,5366077,1,0,0,0,0,0,0,0,0,0,0,0,5366077,192.3,C/C=C/C(=O)C1C(=CCCC1(C)C)C,"(E)-1-(2,6,6-trimethylcyclohex-2-en-1-yl)but-2-en-1-one",alpha-damascone
+,spice,5367530,0,0,0,0,0,0,0,0,0,0,1,0,5367530,180.29,CCCCCCC/C=C/C=C/C=O,"(2E,4E)-dodeca-2,4-dienal",21662-16-8
+,Fatty aroma,5367665,0,0,0,0,0,0,0,0,0,0,0,0,5367665,268.5,CCCCCCCC/C=C/CCCCCCCCO,(E)-octadec-9-en-1-ol,elaidyl alcohol
+,banana,5367698,0,0,0,0,0,0,0,0,0,0,0,0,5367698,218.29,CC/C=C\CCOC(=O)CC1=CC=CC=C1,[(Z)-hex-3-enyl] 2-phenylacetate,42436-07-7
+,woody-earthy,5367706,0,0,0,0,0,0,0,0,0,0,0,0,5367706,204.26,CC/C=C\CCOC(=O)C1=CC=CC=C1,[(Z)-hex-3-enyl] benzoate,cis-3-hexenyl benzoate
+,Flower,5367785,0,0,0,1,0,0,0,0,0,0,0,0,5367785,236.35,C/C=C(\C)/C(=O)OC/C=C(\C)/CCC=C(C)C,"[(2E)-3,7-dimethylocta-2,6-dienyl] (E)-2-methylbut-2-enoate",geranyl tiglate
+,fruity aroma,5367806,0,0,0,0,1,0,0,0,0,0,0,0,5367806,156.22,C/C=C(\C)/C(=O)OCC(C)C,2-methylpropyl (E)-2-methylbut-2-enoate,isobutyl tiglate
+,floral,5368491,0,0,0,1,0,0,0,0,0,0,0,0,5368491,204.31,CCCCC/C(=C\C1=CC=CC=C1)/CO,(2E)-2-benzylideneheptan-1-ol,2-benzylidene-1-heptanol
+,grass,5368821,0,0,0,0,0,1,0,0,0,0,0,0,5368821,136.23,C/C=C(\C)/C=C/C=C(C)C,"(4E,6E)-2,6-dimethylocta-2,4,6-triene","2,6-dimethyl-2,4,6-octatriene"
+,rose,5369459,0,0,0,0,0,0,0,0,0,1,0,0,5369459,252.31,C1=CC=C(C=C1)CCOC(=O)/C=C/C2=CC=CC=C2,2-phenylethyl (E)-3-phenylprop-2-enoate,phenethyl cinnamate
+,Cocoa,5370602,0,0,0,0,0,0,0,0,0,0,0,0,5370602,188.26,CC(C)C/C=C(/C=O)\C1=CC=CC=C1,(E)-5-methyl-2-phenylhex-2-enal,5-methyl-2-phenyl-2-hexenal
+,camphor,5370646,0,1,0,0,0,0,0,0,0,0,0,0,5370646,160.21,C/C(=C\C1=CC=CC=C1)/C(=O)C,(E)-3-methyl-4-phenylbut-3-en-2-one,3-methyl-4-phenylbut-3-en-2-one
+,,5371002,0,0,0,0,0,0,0,0,1,0,0,0,5371002,206.32,CC1CC=C(C(C1(C)C)/C=C/C(=O)C)C,"(E)-4-(2,5,6,6-tetramethylcyclohex-2-en-1-yl)but-3-en-2-one",alpha-irone
+,,5372174,0,0,0,0,0,0,0,0,1,0,0,0,5372174,206.32,CC1=CCCC(C1/C=C(\C)/C(=O)C)(C)C,"(E)-3-methyl-4-(2,6,6-trimethylcyclohex-2-en-1-yl)but-3-en-2-one",127-51-5
+,rose,5373727,0,0,0,0,0,0,0,0,0,1,0,0,5373727,204.35,C/C/1=C/CCC(=C)/C=C\C(CC1)C(C)C,"(1Z,6Z)-1-methyl-5-methylidene-8-propan-2-ylcyclodeca-1,6-diene",germacrene d
+,Flower,5373819,0,0,0,1,0,0,0,0,0,0,0,0,5373819,162.18,COC1=CC=CC(=C1)/C=C/C=O,(E)-3-(3-methoxyphenyl)prop-2-enal,3-methoxycinnamaldehyde
+,Tea,5374527,0,0,0,0,0,0,0,0,0,0,0,0,5374527,192.3,C/C=C/C(=O)C1=C(CCCC1(C)C)C,"(E)-1-(2,6,6-trimethylcyclohexen-1-yl)but-2-en-1-one",23726-91-2
+,Flower,5375218,0,0,0,1,0,0,0,0,0,0,0,0,5375218,206.32,CCC(=O)/C=C/C1=C(CCCC1(C)C)C,"(E)-1-(2,6,6-trimethylcyclohexen-1-yl)pent-1-en-3-one",beta-methylionone
+,floral,5385520,0,0,0,1,0,0,0,0,0,0,0,0,5385520,188.26,CCCC/C(=C\C1=CC=CC=C1)/C=O,(2E)-2-benzylidenehexanal,alpha-butylcinnamaldehyde
+,almond,5463840,0,0,0,0,0,0,0,0,0,0,0,0,5463840,180.2,C1=CC=C(C=C1)/C=C(/C(CO)O)\O,"(Z)-4-phenylbut-3-ene-1,2,3-triol","(z)-4-phenylbut-3-ene-1,2,3-triol"
+,,5463905,0,0,0,0,0,0,0,0,1,0,0,0,5463905,204.31,CCCC(=O)C(CC)CC1=CC=CC=C1,3-benzylheptan-4-one,3-benzyl-4-heptanone
+,floral aroma??????,5463906,0,0,0,1,0,0,0,0,0,0,0,0,5463906,226.35,CCCCCCC/C=C/C(=O)OCCCC,butyl (E)-dec-2-enoate,butyl 2-decenoate
+,sweet fruit odour,5463910,0,0,0,0,1,0,0,0,0,0,0,1,5463910,156.26,CCC(C)CCCC(C)C=O,"2,6-dimethyloctanal","2,6-dimethyloctanal"
+,floral,5463911,0,0,0,1,0,0,0,0,0,0,0,0,5463911,246.39,CCOC(CC(C)CCCC(C)(C)O)OCC,"8,8-diethoxy-2,6-dimethyloctan-2-ol",hydroxycitronellal diethyl acetal
+,roasted aroma??,5463946,0,0,0,0,0,0,0,0,0,0,0,0,5463946,126.2,CCCC/C(=C\C)/C=O,(2E)-2-ethylidenehexanal,(2e)-2-ethylidenehexanal
+,spicy,5705112,0,0,0,0,0,0,0,0,0,0,1,0,5705112,238.28,C1=CC=C(C=C1)/C=C/COC(=O)C2=CC=CC=C2,[(E)-3-phenylprop-2-enyl] benzoate,cinnamyl benzoate
+,floral odour reminiscent of jasmine??????,6005821,0,0,0,1,0,0,0,0,0,0,0,0,6005821,248.36,CCCCC/C(=C\C1=CC=CC=C1)/C(OC)OC,[(E)-2-(dimethoxymethyl)hept-1-enyl]benzene,91-87-2
+,rose,6086514,0,0,0,0,0,0,0,0,0,1,0,0,6086514,224.34,CC(C)C(=O)OC/C=C(\C)/CCC=C(C)C,"[(2E)-3,7-dimethylocta-2,6-dienyl] 2-methylpropanoate",geranyl isobutyrate
+,cinnamon,6284401,0,0,0,0,0,0,0,0,0,0,0,0,6284401,176.21,C1COC(O1)/C=C/C2=CC=CC=C2,"2-[(E)-2-phenylethenyl]-1,3-dioxolane",cinncloval
+,orange,6365572,0,0,0,0,0,0,0,0,0,0,0,0,6365572,170.32,CC(=CCC/C(=C/CS)/C)C,"(2E)-3,7-dimethylocta-2,6-diene-1-thiol",thiogeraniol
+,spice,6427475,0,0,0,0,0,0,0,0,0,0,1,0,6427475,204.35,CC1CCC2C1C=C(CC=C2C)C(C)C,"1,4-dimethyl-7-propan-2-yl-1,2,3,3a,6,8a-hexahydroazulene","(1xi,4xi,5xi)-guaia-6,9-diene"
+,herbaceous,6428461,0,0,0,0,0,0,1,0,0,0,0,0,6428461,204.35,CC1=CCC(=CC1)C(C)CCC=C(C)C,"1-methyl-4-(6-methylhept-5-en-2-yl)cyclohexa-1,4-diene",.beta.-curcumene
+,fat,6428553,0,0,0,0,0,0,0,0,0,0,0,0,6428553,152.23,CCCCC/C=C/C=C\C=O,"(2Z,4E)-deca-2,4-dienal","cis,trans-2,4-decadienal"
+,Fruity aroma??????,6428929,0,0,0,0,1,0,0,0,0,0,0,0,6428929,164.2,CC(=O)C(CC1=CC=CC=C1)O,3-hydroxy-4-phenylbutan-2-one,3-hydroxy-4-phenylbutan-2-one
+,spice,6429077,0,0,0,0,0,0,0,0,0,0,1,0,6429077,202.33,C[C@H]1CC[C@H](C2=C1C=CC(=C2)C)C(C)C,"(1S,4S)-1,6-dimethyl-4-propan-2-yl-1,2,3,4-tetrahydronaphthalene",calamenene
+,raspberry,6429375,0,0,0,0,0,0,0,0,0,0,0,0,6429375,222.37,C/C/1=C\CC[C@@](/C=C/[C@@H](CC1)C(C)C)(C)O,"(1R,2E,4S,7E)-1,7-dimethyl-4-propan-2-ylcyclodeca-2,7-dien-1-ol",germacren-4-ol
+,sweet,6430754,0,0,0,0,0,0,0,0,0,0,0,1,6430754,222.37,CC1=C2C[C@@H](CC[C@@]2(CCC1)C)C(C)(C)O,"2-[(2R,4aS)-4a,8-dimethyl-2,3,4,5,6,7-hexahydro-1H-naphthalen-2-yl]propan-2-ol",10-epi-gamma-eudesmol
+,citrus,6431475,0,0,1,0,0,0,0,0,0,0,0,0,6431475,170.25,C[C@@]1(CC[C@@H](O1)C(C)(C)O)C=C,"2-[(2R,5R)-5-ethenyl-5-methyloxolan-2-yl]propan-2-ol",trans-furan linalool oxide
+,citrus,6431477,0,0,1,0,0,0,0,0,0,0,0,0,6431477,170.25,C[C@@]1([C@H](CCC(O1)(C)C)O)C=C,"(2S,3S)-2-ethenyl-2,6,6-trimethyloxan-3-ol","linalool oxide, pyrane, (z)-"
+,flower,6432254,0,0,0,1,0,0,0,0,0,0,0,0,6432254,170.25,C[C@]1(CC[C@H](O1)C(C)(C)O)C=C,"2-[(2S,5S)-5-ethenyl-5-methyloxolan-2-yl]propan-2-ol",trans-linalool oxide
+,mint,6432468,0,0,0,0,0,0,0,1,0,0,0,0,6432468,156.26,C[C@H]1CC[C@H]([C@@H](C1)O)C(C)C,"(1R,2S,5S)-5-methyl-2-propan-2-ylcyclohexan-1-ol",isomenthol
+,minty aroma??,6432473,0,0,0,0,0,0,0,1,0,0,0,0,6432473,156.26,C[C@H]1CC[C@@H](C[C@@H]1O)C(C)C,"(1S,2S,5S)-2-methyl-5-propan-2-ylcyclohexan-1-ol",carvomenthol
+,grass,6432543,0,0,0,0,0,1,0,0,0,0,0,0,6432543,222.37,C[C@H]1CCC2C1C3C(C3(C)C)CC[C@@]2(C)O,"(4R,7S)-1,1,4,7-tetramethyl-2,3,4a,5,6,7,7a,7b-octahydro-1aH-cyclopropa[e]azulen-4-ol",himbaccol
+,mint,6433214,0,0,0,0,0,0,0,1,0,0,0,0,6433214,180.24,CCCC/C=C/1\C(=C(C(=O)O1)C)C,"(5E)-3,4-dimethyl-5-pentylidenefuran-2-one",bovolide
+,grassy,6433507,0,0,0,0,0,1,0,0,0,0,0,0,6433507,246.34,CCCCCC(/C=C/C1=CC=CC=C1)OC(=O)C,[(E)-1-phenyloct-1-en-3-yl] acetate,amyl cinnamyl acetate
+,pineapple,6435833,0,0,0,0,0,0,0,0,0,0,0,0,6435833,152.19,C/C=C/C=C/C(=O)OCC=C,"prop-2-enyl (2E,4E)-hexa-2,4-dienoate",allyl sorbate
+,fruity aroma??????,6436486,0,0,0,0,1,0,0,0,0,0,0,0,6436486,144.21,CCC/C=C/C(OC)OC,"(E)-1,1-dimethoxyhex-2-ene",trans-2-hexenal dimethyl acetal
+,jasmin,6438070,0,0,0,0,0,0,0,0,0,0,0,0,6438070,168.23,CC/C=C/CC1CCCC(=O)O1,6-[(E)-pent-2-enyl]oxan-2-one,6-[(e)-pent-2-enyl]oxan-2-one
+,Balsamic,6441535,1,0,0,0,0,0,0,0,0,0,0,0,6441535,290.5,CC(=CCC/C(=C/COC/C=C(/CCC=C(C)C)\C)/C)C,"(2E)-1-[(2E)-3,7-dimethylocta-2,6-dienoxy]-3,7-dimethylocta-2,6-diene",digeranyl ether
+,sweet,6450269,0,0,0,0,0,0,0,0,0,0,0,1,6450269,220.35,C/C(=C\CC[C@@]1([C@H]2CC[C@H](C2)C1=C)C)/CO,"(E)-2-methyl-5-[(1S,2R,4R)-2-methyl-3-methylidene-2-bicyclo[2.2.1]heptanyl]pent-2-en-1-ol",trans-beta-santalol
+,camphoraceous aroma??????,6552009,0,1,0,0,0,0,0,0,0,0,0,0,6552009,154.25,C[C@@]12CC[C@@H](C1(C)C)C[C@@H]2O,"(1R,2S,4R)-1,7,7-trimethylbicyclo[2.2.1]heptan-2-ol",(+)-borneol
+,mint,6857383,0,0,0,0,0,0,0,1,0,0,0,0,6857383,170.25,C[C@@]12CC[C@@H](C[C@@H]1O)C(O2)(C)C,"(1R,4S,6S)-1,3,3-trimethyl-2-oxabicyclo[2.2.2]octan-6-ol",6-endo-hydroxycineole
+,sweet,6857559,0,0,0,0,0,0,0,0,0,0,0,1,6857559,220.35,C/C(=C/CC[C@@]1(C2CC3C1(C3C2)C)C)/CO,"(Z)-5-[(3R)-2,3-dimethyl-3-tricyclo[2.2.1.02,6]heptanyl]-2-methylpent-2-en-1-ol",santalol a
+,sweet,6857681,0,0,0,0,0,0,0,0,0,0,0,1,6857681,220.35,C/C(=C/CC[C@@]1([C@H]2CC[C@H](C2)C1=C)C)/CO,"(Z)-2-methyl-5-[(1S,2R,4R)-2-methyl-3-methylidene-2-bicyclo[2.2.1]heptanyl]pent-2-en-1-ol",beta-santalol
+,mint,7058097,0,0,0,0,0,0,0,1,0,0,0,0,7058097,196.29,C[C@H]1CC[C@@H]([C@@H](C1)OC(=O)C)C(=C)C,"[(1R,2R,5S)-5-methyl-2-prop-1-en-2-ylcyclohexyl] acetate",neo-isopulegol acetate
+,grass,9855795,0,0,0,0,0,1,0,0,0,0,0,0,9855795,204.35,C[C@@H]1CCC=C2[C@]1(C[C@@H](CC2)C(=C)C)C,"(3R,4aS,5R)-4a,5-dimethyl-3-prop-1-en-2-yl-2,3,4,5,6,7-hexahydro-1H-naphthalene",valencene
+,balsamic,10104370,1,0,0,0,0,0,0,0,0,0,0,0,10104370,204.35,CC1=CC[C@H](CC1)C(=C)CCC=C(C)C,"(4S)-1-methyl-4-(6-methylhepta-1,5-dien-2-yl)cyclohexene",beta-bisabolene
+,oily,10398656,0,0,0,0,0,0,0,0,0,0,0,0,10398656,222.37,CC1=C[C@H]2[C@@H](CC[C@@]([C@@H]2CC1)(C)O)C(C)C,"(1R,4S,4aR,8aR)-1,6-dimethyl-4-propan-2-yl-3,4,4a,7,8,8a-hexahydro-2H-naphthalen-1-ol",alpha-cadinol
+,,10608036,0,0,0,0,0,0,0,0,1,0,0,0,10608036,198.3,CCCCC1(CCC(=O)O1)CCCC,"5,5-dibutyloxolan-2-one","5,5-dibutyloxolan-2-one"
+,milky,10725569,0,0,0,0,0,0,0,0,0,0,0,0,10725569,154.21,CCCCCC1=CCC(=O)O1,5-pentyl-3H-furan-2-one,5-pentyl-3h-furan-2-one
+,sweet,10726905,0,0,0,0,0,0,0,0,0,0,0,1,10726905,204.35,CC1=CCC[C@]2([C@H]1C[C@H](CC2)C(=C)C)C,"(3S,4aR,8aR)-5,8a-dimethyl-3-prop-1-en-2-yl-2,3,4,4a,7,8-hexahydro-1H-naphthalene",(-)-7-epi-alpha-selinene
+,sweet,10856614,0,0,0,0,0,0,0,0,0,0,0,1,10856614,204.35,CC1=CCC[C@]2([C@H]1C[C@@H](CC2)C(=C)C)C,"(3R,4aR,8aR)-5,8a-dimethyl-3-prop-1-en-2-yl-2,3,4,4a,7,8-hexahydro-1H-naphthalene",alpha-selinene
+,sweet aroma??????,11196546,0,0,0,0,0,0,0,0,0,0,0,1,11196546,272.29,COC1=C(C=C(C=C1)C2CCC3=C(O2)C=C(C=C3)O)O,"2-(3-hydroxy-4-methoxyphenyl)-3,4-dihydro-2H-chromen-7-ol","7,3'-dihydroxy-4'-methoxyflavan"
+,mint-like aroma??????,11276107,0,0,0,0,0,0,0,1,0,0,0,0,11276107,222.37,C[C@@H]1CC[C@H]([C@H]2[C@]13[C@@H]2[C@@](CC3)(C)O)C(C)C,"(1R,4S,5R,6R,7S,10R)-4,10-dimethyl-7-propan-2-yltricyclo[4.4.0.01,5]decan-4-ol",cubebol
+,green aroma??????,11572085,0,0,0,0,0,0,0,0,0,0,0,0,11572085,220.35,C[C@@H]1CC(=O)CC2[C@]1(C[C@@H](CC2)C(=C)C)C,"(4R,4aS,6R)-4,4a-dimethyl-6-prop-1-en-2-yl-1,3,4,5,6,7,8,8a-octahydronaphthalen-2-one","1,10-dihydronootkatone"
+,Fruity aroma??????,11830590,0,0,0,0,1,0,0,0,0,0,0,0,11830590,206.28,CC(C)C(=O)OC(C)(C)C1=CC=CC=C1,2-phenylpropan-2-yl 2-methylpropanoate,7774-60-9
+,mint-like aroma,11976203,0,0,0,0,0,0,0,1,0,0,0,0,11976203,222.37,CC1CCC(C2C13C2C(CC3)(C)O)C(C)C,"4,10-dimethyl-7-propan-2-yltricyclo[4.4.0.01,5]decan-4-ol",cubebanol
+,garlic-like,12205936,0,0,0,0,0,0,0,0,0,0,0,0,12205936,111.17,C1=C[13CH]=C(C=C1)S,(213C)cyclohexatrienethiol,(213C)cyclohexatrienethiol
+,oily,12306048,0,0,0,0,0,0,0,0,0,0,0,0,12306048,204.35,CC1=C[C@@H]2[C@@H](CC1)C(=CC[C@H]2C(C)C)C,"(1S,4aR,8aR)-4,7-dimethyl-1-propan-2-yl-1,2,4a,5,6,8a-hexahydronaphthalene",alpha-cadinene
+,grass,12309745,0,0,0,0,0,1,0,0,0,0,0,0,12309745,204.35,C[C@@H]1CCC=C2[C@]1(CC(CC2)C(=C)C)C,"(4aS,5R)-4a,5-dimethyl-3-prop-1-en-2-yl-2,3,4,5,6,7-hexahydro-1H-naphthalene",valencene (isomer i)
+,balsamic,12314318,1,0,0,0,0,0,0,0,0,0,0,0,12314318,152.23,CC1(C2C[C@H](C(=C)C1C2)O)C,"(3R)-6,6-dimethyl-2-methylidenebicyclo[3.1.1]heptan-3-ol",bmse000561
+,sweet,12315252,0,0,0,0,0,0,0,0,0,0,0,1,12315252,204.35,CC(=CCC[C@@]1(C2C[C@H]3C1([C@H]3C2)C)C)C,"(2S,6R,7R)-1,7-dimethyl-7-(4-methylpent-3-enyl)tricyclo[2.2.1.02,6]heptane",(+)-alpha-santalene
+,fatty aroma??,12762300,0,0,0,0,0,0,0,0,0,0,0,0,12762300,208.34,CCCCCCCCCCC1=CC=CO1,2-decylfuran,2-decylfuran
+,minty aroma??,12956600,0,0,0,0,0,0,0,1,0,0,0,0,12956600,164.24,CC1=C(CC(CC1)C(=C)C)C=O,2-methyl-5-prop-1-en-2-ylcyclohexene-1-carbaldehyde,2-methyl-5-(1-methylethenyl)cyclohexene-1-carboxaldehyde
+,pineapple,13010742,0,0,0,0,0,0,0,0,0,0,0,0,13010742,156.22,CCCCC(CC=C)C(=O)O,2-prop-2-enylhexanoic acid,2-allylhexanoic acid
+,camphoraceous aroma??????,13428328,0,1,0,0,0,0,0,0,0,0,0,0,13428328,182.26,C[C@@]12CC[C@@H](C1(C)C)C[C@@H]2OC=O,"[(1R,2S,4R)-1,7,7-trimethyl-2-bicyclo[2.2.1]heptanyl] formate",bornyl formate
+,mint,13918681,0,0,0,0,0,0,0,1,0,0,0,0,13918681,154.25,CC(C)[C@@H]1CC[C@](C=C1)(C)O,"(1S,4S)-1-methyl-4-propan-2-ylcyclohex-2-en-1-ol",(z)-p-menth-2-en-1-ol
+,sweet,14059042,0,0,0,0,0,0,0,0,0,0,0,1,14059042,218.33,C/C(=C\CCC1(C2CC3C1(C3C2)C)C)/C=O,"(E)-5-(2,3-dimethyl-3-tricyclo[2.2.1.02,6]heptanyl)-2-methylpent-2-enal",(e)-.alpha.-santalal
+,herbaceous aroma??,14344497,0,0,0,0,0,0,1,0,0,0,0,0,14344497,168.23,CC1CCC2C(C(=O)OC2C1)C,"3,6-dimethyl-3a,4,5,6,7,7a-hexahydro-3H-1-benzofuran-2-one",dihydromintlactone
+,balsamic,15560252,1,0,0,0,0,0,0,0,0,0,0,0,15560252,204.35,C[C@H]1CCC(=C(C)C)CC2=C1CC[C@@H]2C,"(1S,4S)-1,4-dimethyl-7-propan-2-ylidene-2,3,4,5,6,8-hexahydro-1H-azulene",88-84-6
+,balsamic,15560253,1,0,0,0,0,0,0,0,0,0,0,0,15560253,204.35,C[C@@H]1CCC(=C(C)C)CC2=C1CC[C@H]2C,"(1R,4R)-1,4-dimethyl-7-propan-2-ylidene-2,3,4,5,6,8-hexahydro-1H-azulene",beta-guaiene
+,garlic like aroma??,15667721,0,0,0,0,0,0,0,0,0,0,0,0,15667721,238.5,CC(C)CCSSSCCC(C)C,3-methyl-1-(3-methylbutyltrisulfanyl)butane,diisoamyl trisulfide
+,grass,15983960,0,0,0,0,0,1,0,0,0,0,0,0,15983960,220.35,C[C@@H]1CC[C@H]([C@@H]2[C@H]1CCC(=C2)C)C(=C)CO,"2-[(1R,4R,4aS,8aR)-4,7-dimethyl-1,2,3,4,4a,5,6,8a-octahydronaphthalen-1-yl]prop-2-en-1-ol",artemisinic alcohol
+,musty aroma,16204532,0,0,0,0,0,0,0,0,0,0,0,0,16204532,176.26,C1CCC(CC1)CC2=NC=CN=C2,2-(cyclohexylmethyl)pyrazine,(cyclohexylmethyl)pyrazine
+,"sweet, floral",18373617,0,0,0,1,0,0,0,0,0,0,0,1,18373617,124.14,C1=CC=C(C=C1)OCO,phenoxymethanol,phenoxymethanol
+,,19352744,0,0,0,0,0,0,0,0,1,0,0,0,19352744,158.19,CCCCC(C(=O)C)C(=O)O,2-acetylhexanoic acid,2-acetylhexanoic acid
+,fruity aroma??????,19892555,0,0,0,0,1,0,0,0,0,0,0,0,19892555,308.4,CC(C)CCOC(C=O)(C1=CC=C(C=C1)O)OCCC(C)C,"2-(4-hydroxyphenyl)-2,2-bis(3-methylbutoxy)acetaldehyde",schembl9725703
+,peach/apricot,20098061,0,0,0,0,0,0,0,0,0,0,0,0,20098061,182.26,C=CCCC(=O)OC1CCCCC1,cyclohexyl pent-4-enoate,schembl1378849
+,,20327362,0,0,0,0,0,0,0,0,1,0,0,0,20327362,196.29,CC1(C2CCC1(C(C2)CC(=O)O)C)C,"2-(1,7,7-trimethyl-2-bicyclo[2.2.1]heptanyl)acetic acid",bornyl acetic acid
+,sulfury aroma??????,20831821,0,0,0,0,0,0,0,0,0,0,0,0,20831821,158.22,CC1=C(CCO1)SC(=O)C,"S-(5-methyl-2,3-dihydrofuran-4-yl) ethanethioate",26486-14-6
+,camphoraceous aroma??????,21149427,0,1,0,0,0,0,0,0,0,0,0,0,21149427,196.29,CC1=CC[C@H](C1(C)C)CCOC(=O)C,"2-[(1S)-2,2,3-trimethylcyclopent-3-en-1-yl]ethyl acetate",campholene acetate
+,Bland aroma??,21289747,0,0,0,0,0,0,0,0,0,0,0,0,21289747,258.35,CC(C)CC(CCCC(=O)O)(CC(C)C)C(=O)O,"2,2-bis(2-methylpropyl)hexanedioic acid",schembl536369
+,cherry,21651867,0,0,0,0,0,0,0,0,0,0,0,0,21651867,192.21,CCC(C(=O)C1=CC=CC=C1)C(=O)O,2-benzoylbutanoic acid,benzoylbutyric acid
+,nut-like aroma??,21885377,0,0,0,0,0,0,0,0,0,0,0,0,21885377,168.23,C=CCCCC1CCCC(=O)O1,6-pent-4-enyloxan-2-one,9-decen-5-olide
+,fruity,22235151,0,0,0,0,1,0,0,0,0,0,0,0,22235151,210.27,CC(OCCOC)OCC1=CC=CC=C1,1-(2-methoxyethoxy)ethoxymethylbenzene,benzyl methoxyethyl acetal
+,camphoraceous aroma??????,23617863,0,1,0,0,0,0,0,0,0,0,0,0,23617863,210.31,CCC(=O)O[C@H]1C[C@@H]2CC[C@]1(C2(C)C)C,"[(1S,2S,4S)-1,7,7-trimethyl-2-bicyclo[2.2.1]heptanyl] propanoate","isobornyl propionate, >=92%"
+,camphoraceous aroma??,23623868,0,1,0,0,0,0,0,0,0,0,0,0,23623868,182.26,C[C@@]12CC[C@@H](C1(C)C)C[C@H]2OC=O,"[(1R,2R,4R)-1,7,7-trimethyl-2-bicyclo[2.2.1]heptanyl] formate",isobornyl formate
+,camphoraceous aroma??????,24832090,0,1,0,0,0,0,0,0,0,0,0,0,24832090,238.37,CC(C)CC(=O)O[C@@H]1CC2CC[C@]1(C2(C)C)C,"[(1S,2R)-1,7,7-trimethyl-2-bicyclo[2.2.1]heptanyl] 3-methylbutanoate",a838728
+,"sweet, tenacious",24832102,0,0,0,0,0,0,0,0,0,0,0,1,24832102,220.35,C/C(=C/CC[C@@]1(C2C[C@@H]3C1(C3C2)C)C)/CO,"(Z)-5-[(1S,3R)-2,3-dimethyl-3-tricyclo[2.2.1.02,6]heptanyl]-2-methylpent-2-en-1-ol",schembl14363250
+,pineapple aroma,25200724,0,0,0,0,0,0,0,0,0,0,0,0,25200724,128.13,CC1=C(C(=C(O1)C)O)O,"2,5-dimethylfuran-3,4-diol",furaneol (enol form)
+,mint,40488241,0,0,0,0,0,0,0,1,0,0,0,0,40488241,196.29,C[C@@H]1CC[C@@H](C[C@@H]1OC(=O)C)C(=C)C,"[(1S,2R,5S)-2-methyl-5-prop-1-en-2-ylcyclohexyl] acetate",zinc4521481
+,citrus,42608159,0,0,1,0,0,0,0,0,0,0,0,0,42608159,204.35,C[C@@H]1CC[C@H]([C@H]2C13[C@@H]2C(=CC3)C)C(C)C,"(5S,6R,7S,10R)-4,10-dimethyl-7-propan-2-yltricyclo[4.4.0.01,5]dec-3-ene",alpha-cubebene
+,rancid,44134911,0,0,0,0,0,0,0,0,0,0,0,0,44134911,128.17,CC=CCCCC(=O)O,hept-5-enoic acid,hept-5-enoic acid
+,Sweet aroma??????,44390556,0,0,0,0,0,0,0,0,0,0,0,1,44390556,296.31,C=CCC1=CC=C(C=C1)O[C@H]2[C@@H]([C@H]([C@@H]([C@H](O2)CO)O)O)O,"(2R,3S,4S,5R,6S)-2-(hydroxymethyl)-6-(4-prop-2-enylphenoxy)oxane-3,4,5-triol",4-(2-propenyl)phenyl-beta-d-glucopyranoside
+,fresh aroma,45274957,0,0,0,0,0,0,0,0,0,0,0,0,45274957,198.34,CCC1C(CCC(O1)(C)CC)C(C)C,"2,6-diethyl-2-methyl-5-propan-2-yloxane",unii-hi63s8dq0b
+,fruity aroma,53422473,0,0,0,0,1,0,0,0,0,0,0,0,53422473,216.36,CCCCCCOC(C)OCCC(C)C,1-[1-(3-methylbutoxy)ethoxy]hexane,acetaldehyde hexyl isoamyl acetal
+,sweet,53422899,0,0,0,0,0,0,0,0,0,0,0,1,53422899,128.17,CC(C)C=C(C)C(=O)O,"2,4-dimethylpent-2-enoic acid","2,4-dimethyl-2-pentenoic acid"
+,fruity aroma??,53423642,0,0,0,0,1,0,0,0,0,0,0,0,53423642,228.24,C1=COC(=C1)CC2=CC(=CO2)CC3=CC=CO3,"2,4-bis(furan-2-ylmethyl)furan","2,4-difurfurylfuran"
+,sweet,54183030,0,0,0,0,0,0,0,0,0,0,0,1,54183030,220.35,CC(=CCCC1(C2C[C@H]3C1([C@H]3C2)C)C)CO,"5-[(1R,6S)-2,3-dimethyl-3-tricyclo[2.2.1.02,6]heptanyl]-2-methylpent-2-en-1-ol","5-[(1R,6S)-2,3-dimethyl-3-tricyclo[2.2.1.02,6]heptanyl]-2-methylpent-2-en-1-ol"
+,fruity,54421029,0,0,0,0,1,0,0,0,0,0,0,0,54421029,240.38,CCCCCCCCC=CC(=O)OCCCC,butyl undec-2-enoate,schembl858499
+,minty,56924101,0,0,0,0,0,0,0,1,0,0,0,0,56924101,152.23,CC(C)C1=CCC(C=C1)CO,"(4-propan-2-ylcyclohexa-2,4-dien-1-yl)methanol",dihydro cuminyl alcohol
+,mint,70678558,0,0,0,0,0,0,0,1,0,0,0,0,70678558,204.35,CC1=CC[C@H]2[C@H]3C1[C@]2(CC[C@H]3C(C)C)C,"(1S,6S,7S,8S)-1,3-dimethyl-8-propan-2-yltricyclo[4.4.0.02,7]dec-3-ene",copaene
+,citrus,71586808,0,0,1,0,0,0,0,0,0,0,0,0,71586808,216.32,C[C@@H]1CC(=O)C=C2[C@]1(C[C@@H](C=C2)C(=C)C)C,"(4R,4aS,6S)-4,4a-dimethyl-6-prop-1-en-2-yl-3,4,5,6-tetrahydronaphthalen-2-one",dehydronootkatone
+,green aroma,71587038,0,0,0,0,0,0,0,0,0,0,0,0,71587038,220.35,C[C@@H]1CC(=O)C[C@H]2[C@]1(C[C@@H](CC2)C(=C)C)C,"(4R,4aS,6R,8aS)-4,4a-dimethyl-6-prop-1-en-2-yl-1,3,4,5,6,7,8,8a-octahydronaphthalen-2-one",dihydronootkatone
+,coumarin-like aroma??,71587277,0,0,0,0,0,0,0,0,0,0,0,0,71587277,164.2,C[C@@H]1CCC2=C(C(=O)OC2=C1)C,"(6R)-3,6-dimethyl-5,6-dihydro-4H-1-benzofuran-2-one",dehydromenthofurolactone
+,fruity,71587538,0,0,0,0,1,0,0,0,0,0,0,0,71587538,172.29,CCCCCC(=O)SCC=C,S-prop-2-enyl hexanethioate,allyl thiohexanoate
+,herbaceous aroma,71587848,0,0,0,0,0,0,1,0,0,0,0,0,71587848,248.36,CCCCCC(=O)OC(C)(C)CC1=CC=CC=C1,(2-methyl-1-phenylpropan-2-yl) hexanoate,dimethylbenzyl carbinyl hexanoate
+,vanilla,71752927,0,0,0,0,0,0,0,0,0,0,0,0,71752927,185.23,[2H]C([2H])([2H])C(=O)C([2H])([2H])C1=CC(=C(C=C1)O)OC,"1,1,1,3,3-pentadeuterio-3-(4-hydroxy-3-methoxyphenyl)propan-2-one","1,1,1,3,3-pentadeuterio-3-(4-hydroxy-3-methoxyphenyl)propan-2-one"
+,fruity aroma??????,73555259,0,0,0,0,1,0,0,0,0,0,0,0,73555259,226.35,CCCCCCCC=CC(=O)OCCCC,butyl dec-2-enoate,dtxsid10864074
+,sweet,86575103,0,0,0,0,0,0,0,0,0,0,0,1,86575103,220.35,CC1([C@@H]2CC[C@]3(C2)C(CCC3C1=C)CO)C,"[(1R,8R)-7,7-dimethyl-6-methylidene-2-tricyclo[6.2.1.01,5]undecanyl]methanol","[(1R,8R)-7,7-dimethyl-6-methylidene-2-tricyclo[6.2.1.01,5]undecanyl]methanol"
+,nutty aroma,90797532,0,0,0,0,0,0,0,0,0,0,0,0,90797532,194.18,CC(C(=O)C1=C(C=CC(=C1)O)C=O)O,4-hydroxy-2-(2-hydroxypropanoyl)benzaldehyde,4-hydroxy-2-(2-hydroxypropanoyl)benzaldehyde
+,fruity,90887773,0,0,0,0,1,0,0,0,0,0,0,0,90887773,430.7,CCCCCCCCCCCC(=O)OC(C(CO)OCCCCCCCCCC)O,"(2-decoxy-1,3-dihydroxypropyl) dodecanoate","(2-decoxy-1,3-dihydroxypropyl) dodecanoate"
+,butter-sweet,91187616,0,0,0,0,0,0,0,0,0,0,0,1,91187616,212.24,CCCC(=O)C(=O)CCC(=O)CC(=O)C,"undecane-2,4,7,8-tetrone","undecane-2,4,7,8-tetrone"
+,spicy aroma??????,91554343,0,0,0,0,0,0,0,0,0,0,1,0,91554343,166.22,CC(=C)C1C[C@@H]2[C@](O2)(C(=O)C1)C,"(1S,6R)-1-methyl-4-prop-1-en-2-yl-7-oxabicyclo[4.1.0]heptan-2-one","(1S,6R)-1-methyl-4-prop-1-en-2-yl-7-oxabicyclo[4.1.0]heptan-2-one"
+,fruity,91746537,0,0,0,0,1,0,0,0,0,0,0,0,91746537,204.35,CC1CC[C@@H]2[C@H]1[C@@H]3[C@@H](C3(C)C)CCC2=C,"(1aS,4aR,7aS,7bR)-1,1,7-trimethyl-4-methylidene-2,3,4a,5,6,7,7a,7b-octahydro-1aH-cyclopropa[e]azulene",alloaromadendrene
+,citrus,91747196,0,0,1,0,0,0,0,0,0,0,0,0,91747196,204.35,C[C@H]1CC[C@@H]([C@@H]2C13C2C(=CC3)C)C(C)C,"(6S,7R,10S)-4,10-dimethyl-7-propan-2-yltricyclo[4.4.0.01,5]dec-3-ene",cubebene
+,fruity,91748522,0,0,0,0,1,0,0,0,0,0,0,0,91748522,222.37,C[C@H]1CCCC(=C)C2C1CC(C2)C(C)(C)O,"2-[(4S)-4-methyl-8-methylidene-2,3,3a,4,5,6,7,8a-octahydro-1H-azulen-2-yl]propan-2-ol",bicyclovetivenol
