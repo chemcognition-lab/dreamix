@@ -21,7 +21,6 @@ from pom import EndToEndModule
 from pom.data import GraphDataset
 from pom.early_stop import EarlyStopping
 from pom.gnn.graphnets import GraphNets
-# from pom.gnn.graph_utils import get_graph_degree_histogram, get_pooling_function
 
 # glm
 from prediction_head.data import TaskType, get_loss_fn
@@ -55,17 +54,17 @@ def get_split_file(dataset_name, test_size):
 if __name__ == '__main__':
 
     # create folders for logging
-    fname = f'general_models/graphnets/'      # create a file name to log all outputs
+    fname = f'general_models/graphnets_gs-lf-mayhew/'      # create a file name to log all outputs
     os.makedirs(fname, exist_ok=True)
 
     # hparams settings
     hp = ConfigDict()
 
-    # using graphnets
-    hp.global_dim = 128     # this is also the embedding space
+    # using graphnets parameters from hparam opt
+    hp.global_dim = 320     # this is also the embedding space
     hp.depth = 3
-    hp.hidden_dim = 100
-    hp.dropout = 0.1
+    hp.hidden_dim = 64
+    hp.dropout = 0.05
     hp.num_epochs = 200
     hp.lr = 5e-4
     hp.batch_size = 64
@@ -82,10 +81,10 @@ if __name__ == '__main__':
     data_names.remove('abraham_2012')       # cannot load
     data_names.remove('arctander_1960')     # singleton issue
     data_names.remove('aromadb_descriptor') # singleton issue
-    data_names.remove('ifra_2019') # singleton issue
-    data_names.remove('flavornet') # singleton issue
-    data_names.remove('sharma_2021a') # singleton issue
-    data_names.remove('sigma_2014') # singleton issue
+    data_names.remove('ifra_2019')          # singleton issue
+    data_names.remove('flavornet')          # singleton issue
+    data_names.remove('sharma_2021a')       # singleton issue
+    data_names.remove('sigma_2014')         # singleton issue
 
     # Load all models and datasets
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -104,10 +103,7 @@ if __name__ == '__main__':
         specs[dname] = task_spec
 
         train_ind, test_ind = get_split_file(dname, test_size=0.2)
-
-        features = dl.features
-        targets = dl.labels
-        dataset = GraphDataset(features, targets)
+        dataset = GraphDataset(dl.features, dl.labels)
 
         # split the data and get dataloaders
         train_set = torch.utils.data.Subset(dataset, train_ind.flatten())
@@ -123,23 +119,22 @@ if __name__ == '__main__':
                     'test_loader': test_loader,
                     'loss_fn': get_loss_fn(task)(),
                     'metric_fn': utils.get_metric_function(task),
-                    # 'task_spec': task_spec,
                 }
             } 
         )
 
-    gr = features[0]
-    gnn = GraphNets(gr.x.shape[-1], gr.edge_attr.shape[-1], hp.global_dim, hidden_dim = hp.hidden_dim, depth=hp.depth, dropout = hp.dropout).to(device)
+    # create model
+    gnn = GraphNets(
+        dataset.node_dim, 
+        dataset.edge_dim, 
+        hp.global_dim, 
+        hidden_dim = hp.hidden_dim, 
+        depth=hp.depth, 
+        dropout = hp.dropout
+    ).to(device)
     pred = GLMStructured(input_dim=hp.global_dim, tasks=specs).to(device)
     model = EndToEndModule(gnn, pred).to(device)
-    # instantiate
-    with torch.no_grad():
-        for dname, store in data_store.items():
-            for x, y in store['train_loader']:
-                model(x, dname)
-                break
     optimizer = torch.optim.Adam(model.parameters(), lr=hp.lr)
-
 
     # optimization things
     es = EarlyStopping(gnn, patience=20, mode='maximize')       # early stopping only GNN weights
@@ -214,14 +209,6 @@ if __name__ == '__main__':
         if stop:
             print(f'Early stop reached at {es.best_step} with loss {es.best_value}')
             break
-    
-        # # perform a check between all the models
-        # same_weights = True
-        # for p1, p2 in zip(model_store['gs-lf']['model'].gnn_embedder.parameters(), model_store['mayhew_2022']['model'].gnn_embedder.parameters()):
-        #     if p1.data.ne(p2.data).sum() > 0:
-        #         same_weights = False 
-        #         break
-        # print(f'Weights same: {same_weights} ')
 
     log = pd.DataFrame(log)
     
@@ -234,12 +221,12 @@ if __name__ == '__main__':
     # also plot sand save the training loss (for diagnostics)
     log.to_csv(f'{fname}/training.csv', index=False)
     plt_log = log[['epoch', 'val_metric', 'dataset']].melt(id_vars=['epoch', 'dataset'], var_name='set', value_name='metric')
-    sns.lineplot(data=plt_log, x='epoch', y='metric', hue='set', style='dataset') 
+    sns.lineplot(data=plt_log, x='epoch', y='metric', hue='dataset') 
     plt.savefig(f'{fname}/metric.png', bbox_inches='tight')
     plt.close()
 
     plt_log = log[['epoch', 'train_loss', 'val_loss', 'dataset']].melt(id_vars=['epoch', 'dataset'], var_name='set', value_name='loss')
-    sns.lineplot(data=plt_log, x='epoch', y='loss', hue='set', style='dataset') 
+    sns.lineplot(data=plt_log, x='epoch', y='loss', style='set', hue='dataset') 
     plt.savefig(f'{fname}/loss.png', bbox_inches='tight')
     plt.close()
 

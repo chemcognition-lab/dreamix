@@ -54,7 +54,7 @@ def get_split_file(dataset_name, test_size):
         np.savez(fname, train_ind=train_ind, test_ind=test_ind)
     return train_ind, test_ind
 
-def objective(trial, train_loader, test_loader, task, task_dim, gr):
+def objective(trial, ds, train_loader, test_loader, task, task_dim):
     # hparams settings
     hp = ConfigDict({'gnn': ConfigDict(), 'head': ConfigDict(), 'training': ConfigDict()})
 
@@ -66,8 +66,6 @@ def objective(trial, train_loader, test_loader, task, task_dim, gr):
     hp.gnn.dropout = trial.suggest_float('dropout', 0, 0.5, step=0.05)
     hp.training.lr = trial.suggest_categorical('learning_rate', [1e-2, 5e-3, 1e-3, 5e-4, 1e-4, 5e-5]) # [1e-2, 5e-3, 1e-3, 5e-4, 1e-4, 5e-5]
     hp.training.num_epochs = 300        # early stopping
-    hp.training.batch_size = 64
-    hp.training.val_size = 0.2
 
     seed = 42
     utils.set_seed(seed)
@@ -76,8 +74,8 @@ def objective(trial, train_loader, test_loader, task, task_dim, gr):
     # Load all models and datasets
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     gnn = GraphNets(
-        gr.x.shape[-1], 
-        gr.edge_attr.shape[-1], 
+        ds.node_dim, 
+        ds.edge_dim, 
         hp.gnn.global_dim, 
         hidden_dim=hp.gnn.hidden_dim, 
         depth=hp.gnn.depth, 
@@ -88,7 +86,7 @@ def objective(trial, train_loader, test_loader, task, task_dim, gr):
     optimizer = torch.optim.Adam(model.parameters(), lr=hp.training.lr)
 
     # optimization things
-    es = EarlyStopping(gnn, patience=15, mode='maximize')       # early stopping only GNN weights
+    es = EarlyStopping(gnn, patience=20, mode='maximize')       # early stopping only GNN weights
     log = {k: [] for k in ['epoch', 'train_loss', 'val_loss', 'val_metric', 'dataset']}
     pbar = tqdm.tqdm(range(hp.training.num_epochs))
 
@@ -145,7 +143,6 @@ def objective(trial, train_loader, test_loader, task, task_dim, gr):
             break
 
     log = pd.DataFrame(log)
-    # torchinfo.summary(gnn)
 
     return es.best_value
 
@@ -162,10 +159,7 @@ if __name__ == '__main__':
     task_dim = data_specs['task_dim']
 
     train_ind, test_ind = get_split_file(dname, test_size=0.2)
-
-    features = dl.features
-    targets = dl.labels
-    dataset = GraphDataset(features, targets)
+    dataset = GraphDataset(dl.features, dl.labels)
 
     # split the data and get dataloaders
     train_set = torch.utils.data.Subset(dataset, train_ind.flatten())
@@ -174,7 +168,10 @@ if __name__ == '__main__':
     test_loader = pygdl(test_set, batch_size=128, shuffle=False)
 
     study = optuna.create_study(direction="maximize")
-    study.optimize(partial(objective, train_loader=train_loader, test_loader=test_loader, task=task, task_dim=task_dim, gr=features[0]), n_trials=100)
+    study.optimize(
+        partial(objective, ds=dataset, train_loader=train_loader, test_loader=test_loader, task=task, task_dim=task_dim), 
+        n_trials=100
+    )
 
     print('###########################################')
     print(f'Best achieved score: {study.best_trial.value}')

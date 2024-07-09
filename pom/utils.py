@@ -64,31 +64,7 @@ def jsonify(val: Any):
         return val
     else:
         return val.__name__
-    
-    
-def get_embeddings_from_smiles(smi_list: List[str], file_path: str, model: Optional[torch.nn.Module] = None):
-    # generate a matrix of embeddings
-    # Size: [N, embedding_size]
-    # enter a model if you want to load a different model, otherwise defaulting
-    graphs = [graph_utils.from_smiles(smi, init_globals=True) for smi in smi_list]
-    dataset = GraphDataset(graphs, torch.zeros(len(graphs), 1))
-    loader = pygdl(dataset, batch_size=64, shuffle=False)
 
-    if model is None:
-        model = GraphNets.from_json(f'{file_path}/gnn_hparams.json')
-        state_dict = torch.load(f'{file_path}/gnn_embedder.pt', map_location=torch.device('cpu'))
-        model.load_state_dict(state_dict)
-
-    embeddings = []
-    with torch.no_grad():
-        model.eval()
-        for batch in loader:
-            data, _ = batch
-            embed = model(data)
-            embeddings.append(embed)
-        embeddings = torch.concat(embeddings, dim=0)
-
-    return embeddings
 
         
 

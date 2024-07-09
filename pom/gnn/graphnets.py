@@ -180,8 +180,8 @@ class GraphNets(nn.Module):
         return u
     
     @classmethod
-    def from_json(cls, json_path: str):
+    def from_json(cls, node_dim, edge_dim, json_path: str):
         params = json.load(open(json_path, 'r'))
-        return cls(**params)
+        return cls(node_dim, edge_dim, **params)
 
 
