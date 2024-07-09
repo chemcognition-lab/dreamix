@@ -40,9 +40,12 @@ class EndToEndModule(nn.Module):
         self.gnn_embedder = gnn_embedder
         self.nn_predictor = nn_predictor
     
-    def forward(self, data):
+    def forward(self, data: pyg.data.Data, dataset_name: Optional[str] = None):
         embedding = self.gnn_embedder(data)
-        output = self.nn_predictor(embedding)
+        if dataset_name is None:
+            output = self.nn_predictor(embedding)
+        else:
+            output = self.nn_predictor(embedding, dataset_name)
         return output
     
     def save_hyperparameters(self, fname):
