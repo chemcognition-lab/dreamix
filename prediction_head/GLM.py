@@ -11,24 +11,22 @@ root_path = Path(__file__).parent.parent.resolve()
 sys.path.append(str(root_path))
 from prediction_head.data import (
     TaskType,
+    TaskSpec,
     get_activation,
-    get_loss_fn,
-    get_metrics,
-    get_optimizer,
+    get_loss_fn_dict,
+    get_metrics_dict,
+    get_loss_fn_dict,
+    get_mask,
+    get_loss_sum,
+    get_optimizer_dict,
+    use_loss_fn_dict,
 )
 from torch import nn
 import numpy as np
 import torch
-import dataclasses
+import tqdm
 import functools
-
-
-@dataclasses.dataclass
-class TaskSpec:
-    "Task specification for a GLM."
-    name: str
-    dim: int
-    task: TaskType
+import pandas as pd
 
 
 class GLM(nn.Module):
@@ -55,8 +53,11 @@ class GLM(nn.Module):
 class GLMStructured(nn.Module):
     "Generalized Linear Models for predicting multiple outputs."
 
-    def __init__(self, input_dim: int, tasks: list[TaskSpec]):
-        self.models = {task.name: GLM.from_spec(input_dim, task) for task in tasks}
+    def __init__(self, input_dim: int, tasks: dict[TaskSpec]):
+        super(GLMStructured, self).__init__()
+        self.models = {
+            name: GLM.from_spec(input_dim, task) for name, task in tasks.items()
+        }
 
     def forward(self, x):
         return {name: model(x) for name, model in self.models.items()}
@@ -73,175 +74,116 @@ def get_probability_calibration(predictions, y_test, metric) -> float:
     return best_threshold
 
 
-def train_one_epoch(
-    epoch_index: int, optimizer, dataloader, loss_fn, model, n_batches: int = 10
-):
-    running_loss = 0.0
-    batch_loss = 0.0
+# input structure should be a dictionary with the following keys:
+# name, and then model, optimizer, loaders, loss func, etc.
 
-    for i, data in enumerate(dataloader):
-        inputs, labels, y_mask = data
-        optimizer.zero_grad()
-        outputs = model(inputs)
-
-        # def loss_fn(outputs, labels, mask):
-        #     return loss_fn(outputs, labels)
-
-        # def loss_fn(outputs, labels, mask):
-        #     binary_loss = nn.BCELoss()(outputs > 0, labels)
-        #     reg_loss = nn.MSELoss()(outputs * mask, labels * mask)
-        #     return binary_loss + reg_loss
-
-        # loss = loss_fn(outputs, y_mask, labels, y_mask)  # mask out zero values
-        # loss = loss_fn(outputs * y_mask, labels * y_mask)
-        loss = loss_fn(outputs, labels)
-        optimizer.zero_grad()
-        loss.backward()
-        optimizer.step()
-        running_loss += loss.item()
-        if i % n_batches == n_batches - 1:
-            batch_loss = running_loss / n_batches
-            running_loss = 0.0
-
-    return batch_loss
+# y_true = {name: TensorSpec}
 
 
 def train_loop(
-    input_dim: int,
-    task_specs: dict,
-    dataloaders: dict,
+    datasets: dict[str, dict],
     epochs: int,
 ) -> dict:
-    glm_structured = GLMStructured(input_dim, task_specs)
-    glm_structured_results = {}
-    for (name, model), dataloader in zip(
-        glm_structured.models.items(),
-        dataloaders.values(),
-    ):
-        print(f"{name=}")
+    log = {k: [] for k in ["epoch", "train_loss", "val_loss", "val_metric", "dataset"]}
+    for name, dataset_store in datasets.items():
+        train_dataloader = dataset_store["train_dataloader"]
+        test_dataloader = dataset_store["test_dataloader"]
+        scaler = dataset_store["scaler"]
+        tasktype = dataset_store["tasktype"]
+        task_specs = dataset_store["task_specs"]
+        glm_structured = GLMStructured(train_dataloader.dataset.x.shape[1], task_specs)
+        loss_fn = get_loss_fn_dict(glm_structured.models)
+        optimizers = get_optimizer_dict(glm_structured.models)
+
         epoch_number: int = 0
-
-        best_vloss: float = 1_000_000.0
-
-        loss_fn = get_loss_fn(model.tasktype)()
-        optimizer = get_optimizer(model.tasktype)(model.parameters(), lr=1e-3)
-        train_dataloader = dataloader[0]
-        test_dataloader = dataloader[1]
-        scaler = dataloader[2]
-        global_y_train_mask = dataloader[3]
-        global_y_test_mask = dataloader[4]
+        pbar = tqdm.tqdm(range(epochs))
 
         for epoch in range(epochs):
-            # print('EPOCH {}:'.format(epoch_number + 1))
+            log["epoch"].append(epoch)
+            log["dataset"].append(name)
 
-            # Make sure gradient tracking is on, and do a pass over the data
-            model.train(True)
-            avg_loss = train_one_epoch(
-                epoch_number, optimizer, train_dataloader, loss_fn, model, 10
-            )
+            for model in glm_structured.models.values():
+                model.train(True)
+
+            training_loss = 0
+            avg_train_loss = 0
+            test_loss = 0
+            avg_test_loss = 0
+
+            for i, data in enumerate(train_dataloader):
+                inputs, labels = data
+                for optimizer in optimizers.values():
+                    optimizer.zero_grad()
+                outputs: dict = glm_structured(inputs)
+                print(labels, task_specs)
+                label_mask: dict = get_mask(labels, task_specs, tasktype)
+                loss: dict = use_loss_fn_dict(
+                    loss_fn, outputs, labels, label_mask, task_specs, tasktype
+                )
+                loss["sum"] = get_loss_sum(loss)
+                loss["sum"].backward()
+                for optimizer in optimizers.values():
+                    optimizer.step()  # TODO: check with Ben, is this correct?
+                training_loss += loss["sum"].item()
+
+            training_loss /= len(train_dataloader)
+            avg_train_loss += training_loss
+            log["train_loss"].append(training_loss)
+
             # print(f"{avg_loss=}")
 
-            running_vloss = 0.0
             # Set the model to evaluation mode, disabling dropout and using population
             # statistics for batch normalization.
-            model.eval()
 
             # Disable gradient computation and reduce memory consumption.
             with torch.no_grad():
+                y_pred, y_test = {}, {}
+                for name, model in glm_structured.models.items():
+                    model.eval()
+                    y_pred[name] = []
+                    y_test[name] = []
                 for i, vdata in enumerate(test_dataloader):
-                    vinputs, vlabels, y_test_mask = vdata
-                    voutputs = model(vinputs)
-                    vloss = loss_fn(voutputs, vlabels)
-                    # vloss = loss_fn(voutputs * y_test_mask, vlabels * y_test_mask)
-                    running_vloss += vloss
-
-            avg_vloss = running_vloss / (i + 1)
+                    vinputs, vlabels = vdata
+                    voutputs = glm_structured(vinputs)
+                    vlabel_mask: dict = get_mask(vlabels, task_specs, tasktype)
+                    vloss: dict = use_loss_fn_dict(
+                        loss_fn, voutputs, vlabels, vlabel_mask, task_specs, tasktype
+                    )
+                    vloss["sum"] = get_loss_sum(vloss)
+                    for name, output in voutputs.items():
+                        y_pred[name].append(output)
+                        y_test[name].append(vlabels)
+                    test_loss += vloss["sum"].item()
+                # concatenate all the predictions and labels
+                for name, output in y_pred.items():
+                    y_pred[name] = torch.cat(y_pred[name], dim=0)
+                    y_test[name] = torch.cat(y_test[name], dim=0)
+                # print(y_pred[name])
+                # print(y_test[name])
+                # Calculate metrics from the predictions of the model after the last epoch.
+                test_loss /= len(test_dataloader)
+                avg_test_loss += test_loss
+                log["val_loss"].append(test_loss)
+                metric_results = get_metrics_dict(
+                    y_pred, y_test, task_specs, tasktype, scaler
+                )
+                log["val_metric"].append(metric_results)
+                # print some statistics
+                pbar.set_description(
+                    f"Train: {training_loss:.4f} | Test: {test_loss:.4f} | Test metric: {metric_results} | Dataset: {name}"
+                )
             # print('LOSS train {} valid {}'.format(avg_loss, avg_vloss, ".5f"))
 
-            # Log the running loss averaged per batch
-            # for both training and validation
-
-            # Track best performance, and save the model's state
-            if avg_vloss < best_vloss:
-                best_vloss = avg_vloss
-                # torch.save(model.state_dict(), model_path)
-
             epoch_number += 1
-        # Overall Test Score
-        predictions = model(test_dataloader.dataset.x).detach().numpy()
-        y_test = test_dataloader.dataset.y.detach().numpy()
-        if (
-            model.tasktype == TaskType.regression
-            or model.tasktype == TaskType.zero_inflated_regression
-        ):
-            predictions = scaler.inverse_transform(predictions)
-            y_test = scaler.inverse_transform(y_test)
-        elif (
-            model.tasktype == TaskType.binary
-            or model.tasktype == TaskType.zero_inflated_binary
-        ):
-            calibration_threshold = get_probability_calibration(
-                predictions, y_test, f1_score
-            )
-            # convert predictions to binary
-            predictions = np.where(predictions > calibration_threshold, 1, 0)
-        elif model.tasktype == TaskType.multiclass:
-            ohe = OneHotEncoder()
-            y_test = ohe.fit_transform(y_test.reshape(-1, 1)).toarray()
-        elif model.tasktype == TaskType.multilabel:
-            calibration_threshold = get_probability_calibration(
-                predictions, y_test, functools.partial(f1_score, average="micro")
-            )
-            # convert predictions to binary
-            predictions = np.where(predictions > calibration_threshold, 1, 0)
-        # Aggregate results
-        results = {}
-        for metric, metric_name in get_metrics(model.tasktype):
-            if metric_name == "r":
-                results[metric_name] = metric(y_test.flatten(), predictions.flatten())[
-                    0, 1
-                ]
-            elif metric_name == "acc":
-                # convert predictions to one-hot-encoding
-                ones = np.zeros_like(y_test)
-                predictions = np.argmax(predictions, axis=-1)
-                ones[np.arange(len(predictions)), predictions] = 1
-                results[metric_name] = metric(y_test, ones)
-            else:
-                results[metric_name] = metric(y_test, predictions)
-        glm_structured_results[name] = [results, y_test, predictions]
-    if (
-        "zero_inflated_binary" in glm_structured_results.keys()
-        and "zero_inflated_regression" in glm_structured_results.keys()
-    ):
-        # gather y_test and predictions from zero inflated binary and regression models
-        # convert one-hot-encodings back to binary
-        y_test_binary = glm_structured_results["zero_inflated_binary"][1]
-        y_test_regression = glm_structured_results["zero_inflated_regression"][1]
-        predictions_binary = glm_structured_results["zero_inflated_binary"][2]
-        predictions_regression = glm_structured_results["zero_inflated_regression"][2]
-        # replace non-zero values with the regression values for both y_test and predictions
-        y_test_zero_inflated = np.where(y_test_binary == 0)[1].reshape(-1, 1)
-        y_test_zero_inflated = np.where(
-            y_test_zero_inflated == 1, y_test_regression, y_test_zero_inflated
-        )
-        predictions_zero_inflated = np.where(predictions_binary == 0)[1].reshape(-1, 1)
-        predictions_zero_inflated = np.where(
-            predictions_zero_inflated == 1,
-            predictions_regression,
-            predictions_zero_inflated,
-        )
-        # print(f"{y_test_zero_inflated=}, {predictions_zero_inflated=}")
-        # add kendalltau and spearmanr to zero_inflated_binary
-        results = {}
-        for metric, metric_name in get_metrics(TaskType.zero_inflated_holistic):
-            results[metric_name] = metric(
-                y_test_zero_inflated, predictions_zero_inflated
-            )
-        glm_structured_results["zero_inflated_holistic"] = [
-            results,
-            y_test_zero_inflated,
-            predictions_zero_inflated,
-        ]
 
-    return glm_structured_results
+        # Calculate metrics from the predictions of the model after the last epoch.
+        # check early stopping based on losses averaged of datasets
+        avg_train_loss /= epochs
+        avg_test_loss /= epochs
+        log["epoch"].append(epoch)
+        log["train_loss"].append(avg_train_loss)
+        log["val_loss"].append(avg_test_loss)
+        log["val_metric"].append(None)
+        log["dataset"].append(name)
+    log = pd.DataFrame(log)
+    log.to_csv(f"results/training.csv", index=False)
