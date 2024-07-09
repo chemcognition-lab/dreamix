@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 # sets the path to the root of the repository
+from typing import Optional
 from pathlib import Path
 import sys
 
@@ -59,8 +60,11 @@ class GLMStructured(nn.Module):
             name: GLM.from_spec(input_dim, task) for name, task in tasks.items()
         }
 
-    def forward(self, x):
-        return {name: model(x) for name, model in self.models.items()}
+    def forward(self, x, dataset_name: Optional[str] = None):
+        if dataset_name is None:
+            return {name: model(x) for name, model in self.models.items()}
+        else:
+            return self.models[dataset_name](x)
 
 
 def get_probability_calibration(predictions, y_test, metric) -> float:
