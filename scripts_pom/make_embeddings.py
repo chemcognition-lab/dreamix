@@ -7,6 +7,7 @@ from dataloader.representations import graph_utils
 from pom.data import GraphDataset
 from pom.gnn.graphnets import GraphNets
 
+import numpy as np
 import torch
 from torch_geometric.loader import DataLoader as pygdl
 
@@ -16,7 +17,7 @@ def get_embeddings_from_smiles(smi_list: List[str], file_path: str, gnn: Optiona
     # Size: [N, embedding_size]
     # enter a model if you want to load a different model, otherwise defaulting
     graphs = [graph_utils.from_smiles(smi, init_globals=True) for smi in smi_list]
-    ds = GraphDataset(graphs, torch.zeros(len(graphs), 1))
+    ds = GraphDataset(graphs, np.zeros((len(graphs), 1)))
     loader = pygdl(ds, batch_size=64, shuffle=False)
 
     if gnn is None:
