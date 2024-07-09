@@ -1,5 +1,7 @@
 from typing import Union, List, Optional
 
+import json
+
 import torch
 import torch.nn as nn
 import torch_geometric as pyg
@@ -28,15 +30,16 @@ class EdgeMLPModel(nn.Module):
         return self.edge_mlp(out)
     
 class EdgeFiLMModel(nn.Module):
-    def __init__(self, edge_dim: int, hidden_dim: Optional[int] = 50, num_layers: Optional[int] = 1):
+    def __init__(self, edge_dim: int, hidden_dim: Optional[int] = 50, num_layers: Optional[int] = 1, dropout: Optional[float] = 0.):
         super().__init__()
         self.edge_dim = edge_dim
         self.hidden_dim = hidden_dim
         self.num_layers = num_layers
         
         # FiLM
-        self.gamma = get_mlp(hidden_dim, edge_dim, num_layers)
-        self.beta = get_mlp(hidden_dim, edge_dim, num_layers)
+        self.gamma = get_mlp(hidden_dim, edge_dim, num_layers, dropout=dropout)
+        self.gamma_act = nn.Sigmoid()       # sigmoidal gating Dauphin et al.
+        self.beta = get_mlp(hidden_dim, edge_dim, num_layers, dropout=dropout)
 
     def forward(self, src, dst, edge_attr, u, batch):
         # src, dst: [E, F_x], where E is the number of edges.
@@ -44,7 +47,7 @@ class EdgeFiLMModel(nn.Module):
         # u: [B, F_u], where B is the number of graphs.
         # batch: [E] with max entry B - 1.
         cond = torch.cat([src, dst, u[batch]], 1)
-        gamma = self.gamma(cond)
+        gamma = self.gamma_act(self.gamma(cond))
         beta = self.beta(cond)
 
         return gamma * edge_attr + beta
@@ -76,17 +79,26 @@ class NodeMLPModel(nn.Module):
     
 
 class NodeAttnModel(nn.Module):
-    def __init__(self, node_dim: int, hidden_dim: Optional[int] = 50, num_heads: Optional[int] = 5, num_layers: Optional[int] = 1):
+    def __init__(self, 
+                 node_dim: int, 
+                 hidden_dim: Optional[int] = 50, 
+                 num_heads: Optional[int] = 5,
+                 dropout: Optional[int] = 0., 
+                 num_layers: Optional[int] = 1
+                ):
         super().__init__()
         self.node_dim = node_dim
         self.hidden_dim = hidden_dim
         self.num_heads = num_heads
+        self.dropout = dropout
         self.num_layers = num_layers
 
         # self attention layer
-        # self.self_attn = GATConv(node_dim, node_dim, heads=num_heads)
-        self.self_attn = GAT(node_dim, hidden_dim, num_layers=num_layers, v2=True, heads=num_heads)
-        self.output_mlp = get_mlp(hidden_dim, node_dim, num_layers)
+        self.self_attn = GAT(node_dim, hidden_dim, num_layers=num_layers, dropout=dropout, v2=True, heads=num_heads)
+        self.output_mlp = get_mlp(hidden_dim, node_dim, num_layers=2)
+        self.dropout_layer = nn.Dropout(dropout)
+        self.norm1 = nn.LayerNorm(node_dim)
+        self.norm2 = nn.LayerNorm(node_dim)
 
     def forward(self, x: torch.Tensor, edge_index: torch.Tensor, edge_attr: torch.Tensor, u: torch.Tensor, batch: torch.Tensor):
         # x: [N, F_x], where N is the number of nodes.
@@ -95,8 +107,9 @@ class NodeAttnModel(nn.Module):
         # u: [B, F_u]
         # batch: [N] with max entry B - 1.
         attn = self.self_attn(x, edge_index, edge_attr)
-        out = torch.cat([attn, x, u[batch]], dim=1) 
-        return self.output_mlp(out)
+        out = self.norm1(x + self.dropout_layer(attn))
+        out = self.norm2(out + self.dropout_layer(self.output_mlp(out)))
+        return out
 
 
 class GlobalMLPModel(nn.Module):
@@ -122,7 +135,11 @@ class GlobalMLPModel(nn.Module):
     
 
 class GlobalPNAModel(nn.Module):
-    def __init__(self, global_dim: int, hidden_dim: Optional[int] = 50, num_layers: Optional[int] = 1):
+    def __init__(self, 
+                 global_dim: int, 
+                 hidden_dim: Optional[int] = 50, 
+                 num_layers: Optional[int] = 2
+                ):
         super().__init__()
         self.global_dim = global_dim
         self.hidden_dim = hidden_dim
@@ -189,17 +206,18 @@ class GlobalAttnModel(nn.Module):
 
 ##### Helper functions #####
 
-def get_mlp(hidden_dim: int, output_dim: int, num_layers: int):
+def get_mlp(hidden_dim: int, output_dim: int, num_layers: int, dropout: Optional[float] = 0.):
     """
     Helper function to produce MLP with specified hidden dimension and layers
     """
     assert num_layers >= 0, 'Enter an integer larger than or equal to 0.'
     
     layers = nn.ModuleList()
-    for _ in range(num_layers):
+    for _ in range(num_layers-1):
         layers.append(Linear(-1, hidden_dim))
+        layers.append(nn.Dropout(dropout))
         layers.append(nn.SELU())
-        layers.append(nn.BatchNorm1d(hidden_dim))
+        layers.append(nn.LayerNorm(hidden_dim))
     layers.append(Linear(-1, output_dim))
     return nn.Sequential(*layers)
 
@@ -225,16 +243,15 @@ def get_graphnet_attn_layer(node_dim: int, edge_dim: int, global_dim: int, num_l
 def get_graphnet_layer(
         node_dim: int, 
         edge_dim: int, 
-        global_dim: int, 
-        num_layers: Optional[int] = 2,
+        global_dim: int,
         hidden_dim: Optional[int] = 50,
     ):
     """
     Helper function to produced GraphNets layer. 
     """
-    node_net = NodeAttnModel(node_dim, hidden_dim=hidden_dim, num_layers=num_layers)
-    edge_net = EdgeFiLMModel(edge_dim, hidden_dim=hidden_dim, num_layers=num_layers)
-    global_net = GlobalPNAModel(global_dim, hidden_dim=hidden_dim, num_layers=num_layers)
+    node_net = NodeAttnModel(node_dim, hidden_dim=hidden_dim)
+    edge_net = EdgeFiLMModel(edge_dim, hidden_dim=hidden_dim)
+    global_net = GlobalPNAModel(global_dim, hidden_dim=hidden_dim)
     return MetaLayer(edge_net, node_net, global_net)
 
 
@@ -243,9 +260,9 @@ class GraphNets(nn.Module):
                  node_dim: int, 
                  edge_dim: int, 
                  global_dim: int, 
-                 hidden_dim: Optional[int] = 50, 
-                 num_layers: Optional[int] = 2,
-                 depth: Optional[int] = 3
+                 hidden_dim: Optional[int] = 50,
+                 depth: Optional[int] = 3,
+                 **kwargs
                 ):
         super(GraphNets, self).__init__()
         self.node_dim = node_dim
@@ -258,7 +275,6 @@ class GraphNets(nn.Module):
                     node_dim, 
                     edge_dim, 
                     global_dim, 
-                    num_layers=num_layers, 
                     hidden_dim=hidden_dim
                 ) for _ in range(depth)
             ]
@@ -279,8 +295,8 @@ class GraphNets(nn.Module):
         return u
     
     @classmethod
-    def from_json(cls, node_dim, edge_dim, json_path: str):
+    def from_json(cls, json_path: str):
         params = json.load(open(json_path, 'r'))
-        return cls(node_dim, edge_dim, **params)
+        return cls(**params)
 
 

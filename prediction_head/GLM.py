@@ -55,8 +55,11 @@ class GLM(nn.Module):
 class GLMStructured(nn.Module):
     "Generalized Linear Models for predicting multiple outputs."
 
-    def __init__(self, input_dim: int, tasks: list[TaskSpec]):
-        self.models = {task.name: GLM.from_spec(input_dim, task) for task in tasks}
+    def __init__(self, input_dim: int, tasks: dict[TaskSpec]):
+        super(GLMStructured, self).__init__()
+        self.models = nn.ModuleDict({
+            name: GLM.from_spec(input_dim, task) for name, task in tasks.items()
+        })
 
     def forward(self, x):
         return {name: model(x) for name, model in self.models.items()}
