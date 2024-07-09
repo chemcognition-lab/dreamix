@@ -145,7 +145,7 @@ def objective(trial, train_loader, test_loader, task, task_dim, gr):
             break
 
     log = pd.DataFrame(log)
-    torchinfo.summary(gnn)
+    # torchinfo.summary(gnn)
 
     return es.best_value
 
