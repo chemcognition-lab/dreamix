@@ -9,7 +9,7 @@ from typing import Callable, List, Optional, Union
 # https://github.com/leojklarner/gauche
 
 
-class DataLoader():
+class DreamLoader():
     """
     Loads and cleans up your data
     """
@@ -343,7 +343,7 @@ class DataLoader():
 
         elif representation == "competition_smiles":
             # Features is ["Dataset", "Mixture 1", "Mixture 2"]
-            smi_df = pd.read_csv("datasets/competition_train/mixture_smi_definitions_clean.csv")
+            smi_df = pd.read_csv("/Users/ellarajaonson/Documents/dream/dreamloader/datasets/competition_train/mixture_smi_definitions_clean.csv")
             feature_list = []
             for feature in self.features:
                 mix_1 = smi_df.loc[(smi_df['Dataset'] == feature[0]) & (smi_df['Mixture Label'] == feature[1])][smi_df.columns[2:]]
