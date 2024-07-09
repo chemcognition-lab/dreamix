@@ -52,9 +52,9 @@ class TaskSpec:
 def get_activation(tasktype: TaskType) -> nn.Module:
     activations = {
         TaskType.regression: nn.Identity,
-        TaskType.binary: nn.Sigmoid,
+        TaskType.binary: nn.Identity,
         TaskType.multiclass: nn.Identity,  # functools.partial(nn.Softmax, dim=1),
-        TaskType.multilabel: nn.Sigmoid,
+        TaskType.multilabel: nn.Identity,
     }
     return activations[tasktype]
 

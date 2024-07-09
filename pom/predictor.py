@@ -47,20 +47,5 @@ class EndToEndModule(nn.Module):
         else:
             output = self.nn_predictor(embedding, dataset_name)
         return output
-    
-    def save_hyperparameters(self, fname):
-        hparams = {'gnn': {}, 'head': {}}
-        for attr, val in vars(self.gnn_embedder).items():
-            if not attr.startswith('_'): 
-                hparams['gnn'][attr] = utils.jsonify(val)
-        for attr, val in vars(self.nn_predictor).items():
-            if not attr.startswith('_'): 
-                hparams['head'][attr] = utils.jsonify(val)
-                
-        if not fname.endswith('.json'):
-            fname += 'pom_hparams.json'
-
-
-        json.dump(hparams, open(fname, 'w'), indent=4)
             
 
