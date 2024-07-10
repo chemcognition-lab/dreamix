@@ -11,6 +11,7 @@ import numpy as np
 import torch
 from torch_geometric.loader import DataLoader as pygdl
 
+
 def get_embeddings_from_smiles(smi_list: List[str], file_path: str, gnn: Optional[torch.nn.Module] = None):
     # generate a matrix of embeddings
     # Size: [N, embedding_size]
@@ -43,6 +44,7 @@ def get_embeddings_from_smiles(smi_list: List[str], file_path: str, gnn: Optiona
         embeddings = torch.concat(embeddings, dim=0)
 
     return embeddings
+
 
 if __name__ == '__main__':
     embeddings = get_embeddings_from_smiles(['c1ccccc1', 'Cn1c(=O)c2c(ncn2C)n(C)c1=O'], 'general_models/graphnets_gs-lf-mayhew/')
