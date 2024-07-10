@@ -28,8 +28,7 @@ ATOM_FEATURES = {
     ],
 }
 
-NODE_DIM = 85
-EDGE_DIM = 14
+BOND_FDIM = 14
 
 
 def onek_encoding_unk(value: Any, choices: List[Any]):
