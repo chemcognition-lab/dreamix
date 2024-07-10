@@ -1,10 +1,16 @@
+from typing import Optional, List, Any
+
 import torch
 import torch.nn as nn
+from torch_geometric.loader import DataLoader as pygdl
 import torchmetrics.functional as F
 
 import random
 import json
 import numpy as np
+
+from .gnn import graph_utils, GraphNets
+from .data import GraphDataset
 
 
 def set_seed(seed: int = 42):
@@ -24,14 +30,14 @@ def get_loss_function(task: str):
     }
     return loss_dict[task]
 
-def multilabel_auroc(pred, targ):
+def multilabel_auroc(pred: torch.Tensor, targ: torch.Tensor):
     # we remove columns that have no meaning in ground truth
     non_zero_ind = torch.sum(targ != 0, dim=0).nonzero().squeeze()
     targ = targ[:, non_zero_ind]
     pred = pred[:, non_zero_ind]
     return F.classification.multilabel_auroc(pred, targ.long(), targ.shape[-1])
 
-def binary_accuracy(pred, targ):
+def binary_accuracy(pred: torch.Tensor, targ: torch.Tensor):
     pred_class = pred > 0
     targ_class = targ > 0.5
     return ((pred_class.long() - targ_class.long()) == 0).double().mean()
@@ -46,14 +52,14 @@ def get_metric_function(task: str):
     }
     return loss_dict[task]
 
-def is_jsonable(x):
+def is_jsonable(x: nn.Module):
     try:
         json.dumps(x)
         return True
     except (TypeError, OverflowError):
         return False
 
-def jsonify(val):
+def jsonify(val: Any):
     if is_jsonable(val): 
         return val
     else:

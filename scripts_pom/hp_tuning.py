@@ -69,7 +69,7 @@ def objective(trial, ds, train_loader, test_loader, task, task_dim):
 
     seed = 42
     utils.set_seed(seed)
-    data_names = ['gs-lf']
+    dname = 'gs-lf'
 
     # Load all models and datasets
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
@@ -91,62 +91,53 @@ def objective(trial, ds, train_loader, test_loader, task, task_dim):
     pbar = tqdm.tqdm(range(hp.training.num_epochs))
 
     for epoch in pbar:
-        avg_train_loss = 0
-        avg_test_loss = 0
-        for dname, store in model_store.items():
-            model = store['model']
-            optimizer = store['optimizer']
-            train_loader = store['train_loader']
-            test_loader = store['test_loader']
-            loss_fn = store['loss_fn']
-            metric_fn = store['metric_fn']
+        loss_fn = get_loss_fn(task)()
+        metric_fn = utils.get_metric_function(task)
 
-            # training loop
-            log['epoch'].append(epoch)
-            log['dataset'].append(dname)
-            training_loss = 0
-            model.train()
-            for batch in train_loader:
+        # training loop
+        log['epoch'].append(epoch)
+        log['dataset'].append(dname)
+        training_loss = 0
+        model.train()
+        for batch in train_loader:
+            data, y = batch
+            data, y = data.to(device), y.to(device)
+
+            optimizer.zero_grad()
+            y_hat = model(data)
+            loss = loss_fn(y_hat.squeeze(), y.squeeze())
+            loss.backward()
+            optimizer.step()
+
+            training_loss += loss.item()
+        training_loss /= len(train_loader)
+        log['train_loss'].append(training_loss)
+
+        # validation loop
+        y_pred, y_true = [], []
+        with torch.no_grad():
+            model.eval()
+            for batch in test_loader:
                 data, y = batch
-                data, y = data.to(device), y.to(device)
-
-                optimizer.zero_grad()
+                data = data.to(device)
+                
                 y_hat = model(data)
-                loss = loss_fn(y_hat.squeeze(), y.squeeze())
-                loss.backward()
-                optimizer.step()
+                y_pred.append(y_hat.detach().cpu())
+                y_true.append(y)
 
-                training_loss += loss.item()
-            training_loss /= len(train_loader)
-            avg_train_loss += training_loss
-            log['train_loss'].append(training_loss)
+            y_pred = torch.concat(y_pred)
+            y_true = torch.concat(y_true)
+            testing_metric = metric_fn(y_pred.squeeze(), y_true.squeeze()).item()
+            testing_loss = loss_fn(y_pred.squeeze(), y_true.squeeze()).item()
 
-            # validation loop
-            y_pred, y_true = [], []
-            with torch.no_grad():
-                model.eval()
-                for batch in test_loader:
-                    data, y = batch
-                    data = data.to(device)
-                    
-                    y_hat = model(data)
-                    y_pred.append(y_hat.detach().cpu())
-                    y_true.append(y)
-
-                y_pred = torch.concat(y_pred)
-                y_true = torch.concat(y_true)
-                testing_metric = metric_fn(y_pred.squeeze(), y_true.squeeze()).item()
-                testing_loss = loss_fn(y_pred.squeeze(), y_true.squeeze()).item()
-
-            avg_test_loss += testing_loss
-            log['val_loss'].append(testing_loss)
-            log['val_metric'].append(testing_metric)
-            
-            # print some statistics
-            pbar.set_description(f"Train: {training_loss:.4f} | Test: {testing_loss:.4f} | Test metric: {testing_metric:.4f} | Dataset: {dname}")
+        log['val_loss'].append(testing_loss)
+        log['val_metric'].append(testing_metric)
+        
+        # print some statistics
+        pbar.set_description(f"Train: {training_loss:.4f} | Test: {testing_loss:.4f} | Test metric: {testing_metric:.4f} | Dataset: {dname}")
             
         # check early stopping based on losses averaged of datasets
-        stop = es.check_criteria(avg_test_loss, model.gnn_embedder)        
+        stop = es.check_criteria(testing_metric, model.gnn_embedder)  
         if stop:
             print(f'Early stop reached at {es.best_step} with loss {es.best_value}')
             break
@@ -182,7 +173,8 @@ if __name__ == '__main__':
         n_trials=100
     )
 
-    print(study.best_trial.value)
+    print('###########################################')
+    print(f'Best achieved score: {study.best_trial.value}')
     print()
     print(study.best_params)
 
