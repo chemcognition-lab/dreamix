@@ -36,7 +36,7 @@ Dataset cleaning report for sigma_2014
 --- COLUMN PROCESSING ---
 	sigma_2014 is a classification dataset. Cleaning columns
 --- REMOVING LOW COUNT COLUMNS ---
-	Length of original descriptor list before low count removal: 119
+	Length of original descriptor list before low count removal: 117
 	Removing column 'potato' with total count 2
 	Removing column 'marigold' with total count 1
 	Removing column 'herba-' with total count 1
@@ -113,9 +113,9 @@ Dataset cleaning report for sigma_2014
 	Removing column 'lavender' with total count 1
 	Removing column 'beer' with total count 1
 	Removing column 'balsamic' with total count 3
-	Length of original descriptor list after low count removal: 43
+	Length of original descriptor list after low count removal: 41
 --- LOWERCASING AND MERGING LABELS ---
-	Length of original descriptor list before lowercase and merge: 43
-	Length of descriptor list after lowercase and merge: 43
+	Length of original descriptor list before lowercase and merge: 41
+	Length of descriptor list after lowercase and merge: 41
 --- DATASET CLEANING COMPLETE ---
 	Final size of dataframe: 855
