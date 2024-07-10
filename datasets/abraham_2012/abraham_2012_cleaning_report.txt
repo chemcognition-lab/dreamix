@@ -1,0 +1,24 @@
+Dataset cleaning report for abraham_2012
+--- REMOVING NAN SMILES ---
+	Original size before removing NaN SMILES: 268
+	Size after removing NaN SMILES: 268
+--- REMOVING UNDESIRABLE ELEMENTS ---
+	Original size before removing undesirable elements: 268
+	Purging undesirable elements in ['Na', 'K', 'Ca', 'Mg', 'Cr', 'B', 'Si', 'Ti', 'Fe', 'Al', 'Co', 'Zn', 'Cu', 'V', 'Bi', 'He']
+	Total undesirable element SMILES removed: 0
+--- REMOVING SALTS, CHARGED MOLECULES AND MULTIMOLECULES ---
+	Original size before removing salts, charges and multimolecules: 268
+	CCOCCCC(=O)[O-] has charges
+	Total salts and charged SMILES removed: 1
+	Total multimolecules removed: 0
+	Final size after removing salts, charges and multimolecules: 267
+--- REMOVING MOLECULAR WEIGHTS BETWEEN 20 AND 600 ---
+	Original size before molecular weight thresholding: 267
+	Molecules below MW threshold 20: 1
+		N, 
+	Molecules above MW threshold 600: 0
+	Size after molecular weight thresholding: 266
+--- COLUMN PROCESSING ---
+	abraham_2012 is a regression dataset. Columns are untouched
+--- DATASET CLEANING COMPLETE ---
+	Final size of dataframe: 266

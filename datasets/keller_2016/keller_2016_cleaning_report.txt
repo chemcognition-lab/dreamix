@@ -1,0 +1,25 @@
+Dataset cleaning report for keller_2016
+--- REMOVING NAN SMILES ---
+	Original size before removing NaN SMILES: 480
+	Size after removing NaN SMILES: 480
+--- REMOVING UNDESIRABLE ELEMENTS ---
+	Original size before removing undesirable elements: 480
+	Purging undesirable elements in ['Na', 'K', 'Ca', 'Mg', 'Cr', 'B', 'Si', 'Ti', 'Fe', 'Al', 'Co', 'Zn', 'Cu', 'V', 'Bi', 'He']
+	Match found: SMILES OP(=O)([O-])[O-].[Na+].[Na+] contains Na
+	Total undesirable element SMILES removed: 1
+--- REMOVING SALTS, CHARGED MOLECULES AND MULTIMOLECULES ---
+	Original size before removing salts, charges and multimolecules: 479
+	Total salts and charged SMILES removed: 0
+	CC1=C(SC=[N+]1CC2=CN=C(N=C2N)C)CCO.Cl.[Cl-] has multiple molecules
+	Total multimolecules removed: 1
+	Final size after removing salts, charges and multimolecules: 478
+--- REMOVING MOLECULAR WEIGHTS BETWEEN 20 AND 600 ---
+	Original size before molecular weight thresholding: 478
+	Molecules below MW threshold 20: 1
+		O, Acid_nonzeroproportion, Pleasantness_nonzeromean
+	Molecules above MW threshold 600: 0
+	Size after molecular weight thresholding: 477
+--- COLUMN PROCESSING ---
+	keller_2016 is a regression dataset. Columns are untouched
+--- DATASET CLEANING COMPLETE ---
+	Final size of dataframe: 477
