@@ -1,6 +1,7 @@
 Dataset cleaning report for arctander_1960
 --- REMOVING NAN SMILES ---
 	Original size before removing NaN SMILES: 3102
+	Number of NaN SMILES: 278
 	Size after removing NaN SMILES: 2824
 --- REMOVING UNDESIRABLE ELEMENTS ---
 	Original size before removing undesirable elements: 2824
@@ -26,8 +27,85 @@ Dataset cleaning report for arctander_1960
 	Match found: SMILES C1=CC=C2C(=C1)C(=O)N=S2(=O)[O-].O.[Na+] contains Na
 	Match found: SMILES [O-]P(=O)([O-])[O-].[O-]P(=O)([O-])[O-].[Ca+2].[Ca+2].[Ca+2] contains Ca
 	Total undesirable element SMILES removed: 20
+--- REMOVING DUPLICATES ---
+	Original size before removing duplicates: 2804
+	Removing duplicate smiles: C1CCCCOC(=O)CCCCC/C=C\CCC1
+	Removing duplicate smiles: C1=CC=C2C(=C1)C(=O)NS2(=O)=O.N
+	Removing duplicate smiles: C/C=C(/C)\C(=O)OCCC(C)C
+	Removing duplicate smiles: CC1COC(O1)C2=CC=CC=C2
+	Removing duplicate smiles: C1=CC(=O)C=CC1=O
+	Removing duplicate smiles: C1=CC=C(C=C1)C=CBr
+	Removing duplicate smiles: CC(=O)OC1CCC(CC1)C(C)(C)C
+	Removing duplicate smiles: CC(C)CC1=NC2=CC=CC=C2C=C1
+	Removing duplicate smiles: CC1=CCC(CC1=O)C(=C)C
+	Removing duplicate smiles: C1OC2=C(O1)C=C(C=C2)C=CC=CC(=O)O
+	Removing duplicate smiles: CC1=CC(=C(C=C1)O)OC
+	Removing duplicate smiles: CC(C)C(=O)OC1CCCCC1
+	Removing duplicate smiles: CCC(=O)OC1CCCCC1
+	Removing duplicate smiles: CCCCCC(=O)CCCCC
+	Removing duplicate smiles: CCC(=O)C(=O)CC
+	Removing duplicate smiles: CC1=CC=CC=C1OC2=CC=CC=C2C
+	Removing duplicate smiles: CCCCCCCC=CC=CC=O
+	Removing duplicate smiles: C(C(C1C(=O)C(=C(O1)O)O)O)O
+	Removing duplicate smiles: CCC(C)(C(=O)OCC)O
+	Removing duplicate smiles: CCCCCCC(=O)OCC
+	Removing duplicate smiles: CCC1=CC=C(C=C1)CC=O
+	Removing duplicate smiles: C[C@@H]1CC[C@@H]2[C@]13CC[C@@]([C@H](C3)C2(C)C)(C)O
+	Removing duplicate smiles: CC(C)CCO
+	Removing duplicate smiles: CCCCCCC=CC(=O)C
+	Removing duplicate smiles: CCCCCCCC(=O)OCCCCCC
+	Removing duplicate smiles: CCCCCC/C(=C\C1=CC=CC=C1)/C=O
+	Removing duplicate smiles: CCOCC.C1=CC(=CC=C1O)O
+	Removing duplicate smiles: COC.C1=CC(=CC=C1O)O
+	Removing duplicate smiles: CC1=CCC(CC1)C(=C)C
+	Removing duplicate smiles: CC(=CCCC(C)(C=C)O)C
+	Removing duplicate smiles: CC1CCC(C(=O)C1)C(C)C
+	Removing duplicate smiles: C[C@@]1(CC[C@H](C1(C)C)C(=O)OC)C(=O)OC
+	Removing duplicate smiles: CC(C1=CC=CC=C1)C2=CC=CC=C2
+	Removing duplicate smiles: CCOC(=O)C1C(O1)(C)C2=CC=CC=C2
+	Removing duplicate smiles: CCOC(=O)C1C(O1)C2=CC=C(C=C2)C
+	Removing duplicate smiles: CC=CC1=CC(=C(C=C1)OC)OC
+	Removing duplicate smiles: CC(=O)C1=CC=CO1
+	Removing duplicate smiles: CCCCCCC(=O)OC
+	Removing duplicate smiles: CC(C1=CC=CC=C1)OC(=O)C
+	Removing duplicate smiles: COCCC1=CC=CC=C1
+	Removing duplicate smiles: CC1CCC(C(C1)O)C(C)C
+	Removing duplicate smiles: CC(C)C(=O)OCC=C(C)CCC=C(C)C
+	Removing duplicate smiles: CC(C)CC(=O)OCC=C(C)CCC=C(C)C
+	Removing duplicate smiles: CC1=CC=CC=C1[N+](=O)[O-]
+	Removing duplicate smiles: CCCCCC1CCC(=O)O1
+	Removing duplicate smiles: CC1=CC(=CC(=C1)O)O.COC
+	Removing duplicate smiles: C1=CC=C(C=C1)CCOCC=O
+	Removing duplicate smiles: CCCCC(C1=CC=CC=C1)O
+	Removing duplicate smiles: CC(C1=CC=CC=C1)C(=O)O
+	Removing duplicate smiles: CC1=CCC(CC1)C(=C)C
+	Removing duplicate smiles: CC(=CCO)C
+	Removing duplicate smiles: CCOC1=C(C=C(C=C1)C=CC)OC
+	Removing duplicate smiles: CCCCCCCC(=O)OCCC
+	Removing duplicate smiles: CCCCCCCC(=O)OC(C)C
+	Removing duplicate smiles: CC(CO)O
+	Removing duplicate smiles: CC(CO)O.CC(=O)O
+	Removing duplicate smiles: CC(C)C1=CC=C(C=C1)C(C)C=O
+	Removing duplicate smiles: CCC(=O)OC(C)C
+	Removing duplicate smiles: CCCC1=CC=CC=N1
+	Removing duplicate smiles: CC(=O)OC(C)(C)CCCC(=C)C=C
+	Removing duplicate smiles: CC(=O)O
+	Removing duplicate smiles: CC(CCC=C(C)C)CCOC=O
+	Removing duplicate smiles: CC(=CCCC1(C2CC3C1(C3C2)C)C)C
+	Removing duplicate smiles: C(C(C(C(C(CO)O)O)O)O)O
+	Removing duplicate smiles: CCC(C)(CCCC(C)C)OC(=O)C
+	Removing duplicate smiles: CC1=CC=CC=C1O
+	Removing duplicate smiles: CC1=CC=C(C=C1)O
+	Removing duplicate smiles: CC1=CC=C(C=C1)C=O
+	Removing duplicate smiles: C1COC(=O)C1CC2=CC=CC=C2
+	Removing duplicate smiles: CC1CCCC(C1C=CC(=O)C)(C)C
+	Removing duplicate smiles: CCCCCCCCC=CC=O
+	Removing duplicate smiles: COC1=C(C=CC(=C1)C=C)O
+	Removing duplicate smiles: CC1=CC(=C(C=C1)C=O)C
+	Number of SMILES removed: 73
+	Size after removing duplicates: 2731
 --- REMOVING SALTS, CHARGED MOLECULES AND MULTIMOLECULES ---
-	Original size before removing salts, charges and multimolecules: 2804
+	Original size before removing salts, charges and multimolecules: 2731
 	C=CCOC(=O)/C=C/C(=O)[O-] has charges
 	CCCCCOC(=O)CC(CC(=O)[O-])(C(=O)[O-])O has charges
 	CCCCCOC(=O)C1=CC=CC=C1C(=O)[O-] has charges
@@ -65,7 +143,6 @@ Dataset cleaning report for arctander_1960
 	C(=O)(O)O.N.N has multiple molecules
 	[NH4+].[Cl-] has multiple molecules
 	C1=CC=C2C(=C1)C(=O)NS2(=O)=O.N has multiple molecules
-	C1=CC=C2C(=C1)C(=O)NS2(=O)=O.N has multiple molecules
 	CCCCC(=O)[O-].[NH4+] has multiple molecules
 	CCCCCC1CCCCC1.CCC(=O)O has multiple molecules
 	COC1=CC=C(C=C1)C=O.COC(=O)C1=CC=CC=C1N has multiple molecules
@@ -101,8 +178,6 @@ Dataset cleaning report for arctander_1960
 	CCOCC.COC1=CC=CC=C1O has multiple molecules
 	CCOCC.C1=CC(=CC=C1O)O has multiple molecules
 	COC.C1=CC(=CC=C1O)O has multiple molecules
-	CCOCC.C1=CC(=CC=C1O)O has multiple molecules
-	COC.C1=CC(=CC=C1O)O has multiple molecules
 	CC(CCCC(C)(C)O)CC=O.COC(=O)C1=CC=CC=C1N has multiple molecules
 	C1=CC=C(C=C1)CC=O.C1=CC=C2C(=C1)C=CN2 has multiple molecules
 	CC1CCC(=O)C1=O.CC1=C(C(=O)CC1)O has multiple molecules
@@ -113,14 +188,12 @@ Dataset cleaning report for arctander_1960
 	CCOCC.C1=CC=C2C=C(C=CC2=C1)O has multiple molecules
 	COC.C1=CC=C2C=C(C=CC2=C1)O has multiple molecules
 	CC1=CC(=CC(=C1)O)O.COC has multiple molecules
-	CC1=CC(=CC(=C1)O)O.COC has multiple molecules
 	C1=CC=C(C=C1)C(CO)O.C1=CC=C(C=C1)C(C2=CC=CC=C2)C(=O)O has multiple molecules
 	CC(=O)C.C=CC(=C)C1=CC=CC=C1 has multiple molecules
 	CC(C)(C(C)(C)O)O.COC has multiple molecules
 	CCO.CC(C)C1CCCCC1 has multiple molecules
 	CC(CO)O.CC(=O)O.CC(=O)O has multiple molecules
 	CCC(=O)O.CCC(=O)O.CC(CO)O has multiple molecules
-	CC(CO)O.CC(=O)O has multiple molecules
 	CC(CO)O.CC(=O)O has multiple molecules
 	CCCCCCCCCCCCCCCCCC(=O)O.CC(CO)O has multiple molecules
 	COC.C1=CC(=C(C(=C1)O)O)O has multiple molecules
@@ -141,45 +214,46 @@ Dataset cleaning report for arctander_1960
 	CCOC1=CC=C(C=C1)N.CCOC(=O)O.COC1=C(C=CC(=C1)C=O)O has multiple molecules
 	COC1=C(C=CC(=C1)C=O)O.COC(=O)C1=CC=CC=C1N has multiple molecules
 	CC(=O)O.CC(=O)O.CC(=O)O.COC1=C(C=CC(=C1)C=O)O has multiple molecules
-	Total multimolecules removed: 82
-	Final size after removing salts, charges and multimolecules: 2692
+	Total multimolecules removed: 77
+	Final size after removing salts, charges and multimolecules: 2624
 --- REMOVING MOLECULAR WEIGHTS BETWEEN 20 AND 600 ---
-	Original size before molecular weight thresholding: 2692
+	Original size before molecular weight thresholding: 2624
 	Molecules below MW threshold 20: 0
 	Molecules above MW threshold 600: 4
 		C[C@H]1[C@@H]([C@H]([C@H]([C@@H](O1)O[C@@H]2[C@H]([C@@H]([C@H](O[C@H]2OC3=CC(=C(C(=C3)O)C(=O)CCC4=CC(=C(C=C4)OC)O)O)CO)O)O)O)O)O, 
 		C[C@]1(CCC23COC4([C@H]2C1)CC[C@@H]5[C@]6(CC[C@@H](C(C6CC[C@]5([C@@]4(C[C@H]3O)C)C)(C)C)O[C@H]7[C@@H]([C@H]([C@H](CO7)O[C@H]8[C@@H]([C@H]([C@@H](CO8)O)O)O)O[C@@H]9[C@@H]([C@H]([C@@H]([C@H](O9)CO)O)O)O)O[C@H]1[C@@H]([C@H]([C@@H]([C@H](O1)CO)O)O)O[C@@H]1[C@@H]([C@H]([C@@H]([C@H](O1)CO)O)O)O)C)C=O, 
 		CC(=O)OC[C@@H]1[C@H]([C@@H]([C@H]([C@H](O1)O[C@]2([C@H]([C@@H]([C@H](O2)COC(=O)C)OC(=O)C)OC(=O)C)COC(=O)C)OC(=O)C)OC(=O)C)OC(=O)C, 
 		C1=C(C=C(C(=C1O)O)O)C(=O)OC2=CC(=CC(=C2O)O)C(=O)OCC3C(C(C(C(O3)OC(=O)C4=CC(=C(C(=C4)OC(=O)C5=CC(=C(C(=C5)O)O)O)O)O)OC(=O)C6=CC(=C(C(=C6)OC(=O)C7=CC(=C(C(=C7)O)O)O)O)O)OC(=O)C8=CC(=C(C(=C8)OC(=O)C9=CC(=C(C(=C9)O)O)O)O)O)OC(=O)C1=CC(=C(C(=C1)OC(=O)C1=CC(=C(C(=C1)O)O)O)O)O, medicinal, woody
-	Size after molecular weight thresholding: 2688
+	Size after molecular weight thresholding: 2620
 --- COLUMN PROCESSING ---
 	arctander_1960 is a classification dataset. Cleaning columns
 --- REMOVING LOW COUNT COLUMNS ---
 	Length of original descriptor list before low count removal: 77
 	Removing column 'acid' with total count 11
 	Removing column 'aromatic' with total count 17
-	Removing column 'coco' with total count 19
+	Removing column 'coco' with total count 18
 	Removing column 'coconut' with total count 1
 	Removing column 'juicy' with total count 0
 	Removing column 'leather' with total count 19
 	Removing column 'mimosa' with total count 15
-	Removing column 'mossy' with total count 17
+	Removing column 'mossy' with total count 16
 	Removing column 'mushroom' with total count 19
 	Removing column 'narcissus' with total count 15
 	Removing column 'pepper' with total count 15
-	Removing column 'powdery' with total count 14
+	Removing column 'powdery' with total count 13
+	Removing column 'rooty' with total count 18
 	Removing column 'sandalwood' with total count 10
-	Removing column 'smoky' with total count 12
+	Removing column 'smoky' with total count 11
 	Removing column 'sulfuraceous' with total count 14
-	Removing column 'tea' with total count 18
+	Removing column 'tea' with total count 17
 	Removing column 'vanilla' with total count 1
 	Removing column 'violet' with total count 15
-	Length of original descriptor list after low count removal: 59
+	Length of original descriptor list after low count removal: 58
 --- LOWERCASING AND MERGING LABELS ---
-	Length of original descriptor list before lowercase and merge: 59
-	Length of descriptor list after lowercase and merge: 59
+	Length of original descriptor list before lowercase and merge: 58
+	Length of descriptor list after lowercase and merge: 58
 --- REMOVING SMILES WITH NO LABELS ---
-	Length of original df before no label removal: 2688
+	Length of original df before no label removal: 2620
 	Removing row with IsomericSMILES: CC(C)C1=CC2=CC[C@@H]3[C@@]([C@H]2CC1)(CCC[C@@]3(C)C(=O)O)C
 	Removing row with IsomericSMILES: CC(=O)CC1=NC2=CC=CC=C2C=C1
 	Removing row with IsomericSMILES: CC1=CC(=C(C(=C1)C)C(=O)C)C
@@ -207,7 +281,6 @@ Dataset cleaning report for arctander_1960
 	Removing row with IsomericSMILES: C/C=C\C1=CC(=C(C=C1OC)OC)OC
 	Removing row with IsomericSMILES: C(C(C1C(=O)C(=C(O1)O)O)O)O
 	Removing row with IsomericSMILES: C1COC(O1)C2=CC=CC=C2
-	Removing row with IsomericSMILES: CC1COC(O1)C2=CC=CC=C2
 	Removing row with IsomericSMILES: C1=CC=C(C=C1)C(=O)O
 	Removing row with IsomericSMILES: C1=CC=C(C=C1)C(C(=O)C2=CC=CC=C2)O
 	Removing row with IsomericSMILES: C1=CC=C(C=C1)C#N
@@ -238,12 +311,10 @@ Dataset cleaning report for arctander_1960
 	Removing row with IsomericSMILES: CC1=C(C(CCC1)(C)C)/C=C/C(=C/C=C/C(=C/C=C/C=C(/C=C/C=C(/C=C/C2=C(CCCC2(C)C)C)\C)\C)/C)/C
 	Removing row with IsomericSMILES: CC1=C(C=C(C=C1)C(C)C)OC(=O)C
 	Removing row with IsomericSMILES: C1OC2=C(O1)C=C(C=C2)C=CC=CC(=O)O
-	Removing row with IsomericSMILES: C1OC2=C(O1)C=C(C=C2)C=CC=CC(=O)O
 	Removing row with IsomericSMILES: CC1CC(OC(O1)C=CC2=CC=CC=C2)(C)C
 	Removing row with IsomericSMILES: C1CCN(CC1)C(=O)C=CC2=CC=CC=C2
 	Removing row with IsomericSMILES: C(C(=O)O)C(CC(=O)O)(C(=O)O)O
 	Removing row with IsomericSMILES: COC1=C(C=CC(=C1)/C=C/CO)O
-	Removing row with IsomericSMILES: CC1=CC(=C(C=C1)O)OC
 	Removing row with IsomericSMILES: CC1=CC=CC=C1O
 	Removing row with IsomericSMILES: CC1=CC=CC=C1OC(=O)CC2=CC=CC=C2
 	Removing row with IsomericSMILES: CC=CCN=C=S
@@ -275,7 +346,6 @@ Dataset cleaning report for arctander_1960
 	Removing row with IsomericSMILES: CCCCCCCCCCCCOC(=O)C1=CC=CC=C1
 	Removing row with IsomericSMILES: CCCCCCCCCCCCOC(=O)C(C)C
 	Removing row with IsomericSMILES: CCOC1=CC=C(C=C1)NC(=O)N
-	Removing row with IsomericSMILES: C(C(C1C(=O)C(=C(O1)O)O)O)O
 	Removing row with IsomericSMILES: CCOC(=O)C=C
 	Removing row with IsomericSMILES: CCOC(=O)[C@H](CC(=O)N)N
 	Removing row with IsomericSMILES: CCOC(=O)C(C1=CC=CC=C1)(C2=CC=CC=C2)O
@@ -315,7 +385,6 @@ Dataset cleaning report for arctander_1960
 	Removing row with IsomericSMILES: CCC(C)(C(=O)O)N
 	Removing row with IsomericSMILES: CC(CCCC=C)O
 	Removing row with IsomericSMILES: CCC(C)C(=O)O
-	Removing row with IsomericSMILES: C[C@@]1(CC[C@H](C1(C)C)C(=O)OC)C(=O)OC
 	Removing row with IsomericSMILES: CCC(=O)C=CC1C(=C)CCCC1(C)C
 	Removing row with IsomericSMILES: CC1=C(C(C(CC1)(C)C)C=CC(=O)C)C
 	Removing row with IsomericSMILES: CC1CC(C(C(=C1)C)C=CC(=O)C)(C)C
@@ -335,8 +404,6 @@ Dataset cleaning report for arctander_1960
 	Removing row with IsomericSMILES: C1=CC=C2C(=O)C=CC(=O)C2=C1
 	Removing row with IsomericSMILES: C[C@H]1[C@@H]([C@H]([C@H]([C@@H](O1)O[C@@H]2[C@H]([C@@H]([C@H](O[C@H]2OC3=CC(=C4C(=O)C[C@H](OC4=C3)C5=CC=C(C=C5)O)O)CO)O)O)O)O)O
 	Removing row with IsomericSMILES: C[C@H]1[C@@H]([C@H]([C@H]([C@@H](O1)O[C@@H]2[C@H]([C@@H]([C@H](O[C@H]2OC3=CC(=C(C(=C3)O)C(=O)CCC4=CC=C(C=C4)O)O)CO)O)O)O)O)O
-	Removing row with IsomericSMILES: CC1CCC(C(C1)O)C(C)C
-	Removing row with IsomericSMILES: CC1=CC=CC=C1[N+](=O)[O-]
 	Removing row with IsomericSMILES: CCCCCCCCCN1CCCCC1
 	Removing row with IsomericSMILES: CCCCCCCCC(=CC1=CC=CC=C1)C=O
 	Removing row with IsomericSMILES: CCCCCCCCOC(=O)C1=CC=CC=C1O
@@ -353,12 +420,10 @@ Dataset cleaning report for arctander_1960
 	Removing row with IsomericSMILES: CCCC1=CC=CC=C1
 	Removing row with IsomericSMILES: CCCSSCCC
 	Removing row with IsomericSMILES: CC(CO)O
-	Removing row with IsomericSMILES: CC(CO)O
 	Removing row with IsomericSMILES: CCCOC(=O)C1=CC=C(C=C1)O
 	Removing row with IsomericSMILES: CC(C)C1=CC2=CC=CC=C2N1
 	Removing row with IsomericSMILES: CCCS
 	Removing row with IsomericSMILES: C1=CC=NC=C1
-	Removing row with IsomericSMILES: CC(=O)O
 	Removing row with IsomericSMILES: C1CCNC1
 	Removing row with IsomericSMILES: CC(=O)C=O
 	Removing row with IsomericSMILES: COC1=CC2=C(C=CN=C2C=C1)[C@H]([C@@H]3C[C@H]4CCN3C[C@@H]4C=C)O
@@ -370,7 +435,6 @@ Dataset cleaning report for arctander_1960
 	Removing row with IsomericSMILES: C([C@@H](C(=O)O)N)O
 	Removing row with IsomericSMILES: C/C=C/C=C/C(=O)O
 	Removing row with IsomericSMILES: CCCCCCCCCCCCCCCCCC(=O)OCC([C@@H]1[C@H]([C@@H](CO1)O)O)O
-	Removing row with IsomericSMILES: C(C(C(C(C(CO)O)O)O)O)O
 	Removing row with IsomericSMILES: CCCCCCCCCCCCCCCCCC(=O)O
 	Removing row with IsomericSMILES: C(CC(=O)O)C(=O)O
 	Removing row with IsomericSMILES: O=S=O
@@ -393,6 +457,6 @@ Dataset cleaning report for arctander_1960
 	Removing row with IsomericSMILES: CC(C)[C@@H](C(=O)O)N
 	Removing row with IsomericSMILES: COC1=C(C=CC(=C1)C(=O)O)O
 	Removing row with IsomericSMILES: CC1=C(C(=CC=C1)O)C
-	Length of df after no label removal: 2475
+	Length of df after no label removal: 2417
 --- DATASET CLEANING COMPLETE ---
-	Final size of dataframe: 2475
+	Final size of dataframe: 2417

@@ -1,6 +1,7 @@
 Dataset cleaning report for gs-lf
 --- REMOVING NAN SMILES ---
 	Original size before removing NaN SMILES: 4983
+	Number of NaN SMILES: 0
 	Size after removing NaN SMILES: 4983
 --- REMOVING UNDESIRABLE ELEMENTS ---
 	Original size before removing undesirable elements: 4983
@@ -116,6 +117,10 @@ Dataset cleaning report for gs-lf
 	Match found: SMILES Nc1nc2c(ncn2C2OC(COP(=O)([O-])[O-])C(O)C2O)c(=O)[nH]1.[Ca+2] contains Ca
 	Match found: SMILES Nc1nc2c(ncn2C2OC(COP(=O)([O-])[O-])C(O)C2O)c(=O)[nH]1.[K+].[K+] contains K
 	Total undesirable element SMILES removed: 110
+--- REMOVING DUPLICATES ---
+	Original size before removing duplicates: 4873
+	Number of SMILES removed: 0
+	Size after removing duplicates: 4873
 --- REMOVING SALTS, CHARGED MOLECULES AND MULTIMOLECULES ---
 	Original size before removing salts, charges and multimolecules: 4873
 	CC(=O)[n+]1cc(C)nc(C)c1 has charges

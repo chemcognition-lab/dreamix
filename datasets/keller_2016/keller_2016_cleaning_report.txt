@@ -1,12 +1,17 @@
 Dataset cleaning report for keller_2016
 --- REMOVING NAN SMILES ---
 	Original size before removing NaN SMILES: 480
+	Number of NaN SMILES: 0
 	Size after removing NaN SMILES: 480
 --- REMOVING UNDESIRABLE ELEMENTS ---
 	Original size before removing undesirable elements: 480
 	Purging undesirable elements in ['Na', 'K', 'Ca', 'Mg', 'Cr', 'B', 'Si', 'Ti', 'Fe', 'Al', 'Co', 'Zn', 'Cu', 'V', 'Bi', 'He']
 	Match found: SMILES OP(=O)([O-])[O-].[Na+].[Na+] contains Na
 	Total undesirable element SMILES removed: 1
+--- REMOVING DUPLICATES ---
+	Original size before removing duplicates: 479
+	Number of SMILES removed: 0
+	Size after removing duplicates: 479
 --- REMOVING SALTS, CHARGED MOLECULES AND MULTIMOLECULES ---
 	Original size before removing salts, charges and multimolecules: 479
 	Total salts and charged SMILES removed: 0

@@ -1,11 +1,16 @@
 Dataset cleaning report for aromadb
 --- REMOVING NAN SMILES ---
 	Original size before removing NaN SMILES: 869
+	Number of NaN SMILES: 0
 	Size after removing NaN SMILES: 869
 --- REMOVING UNDESIRABLE ELEMENTS ---
 	Original size before removing undesirable elements: 869
 	Purging undesirable elements in ['Na', 'K', 'Ca', 'Mg', 'Cr', 'B', 'Si', 'Ti', 'Fe', 'Al', 'Co', 'Zn', 'Cu', 'V', 'Bi', 'He']
 	Total undesirable element SMILES removed: 0
+--- REMOVING DUPLICATES ---
+	Original size before removing duplicates: 869
+	Number of SMILES removed: 0
+	Size after removing duplicates: 869
 --- REMOVING SALTS, CHARGED MOLECULES AND MULTIMOLECULES ---
 	Original size before removing salts, charges and multimolecules: 869
 	CCCC(=O)CC(=O)[O-] has charges
