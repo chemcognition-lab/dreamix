@@ -1,94 +1,170 @@
 Dataset cleaning report for ifra_2019
 --- REMOVING NAN SMILES ---
 	Original size before removing NaN SMILES: 1146
+	Number of NaN SMILES: 0
 	Size after removing NaN SMILES: 1146
 --- REMOVING UNDESIRABLE ELEMENTS ---
 	Original size before removing undesirable elements: 1146
-	Purging undesirable elements in ['Na', 'K', 'Ca', 'Mg', 'Cr', 'B', 'Si', 'Ti', 'Fe', 'Al', 'Co', 'Zn', 'Cu', 'V', 'Bi', 'He']
+	Purging undesirable elements in ['Na', 'K', 'Ca', 'Mg', 'Cr', 'B', 'Si', 'Ti', 'Fe', 'Al', 'Co', 'Zn', 'Cu', 'V', 'Bi', 'He', 'As', 'I', 'Sb', 'Pb', 'Ni', 'Os', 'Se', 'Hg', 'Ar', 'Cd', 'Kr', 'Rn', 'Se', 'Ta', 'U', 'Xe', 'Cd', 'Mo', 'Sn', 'Tl', 'Te', 'Y', 'Be']
 	Match found: SMILES B(F)(F)F.C[C@]12CCCC([C@H]3[C@H]1CC[C@@H]3C2=C)(C)C.C(=O)O contains B
 	Match found: SMILES CCCCCCCOP(=S)(OCCCCCCC)[S-].CCCCCCCOP(=S)(OCCCCCCC)[S-].[Zn+2] contains Zn
 	Total undesirable element SMILES removed: 2
+--- REMOVING DUPLICATES ---
+	Original size before removing duplicates: 1144
+	Removing duplicate smiles: CC1(C2CCC1(C(=O)C2)C)C
+	Removing duplicate smiles: COC(=O)C1=CC=CC=C1O
+	Removing duplicate smiles: COC(=O)C1=CC=CC=C1O
+	Removing duplicate smiles: CC1CCC(CC1)C(C)(C)OC(=O)C
+	Removing duplicate smiles: C1=CC=C(C=C1)CCC=O
+	Removing duplicate smiles: CC1CC(C=C(C2C1CC(=C(C)C)C2)C)OC(=O)C
+	Removing duplicate smiles: C1=CC=C(C=C1)C(=O)CCl
+	Removing duplicate smiles: C1=CC=C(C=C1)C(=O)CCl
+	Removing duplicate smiles: CC(=O)OC(C)(C)CCCC(=C)C=C
+	Removing duplicate smiles: CC1=CCC(CC1)C(=C)C
+	Removing duplicate smiles: CC1=CCC(CC1)C(=C)C
+	Removing duplicate smiles: CC1=CCC(CC1)C(=C)C
+	Removing duplicate smiles: CC1=CCC(CC1)C(=C)C
+	Removing duplicate smiles: CC1=CCC(CC1)C(=C)C
+	Removing duplicate smiles: CC1=CCC(CC1)C(=C)C
+	Removing duplicate smiles: CC1=CCC(CC1)C(=C)C
+	Removing duplicate smiles: CC1=CCC(CC1)C(=C)C
+	Removing duplicate smiles: CC1=CCC(CC1)C(=C)C
+	Removing duplicate smiles: C[C@@H]1CC[C@H](C(=O)C1)C(C)C
+	Removing duplicate smiles: CC1CCC(C(C1)OC(=O)C)C(C)C
+	Removing duplicate smiles: CC1CCC(C(C1)OC(=O)C)C(C)C
+	Removing duplicate smiles: CC1CCC(C(C1)OC(=O)C)C(C)C
+	Removing duplicate smiles: CC(=O)OC1CCC(CC1)C(C)(C)C
+	Removing duplicate smiles: CC(=O)OC1CCC(CC1)C(C)(C)C
+	Removing duplicate smiles: CC(CCC=C(C)CCC=C(C)C)C=O
+	Removing duplicate smiles: CC(=O)O[C@@H]1C[C@@H]2CC[C@]1(C2(C)C)C
+	Removing duplicate smiles: CC1C=C(CCC1C=O)C
+	Removing duplicate smiles: CCC1(C(C2CCC1(C2)C)(C)C)O
+	Removing duplicate smiles: CC1=CCC(CC1)C(C)(C)OC(=O)C
+	Removing duplicate smiles: C[C@@]12CC[C@@H](C1(C)C)CC2=O
+	Removing duplicate smiles: C[C@@]12CC[C@@H](C1(C)C)CC2=O
+	Removing duplicate smiles: COC(=O)C1=CC=CC=C1N=CC2=CC=CC=C2
+	Removing duplicate smiles: CCOC(=O)/C=C/C
+	Removing duplicate smiles: C[C@@H]1CC[C@H]([C@H](C1)O)C(C)C
+	Removing duplicate smiles: C[C@@H]1CCC(=C(C)C)C(=O)C1
+	Removing duplicate smiles: C1=CC=C(C=C1)/C=C/C(=O)O
+	Removing duplicate smiles: C/C=C/C1=CC=C(C=C1)OC
+	Removing duplicate smiles: CC(=CCC/C(=C/C=O)/C)C
+	Removing duplicate smiles: CC(=CCC/C(=C/C=O)/C)C
+	Removing duplicate smiles: CC/C=C/CC=O
+	Removing duplicate smiles: C/C=C/C1=CC(=C(C=C1)O)OC
+	Removing duplicate smiles: C1=CC(=CC=C1C2=CC(=O)C3=C(C=C(C=C3O2)O)O)O
+	Removing duplicate smiles: C1=CC(=CC=C1C2=CC(=O)C3=C(C=C(C=C3O2)O)O)O
+	Removing duplicate smiles: CCCCCC/C=C/C=O
+	Removing duplicate smiles: CCCCCCC/C=C/C=O
+	Removing duplicate smiles: CCCCCCCCC/C=C/C=O
+	Removing duplicate smiles: CCCCCCCCCC/C=C/C=O
+	Removing duplicate smiles: CC/C=C/CCO
+	Removing duplicate smiles: CC(=CCC/C(=C/CCC(C)(C=C)O)/C)C
+	Removing duplicate smiles: CC/C=C/CCOC(=O)C
+	Removing duplicate smiles: CC/C=C\CCOC(=O)C(C)CC
+	Removing duplicate smiles: CCOC/C=C(\C)/CCC=C(C)C
+	Removing duplicate smiles: CC/C=C(\C)/C(=O)O
+	Removing duplicate smiles: C/C=C/C(=O)C1C(=CCCC1(C)C)C
+	Removing duplicate smiles: C/C=C(\C)/C(=O)OC/C=C(\C)/CCC=C(C)C
+	Removing duplicate smiles: C/C=C(\C)/C(=O)OC/C=C(\C)/CCC=C(C)C
+	Removing duplicate smiles: C/C=C(\C)/C(=O)OC/C=C(\C)/CCC=C(C)C
+	Removing duplicate smiles: C/C=C(\C)/C(=O)OC/C=C(\C)/CCC=C(C)C
+	Removing duplicate smiles: C/C=C(\C)/C(=O)OC/C=C(\C)/CCC=C(C)C
+	Removing duplicate smiles: C/C=C(\C)/C=C/C=C(C)C
+	Removing duplicate smiles: CC(CC/C=C(\C)/CCC=C(C)C)OC(=O)C
+	Removing duplicate smiles: C1CCCCCC(=O)CC/C=C\CCCC1
+	Removing duplicate smiles: C/C=C/CC/C=C/C=O
+	Removing duplicate smiles: C[C@@H]1CC[C@@H]2[C@]13CC=C([C@H](C3)C2(C)C)C
+	Removing duplicate smiles: C/C=C/C(=O)C1CCC(C=C1C)(C)C
+	Removing duplicate smiles: CC1CCC2(CC1)C(CO2)C.CC1CCC(C(C1)O)C(C)C.CC1CCC(C(C1)OC(=O)C)C(C)C.CC1CCC(C(=O)C1)C(C)C.CC1CCC2=C(C1)OC=C2C.CC1CCC(=C(C)C)C(=O)C1
+	Removing duplicate smiles: CC1CCC2(CC1)C(CO2)C.CC1CCC(C(C1)O)C(C)C.CC1CCC(C(C1)OC(=O)C)C(C)C.CC1CCC(C(=O)C1)C(C)C.CC1CCC2=C(C1)OC=C2C.CC1CCC(=C(C)C)C(=O)C1
+	Removing duplicate smiles: CC1CCC2(CC1)C(CO2)C.CC1CCC(C(C1)O)C(C)C.CC1CCC(C(C1)OC(=O)C)C(C)C.CC1CCC(C(=O)C1)C(C)C.CC1CCC2=C(C1)OC=C2C.CC1CCC(=C(C)C)C(=O)C1
+	Removing duplicate smiles: CC1CCC2(CC1)C(CO2)C.CC1CCC(C(C1)O)C(C)C.CC1CCC(C(C1)OC(=O)C)C(C)C.CC1CCC(C(=O)C1)C(C)C.CC1CCC2=C(C1)OC=C2C.CC1CCC(=C(C)C)C(=O)C1
+	Removing duplicate smiles: CC(CCC=C(C)C)C=C.CC(=CCC/C(=C\CO)/C)C.CC(=CCC/C(=C\C=O)/C)C.C[C@]12CC[C@H](C1(C)C)CC2O.COC1=C(C=C(C=C1)CC=C)OC
+	Removing duplicate smiles: CC(CCC=C(C)C)C=C.CC(=CCC/C(=C\CO)/C)C.CC(=CCC/C(=C\C=O)/C)C.C[C@]12CC[C@H](C1(C)C)CC2O.COC1=C(C=C(C=C1)CC=C)OC
+	Removing duplicate smiles: CC1=CCC(CC1)C(C)(C)O.CC1=CC=C(C=C1)C(C)C.CC1=CC(=C(C=C1)C(C)C)O.CC(C)C12CCC(C1C2)(C)O.CC(=CCCC(C)(C=C)O)C
+	Removing duplicate smiles: CC1=CCC(CC1)C(C)(C)O.CC1=CC=C(C=C1)C(C)C.CC1=CC(=C(C=C1)C(C)C)O.CC(C)C12CCC(C1C2)(C)O.CC(=CCCC(C)(C=C)O)C
+	Removing duplicate smiles: C/C=C/C1=CC=CC=C1.COC1=C(C=CC(=C1)CC=C)O
+	Removing duplicate smiles: C/C=C/C1=CC=CC=C1.COC1=C(C=CC(=C1)CC=C)O
+	Removing duplicate smiles: C/C=C/C1=CC=CC=C1.COC1=C(C=CC(=C1)CC=C)O
+	Removing duplicate smiles: C/C=C/C1=CC=CC=C1.COC1=C(C=CC(=C1)CC=C)O
+	Removing duplicate smiles: C/C=C/C1=CC=CC=C1.COC1=C(C=CC(=C1)CC=C)O
+	Removing duplicate smiles: C/C/1=C\2/CCC2=CC/C(=C/CC1)/C.CC(C)CC(=C)C1=C(C(=C(C(C1=O)(CC=C(C)C)O)O)CC=C(C)C)O.CC(C)CC(=O)C1=C(C(=C(C(C1=O)(CC=C(C)C)CC=C(C)C)O)CC=C(C)C)O
+	Removing duplicate smiles: CC1CCC(CC1)(C)C(=O)OC
+	Removing duplicate smiles: CC1=CC[C@@H](CC1)C(C)(CCC=C(C)C)O.CC1=CC[C@H]2C[C@@H]1[C@]2(C)CC/C=C(/C)\CO.CC(=CCC/C(=C/CC/C(=C/CO)/C)/C)C.C/C(=C/CCC1(C2CCC(C2)C1=C)C)/CO.C/C(=C/CCC1(C2CC3C1(C3C2)C)C)/CO
+	Removing duplicate smiles: C/C=C\CC1=C(CCC1)C
+	Removing duplicate smiles: C/C=C\CC1=C(CCC1)C
+	Removing duplicate smiles: C/C=C\CC1=C(CCC1)C
+	Removing duplicate smiles: C/C=C\CC1=C(CCC1)C
+	Removing duplicate smiles: C/C=C\CC1=C(CCC1)C
+	Number of SMILES removed: 86
+	Size after removing duplicates: 1058
 --- REMOVING SALTS, CHARGED MOLECULES AND MULTIMOLECULES ---
-	Original size before removing salts, charges and multimolecules: 1144
+	Original size before removing salts, charges and multimolecules: 1058
 	Total salts and charged SMILES removed: 0
 	CCC(=O)CCC1C(=CCCC1(C)C)C.C#CCO has multiple molecules
 	CC(CCCC(C)(C)O)CC=O.C1=CC=C2C(=C1)C=CN2 has multiple molecules
 	CC1CCC2(CC1)C(CO2)C.CC1CCC(C(C1)O)C(C)C.CC1CCC(C(C1)OC(=O)C)C(C)C.CC1CCC(C(=O)C1)C(C)C.CC1CCC2=C(C1)OC=C2C.CC1CCC(=C(C)C)C(=O)C1 has multiple molecules
-	CC1CCC2(CC1)C(CO2)C.CC1CCC(C(C1)O)C(C)C.CC1CCC(C(C1)OC(=O)C)C(C)C.CC1CCC(C(=O)C1)C(C)C.CC1CCC2=C(C1)OC=C2C.CC1CCC(=C(C)C)C(=O)C1 has multiple molecules
-	CC1CCC2(CC1)C(CO2)C.CC1CCC(C(C1)O)C(C)C.CC1CCC(C(C1)OC(=O)C)C(C)C.CC1CCC(C(=O)C1)C(C)C.CC1CCC2=C(C1)OC=C2C.CC1CCC(=C(C)C)C(=O)C1 has multiple molecules
-	CC1CCC2(CC1)C(CO2)C.CC1CCC(C(C1)O)C(C)C.CC1CCC(C(C1)OC(=O)C)C(C)C.CC1CCC(C(=O)C1)C(C)C.CC1CCC2=C(C1)OC=C2C.CC1CCC(=C(C)C)C(=O)C1 has multiple molecules
-	CC1CCC2(CC1)C(CO2)C.CC1CCC(C(C1)O)C(C)C.CC1CCC(C(C1)OC(=O)C)C(C)C.CC1CCC(C(=O)C1)C(C)C.CC1CCC2=C(C1)OC=C2C.CC1CCC(=C(C)C)C(=O)C1 has multiple molecules
-	CC(CCC=C(C)C)C=C.CC(=CCC/C(=C\CO)/C)C.CC(=CCC/C(=C\C=O)/C)C.C[C@]12CC[C@H](C1(C)C)CC2O.COC1=C(C=C(C=C1)CC=C)OC has multiple molecules
-	CC(CCC=C(C)C)C=C.CC(=CCC/C(=C\CO)/C)C.CC(=CCC/C(=C\C=O)/C)C.C[C@]12CC[C@H](C1(C)C)CC2O.COC1=C(C=C(C=C1)CC=C)OC has multiple molecules
 	CC(CCC=C(C)C)C=C.CC(=CCC/C(=C\CO)/C)C.CC(=CCC/C(=C\C=O)/C)C.C[C@]12CC[C@H](C1(C)C)CC2O.COC1=C(C=C(C=C1)CC=C)OC has multiple molecules
 	CC1=CCC(CC1)C(C)(C)O.CC1=CC=C(C=C1)C(C)C.CC1=CC(=C(C=C1)C(C)C)O.CC(C)C12CCC(C1C2)(C)O.CC(=CCCC(C)(C=C)O)C has multiple molecules
-	CC1=CCC(CC1)C(C)(C)O.CC1=CC=C(C=C1)C(C)C.CC1=CC(=C(C=C1)C(C)C)O.CC(C)C12CCC(C1C2)(C)O.CC(=CCCC(C)(C=C)O)C has multiple molecules
-	CC1=CCC(CC1)C(C)(C)O.CC1=CC=C(C=C1)C(C)C.CC1=CC(=C(C=C1)C(C)C)O.CC(C)C12CCC(C1C2)(C)O.CC(=CCCC(C)(C=C)O)C has multiple molecules
-	C/C=C/C1=CC=CC=C1.COC1=C(C=CC(=C1)CC=C)O has multiple molecules
-	C/C=C/C1=CC=CC=C1.COC1=C(C=CC(=C1)CC=C)O has multiple molecules
-	C/C=C/C1=CC=CC=C1.COC1=C(C=CC(=C1)CC=C)O has multiple molecules
-	C/C=C/C1=CC=CC=C1.COC1=C(C=CC(=C1)CC=C)O has multiple molecules
-	C/C=C/C1=CC=CC=C1.COC1=C(C=CC(=C1)CC=C)O has multiple molecules
 	C/C=C/C1=CC=CC=C1.COC1=C(C=CC(=C1)CC=C)O has multiple molecules
 	CC1=C(C(CCC1)(C)C)C(=O)/C=C/C(=C/C=C/C(=C/C=C/C=C(\C)/C=C/C=C(\C)/C=C/C2=C(CC(CC2(C)C)O)C)/C)/C.CC1=C(C(CC(C1)O)(C)C)/C=C/C(=C/C=C/C(=C/C=C/C=C(\C)/C=C/C=C(\C)/C=C/C(=O)/C=C(\C)/CCC=C(C)C)/C)/C.CC1=C(C(CC(C1)O)(C)C)/C=C/C(=C/C=C/C(=C/C=C/C=C(\C)/C=C/C=C(\C)/C=C/C(=O)C2C(=CCCC2(C)C)C)/C)/C.CC1=C(C(CC(C1)O)(C)C)/C=C/C(=C/C=C/C(=C/C=C/C=C(\C)/C=C/C=C(\C)/C=C/C(=O)C2(CC(CC2(C)C)O)C)/C)/C.CC(C)/C=C/CCCCC(=O)NCC1=CC(=C(C=C1)O)OC has multiple molecules
 	CC1CC(=CC(C1C=O)C)C.CC1C=C(CC(C1C)C=O)C has multiple molecules
 	C/C/1=C\2/CCC2=CC/C(=C/CC1)/C.CC(C)CC(=C)C1=C(C(=C(C(C1=O)(CC=C(C)C)O)O)CC=C(C)C)O.CC(C)CC(=O)C1=C(C(=C(C(C1=O)(CC=C(C)C)CC=C(C)C)O)CC=C(C)C)O has multiple molecules
-	C/C/1=C\2/CCC2=CC/C(=C/CC1)/C.CC(C)CC(=C)C1=C(C(=C(C(C1=O)(CC=C(C)C)O)O)CC=C(C)C)O.CC(C)CC(=O)C1=C(C(=C(C(C1=O)(CC=C(C)C)CC=C(C)C)O)CC=C(C)C)O has multiple molecules
-	CC1=CC[C@@H](CC1)C(C)(CCC=C(C)C)O.CC1=CC[C@H]2C[C@@H]1[C@]2(C)CC/C=C(/C)\CO.CC(=CCC/C(=C/CC/C(=C/CO)/C)/C)C.C/C(=C/CCC1(C2CCC(C2)C1=C)C)/CO.C/C(=C/CCC1(C2CC3C1(C3C2)C)C)/CO has multiple molecules
 	CC1=CC[C@@H](CC1)C(C)(CCC=C(C)C)O.CC1=CC[C@H]2C[C@@H]1[C@]2(C)CC/C=C(/C)\CO.CC(=CCC/C(=C/CC/C(=C/CO)/C)/C)C.C/C(=C/CCC1(C2CCC(C2)C1=C)C)/CO.C/C(=C/CCC1(C2CC3C1(C3C2)C)C)/CO has multiple molecules
 	CC.OO has multiple molecules
-	Total multimolecules removed: 26
-	Final size after removing salts, charges and multimolecules: 1118
+	Total multimolecules removed: 11
+	Final size after removing salts, charges and multimolecules: 1047
 --- REMOVING MOLECULAR WEIGHTS BETWEEN 20 AND 600 ---
-	Original size before molecular weight thresholding: 1118
+	Original size before molecular weight thresholding: 1047
 	Molecules below MW threshold 20: 0
 	Molecules above MW threshold 600: 0
-	Size after molecular weight thresholding: 1118
+	Size after molecular weight thresholding: 1047
 --- COLUMN PROCESSING ---
 	ifra_2019 is a classification dataset. Cleaning columns
 --- REMOVING LOW COUNT COLUMNS ---
 	Length of original descriptor list before low count removal: 191
 	Removing column 'Acidic' with total count 12
-	Removing column 'Almond' with total count 9
+	Removing column 'Almond' with total count 8
 	Removing column 'Animal Like' with total count 11
 	Removing column 'Animal like' with total count 9
 	Removing column 'Apricot' with total count 5
-	Removing column 'Aromatic' with total count 16
+	Removing column 'Aromatic' with total count 15
 	Removing column 'Artemisia' with total count 1
-	Removing column 'Banana' with total count 14
+	Removing column 'Banana' with total count 13
 	Removing column 'Bayleaf' with total count 1
 	Removing column 'Bell Pepper' with total count 2
 	Removing column 'Bergamot' with total count 5
-	Removing column 'Berry' with total count 15
-	Removing column 'Bitter' with total count 1
+	Removing column 'Berry' with total count 14
+	Removing column 'Bitter' with total count 0
 	Removing column 'Blackcurrant' with total count 7
 	Removing column 'Blueberry' with total count 2
 	Removing column 'Brandy' with total count 1
 	Removing column 'Burnt' with total count 1
 	Removing column 'Butterscotch' with total count 2
 	Removing column 'Buttery' with total count 8
-	Removing column 'Camphoraceous' with total count 18
+	Removing column 'Camphoraceous' with total count 15
 	Removing column 'Carrot' with total count 2
-	Removing column 'Cedarwood' with total count 13
+	Removing column 'Cedarwood' with total count 12
 	Removing column 'Celery' with total count 3
-	Removing column 'Chamomile' with total count 5
+	Removing column 'Chamomile' with total count 4
 	Removing column 'Cheesy' with total count 6
-	Removing column 'Cherry' with total count 6
+	Removing column 'Cherry' with total count 5
 	Removing column 'Cherry-Blossom' with total count 2
 	Removing column 'Chocolate' with total count 2
-	Removing column 'Cinnamon' with total count 8
+	Removing column 'Cinnamon' with total count 7
 	Removing column 'Citronella' with total count 1
 	Removing column 'Clean' with total count 6
-	Removing column 'Clove' with total count 5
+	Removing column 'Clove' with total count 4
 	Removing column 'Cocoa' with total count 2
 	Removing column 'Coconut' with total count 7
 	Removing column 'Coffee' with total count 7
-	Removing column 'Cooling' with total count 6
-	Removing column 'Coriander' with total count 3
+	Removing column 'Cooling' with total count 5
+	Removing column 'Coriander' with total count 1
 	Removing column 'Corn' with total count 1
 	Removing column 'Coumarin' with total count 1
 	Removing column 'Creamy' with total count 11
-	Removing column 'Cucumber' with total count 9
+	Removing column 'Cucumber' with total count 8
 	Removing column 'Cumin' with total count 1
 	Removing column 'Cyclamen' with total count 3
 	Removing column 'Dairy' with total count 1
@@ -102,42 +178,43 @@ Dataset cleaning report for ifra_2019
 	Removing column 'Galbanum' with total count 6
 	Removing column 'Gardenia' with total count 2
 	Removing column 'Garlic' with total count 5
-	Removing column 'Geranium' with total count 16
+	Removing column 'Geranium' with total count 11
 	Removing column 'Grape' with total count 7
-	Removing column 'Grapefruit' with total count 16
-	Removing column 'Grassy' with total count 8
+	Removing column 'Grapefruit' with total count 14
+	Removing column 'Grassy' with total count 7
 	Removing column 'Hawthorn' with total count 1
 	Removing column 'Hay' with total count 9
 	Removing column 'Honey' with total count 17
 	Removing column 'Honeydew' with total count 1
-	Removing column 'Hyacinth' with total count 12
+	Removing column 'Hyacinth' with total count 11
 	Removing column 'Indolic' with total count 2
 	Removing column 'Juicy' with total count 1
 	Removing column 'Juniper' with total count 1
 	Removing column 'Kiwi' with total count 1
 	Removing column 'Lactonic' with total count 1
-	Removing column 'Lavender' with total count 17
-	Removing column 'Leafy' with total count 9
+	Removing column 'Lavender' with total count 15
+	Removing column 'Leafy' with total count 8
 	Removing column 'Leathery' with total count 8
-	Removing column 'Lemon' with total count 13
+	Removing column 'Lemon' with total count 11
 	Removing column 'Lemongrass' with total count 2
 	Removing column 'Licorice' with total count 4
-	Removing column 'Light' with total count 3
+	Removing column 'Light' with total count 2
 	Removing column 'Lily' with total count 5
 	Removing column 'Lime' with total count 4
 	Removing column 'Linden' with total count 1
 	Removing column 'Magnolia' with total count 2
-	Removing column 'Mandarin' with total count 6
+	Removing column 'Mandarin' with total count 5
 	Removing column 'Mango' with total count 3
 	Removing column 'Maple' with total count 1
 	Removing column 'Marigold' with total count 1
-	Removing column 'Marine' with total count 15
-	Removing column 'Medicinal' with total count 8
+	Removing column 'Marine' with total count 14
+	Removing column 'Medicinal' with total count 5
 	Removing column 'Melon' with total count 11
-	Removing column 'Menthol' with total count 2
+	Removing column 'Menthol' with total count 1
 	Removing column 'Metallic' with total count 1
 	Removing column 'Milky' with total count 3
-	Removing column 'Mossy' with total count 5
+	Removing column 'Mossy' with total count 4
+	Removing column 'Muguet' with total count 19
 	Removing column 'Mushroom' with total count 5
 	Removing column 'Musk Like' with total count 5
 	Removing column 'Musty' with total count 5
@@ -145,7 +222,7 @@ Dataset cleaning report for ifra_2019
 	Removing column 'Nasturtium' with total count 1
 	Removing column 'Neroli' with total count 19
 	Removing column 'Neutral' with total count 2
-	Removing column 'Nutmeg' with total count 3
+	Removing column 'Nutmeg' with total count 1
 	Removing column 'Oak' with total count 1
 	Removing column 'Onion' with total count 9
 	Removing column 'Orange' with total count 10
@@ -156,11 +233,11 @@ Dataset cleaning report for ifra_2019
 	Removing column 'Peach' with total count 13
 	Removing column 'Peanut' with total count 1
 	Removing column 'Peppermint' with total count 1
-	Removing column 'Peppery' with total count 5
+	Removing column 'Peppery' with total count 4
 	Removing column 'Petitgrain' with total count 1
 	Removing column 'Phenolic' with total count 11
 	Removing column 'Plastic' with total count 2
-	Removing column 'Plum' with total count 7
+	Removing column 'Plum' with total count 6
 	Removing column 'Popcorn' with total count 2
 	Removing column 'Potato' with total count 1
 	Removing column 'Powerful' with total count 1
@@ -169,46 +246,70 @@ Dataset cleaning report for ifra_2019
 	Removing column 'Rhubarb' with total count 5
 	Removing column 'Roasted' with total count 11
 	Removing column 'Rooty' with total count 1
-	Removing column 'Rosemary' with total count 1
+	Removing column 'Rosemary' with total count 0
 	Removing column 'Rubbery' with total count 1
 	Removing column 'Rum' with total count 1
 	Removing column 'Saffron' with total count 1
 	Removing column 'Sage' with total count 4
 	Removing column 'Sandalwood' with total count 14
 	Removing column 'Savoury' with total count 2
-	Removing column 'Sharp' with total count 9
+	Removing column 'Sharp' with total count 2
 	Removing column 'Smoky' with total count 13
 	Removing column 'Soapy' with total count 1
-	Removing column 'Soft' with total count 13
+	Removing column 'Soft' with total count 12
 	Removing column 'Sour' with total count 1
-	Removing column 'Spearmint' with total count 1
-	Removing column 'Strawberry' with total count 7
+	Removing column 'Spearmint' with total count 0
+	Removing column 'Strawberry' with total count 6
 	Removing column 'Sulfurous' with total count 18
 	Removing column 'Sweet-Pea' with total count 1
 	Removing column 'Tangerine' with total count 2
 	Removing column 'Tarragon' with total count 1
-	Removing column 'Tea' with total count 5
+	Removing column 'Tea' with total count 4
 	Removing column 'Terpenic' with total count 4
 	Removing column 'Tobacco' with total count 10
 	Removing column 'Tobacco like' with total count 3
 	Removing column 'Tonka' with total count 1
-	Removing column 'Tropical-Fruit' with total count 19
+	Removing column 'Tropical-Fruit' with total count 18
 	Removing column 'Tuberose' with total count 3
 	Removing column 'Vanilla' with total count 10
 	Removing column 'Vegetable' with total count 8
-	Removing column 'Verbena' with total count 4
-	Removing column 'Vetiver' with total count 8
+	Removing column 'Verbena' with total count 3
+	Removing column 'Vetiver' with total count 7
 	Removing column 'Watermelon' with total count 1
 	Removing column 'Watery' with total count 5
 	Removing column 'Yeast' with total count 1
-	Removing column 'Ylang' with total count 11
+	Removing column 'Ylang' with total count 9
 	Removing column 'cocoa' with total count 1
 	Removing column 'green' with total count 1
 	Removing column 'sweet' with total count 1
 	Removing column 'warm' with total count 1
-	Length of original descriptor list after low count removal: 33
+	Length of original descriptor list after low count removal: 32
 --- LOWERCASING AND MERGING LABELS ---
-	Length of original descriptor list before lowercase and merge: 33
-	Length of descriptor list after lowercase and merge: 33
+	Length of original descriptor list before lowercase and merge: 32
+	Length of descriptor list after lowercase and merge: 32
+--- REMOVING SMILES WITH NO LABELS ---
+	Length of original df before no label removal: 1047
+	Removing row with IsomericSMILES: CC1=CC=CC=C1O
+	Removing row with IsomericSMILES: CCCCCCCCCC(=O)O
+	Removing row with IsomericSMILES: C1C2=CC=CC=C2C(=O)O1
+	Removing row with IsomericSMILES: CCC(CC)C(=O)O
+	Removing row with IsomericSMILES: CC1=CC2=C(C=C1)N=CC=C2
+	Removing row with IsomericSMILES: CC1=CC(=C(C=C1)C)O
+	Removing row with IsomericSMILES: CCCC(C)C(=O)O
+	Removing row with IsomericSMILES: C1=CC=C(C=C1)CS
+	Removing row with IsomericSMILES: CCC(C)CC(=O)O
+	Removing row with IsomericSMILES: CC1=C(C(=CC=C1)C)O
+	Removing row with IsomericSMILES: C=CCSCC=C
+	Removing row with IsomericSMILES: C1=COC(=C1)CSSCC2=CC=CO2
+	Removing row with IsomericSMILES: C1CCC(CC1)CC(=O)O
+	Removing row with IsomericSMILES: CCCC(CCOC(=O)C)SC
+	Removing row with IsomericSMILES: CCC(C(=O)C)S
+	Removing row with IsomericSMILES: CC1=CSC=C1C
+	Removing row with IsomericSMILES: CC(CCCC(C)(C)O)CC(C1=CNC2=CC=CC=C21)C3=CNC4=CC=CC=C43
+	Removing row with IsomericSMILES: CC=CSC
+	Removing row with IsomericSMILES: CSCC1=CC=CO1
+	Removing row with IsomericSMILES: CCOC(=O)C(C)S
+	Removing row with IsomericSMILES: CCCC(C)(CO)S
+	Length of df after no label removal: 1026
 --- DATASET CLEANING COMPLETE ---
-	Final size of dataframe: 1118
+	Final size of dataframe: 1026

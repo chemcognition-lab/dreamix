@@ -1,10 +1,11 @@
 Dataset cleaning report for gs-lf
 --- REMOVING NAN SMILES ---
 	Original size before removing NaN SMILES: 4983
+	Number of NaN SMILES: 0
 	Size after removing NaN SMILES: 4983
 --- REMOVING UNDESIRABLE ELEMENTS ---
 	Original size before removing undesirable elements: 4983
-	Purging undesirable elements in ['Na', 'K', 'Ca', 'Mg', 'Cr', 'B', 'Si', 'Ti', 'Fe', 'Al', 'Co', 'Zn', 'Cu', 'V', 'Bi', 'He']
+	Purging undesirable elements in ['Na', 'K', 'Ca', 'Mg', 'Cr', 'B', 'Si', 'Ti', 'Fe', 'Al', 'Co', 'Zn', 'Cu', 'V', 'Bi', 'He', 'As', 'I', 'Sb', 'Pb', 'Ni', 'Os', 'Se', 'Hg', 'Ar', 'Cd', 'Kr', 'Rn', 'Se', 'Ta', 'U', 'Xe', 'Cd', 'Mo', 'Sn', 'Tl', 'Te', 'Y', 'Be']
 	Match found: SMILES [Cl-].[K+] contains K
 	Match found: SMILES O=C([O-])CN(CCN(CC(=O)[O-])CC(=O)[O-])CC(=O)[O-].[Ca+2].[Na+].[Na+] contains Na
 	Match found: SMILES O=C([O-])CC(O)(CC(=O)[O-])C(=O)[O-].[Na+].[Na+].[Na+] contains Na
@@ -116,6 +117,10 @@ Dataset cleaning report for gs-lf
 	Match found: SMILES Nc1nc2c(ncn2C2OC(COP(=O)([O-])[O-])C(O)C2O)c(=O)[nH]1.[Ca+2] contains Ca
 	Match found: SMILES Nc1nc2c(ncn2C2OC(COP(=O)([O-])[O-])C(O)C2O)c(=O)[nH]1.[K+].[K+] contains K
 	Total undesirable element SMILES removed: 110
+--- REMOVING DUPLICATES ---
+	Original size before removing duplicates: 4873
+	Number of SMILES removed: 0
+	Size after removing duplicates: 4873
 --- REMOVING SALTS, CHARGED MOLECULES AND MULTIMOLECULES ---
 	Original size before removing salts, charges and multimolecules: 4873
 	CC(=O)[n+]1cc(C)nc(C)c1 has charges
@@ -198,5 +203,8 @@ Dataset cleaning report for gs-lf
 --- LOWERCASING AND MERGING LABELS ---
 	Length of original descriptor list before lowercase and merge: 138
 	Length of descriptor list after lowercase and merge: 138
+--- REMOVING SMILES WITH NO LABELS ---
+	Length of original df before no label removal: 4815
+	Length of df after no label removal: 4815
 --- DATASET CLEANING COMPLETE ---
 	Final size of dataframe: 4815

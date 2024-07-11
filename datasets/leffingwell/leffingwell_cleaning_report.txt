@@ -1,11 +1,16 @@
 Dataset cleaning report for leffingwell
 --- REMOVING NAN SMILES ---
 	Original size before removing NaN SMILES: 3522
+	Number of NaN SMILES: 0
 	Size after removing NaN SMILES: 3522
 --- REMOVING UNDESIRABLE ELEMENTS ---
 	Original size before removing undesirable elements: 3522
-	Purging undesirable elements in ['Na', 'K', 'Ca', 'Mg', 'Cr', 'B', 'Si', 'Ti', 'Fe', 'Al', 'Co', 'Zn', 'Cu', 'V', 'Bi', 'He']
+	Purging undesirable elements in ['Na', 'K', 'Ca', 'Mg', 'Cr', 'B', 'Si', 'Ti', 'Fe', 'Al', 'Co', 'Zn', 'Cu', 'V', 'Bi', 'He', 'As', 'I', 'Sb', 'Pb', 'Ni', 'Os', 'Se', 'Hg', 'Ar', 'Cd', 'Kr', 'Rn', 'Se', 'Ta', 'U', 'Xe', 'Cd', 'Mo', 'Sn', 'Tl', 'Te', 'Y', 'Be']
 	Total undesirable element SMILES removed: 0
+--- REMOVING DUPLICATES ---
+	Original size before removing duplicates: 3522
+	Number of SMILES removed: 0
+	Size after removing duplicates: 3522
 --- REMOVING SALTS, CHARGED MOLECULES AND MULTIMOLECULES ---
 	Original size before removing salts, charges and multimolecules: 3522
 	CC1=C[N+](=CC(=N1)C)C(=O)C has charges
@@ -20,11 +25,14 @@ Dataset cleaning report for leffingwell
 --- COLUMN PROCESSING ---
 	leffingwell is a classification dataset. Cleaning columns
 --- REMOVING LOW COUNT COLUMNS ---
-	Length of original descriptor list before low count removal: 114
+	Length of original descriptor list before low count removal: 113
 	No columns are below count threshold 20
-	Length of original descriptor list after low count removal: 114
+	Length of original descriptor list after low count removal: 113
 --- LOWERCASING AND MERGING LABELS ---
-	Length of original descriptor list before lowercase and merge: 114
-	Length of descriptor list after lowercase and merge: 114
+	Length of original descriptor list before lowercase and merge: 113
+	Length of descriptor list after lowercase and merge: 113
+--- REMOVING SMILES WITH NO LABELS ---
+	Length of original df before no label removal: 3521
+	Length of df after no label removal: 3521
 --- DATASET CLEANING COMPLETE ---
 	Final size of dataframe: 3521
