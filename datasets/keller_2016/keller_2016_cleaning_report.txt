@@ -16,7 +16,7 @@ Dataset cleaning report for keller_2016
 --- REMOVING MOLECULAR WEIGHTS BETWEEN 20 AND 600 ---
 	Original size before molecular weight thresholding: 478
 	Molecules below MW threshold 20: 1
-		O, Acid_nonzeroproportion, Pleasantness_nonzeromean
+		O, 
 	Molecules above MW threshold 600: 0
 	Size after molecular weight thresholding: 477
 --- COLUMN PROCESSING ---
