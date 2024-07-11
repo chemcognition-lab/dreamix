@@ -5,7 +5,7 @@ Dataset cleaning report for mayhew_2022
 	Size after removing NaN SMILES: 1924
 --- REMOVING UNDESIRABLE ELEMENTS ---
 	Original size before removing undesirable elements: 1924
-	Purging undesirable elements in ['Na', 'K', 'Ca', 'Mg', 'Cr', 'B', 'Si', 'Ti', 'Fe', 'Al', 'Co', 'Zn', 'Cu', 'V', 'Bi', 'He', 'As', 'I', 'Sb', 'Pb', 'Ni', 'Os', 'Se', 'Hg', 'Ar', 'Cd', 'Kr', 'Rn', 'Se', 'Ta', 'U', 'Xe', 'Cd', 'Mo', 'Sn', 'Tl', 'Te', 'Y']
+	Purging undesirable elements in ['Na', 'K', 'Ca', 'Mg', 'Cr', 'B', 'Si', 'Ti', 'Fe', 'Al', 'Co', 'Zn', 'Cu', 'V', 'Bi', 'He', 'As', 'I', 'Sb', 'Pb', 'Ni', 'Os', 'Se', 'Hg', 'Ar', 'Cd', 'Kr', 'Rn', 'Se', 'Ta', 'U', 'Xe', 'Cd', 'Mo', 'Sn', 'Tl', 'Te', 'Y', 'Be']
 	Match found: SMILES B(Br)(Br)Br contains B
 	Match found: SMILES B(Cl)(Cl)Cl contains B
 	Match found: SMILES B(F)(F)F contains B
@@ -79,6 +79,7 @@ Dataset cleaning report for mayhew_2022
 	Match found: SMILES S=[Hg] contains Hg
 	Match found: SMILES [Al](Br)(Br)Br contains Al
 	Match found: SMILES [Ar] contains Ar
+	Match found: SMILES [Be]=O contains Be
 	Match found: SMILES [Cd] contains Cd
 	Match found: SMILES [Cu] contains Cu
 	Match found: SMILES [He] contains He
@@ -93,9 +94,9 @@ Dataset cleaning report for mayhew_2022
 	Match found: SMILES [V] contains V
 	Match found: SMILES [Xe] contains Xe
 	Match found: SMILES [Y] contains Y
-	Total undesirable element SMILES removed: 87
+	Total undesirable element SMILES removed: 88
 --- REMOVING DUPLICATES ---
-	Original size before removing duplicates: 1837
+	Original size before removing duplicates: 1836
 	Removing duplicate smiles: C1C=CC2C1C3CC2C=C3
 	Removing duplicate smiles: C1CCOC1
 	Removing duplicate smiles: CC(=C)C=C
@@ -156,15 +157,15 @@ Dataset cleaning report for mayhew_2022
 	Removing duplicate smiles: CC(C)CS
 	Removing duplicate smiles: CC(C)CCS
 	Number of SMILES removed: 59
-	Size after removing duplicates: 1778
+	Size after removing duplicates: 1777
 --- REMOVING SALTS, CHARGED MOLECULES AND MULTIMOLECULES ---
-	Original size before removing salts, charges and multimolecules: 1778
+	Original size before removing salts, charges and multimolecules: 1777
 	C(C(=O)[O-])(Cl)Cl has charges
 	Total salts and charged SMILES removed: 1
 	Total multimolecules removed: 0
-	Final size after removing salts, charges and multimolecules: 1777
+	Final size after removing salts, charges and multimolecules: 1776
 --- REMOVING MOLECULAR WEIGHTS BETWEEN 20 AND 600 ---
-	Original size before molecular weight thresholding: 1777
+	Original size before molecular weight thresholding: 1776
 	Molecules below MW threshold 20: 4
 		C, 
 		N, Odor
@@ -178,7 +179,7 @@ Dataset cleaning report for mayhew_2022
 		C[C@@H]1[C@H]([C@@H]([C@@H]([C@@H](O1)OC\2CC(C(C(CC(=O)CC(C(CCC(CC(CC(CC(=O)OC(C(C(C(/C=C/C=C/CC/C=C/C=C/C=C/C=C2)C)O)C)C)O)O)O)O)O)O)C(=O)O)O)O)N)O, 
 		C([C@@H]1[C@@H]2[C@@H]([C@H]([C@H](O1)O[C@@H]3[C@H](O[C@@H]([C@@H]([C@H]3O)O)O[C@@H]4[C@H](O[C@@H]([C@@H]([C@H]4O)O)O[C@@H]5[C@H](O[C@@H]([C@@H]([C@@H]5O)O)O[C@@H]6[C@H](O[C@@H]([C@@H]([C@H]6O)O)O[C@@H]7[C@H](O[C@@H]([C@@H]([C@H]7O)O)O[C@@H]8[C@H](O[C@H](O2)[C@@H]([C@H]8O)O)CO)CO)CO)CO)CO)CO)O)O)O, 
 		O[C@@H]1[C@@H](O[C@H]2O[C@H](C(=O)O)[C@H]([C@H]([C@@H]2O)O)O)[C@@H](O[C@@H]([C@H]1O)C(=O)O)O[C@@H]1CC[C@@]2([C@@H](C1(C)C)CC[C@@]1([C@H]2C(=O)C=C2[C@@]1(C)CC[C@@]1([C@H]2C[C@](C)(CC1)C(=O)O)C)C)C, 
-	Size after molecular weight thresholding: 1766
+	Size after molecular weight thresholding: 1765
 --- COLUMN PROCESSING ---
 	mayhew_2022 is a classification dataset. Cleaning columns
 --- REMOVING LOW COUNT COLUMNS ---
@@ -189,4 +190,4 @@ Dataset cleaning report for mayhew_2022
 	Length of original descriptor list before lowercase and merge: 1
 	Length of descriptor list after lowercase and merge: 1
 --- DATASET CLEANING COMPLETE ---
-	Final size of dataframe: 1766
+	Final size of dataframe: 1765

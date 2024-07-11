@@ -1761,7 +1761,6 @@ odor,Odorless,Stimulus,boiling.point.best.available,boiling.point.estimate.Banks
 1,0,S,101.42,-75.9477823278124,,473.12,101.42,train,0.989437995478511,PubChem,0.978525601327419,20.6,20.6,402,34.08,S,sulfane,hydrogen sulfide
 1,0,S(Cl)Cl,505.77,112.160530472444,,505.77,,train,0.998557657469064,,0.925650596618652,3.09e-10,,25353,102.97,S(Cl)Cl,chloro thiohypochlorite,sulfur dichloride
 1,0,S(SCl)Cl,539.03,159.150566442595,,539.03,,train,0.998135433299467,PubChem,0.872244507074356,2.58e-11,,24807,135.0,S(SCl)Cl,chlorosulfanyl thiohypochlorite,disulfur dichloride
-0,1,[Be]=O,564.42,,,564.42,,train,0.002284288406372,PubChem,0.0041450858116149,1.01e-11,,14775,25.012,[Be]=O,oxoberyllium,beryllium oxide
 1,0,[N+](=O)(O)[O-],21.1,26.1642149740373,268.756046531616,492.56,21.1,train,0.99118522182107,PubChem,0.995145873166621,904.0,904.0,944,63.013,[N+](=O)(O)[O-],nitric acid,nitric acid
 1,0,[N+](=O)([N+](=O)[O-])[O-],21.1,92.4586765041096,609.210615599098,549.08,21.1,train,0.99859412247315,PubChem,0.996521557914093,904.0,904.0,25352,92.011,[N+](=O)([N+](=O)[O-])[O-],,dinitrogen tetroxide
 1,0,[N-]=[N+]=O,-88.48,-34.8553375301906,34.4626464699122,624.45,-88.48,train,0.991638945415616,PubChem,0.893884293735027,42900.0,42900.0,948,44.013,[N-]=[N+]=O,nitrous oxide,nitrous oxide
