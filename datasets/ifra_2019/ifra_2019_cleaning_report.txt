@@ -210,5 +210,29 @@ Dataset cleaning report for ifra_2019
 --- LOWERCASING AND MERGING LABELS ---
 	Length of original descriptor list before lowercase and merge: 33
 	Length of descriptor list after lowercase and merge: 33
+--- REMOVING SMILES WITH NO LABELS ---
+	Length of original df before no label removal: 1118
+	Removing row with IsomericSMILES: CC1=CC=CC=C1O
+	Removing row with IsomericSMILES: CCCCCCCCCC(=O)O
+	Removing row with IsomericSMILES: C1C2=CC=CC=C2C(=O)O1
+	Removing row with IsomericSMILES: CCC(CC)C(=O)O
+	Removing row with IsomericSMILES: CC1=CC2=C(C=C1)N=CC=C2
+	Removing row with IsomericSMILES: CC1=CC(=C(C=C1)C)O
+	Removing row with IsomericSMILES: CCCC(C)C(=O)O
+	Removing row with IsomericSMILES: C1=CC=C(C=C1)CS
+	Removing row with IsomericSMILES: CCC(C)CC(=O)O
+	Removing row with IsomericSMILES: CC1=C(C(=CC=C1)C)O
+	Removing row with IsomericSMILES: C=CCSCC=C
+	Removing row with IsomericSMILES: C1=COC(=C1)CSSCC2=CC=CO2
+	Removing row with IsomericSMILES: C1CCC(CC1)CC(=O)O
+	Removing row with IsomericSMILES: CCCC(CCOC(=O)C)SC
+	Removing row with IsomericSMILES: CCC(C(=O)C)S
+	Removing row with IsomericSMILES: CC1=CSC=C1C
+	Removing row with IsomericSMILES: CC(CCCC(C)(C)O)CC(C1=CNC2=CC=CC=C21)C3=CNC4=CC=CC=C43
+	Removing row with IsomericSMILES: CC=CSC
+	Removing row with IsomericSMILES: CSCC1=CC=CO1
+	Removing row with IsomericSMILES: CCOC(=O)C(C)S
+	Removing row with IsomericSMILES: CCCC(C)(CO)S
+	Length of df after no label removal: 1097
 --- DATASET CLEANING COMPLETE ---
-	Final size of dataframe: 1118
+	Final size of dataframe: 1097

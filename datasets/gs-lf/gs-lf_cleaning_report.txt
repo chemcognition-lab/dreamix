@@ -198,5 +198,8 @@ Dataset cleaning report for gs-lf
 --- LOWERCASING AND MERGING LABELS ---
 	Length of original descriptor list before lowercase and merge: 138
 	Length of descriptor list after lowercase and merge: 138
+--- REMOVING SMILES WITH NO LABELS ---
+	Length of original df before no label removal: 4815
+	Length of df after no label removal: 4815
 --- DATASET CLEANING COMPLETE ---
 	Final size of dataframe: 4815

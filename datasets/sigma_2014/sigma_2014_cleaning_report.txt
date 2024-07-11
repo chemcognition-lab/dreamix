@@ -117,5 +117,52 @@ Dataset cleaning report for sigma_2014
 --- LOWERCASING AND MERGING LABELS ---
 	Length of original descriptor list before lowercase and merge: 41
 	Length of descriptor list after lowercase and merge: 41
+--- REMOVING SMILES WITH NO LABELS ---
+	Length of original df before no label removal: 855
+	Removing row with IsomericSMILES: C1=CC=C(C(=C1)C(=O)O)O
+	Removing row with IsomericSMILES: C1=CC=NC=C1
+	Removing row with IsomericSMILES: C[N+](C)(C)[O-]
+	Removing row with IsomericSMILES: C1=CC=C(C=C1)CN=C=S
+	Removing row with IsomericSMILES: CC1=CC=C(C=C1)O
+	Removing row with IsomericSMILES: CC(C)C1=CC=CC=C1O
+	Removing row with IsomericSMILES: C1C(O1)C2=CC=CC=C2
+	Removing row with IsomericSMILES: CC(C1=CC=CC=C1)O
+	Removing row with IsomericSMILES: C=CC1=CC=CC=C1
+	Removing row with IsomericSMILES: C1=CC=C(C=C1)CC(=O)CC2=CC=CC=C2
+	Removing row with IsomericSMILES: CC(CCC=C(C)C)CC=O
+	Removing row with IsomericSMILES: CCCOC(=O)C
+	Removing row with IsomericSMILES: CC(C)CCOC=O
+	Removing row with IsomericSMILES: CCCCCCC#CC(=O)OC
+	Removing row with IsomericSMILES: C1=COC=C1C=O
+	Removing row with IsomericSMILES: CC(=O)C1=CC=CC=C1N
+	Removing row with IsomericSMILES: CC1=C(C(=CC=C1)C)O
+	Removing row with IsomericSMILES: CC1=CCC(=C(C)C)CC1
+	Removing row with IsomericSMILES: C1CCC2CC(CCC2C1)O
+	Removing row with IsomericSMILES: CC(=O)C1=CC=CN1
+	Removing row with IsomericSMILES: CCCCCCCS
+	Removing row with IsomericSMILES: CC1=CC[C@@H](CC1=O)C(=C)C
+	Removing row with IsomericSMILES: C1=CC=C(C=C1)CCN=C=S
+	Removing row with IsomericSMILES: CC1=C(C(=C(C=C1)C)O)C
+	Removing row with IsomericSMILES: CCCCCC(C=C)OC(=O)C
+	Removing row with IsomericSMILES: CCC1=CC=C(C=C1)O
+	Removing row with IsomericSMILES: C1CCNC1
+	Removing row with IsomericSMILES: CC(=CCCC(C)(C=C)OC(=O)C1=CC=CC=C1)C
+	Removing row with IsomericSMILES: CC1=CC=C(C=C1)OC(=O)CC2=CC=CC=C2
+	Removing row with IsomericSMILES: CC(CCC=C(C)C)C=O
+	Removing row with IsomericSMILES: CC1=C(C(=CC=C1)C)S
+	Removing row with IsomericSMILES: C1=CC=C(C=C1)CCCCCO
+	Removing row with IsomericSMILES: CC(CC=O)SC
+	Removing row with IsomericSMILES: CC1C(CCO1)S
+	Removing row with IsomericSMILES: CC(C)CC(=O)OCCCC1=CC=CC=C1
+	Removing row with IsomericSMILES: CC1=CC[C@@H]2C[C@H]1C2(C)C
+	Removing row with IsomericSMILES: CCCC1OCC(O1)C
+	Removing row with IsomericSMILES: CC1=CC[C@H](CC1)C(C)(C)O
+	Removing row with IsomericSMILES: C(=C/C(=O)O)\C(=O)O
+	Removing row with IsomericSMILES: CC(=CCC/C(=C/C=O)/C)C
+	Removing row with IsomericSMILES: C1CCN(CC1)C(=O)/C=C/C=C/C2=CC3=C(C=C2)OCO3
+	Removing row with IsomericSMILES: CC(=CCC/C(=C/C(OC)OC)/C)C
+	Removing row with IsomericSMILES: CCCCC/C=C\CCC=O
+	Removing row with IsomericSMILES: CCCCC/C(=C/C1=CC=CC=C1)/CO
+	Length of df after no label removal: 811
 --- DATASET CLEANING COMPLETE ---
-	Final size of dataframe: 855
+	Final size of dataframe: 811

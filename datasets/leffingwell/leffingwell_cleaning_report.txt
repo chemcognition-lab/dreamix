@@ -26,5 +26,8 @@ Dataset cleaning report for leffingwell
 --- LOWERCASING AND MERGING LABELS ---
 	Length of original descriptor list before lowercase and merge: 113
 	Length of descriptor list after lowercase and merge: 113
+--- REMOVING SMILES WITH NO LABELS ---
+	Length of original df before no label removal: 3521
+	Length of df after no label removal: 3521
 --- DATASET CLEANING COMPLETE ---
 	Final size of dataframe: 3521
