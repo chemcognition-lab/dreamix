@@ -194,6 +194,11 @@ Dataset cleaning report for gs-lf
 		CC(C)CCCCCCCCCCCCCCC(=O)OCC(O)COCC(COC(=O)CCCCCCCCCCCCCCC(C)C)OC(=O)CCCCCCCCCCCCCCC(C)C, waxy
 		CCCCCCCCCCCCCCCCCC(=O)OCCOCC(OCCOC)C1OCC(OCCOC)C1OCCOC, alcoholic
 	Size after molecular weight thresholding: 4815
+--- REMOVING NON-CARBON MOLECULES ---
+	Original size before removing non-carbon molecules: 4815
+	Removing non-carbon molecule: [N-]=[N+]=O
+	Number of non-carbon molecules removed: 1
+	Size after removing non-carbon molecules: 4814
 --- COLUMN PROCESSING ---
 	gs-lf is a classification dataset. Cleaning columns
 --- REMOVING LOW COUNT COLUMNS ---
@@ -204,7 +209,7 @@ Dataset cleaning report for gs-lf
 	Length of original descriptor list before lowercase and merge: 138
 	Length of descriptor list after lowercase and merge: 138
 --- REMOVING SMILES WITH NO LABELS ---
-	Length of original df before no label removal: 4815
-	Length of df after no label removal: 4815
+	Length of original df before no label removal: 4814
+	Length of df after no label removal: 4814
 --- DATASET CLEANING COMPLETE ---
-	Final size of dataframe: 4815
+	Final size of dataframe: 4814

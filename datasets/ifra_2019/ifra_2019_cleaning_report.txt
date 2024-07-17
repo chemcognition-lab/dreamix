@@ -120,6 +120,10 @@ Dataset cleaning report for ifra_2019
 	Molecules below MW threshold 20: 0
 	Molecules above MW threshold 600: 0
 	Size after molecular weight thresholding: 1047
+--- REMOVING NON-CARBON MOLECULES ---
+	Original size before removing non-carbon molecules: 1047
+	Number of non-carbon molecules removed: 0
+	Size after removing non-carbon molecules: 1047
 --- COLUMN PROCESSING ---
 	ifra_2019 is a classification dataset. Cleaning columns
 --- REMOVING LOW COUNT COLUMNS ---

@@ -23,7 +23,13 @@ Dataset cleaning report for abraham_2012
 		N, 
 	Molecules above MW threshold 600: 0
 	Size after molecular weight thresholding: 266
+--- REMOVING NON-CARBON MOLECULES ---
+	Original size before removing non-carbon molecules: 266
+	Removing non-carbon molecule: S
+	Removing non-carbon molecule: O=S=O
+	Number of non-carbon molecules removed: 2
+	Size after removing non-carbon molecules: 264
 --- COLUMN PROCESSING ---
 	abraham_2012 is a regression dataset. Columns are untouched
 --- DATASET CLEANING COMPLETE ---
-	Final size of dataframe: 266
+	Final size of dataframe: 264

@@ -180,6 +180,41 @@ Dataset cleaning report for mayhew_2022
 		C([C@@H]1[C@@H]2[C@@H]([C@H]([C@H](O1)O[C@@H]3[C@H](O[C@@H]([C@@H]([C@H]3O)O)O[C@@H]4[C@H](O[C@@H]([C@@H]([C@H]4O)O)O[C@@H]5[C@H](O[C@@H]([C@@H]([C@@H]5O)O)O[C@@H]6[C@H](O[C@@H]([C@@H]([C@H]6O)O)O[C@@H]7[C@H](O[C@@H]([C@@H]([C@H]7O)O)O[C@@H]8[C@H](O[C@H](O2)[C@@H]([C@H]8O)O)CO)CO)CO)CO)CO)CO)O)O)O, 
 		O[C@@H]1[C@@H](O[C@H]2O[C@H](C(=O)O)[C@H]([C@H]([C@@H]2O)O)O)[C@@H](O[C@@H]([C@H]1O)C(=O)O)O[C@@H]1CC[C@@]2([C@@H](C1(C)C)CC[C@@]1([C@H]2C(=O)C=C2[C@@]1(C)CC[C@@]1([C@H]2C[C@](C)(CC1)C(=O)O)C)C)C, 
 	Size after molecular weight thresholding: 1765
+--- REMOVING NON-CARBON MOLECULES ---
+	Original size before removing non-carbon molecules: 1765
+	Removing non-carbon molecule: Br
+	Removing non-carbon molecule: BrBr
+	Removing non-carbon molecule: F
+	Removing non-carbon molecule: FF
+	Removing non-carbon molecule: FP(F)(F)(F)F
+	Removing non-carbon molecule: FS(F)(F)(F)(F)F
+	Removing non-carbon molecule: FS(F)(F)(F)(F)S(F)(F)(F)(F)F
+	Removing non-carbon molecule: FS(F)(F)F
+	Removing non-carbon molecule: N#N
+	Removing non-carbon molecule: N(=O)OS(=O)(=O)O
+	Removing non-carbon molecule: N(=O)[N+](=O)[O-]
+	Removing non-carbon molecule: N(=O)O
+	Removing non-carbon molecule: N(F)(F)F
+	Removing non-carbon molecule: N=[N+]=[N-]
+	Removing non-carbon molecule: NN
+	Removing non-carbon molecule: NO
+	Removing non-carbon molecule: NS(=O)(=O)O
+	Removing non-carbon molecule: O(F)F
+	Removing non-carbon molecule: O=O
+	Removing non-carbon molecule: O=P(Br)(Br)Br
+	Removing non-carbon molecule: O=S(=O)(F)F
+	Removing non-carbon molecule: O=S=O
+	Removing non-carbon molecule: OO
+	Removing non-carbon molecule: OP(=O)(O)O
+	Removing non-carbon molecule: OS(=O)(=O)F
+	Removing non-carbon molecule: OS(=O)O
+	Removing non-carbon molecule: P(Br)(Br)Br
+	Removing non-carbon molecule: S
+	Removing non-carbon molecule: [N+](=O)(O)[O-]
+	Removing non-carbon molecule: [N+](=O)([N+](=O)[O-])[O-]
+	Removing non-carbon molecule: [N-]=[N+]=O
+	Number of non-carbon molecules removed: 31
+	Size after removing non-carbon molecules: 1734
 --- COLUMN PROCESSING ---
 	mayhew_2022 is a classification dataset. Cleaning columns
 --- REMOVING LOW COUNT COLUMNS ---
@@ -190,4 +225,4 @@ Dataset cleaning report for mayhew_2022
 	Length of original descriptor list before lowercase and merge: 1
 	Length of descriptor list after lowercase and merge: 1
 --- DATASET CLEANING COMPLETE ---
-	Final size of dataframe: 1765
+	Final size of dataframe: 1734

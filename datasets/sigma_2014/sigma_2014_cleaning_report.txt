@@ -43,6 +43,10 @@ Dataset cleaning report for sigma_2014
 		CCCCCCC(O)C/C=C\CCCCCCCC(=O)OCC(OC(=O)CCCCCCC/C=C\CC(O)CCCCCC)COC(=O)CCCCCCC/C=C\CC(O)CCCCCC, sage
 		C1=C(C=C(C(=C1O)O)O)C(=O)OC2=CC(=CC(=C2O)O)C(=O)OC[C@@H]3[C@H]([C@@H]([C@H]([C@@H](O3)OC(=O)C4=CC(=C(C(=C4)OC(=O)C5=CC(=C(C(=C5)O)O)O)O)O)OC(=O)C6=CC(=C(C(=C6)OC(=O)C7=CC(=C(C(=C7)O)O)O)O)O)OC(=O)C8=CC(=C(C(=C8)OC(=O)C9=CC(=C(C(=C9)O)O)O)O)O)OC(=O)C1=CC(=C(C(=C1)OC(=O)C1=CC(=C(C(=C1)O)O)O)O)O, woody, medicinal
 	Size after molecular weight thresholding: 850
+--- REMOVING NON-CARBON MOLECULES ---
+	Original size before removing non-carbon molecules: 850
+	Number of non-carbon molecules removed: 0
+	Size after removing non-carbon molecules: 850
 --- COLUMN PROCESSING ---
 	sigma_2014 is a classification dataset. Cleaning columns
 --- REMOVING LOW COUNT COLUMNS ---
