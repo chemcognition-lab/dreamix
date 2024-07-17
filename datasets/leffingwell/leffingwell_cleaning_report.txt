@@ -22,6 +22,10 @@ Dataset cleaning report for leffingwell
 	Molecules below MW threshold 20: 0
 	Molecules above MW threshold 600: 0
 	Size after molecular weight thresholding: 3521
+--- REMOVING NON-CARBON MOLECULES ---
+	Original size before removing non-carbon molecules: 3521
+	Number of non-carbon molecules removed: 0
+	Size after removing non-carbon molecules: 3521
 --- COLUMN PROCESSING ---
 	leffingwell is a classification dataset. Cleaning columns
 --- REMOVING LOW COUNT COLUMNS ---

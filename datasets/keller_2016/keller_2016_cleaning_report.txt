@@ -26,6 +26,10 @@ Dataset cleaning report for keller_2016
 		O, 
 	Molecules above MW threshold 600: 0
 	Size after molecular weight thresholding: 475
+--- REMOVING NON-CARBON MOLECULES ---
+	Original size before removing non-carbon molecules: 475
+	Number of non-carbon molecules removed: 0
+	Size after removing non-carbon molecules: 475
 --- COLUMN PROCESSING ---
 	keller_2016 is a regression dataset. Columns are untouched
 --- DATASET CLEANING COMPLETE ---
