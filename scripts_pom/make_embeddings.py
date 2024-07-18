@@ -25,15 +25,6 @@ def get_embeddings_from_smiles(smi_list: List[str], file_path: str, gnn: Optiona
         state_dict = torch.load(f'{file_path}/gnn_embedder.pt', map_location=torch.device('cpu'))
         gnn.load_state_dict(state_dict)
 
-    ## Can add CheMIX model here
-    # Pseudo-code:
-    # model = WrapperModel(gnn, chemix)
-    #
-    ## we will need a custom dataset that takes in...
-    ### list of mixtures (M)
-    ### list of smiles per mixture (L)
-    ### (N, M, L)
-
     embeddings = []
     with torch.no_grad():
         gnn.eval()
@@ -47,5 +38,5 @@ def get_embeddings_from_smiles(smi_list: List[str], file_path: str, gnn: Optiona
 
 
 if __name__ == '__main__':
-    embeddings = get_embeddings_from_smiles(['c1ccccc1', 'Cn1c(=O)c2c(ncn2C)n(C)c1=O'], 'general_models/graphnets_gs-lf-mayhew/')
+    embeddings = get_embeddings_from_smiles(['c1ccccc1', 'Cn1c(=O)c2c(ncn2C)n(C)c1=O'], 'general_models/graphnets_no_reg/')
     print(embeddings)
