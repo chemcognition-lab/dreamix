@@ -1,6 +1,7 @@
 from typing import Union, List, Optional
 
 import json
+import numpy as np
 
 import torch
 import torch.nn as nn
@@ -179,9 +180,26 @@ class GraphNets(nn.Module):
         
         return u
     
+    def graphs_to_mixtures(self, 
+                           data: pyg.data.Data, 
+                           collate_indices: Union[torch.Tensor, np.ndarray], 
+                           device: Optional[Union[torch.device, str]] = 'cpu',
+                           unk_token: Optional[int] = -999,
+                        ):
+        device = torch.device(device)
+        data = data.to(device)
+        x = self.forward(data)            # produces molecule embeddings [num_unique_mols, embed_dim]
+        padding = torch.ones((1, x.shape[-1]), device=device) * unk_token
+        x = torch.cat([x, padding])     # [num_unique_mols + 1, embed_dim]
+
+        out = torch.cat([x[collate_indices[:,i]] for i in range(collate_indices.shape[1])], dim=1)    # [num_samples, max_mols*num_mix, embed_dim]
+        out = out.view(collate_indices.shape + (x.shape[-1],))
+        out = torch.transpose(out, -2, -1)
+
+        return out
+    
     @classmethod
     def from_json(cls, node_dim, edge_dim, json_path: str):
         params = json.load(open(json_path, 'r'))
         return cls(node_dim, edge_dim, **params)
-
 
