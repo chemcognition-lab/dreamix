@@ -48,7 +48,7 @@ def get_metric_function(task: str):
         'multilabel': lambda pred, targ: F.classification.multilabel_auroc(pred, targ.long(), targ.shape[-1]),
         'multiclass': lambda pred, targ: F.classification.multiclass_auroc(pred, targ.long(), targ.shape[-1]),
         'binary': lambda pred, targ: F.classification.binary_auroc(pred, targ.long()),
-        'regression': lambda pred, targ: F.r2_score(pred, targ)
+        'regression': lambda pred, targ: F.kendall_rank_corrcoef(pred, targ)
     }
     return loss_dict[task]
 

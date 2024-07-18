@@ -28,7 +28,9 @@ ATOM_FEATURES = {
     ],
 }
 
-BOND_FDIM = 14
+# hard coded for representation here
+EDGE_DIM = 14
+NODE_DIM = 85
 
 
 def onek_encoding_unk(value: Any, choices: List[Any]):
@@ -55,7 +57,7 @@ def atom_features(atom: Chem.rdchem.Atom) -> List:
 
 def bond_features(bond: Chem.rdchem.Bond) -> List:
     if bond is None:
-        fbond = [1] + [0] * (BOND_FDIM - 1)
+        fbond = [1] + [0] * (EDGE_DIM - 1)
     else:
         bt = bond.GetBondType()
         fbond = [

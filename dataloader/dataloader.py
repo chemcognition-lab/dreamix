@@ -87,7 +87,6 @@ class DreamLoader():
         self.features = df[smiles_column].to_numpy()
         if len(smiles_column) == 1: 
             self.features = self.features.flatten()
-
         self.labels = df[label_columns].values
         if validate:
             self.validate()
@@ -262,6 +261,23 @@ class DreamLoader():
                 feature_list.append([mix_1, mix_2])
 
             self.features = np.array(feature_list, dtype=object)
+
+        elif representation == "competition_smiles_augment":
+            # Features is ["Dataset", "Mixture 1", "Mixture 2"]
+            smi_df = pd.read_csv(f"{current_dir}/../datasets/competition_train/mixture_smi_definitions_clean.csv")
+            feature_list = []
+            feature_list_augment = []
+            for feature in self.features:
+                mix_1 = smi_df.loc[(smi_df['Dataset'] == feature[0]) & (smi_df['Mixture Label'] == feature[1])][smi_df.columns[2:]]
+                mix_1 = mix_1.dropna(axis=1).to_numpy()[0]
+                mix_2 = smi_df.loc[(smi_df['Dataset'] == feature[0]) & (smi_df['Mixture Label'] == feature[2])][smi_df.columns[2:]]
+                mix_2 = mix_2.dropna(axis=1).to_numpy()[0]
+                feature_list.append([mix_1, mix_2])
+                feature_list_augment.append([mix_2, mix_1])
+            feature_list += feature_list_augment
+
+            self.features = np.array(feature_list, dtype=object)
+            self.labels = np.concatenate([self.labels, self.labels])
 
         elif representation == "competition_rdkit2d":
             # Features is ["Dataset", "Mixture 1", "Mixture 2"]
