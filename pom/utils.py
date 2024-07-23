@@ -48,7 +48,7 @@ def get_metric_function(task: str):
         'multilabel': lambda pred, targ: F.classification.multilabel_auroc(pred, targ.long(), targ.shape[-1]),
         'multiclass': lambda pred, targ: F.classification.multiclass_auroc(pred, targ.long(), targ.shape[-1]),
         'binary': lambda pred, targ: F.classification.binary_auroc(pred, targ.long()),
-        'regression': lambda pred, targ: F.kendall_rank_corrcoef(pred, targ)
+        'regression': lambda pred, targ: F.r2_score(pred, targ) #F.kendall_rank_corrcoef(pred, targ)
     }
     return loss_dict[task]
 
@@ -65,6 +65,15 @@ def jsonify(val: Any):
     else:
         return val.__name__
 
-
-        
-
+def split_into_batches(*tensors, q):
+    # create batches through indexing to ensure backpropagation
+    if not all(tensor.size(0) == tensors[0].size(0) for tensor in tensors):
+        raise ValueError("All input tensors must have the same first dimension")
+    
+    n = tensors[0].size(0)
+    num_batches = (n + q - 1) // q  # Ceiling division to handle cases where n is not divisible by q
+    
+    return tuple(
+        [tensor.narrow(0, i * q, min(q, n - i * q)) for i in range(num_batches)]
+        for tensor in tensors
+    )
