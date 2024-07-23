@@ -11,10 +11,12 @@ import seaborn as sns
 import pandas as pd
 from skmultilearn.model_selection import iterative_train_test_split
 
+import torch.nn as nn
+
 from functools import partial
 
 # dataloader
-from dataloader import DataLoader
+from dataloader import DreamLoader
 
 # pom
 import pom.utils as utils
@@ -25,8 +27,8 @@ from pom.gnn.graphnets import GraphNets
 from pom.gnn.graph_utils import get_graph_degree_histogram, get_pooling_function
 
 # glm
-from prediction_head.data import TaskType, get_activation, get_loss_fn
-from prediction_head.GLM import GLM
+# from prediction_head.data import TaskType, get_activation, get_loss_fn
+# from prediction_head.GLM import GLM
 
 # optuna for tuning
 import optuna
@@ -44,7 +46,7 @@ def get_split_file(dataset_name, test_size):
         split = np.load(fname)
         train_ind, test_ind = split['train_ind'], split['test_ind']
     else:
-        dl = DataLoader()
+        dl = DreamLoader()
         dl.load_benchmark(dataset_name)
         num_dat = dl.get_dataset_specifications(dataset_name)['n_datapoints']
         labels = dl.labels
@@ -65,7 +67,7 @@ def objective(trial, ds, train_loader, test_loader, task, task_dim):
     # hp.gnn.num_layers = trial.suggest_int('num_layers', 1, 3) # set to 1 for FiLM and Attn and 2 for all other models
     hp.gnn.dropout = trial.suggest_float('dropout', 0, 0.5, step=0.05)
     hp.training.lr = trial.suggest_categorical('learning_rate', [1e-2, 5e-3, 1e-3, 5e-4, 1e-4, 5e-5]) # [1e-2, 5e-3, 1e-3, 5e-4, 1e-4, 5e-5]
-    hp.training.num_epochs = 300        # early stopping
+    hp.training.num_epochs = 500        # early stopping
 
     seed = 42
     utils.set_seed(seed)
@@ -81,7 +83,8 @@ def objective(trial, ds, train_loader, test_loader, task, task_dim):
         depth=hp.gnn.depth, 
         dropout=hp.gnn.dropout
     ).to(device)
-    pred = GLM(input_dim=hp.gnn.global_dim, output_dim=task_dim, tasktype=task).to(device)
+    pred = nn.Sequential(nn.Linear(hp.gnn.global_dim, task_dim)).to(device)
+    # GLM(input_dim=hp.gnn.global_dim, output_dim=task_dim, tasktype=task).to(device)
     model = EndToEndModule(gnn, pred).to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=hp.training.lr)
 
@@ -90,10 +93,10 @@ def objective(trial, ds, train_loader, test_loader, task, task_dim):
     log = {k: [] for k in ['epoch', 'train_loss', 'val_loss', 'val_metric', 'dataset']}
     pbar = tqdm.tqdm(range(hp.training.num_epochs))
 
-    for epoch in pbar:
-        loss_fn = get_loss_fn(task)()
-        metric_fn = utils.get_metric_function(task)
+    loss_fn = utils.get_loss_function(task)
+    metric_fn = utils.get_metric_function(task)
 
+    for epoch in pbar:
         # training loop
         log['epoch'].append(epoch)
         log['dataset'].append(dname)
@@ -141,9 +144,7 @@ def objective(trial, ds, train_loader, test_loader, task, task_dim):
         if stop:
             print(f'Early stop reached at {es.best_step} with loss {es.best_value}')
             break
-
     log = pd.DataFrame(log)
-
     return es.best_value
 
 if __name__ == '__main__':
@@ -151,12 +152,14 @@ if __name__ == '__main__':
     os.makedirs('optuna/', exist_ok=True)
 
     dname = 'gs-lf'
-    dl = DataLoader()
+    dl = DreamLoader()
     dl.load_benchmark(dname)
     dl.featurize('molecular_graphs', init_globals=True)
     data_specs = dl.get_dataset_specifications(dname)
-    task = TaskType(data_specs['task'])
+    task = data_specs['task']
     task_dim = data_specs['task_dim']
+
+    print(f'Running on CUDA: {torch.cuda.is_available()}')
 
     train_ind, test_ind = get_split_file(dname, test_size=0.2)
     dataset = GraphDataset(dl.features, dl.labels)
@@ -170,7 +173,7 @@ if __name__ == '__main__':
     study = optuna.create_study(direction="maximize")
     study.optimize(
         partial(objective, ds=dataset, train_loader=train_loader, test_loader=test_loader, task=task, task_dim=task_dim), 
-        n_trials=100
+        n_trials=150
     )
 
     print('###########################################')
@@ -190,5 +193,12 @@ if __name__ == '__main__':
     fig = optuna.visualization.plot_contour(study)
     fig.write_image('optuna/optuna_contour.png')
 
+
+    ### Get top trials
+    all_opts = pd.DataFrame({t.number: {'params': t.params, 'fitness': t.value} for t in study.get_trials()}).transpose()
+    all_opts['fitness'] = all_opts['fitness'].astype(float)
+
+    all_opts.to_csv('optuna/trials_all.csv')
+    all_opts.nlargest(10, 'fitness').to_csv('optuna/trials_top10.csv')
 
     

@@ -189,11 +189,11 @@ class GraphNets(nn.Module):
         device = torch.device(device)
         data = data.to(device)
         x = self.forward(data)            # produces molecule embeddings [num_unique_mols, embed_dim]
-        padding = torch.ones((1, x.shape[-1]), device=device) * unk_token
+        padding = torch.full((1, x.shape[-1]), unk_token, device=device)
         x = torch.cat([x, padding])     # [num_unique_mols + 1, embed_dim]
 
-        out = torch.cat([x[collate_indices[:,i]] for i in range(collate_indices.shape[1])], dim=1)    # [num_samples, max_mols*num_mix, embed_dim]
-        out = out.view(collate_indices.shape + (x.shape[-1],))
+        out = torch.stack([x[collate_indices[:,i]] for i in range(collate_indices.shape[1])], dim=1)    # [num_samples, max_mols*num_mix, embed_dim]
+        out = out.reshape(collate_indices.shape + (x.shape[-1],))
         out = torch.transpose(out, -2, -1)
 
         return out
