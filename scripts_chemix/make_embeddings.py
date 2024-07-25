@@ -10,7 +10,7 @@ from scripts_pom.make_embeddings import get_embeddings_from_smiles
 
 
 if __name__ == "__main__":
-    DATA_PATH = "/Users/ellarajaonson/Documents/dream/sean_ds_def/"
+    DATA_PATH = "/Users/Sean/Documents/dream/sean_ds_def/"
     TRAIN_DATAPATH = os.path.join(DATA_PATH, "dataset_pickle_tmp")
     LEADERBOARD_DATAPATH = os.path.join(DATA_PATH, "dataset_pickle_leaderboard")
     UNK_TOKEN = -999
