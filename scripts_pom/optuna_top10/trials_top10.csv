@@ -1,0 +1,11 @@
+,params,fitness
+130,"{'depth': 3, 'hidden_dim': 128, 'dropout': 0.15000000000000002, 'learning_rate': 0.0001}",0.8819583058357239
+63,"{'depth': 4, 'hidden_dim': 128, 'dropout': 0.2, 'learning_rate': 0.0001}",0.8817259669303894
+123,"{'depth': 3, 'hidden_dim': 128, 'dropout': 0.2, 'learning_rate': 0.0001}",0.8817228078842163
+98,"{'depth': 3, 'hidden_dim': 128, 'dropout': 0.2, 'learning_rate': 0.0001}",0.8815489411354065
+65,"{'depth': 3, 'hidden_dim': 128, 'dropout': 0.2, 'learning_rate': 0.0001}",0.8814948201179504
+67,"{'depth': 3, 'hidden_dim': 128, 'dropout': 0.2, 'learning_rate': 0.0001}",0.8813925385475159
+119,"{'depth': 3, 'hidden_dim': 128, 'dropout': 0.2, 'learning_rate': 0.0001}",0.8813596963882446
+146,"{'depth': 3, 'hidden_dim': 128, 'dropout': 0.2, 'learning_rate': 0.0001}",0.8813345432281494
+76,"{'depth': 3, 'hidden_dim': 128, 'dropout': 0.2, 'learning_rate': 0.0001}",0.8813167810440063
+71,"{'depth': 3, 'hidden_dim': 128, 'dropout': 0.2, 'learning_rate': 0.0001}",0.8813090920448303

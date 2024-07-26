@@ -27,8 +27,8 @@ from pom.gnn.graphnets import GraphNets
 from pom.gnn.graph_utils import get_graph_degree_histogram, get_pooling_function
 
 # glm
-# from prediction_head.data import TaskType, get_activation, get_loss_fn
-# from prediction_head.GLM import GLM
+from prediction_head.data import TaskType, get_activation, get_loss_fn
+from prediction_head.GLM import GLM
 
 # optuna for tuning
 import optuna
@@ -61,13 +61,13 @@ def objective(trial, ds, train_loader, test_loader, task, task_dim):
     hp = ConfigDict({'gnn': ConfigDict(), 'head': ConfigDict(), 'training': ConfigDict()})
 
     # using graphnets
-    hp.gnn.global_dim = trial.suggest_int('global_dim', 64, 320, step=64) # List [64, 128, 192, 256, 320]
+    hp.gnn.global_dim = 196 # trial.suggest_int('global_dim', 64, 320, step=64) # List [64, 128, 192, 256, 320]
     hp.gnn.depth = trial.suggest_int('depth', 2, 4)
     hp.gnn.hidden_dim = trial.suggest_int('hidden_dim', 64, 320, step=64) # List [64, 128, 192, 256, 320]
     # hp.gnn.num_layers = trial.suggest_int('num_layers', 1, 3) # set to 1 for FiLM and Attn and 2 for all other models
     hp.gnn.dropout = trial.suggest_float('dropout', 0, 0.5, step=0.05)
     hp.training.lr = trial.suggest_categorical('learning_rate', [1e-2, 5e-3, 1e-3, 5e-4, 1e-4, 5e-5]) # [1e-2, 5e-3, 1e-3, 5e-4, 1e-4, 5e-5]
-    hp.training.num_epochs = 500        # early stopping
+    hp.training.num_epochs = 1000        # early stopping
 
     seed = 42
     utils.set_seed(seed)
@@ -83,17 +83,17 @@ def objective(trial, ds, train_loader, test_loader, task, task_dim):
         depth=hp.gnn.depth, 
         dropout=hp.gnn.dropout
     ).to(device)
-    pred = nn.Sequential(nn.Linear(hp.gnn.global_dim, task_dim)).to(device)
-    # GLM(input_dim=hp.gnn.global_dim, output_dim=task_dim, tasktype=task).to(device)
+    # pred = nn.Sequential(nn.Linear(hp.gnn.global_dim, task_dim)).to(device)
+    pred = GLM(input_dim=hp.gnn.global_dim, output_dim=task_dim, tasktype=task).to(device)
     model = EndToEndModule(gnn, pred).to(device)
     optimizer = torch.optim.Adam(model.parameters(), lr=hp.training.lr)
 
     # optimization things
-    es = EarlyStopping(gnn, patience=20, mode='maximize')       # early stopping only GNN weights
+    es = EarlyStopping(gnn, patience=50, mode='maximize')       # early stopping only GNN weights
     log = {k: [] for k in ['epoch', 'train_loss', 'val_loss', 'val_metric', 'dataset']}
     pbar = tqdm.tqdm(range(hp.training.num_epochs))
 
-    loss_fn = utils.get_loss_function(task)
+    loss_fn = get_loss_fn(task)()
     metric_fn = utils.get_metric_function(task)
 
     for epoch in pbar:
