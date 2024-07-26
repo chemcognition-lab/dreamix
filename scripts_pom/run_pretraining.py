@@ -30,6 +30,8 @@ import torch
 import torchinfo
 from torch_geometric.loader import DataLoader as pygdl
 
+from argparse import ArgumentParser
+
 
 def get_split_file(dataset_name, test_size):
     os.makedirs(f'{dataset_name}_models/', exist_ok=True)
@@ -50,36 +52,45 @@ def get_split_file(dataset_name, test_size):
     return train_ind, test_ind
 
 
+parser = ArgumentParser()
+parser.add_argument("--depth", action="store", type=int, help="Depth of GNN.")
+parser.add_argument("--hidden_dim", action="store", type=int, default=1, help="Hidden dimension.")
+parser.add_argument("--dropout", action="store", type=float, help="Dropout rate.")
+parser.add_argument("--lr", action="store", type=float, help="Learning rate.")
+parser.add_argument("--tag", action="store", type=str, help="Name of directory to save model.")
+FLAGS = parser.parse_args()
+
 
 if __name__ == '__main__':
 
     # create folders for logging
-    fname = f'general_models/graphnets_warmup/'      # create a file name to log all outputs
+    fname = f'general_models/graphnets/model{FLAGS.tag}'      # create a file name to log all outputs
     os.makedirs(fname, exist_ok=True)
 
     # hparams settings
     hp = ConfigDict()
 
     # using graphnets parameters from hparam opt
-    # global_dim': 320, 'depth': 4, 'hidden_dim': 128, 'dropout': 0.05, 'learning_rate': 0.0005
-    hp.global_dim = 320     # this is also the embedding space
-    hp.depth = 4
-    hp.hidden_dim = 128
-    hp.dropout = 0.05
-    hp.num_epochs = 500
-    hp.lr = 5e-4
+    hp.global_dim = 196     # this is also the embedding space
+
+    ######
+    hp.depth = FLAGS.depth
+    hp.hidden_dim = FLAGS.hidden_dim
+    hp.dropout = round(FLAGS.dropout, 2)
+    hp.lr = FLAGS.lr
+    ######
+    
+    hp.num_epochs = 2000
     hp.batch_size = 64
     hp.val_size = 0.2
     with open(f'{fname}/hparams.json', 'w') as f:
         f.write(hp.to_json(indent = 4))
 
     # get dataset names
-    seed = 42
-    utils.set_seed(seed)
+    # seed = 42
+    # utils.set_seed(seed)
     data_names = DreamLoader().get_dataset_names()
     data_names.remove('keller_2016')
-    # data_names.remove('abraham_2012')
-    # data_names = ['keller_2016']
 
     # Load all models and datasets
     print(f'Using GPU: {torch.cuda.is_available()}')
@@ -134,24 +145,18 @@ if __name__ == '__main__':
     ).to(device)
     pred = GLMStructured(input_dim=hp.global_dim, tasks=specs).to(device)
     model = EndToEndModule(gnn, pred).to(device)
-    optimizer = torch.optim.Adam(model.parameters(), lr=hp.lr)
+    # add uncertainty weights, which are optimized with the model
+    log_var_weights = torch.nn.Parameter(torch.zeros(len(data_store), dtype=torch.float32), requires_grad=True)
+    optimizer = torch.optim.Adam(list(model.parameters()) + [log_var_weights], lr=hp.lr)
 
     # optimization things
-    es = EarlyStopping(gnn, patience=100, mode='maximize')       # early stopping only GNN weights
+    es = EarlyStopping(gnn, patience=200, mode='maximize')       # early stopping only GNN weights
     log = {k: [] for k in ['epoch', 'train_loss', 'val_loss', 'val_metric', 'dataset']}
 
-    num_warmup_epochs = 50
-    pbar = tqdm.tqdm(range(hp.num_epochs + num_warmup_epochs))
-
+    pbar = tqdm.tqdm(range(hp.num_epochs))
     for epoch in pbar:
-        avg_train_loss = 0
-        avg_test_loss = 0
-        avg_test_metric = 0
-        for dname, store in data_store.items():
-            if epoch < num_warmup_epochs:
-                if store['task'] != 'regression':
-                    continue
-
+        avg_train_loss, avg_test_loss, avg_test_metric = 0, 0, 0
+        for di, (dname, store) in enumerate(data_store.items()):
             train_loader = store['train_loader']
             test_loader = store['test_loader']
             loss_fn = store['loss_fn']
@@ -169,6 +174,8 @@ if __name__ == '__main__':
                 optimizer.zero_grad()
                 y_hat = model(data, dname)
                 loss = loss_fn(y_hat.squeeze(), y.squeeze())
+                # scale the loss
+                loss = torch.exp(-log_var_weights[di]) * loss + log_var_weights[di]
                 loss.backward()
                 optimizer.step()
 
@@ -191,8 +198,13 @@ if __name__ == '__main__':
 
                 y_pred = torch.concat(y_pred)
                 y_true = torch.concat(y_true)
-                testing_metric = metric_fn(y_pred.squeeze(), y_true.squeeze()).item()
-                testing_loss = loss_fn(y_pred.squeeze(), y_true.squeeze()).item()
+                testing_metric = metric_fn(y_pred.squeeze(), y_true.squeeze())
+                # testing_metric *= torch.exp(-log_var_weights[di])
+                testing_metric = testing_metric.item()
+
+                testing_loss = loss_fn(y_pred.squeeze(), y_true.squeeze())
+                testing_loss *= torch.exp(-log_var_weights[di])
+                testing_loss = testing_loss.item()
 
             avg_test_loss += testing_loss
             avg_test_metric += testing_metric
@@ -212,11 +224,10 @@ if __name__ == '__main__':
         log['val_metric'].append(avg_test_metric)
         log['dataset'].append('average')
 
-        if epoch >= num_warmup_epochs:
-            stop = es.check_criteria(avg_test_metric, model.gnn_embedder)        
-            if stop:
-                print(f'Early stop reached at {es.best_step} with loss {es.best_value}')
-                break
+        stop = es.check_criteria(avg_test_metric, model.gnn_embedder)        
+        if stop:
+            print(f'Early stop reached at {es.best_step} with loss {es.best_value}')
+            break
 
     log = pd.DataFrame(log)
     
