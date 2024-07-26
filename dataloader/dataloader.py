@@ -50,6 +50,11 @@ class DreamLoader():
                 "labels": ["Experimental Values"],
                 "validate": False # nan values in columns, broken
             },
+            "competition_extra":{
+                "features": ["Dataset", "Mixture 1", "Mixture 2"],
+                "labels": ["Experimental Values"],
+                "validate": False # nan values in columns, broken
+            },
         })
 
     def get_dataset_names(self, valid_only: Optional[bool] = True) -> List[str]:
