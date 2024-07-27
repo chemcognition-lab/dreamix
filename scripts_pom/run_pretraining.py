@@ -53,10 +53,10 @@ def get_split_file(dataset_name, test_size):
 
 
 parser = ArgumentParser()
-parser.add_argument("--depth", action="store", type=int, help="Depth of GNN.")
-parser.add_argument("--hidden_dim", action="store", type=int, default=1, help="Hidden dimension.")
-parser.add_argument("--dropout", action="store", type=float, help="Dropout rate.")
-parser.add_argument("--lr", action="store", type=float, help="Learning rate.")
+parser.add_argument("--depth", action="store", type=int, default=3, help="Depth of GNN.")
+parser.add_argument("--hidden_dim", action="store", type=int, default=128, help="Hidden dimension.")
+parser.add_argument("--dropout", action="store", type=float, default=0.15, help="Dropout rate.")
+parser.add_argument("--lr", action="store", type=float, default=1e-4, help="Learning rate.")
 parser.add_argument("--tag", action="store", type=str, help="Name of directory to save model.")
 FLAGS = parser.parse_args()
 
@@ -64,7 +64,7 @@ FLAGS = parser.parse_args()
 if __name__ == '__main__':
 
     # create folders for logging
-    fname = f'general_models/graphnets/model{FLAGS.tag}'      # create a file name to log all outputs
+    fname = f'general_models/ensure_saving'      # create a file name to log all outputs
     os.makedirs(fname, exist_ok=True)
 
     # hparams settings
@@ -252,15 +252,15 @@ if __name__ == '__main__':
     plt.savefig(f'{fname}/loss.png', bbox_inches='tight')
     plt.close()
 
-    with open(f'{fname}/output.log', 'w') as f:
-        f.write(f'Max epochs: {hp.num_epochs}\n')
-        f.write(f'Learning rate: {hp.lr}\n')
-        f.write(f'Batch size: {hp.batch_size}\n')
-        f.write(f'Seed: {seed}\n')
-        f.write('------\n')
-        f.write(f'Early stop: {es.best_step}\n')
-        f.write(f'Stats at early stop epoch: {log.iloc[es.best_step]}\n')
-        f.write('------\n')
-        f.write('GNN Embedder:\n')
-        f.write(f'{torchinfo.summary(gnn)}\n')
+    # with open(f'{fname}/output.log', 'w') as f:
+    #     f.write(f'Max epochs: {hp.num_epochs}\n')
+    #     f.write(f'Learning rate: {hp.lr}\n')
+    #     f.write(f'Batch size: {hp.batch_size}\n')
+    #     f.write(f'Seed: {seed}\n')
+    #     f.write('------\n')
+    #     f.write(f'Early stop: {es.best_step}\n')
+    #     f.write(f'Stats at early stop epoch: {log.iloc[es.best_step]}\n')
+    #     f.write('------\n')
+    #     f.write('GNN Embedder:\n')
+    #     f.write(f'{torchinfo.summary(gnn)}\n')
 
