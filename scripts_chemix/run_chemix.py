@@ -21,12 +21,14 @@ from scipy.stats import pearsonr, kendalltau
 
 from dataloader import DreamLoader
 from dataloader.representations.graph_utils import from_smiles, NODE_DIM, EDGE_DIM
+import pom.utils as utils
 from pom.gnn.graphnets import GraphNets
-# from pom.data import GraphDataset
 from pom.early_stop import EarlyStopping
 from chemix.data import get_mixture_smiles
 from chemix import Chemix, MixtureNet, Regressor
 from chemix.model import AttentionAggregation
+
+import torchinfo
 
 
 if __name__ == '__main__':
@@ -38,7 +40,7 @@ if __name__ == '__main__':
 
 
     # using hyperparameters
-    embedder_path = '../scripts_pom/general_models/graphnets_no_reg/'
+    embedder_path = '../scripts_pom/general_models/graphnets/model1/'
     hp_gnn = ConfigDict(json.load(open(f'{embedder_path}/hparams.json', 'r')))
     hp_gnn.lr = 1e-4
     hp_gnn.freeze = False
@@ -46,7 +48,7 @@ if __name__ == '__main__':
         f.write(hp_gnn.to_json(indent = 4))
 
     hp_mix = ConfigDict()
-    hp_mix.embed_dim = 320
+    hp_mix.embed_dim = 196
     hp_mix.num_layers = 2
     hp_mix.dropout = 0.2
     hp_mix.lr = 5e-4
@@ -98,6 +100,8 @@ if __name__ == '__main__':
         mixture_net=mixture_net,
         unk_token=hp_mix.unk_token,
     ).to(device)
+
+    torchinfo.summary(chemix)
 
     loss_fn = nn.L1Loss()
     metric_fn = F.pearson_corrcoef
@@ -203,8 +207,4 @@ if __name__ == '__main__':
     sns.lineplot(data=plt_log, x='epoch', y='loss', hue='set', palette='colorblind') 
     plt.savefig(f'{fname}/loss.png', bbox_inches='tight')
     plt.close()
-
-    # print(log.val_metric.max())
-
-    # import pdb; pdb.set_trace()
 
