@@ -35,6 +35,11 @@ class DreamLoader():
         for dataset, row in dataset_df.iterrows():
             self.datasets[dataset] = {col: parse_value(val) for col, val in row.items()}    
         self.datasets.update({
+            "competition_train_all":{
+                "features": ["Dataset", "Mixture 1", "Mixture 2"],
+                "labels": ["Experimental Values"],
+                "validate": False # nan values in columns, broken
+            },
             "competition_train":{
                 "features": ["Dataset", "Mixture 1", "Mixture 2"],
                 "labels": ["Experimental Values"],
