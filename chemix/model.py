@@ -108,7 +108,7 @@ class MeanAggregation(nn.Module):
 class AttentionAggregation(nn.Module):
     def __init__(
         self,
-        embed_dim: int = 320,
+        embed_dim: int = 196,
         num_heads: int = 1,
         dropout_rate: float = 0.0,
     ):
@@ -217,6 +217,7 @@ class Chemix(nn.Module):
         regressor: nn.Module,
         mixture_net: nn.Module,
         unk_token: int = -999,
+        aggr: str = 'concat',
         input_net: Optional[nn.Module] = None,
     ):
         super(Chemix, self).__init__()
@@ -224,11 +225,13 @@ class Chemix(nn.Module):
         self.mixture_net = mixture_net
         self.regressor = regressor
         self.unk_token = unk_token
+        self.aggr = aggr
         self.final_activation = nn.Hardsigmoid()
 
-    def forward(self, x):
+    def embed(self, x):
         # Mixture embedding
-        x_all = torch.Tensor()
+        # x_all = torch.Tensor()
+        x_all = []
         for i in range(x.shape[-1]):
             mix = x[:, :, :, i]
 
@@ -241,10 +244,23 @@ class Chemix(nn.Module):
 
             emb_mix = self.mixture_net(mix, key_padding_mask)
 
-            if emb_mix.device != x_all.device:
-                x_all = x_all.to(emb_mix.device)
+            # if emb_mix.device != x_all.device:
+            #     x_all = x_all.to(emb_mix.device)
+            x_all.append(emb_mix)
+        x_all = torch.stack(x_all, -1)      # [batch_size, embedding_size, num_mixtures]
+        return x_all
+    
 
-            x_all = torch.cat((x_all, emb_mix), -1)
+    def forward(self, x):
+        # Mixture embedding
+        x_all = self.embed(x)
+
+        if self.aggr == 'concat':
+            x_all = torch.cat([x_all[:,:, i] for i in range(x_all.shape[-1])], dim=-1)
+        elif self.aggr == 'sum':
+            x_all = torch.sum(x_all, dim=-1)
+        else:
+            raise NotImplementedError
 
         pred = self.regressor(x_all)
         pred = self.final_activation(pred/2.)  # hard sigmoid from [-6,6]
