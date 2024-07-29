@@ -1,16 +1,20 @@
+import ast
+import os
+from pathlib import Path
+from typing import Callable, List, Optional, Union
+
 import numpy as np
 import pandas as pd
 from rdkit.Chem import MolFromSmiles, MolToSmiles
-import os
-from typing import Callable, List, Optional, Union
-import ast
 
 # Inspired by gauche DataLoader
 # https://github.com/leojklarner/gauche
 
 current_dir = os.path.dirname(os.path.abspath(__file__))
+DATASET_DIR = Path(f"{current_dir}/../datasets")
 
-class DreamLoader():
+
+class DreamLoader:
     """
     Loads and cleans up your data
     """
@@ -18,60 +22,70 @@ class DreamLoader():
     def __init__(self):
         self.features = None
         self.labels = None
-        dataset_df = pd.read_csv(f"{current_dir}/../datasets/file_cleaning_features.csv")
-        dataset_df.index = dataset_df['dataset']
-        dataset_df.drop(columns=['unclean', 'label_columns', 'dataset'], inplace=True)
-        dataset_df.rename({'new_label_columns': 'labels'}, axis=1, inplace=True)
+        dataset_df = pd.read_csv(
+            f"{current_dir}/../datasets/file_cleaning_features.csv"
+        )
+        dataset_df.index = dataset_df["dataset"]
+        dataset_df.drop(columns=["unclean", "label_columns", "dataset"], inplace=True)
+        dataset_df.rename({"new_label_columns": "labels"}, axis=1, inplace=True)
+
         def parse_value(value):
             if isinstance(value, str):
                 try:
                     return ast.literal_eval(value)
-                except:
+                except Exception:
                     return value
             return value
 
         # Create the dictionary of dictionaries
         self.datasets = {}
         for dataset, row in dataset_df.iterrows():
-            self.datasets[dataset] = {col: parse_value(val) for col, val in row.items()}    
-        self.datasets.update({
-            "competition_train_all":{
-                "features": ["Dataset", "Mixture 1", "Mixture 2"],
-                "labels": ["Experimental Values"],
-                "validate": False # nan values in columns, broken
-            },
-            "competition_train":{
-                "features": ["Dataset", "Mixture 1", "Mixture 2"],
-                "labels": ["Experimental Values"],
-                "validate": False # nan values in columns, broken
-            },
-            "competition_leaderboard":{
-                "features": ["Dataset", "Mixture 1", "Mixture 2"],
-                "labels": ["Experimental Values"],
-                "validate": False # nan values in columns, broken
-            },
-            "competition_test":{
-                "features": ["Dataset", "Mixture 1", "Mixture 2"],
-                "labels": ["Experimental Values"],
-                "validate": False # nan values in columns, broken
-            },
-            "competition_extra":{
-                "features": ["Dataset", "Mixture 1", "Mixture 2"],
-                "labels": ["Experimental Values"],
-                "validate": False # nan values in columns, broken
-            },
-        })
+            self.datasets[dataset] = {col: parse_value(val) for col, val in row.items()}
+        self.datasets.update(
+            {
+                "competition_train_all": {
+                    "features": ["Dataset", "Mixture 1", "Mixture 2"],
+                    "labels": ["Experimental Values"],
+                    "validate": False,  # nan values in columns, broken
+                },
+                "competition_train": {
+                    "features": ["Dataset", "Mixture 1", "Mixture 2"],
+                    "labels": ["Experimental Values"],
+                    "validate": False,  # nan values in columns, broken
+                },
+                "competition_leaderboard": {
+                    "features": ["Dataset", "Mixture 1", "Mixture 2"],
+                    "labels": ["Experimental Values"],
+                    "validate": False,  # nan values in columns, broken
+                },
+                "competition_leaderboard2": {
+                    "features": ["Dataset", "Mixture 1", "Mixture 2"],
+                    "labels": ["Experimental Values"],
+                    "validate": False,  # nan values in columns, broken
+                },
+                "competition_test": {
+                    "features": ["Dataset", "Mixture 1", "Mixture 2"],
+                    "labels": ["Experimental Values"],
+                    "validate": False,  # nan values in columns, broken
+                },
+                "competition_extra": {
+                    "features": ["Dataset", "Mixture 1", "Mixture 2"],
+                    "labels": ["Experimental Values"],
+                    "validate": False,  # nan values in columns, broken
+                },
+            }
+        )
 
     def get_dataset_names(self, valid_only: Optional[bool] = True) -> List[str]:
         names = []
         if valid_only:
             for k, v in self.datasets.items():
-                if v['validate']:
+                if v["validate"]:
                     names.append(k)
         else:
             names = list(self.datasets.keys())
         return names
-    
+
     def get_dataset_specifications(self, name: str) -> dict:
         assert name in self.datasets.keys(), (
             f"The specified dataset choice ({name}) is not a valid option. "
@@ -79,33 +93,37 @@ class DreamLoader():
         )
         return self.datasets[name]
 
-    def read_csv(self,
-                 path: str,
-                 smiles_column: str,
-                 label_columns: List[str],
-                 validate: bool = True,
-                 ) -> None:
+    def read_csv(
+        self,
+        path: str,
+        smiles_column: List[str],
+        label_columns: List[str],
+        validate: bool = True,
+    ) -> None:
         """
         Loads a csv and stores it as features and labels.
         """
         assert isinstance(
             smiles_column, List
         ), f"smiles_column ({smiles_column}) must be a list of strings"
-        assert isinstance(label_columns, list) and all(isinstance(item, str) for item in label_columns), "label_columns ({label_columns}) must be a list of strings."
+        assert isinstance(label_columns, list) and all(
+            isinstance(item, str) for item in label_columns
+        ), "label_columns ({label_columns}) must be a list of strings."
 
-        df = pd.read_csv(path, usecols=[*smiles_column, *label_columns])
+        df = pd.read_csv(path, usecols=smiles_column + label_columns)
         self.features = df[smiles_column].to_numpy()
-        if len(smiles_column) == 1: 
+        if len(smiles_column) == 1:
             self.features = self.features.flatten()
         self.labels = df[label_columns].values
         if validate:
             self.validate()
 
-    def load_benchmark(self,
-                       name: str,
-                       path=None,
-                       validate: bool = True,
-                       ) -> None:
+    def load_benchmark(
+        self,
+        name: str,
+        path=None,
+        validate: bool = True,
+    ) -> None:
         """
         Pulls existing benchmark from datasets.
         """
@@ -132,14 +150,15 @@ class DreamLoader():
             smiles_column=self.datasets[name]["features"],
             label_columns=self.datasets[name]["labels"],
             validate=self.datasets[name]["validate"],
-        )        
+        )
 
         if not self.datasets[name]["validate"]:
-            print(f"{name} dataset is known to have invalid entries. Validation is turned off.")
+            print(
+                f"{name} dataset is known to have invalid entries. Validation is turned off."
+            )
 
-    def validate(self, 
-                 drop: Optional[bool] = True, 
-                 canonicalize: Optional[bool] = True
+    def validate(
+        self, drop: Optional[bool] = True, canonicalize: Optional[bool] = True
     ) -> None:
         """
         Utility function to validate a read-in dataset of smiles and labels by
@@ -154,10 +173,7 @@ class DreamLoader():
         :type canonicalize: bool
         """
         invalid_mols = np.array(
-            [
-                True if MolFromSmiles(x) is None else False
-                for x in self.features
-            ]
+            [True if MolFromSmiles(x) is None else False for x in self.features]
         )
         if np.any(invalid_mols):
             print(
@@ -180,7 +196,9 @@ class DreamLoader():
                 "To turn validation off, use dataloader.read_csv(..., validate=False)."
             )
         if invalid_labels.ndim > 1:
-            invalid_idx = np.any(np.hstack((invalid_mols.reshape(-1, 1), invalid_labels)), axis=1)
+            invalid_idx = np.any(
+                np.hstack((invalid_mols.reshape(-1, 1), invalid_labels)), axis=1
+            )
         else:
             invalid_idx = np.logical_or(invalid_mols, invalid_labels)
 
@@ -197,9 +215,7 @@ class DreamLoader():
                 for smiles in self.features
             ]
 
-    def featurize(
-        self, representation: Union[str, Callable], **kwargs
-    ) -> None:
+    def featurize(self, representation: Union[str, Callable], **kwargs) -> None:
         """Transforms SMILES into the specified molecular representation.
 
         :param representation: the desired molecular representation.
@@ -223,7 +239,7 @@ class DreamLoader():
             "rdkit2d_normalized_features",
             "mordred_descriptors",
             "competition_smiles",
-            "competition_rdkit2d"
+            "competition_rdkit2d",
         ]
 
         if isinstance(representation, Callable):
@@ -259,28 +275,41 @@ class DreamLoader():
 
             self.features = mordred_descriptors(self.features, **kwargs)
 
-        elif representation == "competition_smiles":
+        elif representation in ["competition_smiles", "competition_smiles_legacy"]:
+            paths = {
+                "competition_smiles": "competition_train/mixture_smi_definitions_clean.csv",
+                "competition_smiles_legacy": "competition_legacy/mixture_smi_definitions_clean_old.csv",
+            }
+            path = paths[representation]
             # Features is ["Dataset", "Mixture 1", "Mixture 2"]
-            smi_df = pd.read_csv(f"{current_dir}/../datasets/competition_train/mixture_smi_definitions_clean.csv")
+            smi_df = pd.read_csv(DATASET_DIR / path)
+            smi_df = smi_df.set_index(["Dataset", "Mixture Label"])
             feature_list = []
             for feature in self.features:
-                mix_1 = smi_df.loc[(smi_df['Dataset'] == feature[0]) & (smi_df['Mixture Label'] == feature[1])][smi_df.columns[2:]]
-                mix_1 = mix_1.dropna(axis=1).to_numpy()[0]
-                mix_2 = smi_df.loc[(smi_df['Dataset'] == feature[0]) & (smi_df['Mixture Label'] == feature[2])][smi_df.columns[2:]]
-                mix_2 = mix_2.dropna(axis=1).to_numpy()[0]
-                feature_list.append([mix_1, mix_2])
-
+                mix = []
+                for mi in range(0, 2):
+                    index = (feature[0], feature[mi + 1])
+                    smiles_arr = smi_df.loc[index].dropna().to_numpy()
+                    mix.append(smiles_arr)
+                feature_list.append(mix)
             self.features = np.array(feature_list, dtype=object)
-
         elif representation == "competition_smiles_augment":
             # Features is ["Dataset", "Mixture 1", "Mixture 2"]
-            smi_df = pd.read_csv(f"{current_dir}/../datasets/competition_train/mixture_smi_definitions_clean.csv")
+            smi_df = pd.read_csv(
+                f"{current_dir}/../datasets/competition_train/mixture_smi_definitions_clean.csv"
+            )
             feature_list = []
             feature_list_augment = []
             for feature in self.features:
-                mix_1 = smi_df.loc[(smi_df['Dataset'] == feature[0]) & (smi_df['Mixture Label'] == feature[1])][smi_df.columns[2:]]
+                mix_1 = smi_df.loc[
+                    (smi_df["Dataset"] == feature[0])
+                    & (smi_df["Mixture Label"] == feature[1])
+                ][smi_df.columns[2:]]
                 mix_1 = mix_1.dropna(axis=1).to_numpy()[0]
-                mix_2 = smi_df.loc[(smi_df['Dataset'] == feature[0]) & (smi_df['Mixture Label'] == feature[2])][smi_df.columns[2:]]
+                mix_2 = smi_df.loc[
+                    (smi_df["Dataset"] == feature[0])
+                    & (smi_df["Mixture Label"] == feature[2])
+                ][smi_df.columns[2:]]
                 mix_2 = mix_2.dropna(axis=1).to_numpy()[0]
                 feature_list.append([mix_1, mix_2])
                 feature_list_augment.append([mix_2, mix_1])
@@ -291,12 +320,20 @@ class DreamLoader():
 
         elif representation == "competition_rdkit2d":
             # Features is ["Dataset", "Mixture 1", "Mixture 2"]
-            rdkit_df = pd.read_csv("{current_dir}/../datasets/competition_train/mixture_rdkit_definitions_clean.csv")
+            rdkit_df = pd.read_csv(
+                "{current_dir}/../datasets/competition_train/mixture_rdkit_definitions_clean.csv"
+            )
             feature_list = []
             for feature in self.features:
-                mix_1 = rdkit_df.loc[(rdkit_df['Dataset'] == feature[0]) & (rdkit_df['Mixture Label'] == feature[1])][rdkit_df.columns[2:]]
+                mix_1 = rdkit_df.loc[
+                    (rdkit_df["Dataset"] == feature[0])
+                    & (rdkit_df["Mixture Label"] == feature[1])
+                ][rdkit_df.columns[2:]]
                 mix_1 = mix_1.dropna(axis=1).to_numpy()[0]
-                mix_2 = rdkit_df.loc[(rdkit_df['Dataset'] == feature[0]) & (rdkit_df['Mixture Label'] == feature[2])][rdkit_df.columns[2:]]
+                mix_2 = rdkit_df.loc[
+                    (rdkit_df["Dataset"] == feature[0])
+                    & (rdkit_df["Mixture Label"] == feature[2])
+                ][rdkit_df.columns[2:]]
                 mix_2 = mix_2.dropna(axis=1).to_numpy()[0]
                 feature_list.append([mix_1, mix_2])
 
@@ -304,13 +341,21 @@ class DreamLoader():
 
         elif representation == "competition_rdkit2d_augment":
             # Features is ["Dataset", "Mixture 1", "Mixture 2"]
-            rdkit_df = pd.read_csv("{current_dir}/../datasets/competition_train/mixture_rdkit_definitions_clean.csv")
+            rdkit_df = pd.read_csv(
+                "{current_dir}/../datasets/competition_train/mixture_rdkit_definitions_clean.csv"
+            )
             feature_list = []
             feature_list_augment = []
             for feature in self.features:
-                mix_1 = rdkit_df.loc[(rdkit_df['Dataset'] == feature[0]) & (rdkit_df['Mixture Label'] == feature[1])][rdkit_df.columns[2:]]
+                mix_1 = rdkit_df.loc[
+                    (rdkit_df["Dataset"] == feature[0])
+                    & (rdkit_df["Mixture Label"] == feature[1])
+                ][rdkit_df.columns[2:]]
                 mix_1 = mix_1.dropna(axis=1).to_numpy()[0]
-                mix_2 = rdkit_df.loc[(rdkit_df['Dataset'] == feature[0]) & (rdkit_df['Mixture Label'] == feature[2])][rdkit_df.columns[2:]]
+                mix_2 = rdkit_df.loc[
+                    (rdkit_df["Dataset"] == feature[0])
+                    & (rdkit_df["Mixture Label"] == feature[2])
+                ][rdkit_df.columns[2:]]
                 mix_2 = mix_2.dropna(axis=1).to_numpy()[0]
                 feature_list.append([mix_1, mix_2])
                 feature_list_augment.append([mix_2, mix_1])
