@@ -1,6 +1,6 @@
 import sys, os
 sys.path.append('..')
-import copy
+
 import json
 import tqdm
 from ml_collections import ConfigDict
@@ -8,16 +8,11 @@ from ml_collections import ConfigDict
 import torch
 import torch.nn as nn
 from torch_geometric.data import Batch
-from torch_geometric.loader import DataLoader as pygdl
 import torchmetrics.functional as F
 import numpy as np
 import pandas as pd
 import seaborn as sns
 import matplotlib.pyplot as plt
-
-from skmultilearn.model_selection import iterative_train_test_split
-from sklearn.metrics import roc_auc_score, mean_squared_error, r2_score
-from scipy.stats import pearsonr, kendalltau
 
 from dataloader import DreamLoader
 from dataloader.representations.graph_utils import from_smiles, NODE_DIM, EDGE_DIM
@@ -25,6 +20,7 @@ from pom.gnn.graphnets import GraphNets
 from pom.early_stop import EarlyStopping
 from chemix import get_mixture_smiles, build_chemix
 from chemix.train import LOSS_MAP
+from chemix.utils import TORCH_METRIC_FUNCTIONS
 
 import torchinfo
 
@@ -32,16 +28,22 @@ from argparse import ArgumentParser
 
 parser = ArgumentParser()
 parser.add_argument("--trial", action="store", type=int, default=1, help="Trial number.")
-parser.add_argument("--rep", action="store", type=int, default=None)
+parser.add_argument("--rep", action="store", type=int, default=None, help='Additional tag for each trial. Optional.')
+parser.add_argument("--no-verbose", action="store_true", default=False, help='Toggle the verbosity of training. Default False')
+parser.add_argument("--gnn-lr", action="store", type=float, default=1e-6, help='Learning rate for GNN POM embedder. Default 1e-6.')
+parser.add_argument("--mix-lr", action="store", type=float, default=5e-6, help='Learning rate for Chemix. Default 5e-6.')
+parser.add_argument("--gnn-freeze", action="store_true", default=False, help='Toggle freeze GNN POM weights. Default False')
 FLAGS = parser.parse_args()
 
 if __name__ == '__main__':
+    # create folder for results
     if FLAGS.rep is not None:
-        fname = f'chemix_final/top{FLAGS.trial}/rep{FLAGS.rep}/'
+        fname = f'results/chemix_final/top{FLAGS.trial}/rep{FLAGS.rep}/'
     else:
-        fname = f'chemix_final/top{FLAGS.trial}'
+        fname = f'results/chemix_final/top{FLAGS.trial}'
     os.makedirs(f'{fname}/', exist_ok=True)
 
+    # path where the pretrained models are stored
     embedder_path = f'../scripts_pom/general_models/graphnets/model{FLAGS.trial}/'
     chemix_path = f'chemix_weights/'
 
@@ -50,13 +52,13 @@ if __name__ == '__main__':
 
     # extract hyperparameters and save again in the folder
     hp_gnn = ConfigDict(json.load(open(f'{embedder_path}/hparams.json', 'r')))
-    hp_gnn.lr = 1e-5
-    hp_gnn.freeze = False
+    hp_gnn.lr = FLAGS.gnn_lr
+    hp_gnn.freeze = FLAGS.gnn_freeze
     with open(f'{fname}/hparams_graphnets.json', 'w') as f:
         f.write(hp_gnn.to_json(indent = 4))
     
     hp_mix = ConfigDict(json.load(open(f'{chemix_path}/hparams_chemix_{FLAGS.trial}.json', 'r')))
-    hp_gnn.lr = 5e-5
+    hp_mix.lr = FLAGS.mix_lr
     with open(f'{fname}/hparams_chemix.json', 'w') as f:
         f.write(hp_mix.to_json(indent = 4))
 
@@ -83,15 +85,18 @@ if __name__ == '__main__':
     embedder = GraphNets(node_dim=NODE_DIM, edge_dim=EDGE_DIM, **hp_gnn)
     embedder.load_state_dict(torch.load(f'{embedder_path}/gnn_embedder.pt'))
     embedder = embedder.to(device)
-    # check_embedder = copy.deepcopy(embedder)
+    # freeze pom if specified
+    if hp_gnn.freeze:
+        for p in embedder.parameters():
+            p.requires_grad = False
 
     # create the chemix model and load weights
     chemix = build_chemix(config=hp_mix.chemix)
     chemix.load_state_dict(torch.load(f'{chemix_path}/best_model_dict_{FLAGS.trial}.pt'))
     chemix = chemix.to(device=device)
-    torchinfo.summary(chemix)
+    if not FLAGS.no_verbose: torchinfo.summary(chemix)
 
-    loss_fn = LOSS_MAP[hp_mix.loss_type]() # nn.L1Loss()
+    loss_fn = LOSS_MAP[hp_mix.loss_type]()
     metric_fn = F.pearson_corrcoef
     optimizer = torch.optim.Adam(
         [
@@ -101,13 +106,8 @@ if __name__ == '__main__':
     num_epochs = 5000
     es = EarlyStopping(nn.ModuleList([embedder, chemix]), patience=1000, mode='maximize')
 
-    # freeze pom
-    if hp_gnn.freeze:
-        for p in embedder.parameters():
-            p.requires_grad = False
-
     log = {k: [] for k in ['epoch', 'train_loss', 'val_loss', 'val_metric']}
-    pbar = tqdm.tqdm(range(num_epochs))
+    pbar = tqdm.tqdm(range(num_epochs), disable=FLAGS.no_verbose)
     for epoch in pbar:
         embedder.train(); chemix.train()
         if hp_gnn.freeze:
@@ -143,7 +143,6 @@ if __name__ == '__main__':
         if stop:
             print(f'Early stop reached at {es.best_step} with {es.best_value}')
             break
-
     log = pd.DataFrame(log)
 
     # save model weights
@@ -153,14 +152,20 @@ if __name__ == '__main__':
     torch.save(model[0].state_dict(), f'{fname}/gnn_embedder.pt')
     torch.save(model[1].state_dict(), f'{fname}/chemix.pt')
 
-    ## LEADERBOARD
+    ##### LEADERBOARD #####
     # save the results in a file
     embedder.eval(); chemix.eval()
     with torch.no_grad():
         out = embedder.graphs_to_mixtures(test_gr, test_indices, device=device)
         y_pred = chemix(out)
     
-    rho = F.pearson_corrcoef(y_pred.flatten(), y_test.flatten())
+    # calculate a bunch of metrics on the results to compare
+    leaderboard_metrics = {}
+    for name, func in TORCH_METRIC_FUNCTIONS.items():
+        leaderboard_metrics[name] = func(y_pred.flatten(), y_test.flatten()).detach().cpu().numpy()
+    leaderboard_metrics = pd.DataFrame(leaderboard_metrics, index=['metrics']).transpose()
+    leaderboard_metrics.to_csv(f'{fname}/leaderboard_metrics.csv')
+
     y_pred = y_pred.detach().cpu().numpy().flatten()
     y_test = y_test.detach().cpu().numpy().flatten()
     leaderboard_predictions = pd.DataFrame({
@@ -171,16 +176,20 @@ if __name__ == '__main__':
     leaderboard_predictions.to_csv(f'{fname}/leaderboard_predictions.csv')
 
     # plot the predictions
-    sns.scatterplot(data=leaderboard_predictions, x='Ground_Truth', y='Predicted_Experimental_Values')
-    plt.plot([0,1], [0,1], 'r--', label=f'Perason: {rho:.4f}')
-    plt.xlim([0,1])
-    plt.ylim([0,1])
-    plt.legend()
+    ax = sns.scatterplot(data=leaderboard_predictions, x='Ground_Truth', y='Predicted_Experimental_Values')
+    ax.plot([0,1], [0,1], 'r--')
+    ax.set_xlim([0,1])
+    ax.set_ylim([0,1])
+    ax.annotate(''.join(f'{k}: {v['metrics']:.4f}\n' for k, v in leaderboard_metrics.iterrows()).strip(),
+            xy=(0.05,0.7), xycoords='axes fraction',
+            # textcoords='offset points',
+            size=12,
+            bbox=dict(boxstyle="round", fc=(1.0, 0.7, 0.7), ec="none"))
     plt.savefig(f'{fname}/leaderboard_predictions.png', bbox_inches='tight')
     plt.close()
 
-    ## TEST
-    # testing set
+
+    ##### TEST #####
     dl_test = DreamLoader()
     dl_test.load_benchmark('competition_test')
     dl_test.featurize('competition_smiles_test')    # this is only valid for testing set

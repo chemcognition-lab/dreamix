@@ -1,0 +1,7 @@
+,metrics
+pearson,0.77382654
+spearman,0.7649165
+kendall,0.588535
+r2,-0.07117939
+rmse,0.1673499
+mae,0.12819481

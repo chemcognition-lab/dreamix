@@ -5,6 +5,9 @@ import numpy as np
 import omegaconf
 import torch
 
+import torchmetrics.functional as F
+from sklearn.metrics import root_mean_squared_error, mean_absolute_error, r2_score
+from scipy.stats import kendalltau, spearmanr, pearsonr
 
 def print_conf(conf: omegaconf.DictConfig):
     """Pretty prints a configuration object."""
@@ -74,3 +77,21 @@ class EarlyStopping:
             f"Restoring checkpoint at step {self.best_step} with best value at {self.best_value}"
         )
         return self.best_model
+
+TORCH_METRIC_FUNCTIONS = {
+    'pearson': F.pearson_corrcoef,
+    'spearman': F.spearman_corrcoef,
+    'kendall': F.kendall_rank_corrcoef,
+    'r2': F.r2_score,
+    'rmse': lambda pred, targ: F.mean_squared_error(pred, targ, squared=False),
+    'mae': F.mean_absolute_error
+}
+
+NUMPY_METRIC_FUNCTIONS = {
+    'pearson': lambda x, y: pearsonr(x,y)[0],
+    'spearman': lambda x, y: spearmanr(x,y)[0],
+    'kendall': lambda x, y: kendalltau(x,y)[0],
+    'r2': r2_score,
+    'rmse': root_mean_squared_error,
+    'mae': mean_absolute_error
+}
