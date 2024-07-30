@@ -18,11 +18,11 @@ from sklearn.preprocessing import OneHotEncoder
 import enum
 from sklearn.metrics import (
     r2_score,
-    root_mean_squared_error,
     mean_absolute_error,
     roc_auc_score,
     accuracy_score,
 )
+import torchmetrics.functional as F
 from scipy.stats import kendalltau, spearmanr
 from prediction_head.loss import FocalLoss
 import functools
@@ -31,10 +31,15 @@ import dataclasses
 # Load Data (Create Dataset and Dataloader)
 from torch.utils.data import DataLoader, Dataset
 
+if sys.version_info >= (3, 11):
+    from enum import StrEnum
+else:
+    from backports.strenum import StrEnum
+
 np.random.seed(2)
 
 
-class TaskType(enum.StrEnum):
+class TaskType(StrEnum):
     regression = enum.auto()
     binary = enum.auto()
     multiclass = enum.auto()
@@ -58,11 +63,12 @@ def get_activation(tasktype: TaskType) -> nn.Module:
     }
     return activations[tasktype]
 
+
 def get_loss_fn(task: TaskType):
     loss_fns: dict = {
         TaskType.regression: nn.MSELoss,
-        TaskType.binary: nn.BCEWithLogitsLoss,      # requires logits
-        TaskType.multiclass: nn.CrossEntropyLoss,   # requires logits
+        TaskType.binary: nn.BCEWithLogitsLoss,  # requires logits
+        TaskType.multiclass: nn.CrossEntropyLoss,  # requires logits
         TaskType.multilabel: nn.BCEWithLogitsLoss,  # requires logits
     }
     return loss_fns[task]
@@ -111,7 +117,7 @@ def get_metrics(tasktype: TaskType):
         TaskType.regression: {
             "r2": r2_score,
             "r": np.corrcoef,
-            "rmse": root_mean_squared_error,
+            "rmse": F.root_mean_squared_error,
             "mse": mean_absolute_error,
         },
         TaskType.binary: {"auroc": roc_auc_score, "acc": accuracy_score},
