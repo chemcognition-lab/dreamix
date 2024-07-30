@@ -25,7 +25,7 @@ else:
 UNK_TOKEN = -999
 
 
-class AggEnum(enum.StrEnum):
+class AggEnum(StrEnum):
     """Basic str enum for molecule aggregators."""
 
     mean = enum.auto()
@@ -33,7 +33,7 @@ class AggEnum(enum.StrEnum):
     attn = enum.auto()
 
 
-class RegressorEnum(enum.StrEnum):
+class RegressorEnum(StrEnum):
     """Basic str enum for regressors."""
 
     minmax = enum.auto()
@@ -42,7 +42,7 @@ class RegressorEnum(enum.StrEnum):
     scaled_cosine = enum.auto()
 
 
-class ActivationEnum(enum.StrEnum):
+class ActivationEnum(StrEnum):
     """Basic str enum for activation functions."""
 
     sigmoid = enum.auto()
