@@ -1,39 +1,76 @@
+import copy
+from pprint import pprint
+
+import numpy as np
+import omegaconf
 import torch
 
-_LARGE_NUM = torch.finfo(torch.float32).max
-_LARGENEG_NUM = torch.finfo(torch.float32).min
+
+def print_conf(conf: omegaconf.DictConfig):
+    """Pretty prints a configuration object."""
+    pprint(omegaconf.OmegaConf.to_container(conf, resolve=True))
 
 
-def masked_sum(x, mask):
-    x_masked = torch.einsum('ijk, ij -> ijk', x, mask)
-    return torch.einsum('ijk->ik', x_masked)
+class EarlyStopping:
+    """Stop training early if a metric stops improving.
 
+    Models often benefit from stoping early after a metric stops improving.
+    This implementation assumes the monitored value will be loss-like
+    (i.g. val_loss) and will checkpoint when reaching a new best value.
+    Checkpointed value can be restored.
 
-def masked_mean(x, mask):
-    x_masked = torch.einsum('ijk, ij -> ijk', x, mask)
-    counts = mask.sum(dim=1, keepdim=True)
-    mean = torch.einsum('ijk->ik', x_masked) / counts
-    return mean
+    Args:
+      model: model to checkpoint.
+      patience: number of iterations before flaggin a stop.
+      min_delta: minimum value to quanlify as an improvement.
+      checkpoint_interval: number of iterations before checkpointing.
+      mode: maximise or minimise the monitor value
+    """
 
+    def __init__(
+        self,
+        model: torch.nn.Module,
+        patience: int = 100,
+        min_delta: float = 0,
+        checkpoint_interval: int = 1,
+        mode: bool = "maximize",
+    ):
+        self.patience = patience
+        self.min_delta = np.abs(min_delta)
+        self.wait = 0
+        self.best_step = 0
+        self.checkpoint_count = 0
+        self.checkpoint_interval = checkpoint_interval
+        self.values = []
+        self.best_model = copy.deepcopy(model.state_dict())
+        if mode == "maximize":
+            self.monitor_op = lambda a, b: np.greater_equal(a - min_delta, b)
+            self.best_value = -np.inf
+        elif mode == "minimize":
+            self.monitor_op = lambda a, b: np.less_equal(a + min_delta, b)
+            self.best_value = np.inf
+        else:
+            raise ValueError("Invalid mode for early stopping.")
 
-def masked_variance(x, mask):
-    # Assumes ddf=0
-    x_masked = torch.einsum('ijk, ij -> ijk', x, mask)
-    counts = mask.sum(dim=1, keepdim=True)
-    mean = torch.einsum('ijk->ik', x_masked) / counts
-    squared_diff = (x - mean.unsqueeze(1))**2
-    diff_masked = torch.einsum('ijk, ij -> ijk', squared_diff, mask)
-    var = torch.einsum('ijk->ik', diff_masked) / counts
-    return var
+    def check_criteria(self, monitor_value: float, model: torch.nn.Module) -> bool:
+        """Gets learing rate based on value to monitor."""
+        self.values.append(monitor_value)
+        self.checkpoint_count += 1
 
+        if self.monitor_op(monitor_value, self.best_value):
+            self.best_value = monitor_value
+            self.best_step = len(self.values) - 1
+            self.wait = 0
+            if self.checkpoint_count >= self.checkpoint_interval:
+                self.checkpoint_count = 0
+                self.best_model = copy.deepcopy(model.state_dict())
+        else:
+            self.wait += 1
 
-def masked_min(x, mask):
-    x_masked = torch.where(mask.unsqueeze(-1), x, _LARGE_NUM)
-    min_values, _ = torch.min(x_masked, dim=1)
-    return min_values
+        return self.wait >= self.patience
 
-
-def masked_max(x, mask):
-    x_masked = torch.where(mask.unsqueeze(-1), x, _LARGENEG_NUM)
-    min_values, _ = torch.max(x_masked, dim=1)
-    return min_values
+    def restore_best(self):
+        print(
+            f"Restoring checkpoint at step {self.best_step} with best value at {self.best_value}"
+        )
+        return self.best_model

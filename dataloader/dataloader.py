@@ -65,7 +65,7 @@ class DreamLoader:
                 },
                 "competition_test": {
                     "features": ["Dataset", "Mixture 1", "Mixture 2"],
-                    "labels": ["Experimental Values"],
+                    "labels": [],
                     "validate": False,  # nan values in columns, broken
                 },
                 "competition_extra": {
@@ -239,6 +239,7 @@ class DreamLoader:
             "rdkit2d_normalized_features",
             "mordred_descriptors",
             "competition_smiles",
+            "competition_smiles_test",
             "competition_rdkit2d",
         ]
 
@@ -275,24 +276,24 @@ class DreamLoader:
 
             self.features = mordred_descriptors(self.features, **kwargs)
 
-        elif representation in ["competition_smiles", "competition_smiles_legacy"]:
+        elif representation in ["competition_smiles", "competition_smiles_legacy", "competition_smiles_test"]:
             paths = {
                 "competition_smiles": "competition_train/mixture_smi_definitions_clean.csv",
+                "competition_smiles_test": "competition_test/mixture_smi_definitions_clean.csv",
                 "competition_smiles_legacy": "competition_legacy/mixture_smi_definitions_clean_old.csv",
             }
             path = paths[representation]
             # Features is ["Dataset", "Mixture 1", "Mixture 2"]
             smi_df = pd.read_csv(DATASET_DIR / path)
             smi_df = smi_df.set_index(["Dataset", "Mixture Label"])
-            feature_list = []
-            for feature in self.features:
-                mix = []
+            feature_list = np.empty((len(self.features), 2), dtype=object)  # assumed to be 2 mixtures
+            for mixid, feature in enumerate(self.features):
                 for mi in range(0, 2):
                     index = (feature[0], feature[mi + 1])
                     smiles_arr = smi_df.loc[index].dropna().to_numpy()
-                    mix.append(smiles_arr)
-                feature_list.append(mix)
-            self.features = np.array(feature_list, dtype=object)
+                    feature_list[mixid, mi] = smiles_arr
+            self.features = feature_list
+
         elif representation == "competition_smiles_augment":
             # Features is ["Dataset", "Mixture 1", "Mixture 2"]
             smi_df = pd.read_csv(
@@ -321,7 +322,7 @@ class DreamLoader:
         elif representation == "competition_rdkit2d":
             # Features is ["Dataset", "Mixture 1", "Mixture 2"]
             rdkit_df = pd.read_csv(
-                "{current_dir}/../datasets/competition_train/mixture_rdkit_definitions_clean.csv"
+                f"{current_dir}/../datasets/competition_train/mixture_rdkit_definitions_clean.csv"
             )
             feature_list = []
             for feature in self.features:

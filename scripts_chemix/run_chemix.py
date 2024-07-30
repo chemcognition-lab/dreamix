@@ -21,50 +21,54 @@ from scipy.stats import pearsonr, kendalltau
 
 from dataloader import DreamLoader
 from dataloader.representations.graph_utils import from_smiles, NODE_DIM, EDGE_DIM
-import pom.utils as utils
 from pom.gnn.graphnets import GraphNets
 from pom.early_stop import EarlyStopping
-from chemix.data import get_mixture_smiles
-from chemix import Chemix, MixtureNet, Regressor
-from chemix.model import AttentionAggregation
+from chemix import get_mixture_smiles, build_chemix
+from chemix.train import LOSS_MAP
 
 import torchinfo
 
+from argparse import ArgumentParser
+
+parser = ArgumentParser()
+parser.add_argument("--trial", action="store", type=int, default=1, help="Trial number.")
+parser.add_argument("--rep", action="store", type=int, default=None)
+FLAGS = parser.parse_args()
 
 if __name__ == '__main__':
-    fname = f'chemix_end2end/'
+    if FLAGS.rep is not None:
+        fname = f'chemix_final/top{FLAGS.trial}/rep{FLAGS.rep}/'
+    else:
+        fname = f'chemix_final/top{FLAGS.trial}'
     os.makedirs(f'{fname}/', exist_ok=True)
+
+    embedder_path = f'../scripts_pom/general_models/graphnets/model{FLAGS.trial}/'
+    chemix_path = f'chemix_weights/'
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print(f'Running on: {device}')
 
-
-    # using hyperparameters
-    embedder_path = '../scripts_pom/general_models/graphnets/model1/'
+    # extract hyperparameters and save again in the folder
     hp_gnn = ConfigDict(json.load(open(f'{embedder_path}/hparams.json', 'r')))
-    hp_gnn.lr = 1e-4
+    hp_gnn.lr = 1e-5
     hp_gnn.freeze = False
     with open(f'{fname}/hparams_graphnets.json', 'w') as f:
         f.write(hp_gnn.to_json(indent = 4))
-
-    hp_mix = ConfigDict()
-    hp_mix.embed_dim = 196
-    hp_mix.num_layers = 2
-    hp_mix.dropout = 0.2
-    hp_mix.lr = 5e-4
-    hp_mix.unk_token = -999
+    
+    hp_mix = ConfigDict(json.load(open(f'{chemix_path}/hparams_chemix_{FLAGS.trial}.json', 'r')))
+    hp_gnn.lr = 5e-5
     with open(f'{fname}/hparams_chemix.json', 'w') as f:
         f.write(hp_mix.to_json(indent = 4))
 
     # training set
     dl = DreamLoader()
-    dl.load_benchmark('competition_train')
+    dl.load_benchmark('competition_train_all')
     dl.featurize('competition_smiles')
     graph_list, train_indices = get_mixture_smiles(dl.features, from_smiles)
     train_gr = Batch.from_data_list(graph_list)
     y_train = torch.tensor(dl.labels, dtype=torch.float32).to(device)
 
-    # testing set
+    # leaderboard set
     dl_test = DreamLoader()
     dl_test.load_benchmark('competition_leaderboard')
     dl_test.featurize('competition_smiles')
@@ -72,38 +76,22 @@ if __name__ == '__main__':
     test_gr = Batch.from_data_list(graph_list)
     y_test = torch.tensor(dl_test.labels, dtype=torch.float32).to(device)
 
-    # create the pom embedder model
+    print(f'Training set: {len(y_train)}')
+    print(f'Leaderboard set: {len(y_test)}')
+
+    # create the pom embedder model and load weights
     embedder = GraphNets(node_dim=NODE_DIM, edge_dim=EDGE_DIM, **hp_gnn)
     embedder.load_state_dict(torch.load(f'{embedder_path}/gnn_embedder.pt'))
     embedder = embedder.to(device)
     # check_embedder = copy.deepcopy(embedder)
 
-    # create the chemix model
-    mixture_net = MixtureNet(
-        num_layers=hp_mix.num_layers,
-        embed_dim=hp_mix.embed_dim,
-        num_heads=1,
-        mol_aggregation=AttentionAggregation(),
-        dropout_rate=hp_mix.dropout,
-    )
-
-    regressor = Regressor(
-        hidden_dim=2*hp_mix.embed_dim,   # multiply by 4 for pna
-        output_dim=1,
-        num_layers=hp_mix.num_layers,
-        dropout_rate=hp_mix.dropout,
-    )
-
-    chemix = Chemix(
-        input_net=None,
-        regressor=regressor,
-        mixture_net=mixture_net,
-        unk_token=hp_mix.unk_token,
-    ).to(device)
-
+    # create the chemix model and load weights
+    chemix = build_chemix(config=hp_mix.chemix)
+    chemix.load_state_dict(torch.load(f'{chemix_path}/best_model_dict_{FLAGS.trial}.pt'))
+    chemix = chemix.to(device=device)
     torchinfo.summary(chemix)
 
-    loss_fn = nn.L1Loss()
+    loss_fn = LOSS_MAP[hp_mix.loss_type]() # nn.L1Loss()
     metric_fn = F.pearson_corrcoef
     optimizer = torch.optim.Adam(
         [
@@ -165,20 +153,14 @@ if __name__ == '__main__':
     torch.save(model[0].state_dict(), f'{fname}/gnn_embedder.pt')
     torch.save(model[1].state_dict(), f'{fname}/chemix.pt')
 
-    # check if the weights are changing
-    # changed = False
-    # for p1, p2 in zip(model[0].parameters(), check_embedder.parameters()):
-    #     if p1.data.ne(p2.data).sum() > 0:
-    #         changed = True
-    #         break
-    # print(f'Embedder weights changing? {changed}')
-
+    ## LEADERBOARD
     # save the results in a file
     embedder.eval(); chemix.eval()
     with torch.no_grad():
         out = embedder.graphs_to_mixtures(test_gr, test_indices, device=device)
         y_pred = chemix(out)
     
+    rho = F.pearson_corrcoef(y_pred.flatten(), y_test.flatten())
     y_pred = y_pred.detach().cpu().numpy().flatten()
     y_test = y_test.detach().cpu().numpy().flatten()
     leaderboard_predictions = pd.DataFrame({
@@ -186,16 +168,38 @@ if __name__ == '__main__':
         'Ground_Truth': y_test,
         'MAE': np.abs(y_pred - y_test),
     }, index=range(len(y_pred)))
-    leaderboard_predictions.to_csv(f'{fname}/test_predictions.csv')
+    leaderboard_predictions.to_csv(f'{fname}/leaderboard_predictions.csv')
 
     # plot the predictions
     sns.scatterplot(data=leaderboard_predictions, x='Ground_Truth', y='Predicted_Experimental_Values')
-    plt.plot([0,1], [0,1], 'r--')
+    plt.plot([0,1], [0,1], 'r--', label=f'Perason: {rho:.4f}')
     plt.xlim([0,1])
     plt.ylim([0,1])
-    plt.savefig(f'{fname}/predictions.png', bbox_inches='tight')
+    plt.legend()
+    plt.savefig(f'{fname}/leaderboard_predictions.png', bbox_inches='tight')
     plt.close()
 
+    ## TEST
+    # testing set
+    dl_test = DreamLoader()
+    dl_test.load_benchmark('competition_test')
+    dl_test.featurize('competition_smiles_test')    # this is only valid for testing set
+    graph_list, test_indices = get_mixture_smiles(dl_test.features, from_smiles)
+    test_gr = Batch.from_data_list(graph_list)
+
+    embedder.eval(); chemix.eval()
+    with torch.no_grad():
+        out = embedder.graphs_to_mixtures(test_gr, test_indices, device=device)
+        y_pred = chemix(out)
+    
+    y_pred = y_pred.detach().cpu().numpy().flatten()
+    test_predictions = pd.DataFrame({
+        'Predicted_Experimental_Values': y_pred, 
+    }, index=range(len(y_pred)))
+    test_predictions.to_csv(f'{fname}/test_predictions.csv')
+
+
+    # PLOT DIAGNOSTICS
     # also plot sand save the training loss (for diagnostics)
     log.to_csv(f'{fname}/training.csv', index=False)
     plt_log = log[['epoch', 'val_metric']].melt(id_vars=['epoch'], var_name='set', value_name='metric')
