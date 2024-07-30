@@ -17,6 +17,11 @@ from torch import nn
 from . import types
 from .maths import masked_max, masked_mean, masked_min, masked_variance
 
+if sys.version_info >= (3, 11):
+    from enum import StrEnum
+else:
+    from backports.strenum import StrEnum
+
 UNK_TOKEN = -999
 
 
