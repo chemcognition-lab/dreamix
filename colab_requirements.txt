@@ -8,7 +8,7 @@ omegaconf
 torchtune
 rdkit
 git+https://github.com/bp-kelley/descriptastorus
-pyg_lib
-torch-scatter 
-torch-sparse
-torch-spline-conv 
+pyg_lib @ https://data.pyg.org/whl/torch-2.3.0+cu121.html
+torch-scatter @ https://data.pyg.org/whl/torch-2.3.0+cu121.html
+torch-sparse @ https://data.pyg.org/whl/torch-2.3.0+cu121.html
+torch-spline-conv @ https://data.pyg.org/whl/torch-2.3.0+cu121.html
