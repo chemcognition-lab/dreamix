@@ -44,7 +44,7 @@ if __name__ == '__main__':
     os.makedirs(f'{fname}/', exist_ok=True)
 
     # path where the pretrained models are stored
-    embedder_path = f'../scripts_pom/general_models/graphnets/model{FLAGS.trial}/'
+    embedder_path = f'../scripts_pom/general_models/model{FLAGS.trial}/'
     chemix_path = f'chemix_weights/'
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
