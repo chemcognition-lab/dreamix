@@ -343,7 +343,7 @@ class DreamLoader:
         elif representation == "competition_rdkit2d_augment":
             # Features is ["Dataset", "Mixture 1", "Mixture 2"]
             rdkit_df = pd.read_csv(
-                "{current_dir}/../datasets/competition_train/mixture_rdkit_definitions_clean.csv"
+                f"{current_dir}/../datasets/competition_train/mixture_rdkit_definitions_clean.csv"
             )
             feature_list = []
             feature_list_augment = []
@@ -361,8 +361,8 @@ class DreamLoader:
                 feature_list.append([mix_1, mix_2])
                 feature_list_augment.append([mix_2, mix_1])
             feature_list += feature_list_augment
-
             self.features = np.array(feature_list, dtype=object)
+            self.labels = np.concatenate([self.labels, self.labels])
 
         elif representation == "only_augment":
 
