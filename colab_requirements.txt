@@ -1,0 +1,14 @@
+torchinfo
+torchmetrics
+torch_geometric
+ml_collections
+jaxtyping
+backports.strenum
+omegaconf
+torchtune
+rdkit
+git+https://github.com/bp-kelley/descriptastorus
+pyg_lib
+torch-scatter 
+torch-sparse
+torch-spline-conv 
