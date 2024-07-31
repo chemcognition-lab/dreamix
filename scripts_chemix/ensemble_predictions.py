@@ -1,14 +1,16 @@
 import sys
-sys.path.append('..')
+from pathlib import Path
 
-from chemix.utils import NUMPY_METRIC_FUNCTIONS
-
-import numpy as np
-import seaborn as sns
-import pandas as pd
-import matplotlib.pyplot as plt
+script_dir = Path(__file__).parent
+base_dir = Path(*script_dir.parts[:-1])
+sys.path.append( str(base_dir / 'src/') )
 
 from argparse import ArgumentParser
+
+import matplotlib.pyplot as plt
+import numpy as np
+import pandas as pd
+import seaborn as sns
 
 parser = ArgumentParser()
 parser.add_argument("--dir", action="store", type=str, default='results/chemix_ensemble', help="Folder with ensemble of results.")
@@ -41,9 +43,7 @@ if __name__ == '__main__':
     ground_truth = all_df.groupby('data_index')['Ground_Truth'].mean().to_numpy()
 
     # calculate a bunch of metrics on the results to compare
-    leaderboard_metrics = {}
-    for name, func in NUMPY_METRIC_FUNCTIONS.items():
-        leaderboard_metrics[name] = func(average_pred.flatten(), ground_truth.flatten())
+    leaderboard_metrics = evaluate(ground_truth, average_pred)
     leaderboard_metrics = pd.DataFrame(leaderboard_metrics, index=['metrics']).transpose()
     leaderboard_metrics.to_csv(f'{FLAGS.dir}/ensemble_leaderboard_metrics.csv')
 
@@ -76,5 +76,6 @@ if __name__ == '__main__':
         'Predicted_Experimental_Values': average_pred, 
     }, index=range(len(average_pred)))
     save_pred.to_csv(f'{FLAGS.dir}/ensemble_test_predictions.csv')
+
 
 

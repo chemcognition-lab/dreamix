@@ -1,13 +1,12 @@
 import copy
+import functools
 from pprint import pprint
 
 import numpy as np
 import omegaconf
 import torch
-
 import torchmetrics.functional as F
-from sklearn.metrics import root_mean_squared_error, mean_absolute_error, r2_score
-from scipy.stats import kendalltau, spearmanr, pearsonr
+
 
 def print_conf(conf: omegaconf.DictConfig):
     """Pretty prints a configuration object."""
@@ -78,20 +77,29 @@ class EarlyStopping:
         )
         return self.best_model
 
+
 TORCH_METRIC_FUNCTIONS = {
-    'pearson': F.pearson_corrcoef,
-    'spearman': F.spearman_corrcoef,
-    'kendall': F.kendall_rank_corrcoef,
-    'r2': F.r2_score,
-    'rmse': lambda pred, targ: F.mean_squared_error(pred, targ, squared=False),
-    'mae': F.mean_absolute_error
+    "pearson": F.pearson_corrcoef,
+    "spearman": F.spearman_corrcoef,
+    "kendall": F.kendall_rank_corrcoef,
+    "r2": F.r2_score,
+    "rmse": lambda pred, targ: F.mean_squared_error(pred, targ, squared=False),
+    "mae": F.mean_absolute_error,
 }
 
-NUMPY_METRIC_FUNCTIONS = {
-    'pearson': lambda x, y: pearsonr(x,y)[0],
-    'spearman': lambda x, y: spearmanr(x,y)[0],
-    'kendall': lambda x, y: kendalltau(x,y)[0],
-    'r2': r2_score,
-    'rmse': root_mean_squared_error,
-    'mae': mean_absolute_error
-}
+
+def cast_to_torch(x):
+    return torch.from_numpy(x) if isinstance(x, np.ndarray) else x
+
+
+def compute_metrics(y_true, y_pred, metric_functions):
+    """Calculate metrics on a set of predictions."""
+    y_true = cast_to_torch(y_true.flatten())
+    y_pred = cast_to_torch(y_pred.flatten())
+    metrics = {}
+    for name, func in metric_functions.items():
+        metrics[name] = func(y_true, y_pred).detach().cpu().item()
+    return metrics
+
+
+evaluate = functools.partial(compute_metrics, metric_functions=TORCH_METRIC_FUNCTIONS)
