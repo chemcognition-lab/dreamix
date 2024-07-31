@@ -60,6 +60,7 @@ def get_mixture_smiles(
     # present in a mixture, returning them as a list
     flat_mix = mixtures.flatten()
     smiles_list = list(set([x for xs in flat_mix for x in xs]))
+    smiles_list.sort()
 
     pad_len = max([len(x) for x in flat_mix])
     mixtures_processed = []
@@ -71,7 +72,6 @@ def get_mixture_smiles(
     mixtures_processed = np.array(mixtures_processed).transpose((1,2,0)).tolist()
 
     # map it to the feature
-    smiles_list = list(set([x for xs in flat_mix for x in xs]))
     feature_map = {smi: i-1 for i, smi in enumerate([''] + smiles_list)}
     mix_inds = map_nested_list(mixtures_processed, feature_map)
 
