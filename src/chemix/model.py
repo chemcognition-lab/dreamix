@@ -9,8 +9,8 @@ We seeks three types of symmetries for layers and models of mixtures and sets of
 
 import enum
 import functools
-import warnings
 import sys
+import warnings
 
 import torch
 from torch import nn

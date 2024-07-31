@@ -1,21 +1,30 @@
 import enum
 import functools
-import tqdm
+import sys
+from typing import Optional
+
 import torch
 import torch.nn as nn
 import torchmetrics
-
-from torchtune.utils.metric_logging import WandBLogger
-from chemix.utils import EarlyStopping
+import tqdm
 from torch.utils.data import DataLoader
-from typing import Optional
+from torchtune.utils.metric_logging import WandBLogger
 
-class LossEnum(enum.StrEnum):
+from chemix.utils import EarlyStopping
+
+if sys.version_info >= (3, 11):
+    from enum import StrEnum
+else:
+    from backports.strenum import StrEnum
+
+
+class LossEnum(StrEnum):
     """Basic str enum for molecule aggregators."""
 
     mae = enum.auto()
     mse = enum.auto()
     huber = enum.auto()
+
 
 LOSS_MAP = {
     LossEnum.mae: nn.L1Loss,
@@ -68,8 +77,8 @@ def train_one_epoch(
 
     # avg loss and metric per batch
     overall_train_loss = train_loss / (num_batch + 1)
-    overall_train_metrics  = compute_metrics(metrics, {"loss": overall_train_loss})
-    
+    overall_train_metrics = compute_metrics(metrics, {"loss": overall_train_loss})
+
     return overall_train_metrics
 
 
@@ -98,7 +107,7 @@ def validate_one_epoch(
 
     # avg loss and metric per batch
     overall_val_loss = val_loss / (num_batch + 1)
-    overall_val_metrics  = compute_metrics(metrics, {"loss": overall_val_loss})
+    overall_val_metrics = compute_metrics(metrics, {"loss": overall_val_loss})
 
     return overall_val_metrics
 
@@ -132,8 +141,8 @@ def train(
     metrics = metrics.to(device)
 
     optimizer = torch.optim.Adam(model.parameters(), lr=lr, weight_decay=weight_decay)
-    
-    es = EarlyStopping(model, patience=patience, mode='maximize')
+
+    es = EarlyStopping(model, patience=patience, mode="maximize")
 
     pbar = tqdm.tqdm(range(max_epochs))
     for epoch in pbar:
@@ -149,7 +158,7 @@ def train(
         )
 
         metrics.reset()
-        
+
         # validation + early stopping
         model.eval()
         with torch.no_grad():
@@ -162,22 +171,34 @@ def train(
             )
 
         if wandb_logger:
-            log_metrics(metrics=overall_train_metrics, epoch=epoch, logger=wandb_logger, mode="train")
-            log_metrics(metrics=overall_val_metrics, epoch=epoch, logger=wandb_logger, mode="val")
+            log_metrics(
+                metrics=overall_train_metrics,
+                epoch=epoch,
+                logger=wandb_logger,
+                mode="train",
+            )
+            log_metrics(
+                metrics=overall_val_metrics,
+                epoch=epoch,
+                logger=wandb_logger,
+                mode="val",
+            )
 
-        pbar.set_description(f"Train: {overall_train_metrics['loss']:.4f} | Test: {overall_val_metrics['loss']:.4f} | Test metric: {overall_val_metrics['PearsonCorrCoef']:.4f}")
+        pbar.set_description(
+            f"Train: {overall_train_metrics['loss']:.4f} | Test: {overall_val_metrics['loss']:.4f} | Test metric: {overall_val_metrics['PearsonCorrCoef']:.4f}"
+        )
 
-        stop = es.check_criteria(overall_val_metrics['PearsonCorrCoef'], model)
+        stop = es.check_criteria(overall_val_metrics["PearsonCorrCoef"], model)
         if stop:
-            print(f'Early stop reached at {es.best_step} with {es.best_value}')
+            print(f"Early stop reached at {es.best_step} with {es.best_value}")
             break
 
         metrics.reset()
 
     # save model weights
     best_model_dict = es.restore_best()
-    model.load_state_dict(best_model_dict)      # load the best one trained
-    torch.save(model.state_dict(), f'{root_dir}/best_model_dict_{experiment_name}.pt')
+    model.load_state_dict(best_model_dict)  # load the best one trained
+    torch.save(model.state_dict(), f"{root_dir}/best_model_dict_{experiment_name}.pt")
 
     if wandb_logger and wandb_logger == WandBLogger:
         wandb_logger.close()
