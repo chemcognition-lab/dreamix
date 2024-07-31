@@ -64,7 +64,7 @@ FLAGS = parser.parse_args()
 if __name__ == '__main__':
 
     # create folders for logging
-    fname = f'general_models/ensure_saving'      # create a file name to log all outputs
+    fname = f'general_models/model{FLAGS.tag}'      # create a file name to log all outputs
     os.makedirs(fname, exist_ok=True)
 
     # hparams settings
@@ -251,16 +251,3 @@ if __name__ == '__main__':
     sns.lineplot(data=plt_log, x='epoch', y='loss', style='set', hue='dataset', palette='colorblind') 
     plt.savefig(f'{fname}/loss.png', bbox_inches='tight')
     plt.close()
-
-    # with open(f'{fname}/output.log', 'w') as f:
-    #     f.write(f'Max epochs: {hp.num_epochs}\n')
-    #     f.write(f'Learning rate: {hp.lr}\n')
-    #     f.write(f'Batch size: {hp.batch_size}\n')
-    #     f.write(f'Seed: {seed}\n')
-    #     f.write('------\n')
-    #     f.write(f'Early stop: {es.best_step}\n')
-    #     f.write(f'Stats at early stop epoch: {log.iloc[es.best_step]}\n')
-    #     f.write('------\n')
-    #     f.write('GNN Embedder:\n')
-    #     f.write(f'{torchinfo.summary(gnn)}\n')
-
