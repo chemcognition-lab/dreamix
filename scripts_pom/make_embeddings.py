@@ -38,5 +38,5 @@ def get_embeddings_from_smiles(smi_list: List[str], file_path: str, gnn: Optiona
 
 
 if __name__ == '__main__':
-    embeddings = get_embeddings_from_smiles(['c1ccccc1', 'Cn1c(=O)c2c(ncn2C)n(C)c1=O'], 'general_models/graphnets_no_reg/')
+    embeddings = get_embeddings_from_smiles(['c1ccccc1', 'Cn1c(=O)c2c(ncn2C)n(C)c1=O'], 'general_models/model1/')
     print(embeddings)
