@@ -1,33 +1,32 @@
-import sys, os
+import os
+import sys
+
 sys.path.append('..')
 
 import json
-import tqdm
-from ml_collections import ConfigDict
+from argparse import ArgumentParser
 
-import torch
-import torch.nn as nn
-from torch_geometric.data import Batch
-import torchmetrics.functional as F
+import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
-import matplotlib.pyplot as plt
+import torch
+import torch.nn as nn
+import torchinfo
+import torchmetrics.functional as F
+import tqdm
+from ml_collections import ConfigDict
+from scipy.stats import kendalltau, pearsonr
+from sklearn.metrics import mean_squared_error, r2_score, roc_auc_score
+from torch_geometric.data import Batch
 
-from sklearn.metrics import roc_auc_score, mean_squared_error, r2_score
-from scipy.stats import pearsonr, kendalltau
-
-from dataloader import DreamLoader
-from dataloader.representations.graph_utils import from_smiles, NODE_DIM, EDGE_DIM
-from pom.gnn.graphnets import GraphNets
-from pom.early_stop import EarlyStopping
-from chemix import get_mixture_smiles, build_chemix
+from chemix import build_chemix, get_mixture_smiles
 from chemix.train import LOSS_MAP
 from chemix.utils import TORCH_METRIC_FUNCTIONS
-
-import torchinfo
-
-from argparse import ArgumentParser
+from dataloader import DreamLoader
+from dataloader.representations.graph_utils import EDGE_DIM, NODE_DIM, from_smiles
+from pom.early_stop import EarlyStopping
+from pom.gnn.graphnets import GraphNets
 
 parser = ArgumentParser()
 parser.add_argument("--trial", action="store", type=int, default=1, help="Trial number.")
@@ -47,13 +46,13 @@ if __name__ == '__main__':
 
     # create the pom embedder model
     embedder = GraphNets(node_dim=NODE_DIM, edge_dim=EDGE_DIM, **hp_gnn)
-    embedder.load_state_dict(torch.load(f'{fname}/gnn_embedder.pt'))
-    embedder = embedder.to(device)
-    
+    embedder.load_state_dict(torch.load(f'{fname}/gnn_embedder.pt'), map_location=device
+    )
+        
     # create the chemix model
     chemix = build_chemix(config=hp_mix.chemix)
-    chemix.load_state_dict(torch.load(f'{fname}/chemix.pt'))
-    chemix = chemix.to(device=device)
+    chemix.load_state_dict(torch.load(f'{fname}/chemix.pt'), map_location=device
+    )
     torchinfo.summary(chemix)
 
 
