@@ -45,14 +45,6 @@ if __name__ == '__main__':
     hp_gnn = ConfigDict(json.load(open(f'{fname}/hparams_graphnets.json', 'r')))
     hp_mix = ConfigDict(json.load(open(f'{fname}/hparams_chemix.json', 'r')))
 
-    # leaderboard set
-    dl_test = DreamLoader()
-    dl_test.load_benchmark('competition_leaderboard')
-    dl_test.featurize('competition_smiles')
-    graph_list, test_indices = get_mixture_smiles(dl_test.features, from_smiles)
-    test_gr = Batch.from_data_list(graph_list)
-    y_test = torch.tensor(dl_test.labels, dtype=torch.float32).to(device)
-
     # create the pom embedder model
     embedder = GraphNets(node_dim=NODE_DIM, edge_dim=EDGE_DIM, **hp_gnn)
     embedder.load_state_dict(torch.load(f'{fname}/gnn_embedder.pt'))
@@ -63,9 +55,73 @@ if __name__ == '__main__':
     chemix.load_state_dict(torch.load(f'{fname}/chemix.pt'))
     chemix = chemix.to(device=device)
     torchinfo.summary(chemix)
-    
 
-    ### CHECK PERFORMANCE ON THE LEADERBOARD SET
+
+    ##### SAVE EMBEDDINGS FOR VIS #####
+    # train set
+    dl = DreamLoader()
+    dl.load_benchmark('competition_train_all')
+    mixture_labels = dl.features
+    dl.featurize('competition_smiles')
+    graph_list, indices = get_mixture_smiles(dl.features, from_smiles)
+    gr = Batch.from_data_list(graph_list).to(device)
+    y = torch.tensor(dl.labels, dtype=torch.float32).to(device)
+
+    single_molecule_indices = np.arange(len(graph_list)).reshape(-1, 1, 1)
+    embedder.eval(); chemix.eval()
+    with torch.no_grad():
+        pom_embed = embedder(gr).squeeze().detach().cpu().numpy()           # pom embedding
+        out = embedder.graphs_to_mixtures(gr, single_molecule_indices, device=device)
+        single_embed = chemix.embed(out).squeeze().detach().cpu().numpy()   # single mixture embedding
+    
+    single_mixtures = pd.DataFrame(
+        {
+            'smiles': [g.smiles for g in graph_list],
+            'pom_embedding': [g for g in pom_embed],
+            'mixture_embedding': [g for g in single_embed],
+        }
+    )
+    single_mixtures.to_csv('single_molecule_mixtures.csv')
+
+    # Collapse the mixture_labels in the same way indices are collapsed
+    indices = indices.transpose(0,2,1).reshape((-1, indices.shape[1]))
+    new_data = []
+    for row in mixture_labels:
+        name = row[0]
+        new_data.append([name, row[1]])
+        new_data.append([name, row[2]])
+    mixture_labels = np.array(new_data, dtype=object)
+
+    _, idx = np.unique(indices, axis=0, return_index=True)
+    idx = np.sort(idx)
+    unique_indices = np.expand_dims(indices[idx], -1)
+    unique_mixtures = mixture_labels[idx]
+
+    # mixture_labels
+    with torch.no_grad():
+        out = embedder.graphs_to_mixtures(gr, unique_indices, device=device)
+        mixture_embeddings = chemix.embed(out).squeeze().detach().cpu().numpy()
+
+    mixture_embedding = pd.DataFrame(
+        {
+            'dataset': [i for i in unique_mixtures[:, 0]],
+            'mixture_label': [i for i in unique_mixtures[:, 1]],
+            'mixture_embedding': [g for g in mixture_embeddings],
+        }
+    )
+    mixture_embedding.to_csv('single_mixtures.csv')
+
+
+    ##### CHECK PERFORMANCE ON THE LEADERBOARD SET #####
+    # leaderboard set
+    dl_test = DreamLoader()
+    dl_test.load_benchmark('competition_leaderboard')
+    mixture_labels = dl_test.features
+    dl_test.featurize('competition_smiles')
+    graph_list, test_indices = get_mixture_smiles(dl_test.features, from_smiles)
+    test_gr = Batch.from_data_list(graph_list).to(device)
+    y_test = torch.tensor(dl_test.labels, dtype=torch.float32).to(device)
+
     embedder.eval(); chemix.eval()
     with torch.no_grad():
         out = embedder.graphs_to_mixtures(test_gr, test_indices, device=device)
