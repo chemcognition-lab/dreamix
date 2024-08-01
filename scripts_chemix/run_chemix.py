@@ -41,8 +41,8 @@ parser = ArgumentParser()
 parser.add_argument("--trial", action="store", type=int, default=1, help="Trial number.")
 parser.add_argument("--rep", action="store", type=int, default=None, help='Additional tag for each trial. Optional.')
 parser.add_argument("--no-verbose", action="store_true", default=False, help='Toggle the verbosity of training. Default False')
-parser.add_argument("--gnn-lr", action="store", type=float, default=1e-6, help='Learning rate for GNN POM embedder. Default 1e-6.')
-parser.add_argument("--mix-lr", action="store", type=float, default=5e-6, help='Learning rate for Chemix. Default 5e-6.')
+parser.add_argument("--gnn-lr", action="store", type=float, default=1e-5, help='Learning rate for GNN POM embedder. Default 1e-5.')
+parser.add_argument("--mix-lr", action="store", type=float, default=5e-4, help='Learning rate for Chemix. Default 5e-4.')
 parser.add_argument("--gnn-freeze", action="store_true", default=False, help='Toggle freeze GNN POM weights. Default False')
 parser.add_argument("--test_run", action="store_true", default=False, help='Save results. Default False')
 
@@ -52,14 +52,14 @@ np.set_printoptions(precision=3)
 if __name__ == '__main__':
     # create folder for results
     if FLAGS.rep is not None:
-        fname = f'results/chemix_final/top{FLAGS.trial}/rep{FLAGS.rep}/'
+        fname = f'results/chemix_pearson/top{FLAGS.trial}/rep{FLAGS.rep}/'
     else:
-        fname = f'results/chemix_final/top{FLAGS.trial}'
+        fname = f'results/chemix_pearson/top{FLAGS.trial}'
     os.makedirs(f'{fname}/', exist_ok=True)
 
     # path where the pretrained models are stored
     embedder_path = f'../scripts_pom/general_models/model{FLAGS.trial}/'
-    chemix_path = f'chemix_weights/'
+    chemix_path = f'chemix_weights_pearson/'
 
     device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
     print(f'Running on: {device}')
@@ -81,7 +81,7 @@ if __name__ == '__main__':
     dl.load_benchmark('competition_train_all')
     dl.featurize('competition_smiles')
     graph_list, train_indices = get_mixture_smiles(dl.features, from_smiles)
-    train_gr = Batch.from_data_list(graph_list)
+    train_gr = Batch.from_data_list(graph_list).to(device)
     y_train = torch.tensor(dl.labels, dtype=torch.float32).to(device)
 
     # leaderboard set
@@ -89,7 +89,7 @@ if __name__ == '__main__':
     dl_test.load_benchmark('competition_leaderboard')
     dl_test.featurize('competition_smiles')
     graph_list, test_indices = get_mixture_smiles(dl_test.features, from_smiles)
-    test_gr = Batch.from_data_list(graph_list)
+    test_gr = Batch.from_data_list(graph_list).to(device)
     y_test = torch.tensor(dl_test.labels, dtype=torch.float32).to(device)
 
     print(f'Training set: {len(y_train)}')
@@ -97,8 +97,8 @@ if __name__ == '__main__':
 
     # create the pom embedder model and load weights
     embedder = GraphNets(node_dim=NODE_DIM, edge_dim=EDGE_DIM, **hp_gnn)
-    embedder.load_state_dict(torch.load(f'{embedder_path}/gnn_embedder.pt', map_location=device
-    ))
+    embedder.load_state_dict(torch.load(f'{embedder_path}/gnn_embedder.pt'))
+    embedder = embedder.to(device)
     # freeze pom if specified
     if hp_gnn.freeze:
         for p in embedder.parameters():
@@ -199,7 +199,7 @@ if __name__ == '__main__':
     ax.plot([0,1], [0,1], 'r--')
     ax.set_xlim([0,1])
     ax.set_ylim([0,1])
-    ax.annotate(''.join(f'{k}: {v['metrics']:.4f}\n' for k, v in leaderboard_metrics.iterrows()).strip(),
+    ax.annotate(''.join(f'{k}: {v["metrics"]:.4f}\n' for k, v in leaderboard_metrics.iterrows()).strip(),
             xy=(0.05,0.7), xycoords='axes fraction',
             # textcoords='offset points',
             size=12,
