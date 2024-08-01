@@ -1,4 +1,6 @@
-# DREAMix
+# DreaMix: From molecules to mixtures in one model 👃
+## One model to mix them all, and in the latent space bind them. 
+
 This repository contains the code to reproduce the results from the 2024 DREAM challenge for Olfactory Mixtures by the **who_nose** team.
 
 ## Setup
