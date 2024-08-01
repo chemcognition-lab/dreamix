@@ -9,14 +9,15 @@ This repository contains the code to reproduce the results from the 2024 DREAM c
 ## Dataset
 We gathered several single compound odor and odor mixture datasets for pre-training: 
 - for the primary odor map (POM) graph neural network: 
-    - GoodScents/Leffingwell
-    - Leffingwell
-    - Mayhew
     - Abraham
     - Arctander
     - AromaDB
     - Flavornet
-    - Sharma
+    - GoodScents/Leffingwell
+    - IFRA
+    - Keller
+    - Leffingwell
+    - Mayhew
     - Sigma
 - for the transformer neural network (CheMix):
     - Snitz
