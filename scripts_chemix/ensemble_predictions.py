@@ -11,6 +11,7 @@ import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
+from chemix.utils import evaluate
 
 parser = ArgumentParser()
 parser.add_argument("--dir", action="store", type=str, default='results/chemix_ensemble', help="Folder with ensemble of results.")
