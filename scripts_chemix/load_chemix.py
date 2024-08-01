@@ -1,7 +1,11 @@
 import os
 import sys
+from pathlib import Path
 
-sys.path.append('..')
+script_dir = Path(__file__).parent
+base_dir = Path(*script_dir.parts[:-1])
+sys.path.append( str(base_dir / 'src/') )
+
 
 import json
 from argparse import ArgumentParser
@@ -46,13 +50,13 @@ if __name__ == '__main__':
 
     # create the pom embedder model
     embedder = GraphNets(node_dim=NODE_DIM, edge_dim=EDGE_DIM, **hp_gnn)
-    embedder.load_state_dict(torch.load(f'{fname}/gnn_embedder.pt'), map_location=device
-    )
+    embedder.load_state_dict(torch.load(f'{fname}/gnn_embedder.pt'))
+    embedder = embedder.to(device)
         
     # create the chemix model
     chemix = build_chemix(config=hp_mix.chemix)
-    chemix.load_state_dict(torch.load(f'{fname}/chemix.pt'), map_location=device
-    )
+    chemix.load_state_dict(torch.load(f'{fname}/chemix.pt'))
+    chemix = chemix.to(device)
     torchinfo.summary(chemix)
 
 
@@ -145,7 +149,7 @@ if __name__ == '__main__':
     ax.plot([0,1], [0,1], 'r--')
     ax.set_xlim([0,1])
     ax.set_ylim([0,1])
-    ax.annotate(''.join(f'{k}: {v['metrics']:.4f}\n' for k, v in leaderboard_metrics.iterrows()).strip(),
+    ax.annotate(''.join(f'{k}: {v["metrics"]:.4f}\n' for k, v in leaderboard_metrics.iterrows()).strip(),
             xy=(0.05,0.7), xycoords='axes fraction',
             # textcoords='offset points',
             size=12,

@@ -1,15 +1,15 @@
 {
     "chemix": {
-        "dropout_rate": 0.25,
-        "mol_aggregation": "attn",
-        "attn_num_heads": 4,
+        "dropout_rate": 0.05,
+        "mol_aggregation": "mean",
+        "attn_num_heads": 8,
         "pom_input": {
             "unk_token": -999,
             "embed_dim": 196,
             "num_mix": 2
         },
         "mixture_net": {
-            "num_layers": 3,
+            "num_layers": 1,
             "embed_dim": 64,
             "add_mlp": "False"
         },
@@ -17,7 +17,7 @@
             "embed_dim": 64
         },
         "regressor": {
-            "type": "pna",
+            "type": "minmax",
             "activation": "hardtanh",
             "output_dim": 1
         }
@@ -27,16 +27,18 @@
         "train_data_folder": "dataset_pickle_tmp_aug",
         "val_data_folder": "dataset_pickle_leaderboard_aug"
     },
-    "loss_type": "mse",
+    "loss_type": "huber",
     "optimizer_type": "adam",
-    "lr": 0.0008,
+    "lr": 0.0001,
     "weight_decay": 0.0,
-    "seed": 49,
-    "root_dir": "/u/rajao/hpsearch_chemix",
+    "seed": 28,
+    "root_dir": "/u/rajao/test_chemix",
     "num_workers": 4,
     "max_epochs": 1000,
     "batch_size": 500,
     "device": "cuda",
     "early_stopping": true,
-    "patience": 100
+    "patience": 100,
+    "early_stopping_mode": "minimize",
+    "monitor_metric": "RootMeanSquaredError"
 }
