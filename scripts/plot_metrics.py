@@ -70,7 +70,7 @@ if __name__ == '__main__':
         '../scripts_baseline/xgb_embed/leaderboard_predictions.csv',
         '../scripts_chemix/results/chemix_frozenpom/leaderboard_predictions.csv',
         '../scripts_chemix/results/chemix_ensemble/top1/leaderboard_predictions.csv',
-        '../scripts_chemix/results/chemix_ensemble_comb/ensemble_leaderboard_predictions.csv'], 
+        '../scripts_chemix/results/chemix_ensemble/ensemble_leaderboard_predictions.csv'], 
         model_order
     ):
         df = pd.read_csv(filename)
@@ -97,6 +97,10 @@ if __name__ == '__main__':
 
     all_df = pd.concat(all_df)
     samples_df = pd.concat(samples_df)
+    
+    all_df.to_csv('compiled_metrics.csv', index=False)
+    samples_df.to_csv('compiled_metrics_significance.csv', index=False)
+
 
     metrics = all_df['metric'].unique()
 
