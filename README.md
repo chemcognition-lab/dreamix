@@ -13,9 +13,9 @@ We gathered several single compound odor and odor mixture datasets for pre-train
     - Abraham
     - Arctander
     - AromaDB
-    - Flavornet?
-    - Sharma?
-    - Sigma?
+    - Flavornet
+    - Sharma
+    - Sigma
 - for the transformer neural network (CheMix):
     - Snitz
     - Bushdid
