@@ -8,3 +8,8 @@ omegaconf
 torchtune
 rdkit
 git+https://github.com/bp-kelley/descriptastorus
+umap-learn
+mordred
+pubchempy
+wget
+pyrfume
