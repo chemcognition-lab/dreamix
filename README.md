@@ -3,7 +3,7 @@
 
 This repository contains the code to reproduce the results from the 2024 DREAM challenge for Olfactory Mixtures by the **who_nose** team.
 
-
+Our report can be found at: (www.synapse.org/dreamix)[www.synapse.org/dreamix]
 
 ## Setup
 ```
