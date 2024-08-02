@@ -5,6 +5,15 @@ This repository contains the code to reproduce the results from the 2024 DREAM c
 
 Our report can be found at: www.synapse.org/dreamix
 
+Our hierarchical model, DreaMix, combines graph neural networks, attention mechanisms, primary odour maps, and similarity measures to predict olfactory similarity of chemical mixtures, leveraging permutation invariance and multi-scale data sources.
+
+Want to take a quick dive? check our model explainer colab:
+<div class="aside">
+<a target="_blank" href="https://colab.research.google.com/github/https://colab.research.google.com/github/chemcognition-lab/dreamix/blob/master/notebooks/DreaMix_model.ipynb">
+  <img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/>
+</a>
+</div>
+
 ## Setup
 ```
 git clone https://github.com/chemcognition-lab/dreamix.git
@@ -12,13 +21,10 @@ git clone https://github.com/chemcognition-lab/dreamix.git
 pip install -r colab_requirements.txt
 ```
 
-## Summary Sentence
-Our hierarchical model, DreaMix, combines graph neural networks, attention mechanisms, primary odour maps, and similarity measures to predict olfactory similarity of chemical mixtures, leveraging permutation invariance and multi-scale data sources.
-
 ## Background/Introduction
 Predicting olfactory properties is essentially the same task whether we're dealing with single molecules or mixtures. A robust olfactory model should handle both inputs seamlessly. In previous work, Lee et al. built a Primary Odour Map (POM) to predict odour labels, odour similarity, and odour intensity of a single molecule. We extend this work to tackle the mixture similarity problem by jointly training a POM with an attention-based mixture model to predict similarity of mixtures. This approach also allows us to combine monomolecular datasets (up to 10,000 data points) and more limited mixture data sources (up to 1,000 data points).
 
-## Methods
+
 ### Data
 Our datasets come in two modalities: monomolecular datasets and multimolecular (mixture) datasets. Monomolecular datasets covered various regression, classification, and multi-classification tasks. We used the following monomolecular datasets from Pyrfume: Abraham, Arctander, AromaDB, Flavornet, IFRA, Keller, Leffingwell, Mayhew, and Sigma, supplemented with GoodScents and Leffingwell datasets. We created a consistent cross-dataset ontology by translating all molecule names, CIDs, SMILES, etc., to a canonical SMILES representation, enabling us to remove duplicate entries and unsuitable molecules.
 
@@ -36,9 +42,7 @@ The model uses batches of the training set to make predictions. We use a differe
 ## Code and Reproducibility
 Our code, model, and scripts are available at [GitHub](https://github.com/chemcognition-lab/dreamix). This repository expands on all aspects of the model, training, hyperparameters, and dataset curation. Additionally, we provide thorough analysis and corrections to some input data, presented in the competition forum.
 
-### Explainer Colab Notebooks
-1. **Exploratory Data Analysis**: Basic visualization and statistics of the different datasets.
-2. **Model**: Step-by-step tutorial on POM, CheMix, inputs, outputs, inference, and results.
+
 
 ## Results
 We report results across three metrics: Pearson r, root-mean-squared error (RMSE), and the Kendall ranking tau. Scores are on the DREAM leaderboard set reconstructed from the mixture datasets. Detailed results, including performance metrics and confidence intervals, are provided.
